@@ -26,6 +26,14 @@
 - 只有在源资料夹文件与 Git 读回内容逐字/逐字节一致，且 filename、TASK_ID/RESULT_ID、完成标记均核对通过后，才可记为 PASS。
 - Git 写入失败、权限不足、源文件不完整或读回不一致：记为 BLOCKED/REWORK，写入固定审计日志，保留源文件，下一轮继续补缺。
 
+## A 派单与题号对齐
+
+A 的 Git 派单必须以 WorkBuddy 已发布的 A 派单为唯一任务身份来源：读取并沿用其中的 `TASK_ID`、`SCHEDULE_ID`、`GLOBAL_SEQ`、`QUESTION_NO`、`INPUT_COMMIT` 和源文件身份。
+
+- `QUESTION_NO` 必须直接沿用 Buddy 派单中的题号（例如 `Q4`、`Q5`、`Q12`），不得按 Git 文件数量、运行次数或 ChatGPT 自行重新编号。
+- `GLOBAL_SEQ` 必须与 Buddy 派单保持一致；若题号或序号缺失、冲突或无法回读，记为 BLOCKED/REWORK，不得猜测。
+- A 的目标文件名、正文头部标记和 Git/Drive 回执都必须使用同一组派单字段。
+
 ## 子任务与审计
 
 WorkBuddy 负责为每个新结果创建对应的 `TASK-P1-GIT-A/C/D-*.md` 子任务单、执行 Git 搬运、保存 commit/read-back 证据并更新审计日志。不得仅凭退出码、任务注册、目录存在、历史日志或自报结果判定成功。
