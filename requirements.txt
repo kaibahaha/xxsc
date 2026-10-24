@@ -1,0 +1,3 @@
+# P1-GIT 云端派单工位运行依赖（V1.2）
+# 注意：V1.2 已彻底移除 Google Drive 依赖，google-* 系列库不再需要。
+requests>=2.28
