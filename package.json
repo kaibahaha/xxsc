@@ -1,0 +1,13 @@
+{
+  "name": "p0-text-tower-defense-probe",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "http-server . -p 4173 -c-1",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "http-server": "14.1.1"
+  }
+}
