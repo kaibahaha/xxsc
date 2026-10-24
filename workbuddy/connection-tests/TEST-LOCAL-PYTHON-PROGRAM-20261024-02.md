@@ -1,0 +1,5 @@
+# P1 local Python program write test
+
+TEST_ONLY=true
+SOURCE=RELAY_PY_CONNECTION_TEST
+NO_PRODUCTION_RESULT=true
