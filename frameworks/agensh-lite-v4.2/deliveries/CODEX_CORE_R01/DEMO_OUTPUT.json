@@ -1,0 +1,10 @@
+{
+  "mode": "LOCAL_SIMULATION",
+  "authority": "LOCAL_SQLITE_ONLY",
+  "lease_status": "GRANTED",
+  "fencing_epoch": 1,
+  "replay_equal": true,
+  "after_restart_delivery_action": "ACK_ONLY",
+  "fresh_board_status": "UNKNOWN",
+  "cloud_deployment": "NOT_DEPLOYED"
+}

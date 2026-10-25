@@ -1,0 +1,80 @@
+[
+  {
+    "path": "prompts/agents.txt",
+    "sha256": "45ace4d595cfcf139d4f2021bbe2b933425d4518651b30493d3273d69f13bce0",
+    "lines": 85,
+    "commit": "0468a3e6a58b51dc2b84871fcaa0df22b0d1033e"
+  },
+  {
+    "path": "board-service/shared_lessons.py",
+    "sha256": "8794761544d353356da4d5d0b7e26a9cc3765acf2fad6c49f4495d5f8c0cbded",
+    "lines": 482,
+    "commit": "0468a3e6a58b51dc2b84871fcaa0df22b0d1033e"
+  },
+  {
+    "path": "board-service/main.py",
+    "sha256": "dc693d3eceee2cdc167c6b9caacbe662b83d57d8d1c4382fd14dd5ed9e0121e1",
+    "lines": 702,
+    "commit": "0468a3e6a58b51dc2b84871fcaa0df22b0d1033e"
+  },
+  {
+    "path": "board-service/verifier.py",
+    "sha256": "a7752426de8125c602e18a457621d7215acc5f670d4366eb27cc64c0f3108ea0",
+    "lines": 56,
+    "commit": "0468a3e6a58b51dc2b84871fcaa0df22b0d1033e"
+  },
+  {
+    "path": "board-service/gquery.py",
+    "sha256": "5de570d15e4a4cac01427a1a9f17c59bf47219437637315c34592340dc3b6970",
+    "lines": 148,
+    "commit": "0468a3e6a58b51dc2b84871fcaa0df22b0d1033e"
+  },
+  {
+    "path": "mini-router/src/uem.ts",
+    "sha256": "8b525e4d901f8c5fba18286f6b94849c52838a2fe3d29c80ec6f600761407bfe",
+    "lines": 11,
+    "commit": "0468a3e6a58b51dc2b84871fcaa0df22b0d1033e"
+  },
+  {
+    "path": "mini-router/src/state.ts",
+    "sha256": "c99a76cd2b543be9645abec1f0cb2c93f5826a314808a4fc14b5f9db6c1ed3cb",
+    "lines": 328,
+    "commit": "0468a3e6a58b51dc2b84871fcaa0df22b0d1033e"
+  },
+  {
+    "path": "mini-router/src/board_client.ts",
+    "sha256": "1c236ad37569d1307dff86c21471057ed25147f8dea0a74d3305b6ecaa163ace",
+    "lines": 157,
+    "commit": "0468a3e6a58b51dc2b84871fcaa0df22b0d1033e"
+  },
+  {
+    "path": "mini-router/src/dispatcher.ts",
+    "sha256": "e4ccbc9b7a33b234d75f62560f59f096968a53aac75b0a3801e5b682ffe8d911",
+    "lines": 204,
+    "commit": "0468a3e6a58b51dc2b84871fcaa0df22b0d1033e"
+  },
+  {
+    "path": "mini-router/sql/01-events-schema.sql",
+    "sha256": "285d915801173e46c2c8efafb2432361723fc04cd0f014a0f232bbaae83e1f04",
+    "lines": 28,
+    "commit": "0468a3e6a58b51dc2b84871fcaa0df22b0d1033e"
+  },
+  {
+    "path": "mini-router/sql/02-mattermost-db.sql",
+    "sha256": "6d7414c9a1b6991fc94db13351258ab2ff30b8a9596ae69fb61344c7927b85a0",
+    "lines": 4,
+    "commit": "0468a3e6a58b51dc2b84871fcaa0df22b0d1033e"
+  },
+  {
+    "path": "mini-router/sql/03-board-schema.sql",
+    "sha256": "baa0ce607371751d6e7a526179512f2ff3a59ede88749059bed1a2522b3f3bb2",
+    "lines": 15,
+    "commit": "0468a3e6a58b51dc2b84871fcaa0df22b0d1033e"
+  },
+  {
+    "path": "LICENSE",
+    "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "lines": 21,
+    "commit": "0468a3e6a58b51dc2b84871fcaa0df22b0d1033e"
+  }
+]

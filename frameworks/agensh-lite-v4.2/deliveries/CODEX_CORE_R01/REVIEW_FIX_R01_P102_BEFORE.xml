@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="0.127" timestamp="2026-10-25T16:00:06.656255+00:00" hostname="7813af59ee4f"><testcase classname="factory.tests.core.test_review_fix_registry_restart" name="test_p102_two_to_six_new_config_restart_preserves_all_history" time="0.018"><failure message="factory.agl.schemas.CoreError: COMMAND_ID_COLLISION">factory/tests/core/test_review_fix_registry_restart.py:36: in test_p102_two_to_six_new_config_restart_preserves_all_history
+    fresh = Controller(c.backend, pool(6), authenticator, clock=clock)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+factory/agl/controller.py:30: in __init__
+    backend.transact("bootstrap", request, now, bootstrap)
+factory/agl/leases.py:75: in transact
+    require(old["request_hash"] == digest(request), "COMMAND_ID_COLLISION")
+factory/agl/schemas.py:22: in require
+    raise CoreError(code)
+E   factory.agl.schemas.CoreError: COMMAND_ID_COLLISION</failure></testcase><testcase classname="factory.tests.core.test_review_fix_registry_restart" name="test_p102_six_to_ten_new_config_restart_preserves_all_history" time="0.020"><failure message="factory.agl.schemas.CoreError: COMMAND_ID_COLLISION">factory/tests/core/test_review_fix_registry_restart.py:50: in test_p102_six_to_ten_new_config_restart_preserves_all_history
+    fresh = Controller(c.backend, pool(10), authenticator, clock=clock)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+factory/agl/controller.py:30: in __init__
+    backend.transact("bootstrap", request, now, bootstrap)
+factory/agl/leases.py:75: in transact
+    require(old["request_hash"] == digest(request), "COMMAND_ID_COLLISION")
+factory/agl/schemas.py:22: in require
+    raise CoreError(code)
+E   factory.agl.schemas.CoreError: COMMAND_ID_COLLISION</failure></testcase></testsuite></testsuites>

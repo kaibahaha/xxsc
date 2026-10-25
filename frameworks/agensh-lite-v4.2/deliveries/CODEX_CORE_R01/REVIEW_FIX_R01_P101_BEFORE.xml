@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="4" time="0.205" timestamp="2026-10-25T15:57:17.748975+00:00" hostname="7813af59ee4f"><testcase classname="factory.tests.core.test_review_fix_phase_authority" name="test_p101_submitted_candidate_survives_hour_and_qa_takeover" time="0.017"><failure message="AssertionError: assert 'READY' == 'QA_PENDING'&#10;  &#10;  - QA_PENDING&#10;  + READY">factory/tests/core/test_review_fix_phase_authority.py:35: in test_p101_submitted_candidate_survives_hour_and_qa_takeover
+    assert task["status"] == "QA_PENDING"
+E   AssertionError: assert 'READY' == 'QA_PENDING'
+E     
+E     - QA_PENDING
+E     + READY</failure></testcase><testcase classname="factory.tests.core.test_review_fix_phase_authority" name="test_p101_qa_green_survives_two_hours_and_review_takeover" time="0.031"><failure message="AssertionError: assert 'READY' == 'QA_GREEN'&#10;  &#10;  - QA_GREEN&#10;  + READY">factory/tests/core/test_review_fix_phase_authority.py:52: in test_p101_qa_green_survives_two_hours_and_review_takeover
+    assert task["status"] == "QA_GREEN"
+E   AssertionError: assert 'READY' == 'QA_GREEN'
+E     
+E     - QA_GREEN
+E     + READY</failure></testcase><testcase classname="factory.tests.core.test_review_fix_phase_authority" name="test_p101_expired_original_epoch_rejected_without_losing_candidate" time="0.015"><failure message="AssertionError: assert ('READY' == 'QA_PENDING'&#10;  &#10;  - QA_PENDING&#10;  + READY)">factory/tests/core/test_review_fix_phase_authority.py:66: in test_p101_expired_original_epoch_rejected_without_losing_candidate
+    assert task["status"] == "QA_PENDING" and task["candidate_commit"] == COMMIT
+E   AssertionError: assert ('READY' == 'QA_PENDING'
+E     
+E     - QA_PENDING
+E     + READY)</failure></testcase><testcase classname="factory.tests.core.test_review_fix_phase_authority" name="test_p101_restart_replay_and_author_offline_preserve_qa" time="0.033"><failure message="AssertionError: assert 'READY' == 'QA_GREEN'&#10;  &#10;  - QA_GREEN&#10;  + READY">factory/tests/core/test_review_fix_phase_authority.py:79: in test_p101_restart_replay_and_author_offline_preserve_qa
+    assert state["tasks"]["T"]["status"] == "QA_GREEN"
+E   AssertionError: assert 'READY' == 'QA_GREEN'
+E     
+E     - QA_GREEN
+E     + READY</failure></testcase></testsuite></testsuites>

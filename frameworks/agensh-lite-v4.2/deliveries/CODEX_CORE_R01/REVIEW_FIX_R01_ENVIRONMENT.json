@@ -1,0 +1,45 @@
+{
+  "source_commit": "acc39e97ba4281197bcc65e2a7187a994e8b81f0",
+  "utc": "2026-10-25T16:06:58.116465+00:00",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "sqlite": "3.53.1",
+  "commands": [
+    {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m pytest factory/tests/core -v -ra --junitxml=/workspace/xxsc/frameworks/agensh-lite-v4.2/deliveries/CODEX_CORE_R01/REVIEW_FIX_R01_RESULTS.xml",
+      "exit_code": 0
+    },
+    {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m factory.agl.contracts.demo",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "junit": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "116",
+    "time": "5.842",
+    "timestamp": "2026-10-25T16:06:52.121050+00:00",
+    "hostname": "7813af59ee4f"
+  },
+  "groups": {
+    "original": {
+      "tests": 90,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "added": {
+      "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  }
+}
