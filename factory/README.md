@@ -21,7 +21,8 @@ agl/
   execution.py          M08  TEST_REQUEST -> Runner -> TEST_RESULT -> ACK
   cli.py                M10  command line
   support/poolgen.py    N-agent pool fixture generator
-config/                 valid N=6 pool (honest PENDING_PROBE) + admitted test fixture
+config/                 3 pools: valid N=6 (honest PENDING_PROBE), admitted test fixture,
+                        dev-branch probe fixture (ADMITTED_ACTIVE is a test assumption)
 tests/                  adapter unit tests + integration over a real bare repo
 ```
 
