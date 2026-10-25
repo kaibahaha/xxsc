@@ -1,0 +1,140 @@
+Actual execution start: 2026-10-25T15:30:31.964232+00:00
+Source/test commit: 001a7f2db4ea9d1ef3c6e164456d900a0cb7d41c
+Environment: Linux-6.18.55-x86_64-with-glibc2.41
+Python: 3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]
+SQLite: 3.53.1
+Evidence level: SELF_TESTED; mock provider identities, real local Python processes; no independent delivery QA.
+
+COMMAND: /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m pytest factory/tests/core -v -ra --junitxml=/workspace/xxsc/frameworks/agensh-lite-v4.2/deliveries/CODEX_CORE_R01/pytest-results.xml
+START: 2026-10-25T15:30:31.965053+00:00
+STDOUT:
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.7.0 -- /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python
+cachedir: .pytest_cache
+rootdir: /workspace/xxsc
+plugins: anyio-4.14.2
+collecting ... collected 90 items
+
+factory/tests/core/test_config_contracts.py::test_dynamic_pool[2] PASSED [  1%]
+factory/tests/core/test_config_contracts.py::test_dynamic_pool[3] PASSED [  2%]
+factory/tests/core/test_config_contracts.py::test_dynamic_pool[4] PASSED [  3%]
+factory/tests/core/test_config_contracts.py::test_dynamic_pool[5] PASSED [  4%]
+factory/tests/core/test_config_contracts.py::test_dynamic_pool[6] PASSED [  5%]
+factory/tests/core/test_config_contracts.py::test_dynamic_pool[8] PASSED [  6%]
+factory/tests/core/test_config_contracts.py::test_dynamic_pool[10] PASSED [  7%]
+factory/tests/core/test_config_contracts.py::test_dynamic_pool[12] PASSED [  8%]
+factory/tests/core/test_config_contracts.py::test_dynamic_pool[20] PASSED [ 10%]
+factory/tests/core/test_config_contracts.py::test_invalid_config[one-POOL_BELOW_TWO] PASSED [ 11%]
+factory/tests/core/test_config_contracts.py::test_invalid_config[duplicate-DUPLICATE_AGENT] PASSED [ 12%]
+factory/tests/core/test_config_contracts.py::test_invalid_config[active-ACTIVE_ID_MISMATCH] PASSED [ 13%]
+factory/tests/core/test_config_contracts.py::test_invalid_config[timezone-INVALID_TIMEZONE] PASSED [ 14%]
+factory/tests/core/test_config_contracts.py::test_invalid_config[path-INVALID_PATH] PASSED [ 15%]
+factory/tests/core/test_config_contracts.py::test_invalid_config[main-UNSAFE_REF] PASSED [ 16%]
+factory/tests/core/test_config_contracts.py::test_invalid_config[unsafe-UNSAFE_CLAIM_LOCK] PASSED [ 17%]
+factory/tests/core/test_config_contracts.py::test_invalid_config[production-PRODUCTION_NOT_SUPPORTED] PASSED [ 18%]
+factory/tests/core/test_config_contracts.py::test_provider_budget_independent PASSED [ 20%]
+factory/tests/core/test_config_contracts.py::test_frozen_example_conflicts_are_rejected[agent_pool.example.json] PASSED [ 21%]
+factory/tests/core/test_config_contracts.py::test_frozen_example_conflicts_are_rejected[mixed_pool.example.json] PASSED [ 22%]
+factory/tests/core/test_config_contracts.py::test_v41_compatibility[task] PASSED [ 23%]
+factory/tests/core/test_config_contracts.py::test_v41_compatibility[event] PASSED [ 24%]
+factory/tests/core/test_config_contracts.py::test_v41_compatibility[receipt] PASSED [ 25%]
+factory/tests/core/test_config_contracts.py::test_v41_compatibility[note] PASSED [ 26%]
+factory/tests/core/test_config_contracts.py::test_roundtrip_and_version PASSED [ 27%]
+factory/tests/core/test_config_contracts.py::test_generated_schema_matches_contracts PASSED [ 28%]
+factory/tests/core/test_config_contracts.py::test_git_ref_validation[dev/with space] PASSED [ 30%]
+factory/tests/core/test_config_contracts.py::test_git_ref_validation[dev/../main] PASSED [ 31%]
+factory/tests/core/test_config_contracts.py::test_git_ref_validation[dev/.hidden] PASSED [ 32%]
+factory/tests/core/test_config_contracts.py::test_git_ref_validation[dev/x.lock/y] PASSED [ 33%]
+factory/tests/core/test_config_contracts.py::test_git_ref_validation[dev/double//slash] PASSED [ 34%]
+factory/tests/core/test_config_contracts.py::test_git_ref_validation[dev/new\nline] PASSED [ 35%]
+factory/tests/core/test_config_contracts.py::test_three_chatgpt_two_workbuddy_one_codex_pool PASSED [ 36%]
+factory/tests/core/test_controller_leases.py::test_100_concurrent_cross_provider_claims PASSED [ 37%]
+factory/tests/core/test_controller_leases.py::test_independent_process_connections PASSED [ 38%]
+factory/tests/core/test_controller_leases.py::test_expiry_fencing_and_late_result PASSED [ 40%]
+factory/tests/core/test_controller_leases.py::test_retried_old_grant_not_reported_valid PASSED [ 41%]
+factory/tests/core/test_controller_leases.py::test_claim_retry_collision PASSED [ 42%]
+factory/tests/core/test_controller_leases.py::test_unknown_board_and_fresh_instance PASSED [ 43%]
+factory/tests/core/test_controller_leases.py::test_clock_regression_fails_closed PASSED [ 44%]
+factory/tests/core/test_controller_leases.py::test_admission_and_permissions[change0-AGENT_NOT_ADMITTED] PASSED [ 45%]
+factory/tests/core/test_controller_leases.py::test_admission_and_permissions[change1-AGENT_NOT_ADMITTED] PASSED [ 46%]
+factory/tests/core/test_controller_leases.py::test_admission_and_permissions[change2-AGENT_NOT_ADMITTED] PASSED [ 47%]
+factory/tests/core/test_controller_leases.py::test_admission_and_permissions[change3-CAPABILITY_DENIED] PASSED [ 48%]
+factory/tests/core/test_controller_leases.py::test_admission_and_permissions[change4-PATH_DENIED] PASSED [ 50%]
+factory/tests/core/test_controller_leases.py::test_string_identity_is_not_authentication PASSED [ 51%]
+factory/tests/core/test_controller_leases.py::test_dag_batch_is_atomic PASSED [ 52%]
+factory/tests/core/test_controller_leases.py::test_queue_priority_age_and_wip PASSED [ 53%]
+factory/tests/core/test_controller_leases.py::test_provider_offline_revokes_and_transfers PASSED [ 54%]
+factory/tests/core/test_controller_leases.py::test_renew_and_non_owner PASSED [ 55%]
+factory/tests/core/test_controller_leases.py::test_illegal_transition_audited PASSED [ 56%]
+factory/tests/core/test_controller_leases.py::test_mock_is_not_production_authority PASSED [ 57%]
+factory/tests/core/test_controller_leases.py::test_registration_is_durable_and_identity_bound PASSED [ 58%]
+factory/tests/core/test_controller_leases.py::test_version_spec_scope_and_lease_owner PASSED [ 60%]
+factory/tests/core/test_controller_leases.py::test_board_compare_and_swap_conflict PASSED [ 61%]
+factory/tests/core/test_controller_leases.py::test_invalid_lease_duration[0] PASSED [ 62%]
+factory/tests/core/test_controller_leases.py::test_invalid_lease_duration[-1] PASSED [ 63%]
+factory/tests/core/test_controller_leases.py::test_invalid_lease_duration[inf] PASSED [ 64%]
+factory/tests/core/test_controller_leases.py::test_invalid_lease_duration[nan] PASSED [ 65%]
+factory/tests/core/test_controller_leases.py::test_invalid_lease_duration[3601] PASSED [ 66%]
+factory/tests/core/test_controller_leases.py::test_dynamic_registration_preserves_provider_quota PASSED [ 67%]
+factory/tests/core/test_controller_leases.py::test_expired_renewal_retry_is_not_current_authority PASSED [ 68%]
+factory/tests/core/test_controller_leases.py::test_task_read_scope_is_enforced PASSED [ 70%]
+factory/tests/core/test_controller_leases.py::test_cached_grant_cannot_bypass_clock_fence PASSED [ 71%]
+factory/tests/core/test_controller_leases.py::test_missing_idempotency_key_rejected PASSED [ 72%]
+factory/tests/core/test_events_recovery.py::test_duplicate_event_and_collision PASSED [ 73%]
+factory/tests/core/test_events_recovery.py::test_ack_loss_restart_ack_only PASSED [ 74%]
+factory/tests/core/test_events_recovery.py::test_out_of_order_ack_does_not_skip_gaps PASSED [ 75%]
+factory/tests/core/test_events_recovery.py::test_ack_scope_and_digest PASSED [ 76%]
+factory/tests/core/test_events_recovery.py::test_injected_write_failure_and_reconciliation[before_append] PASSED [ 77%]
+factory/tests/core/test_events_recovery.py::test_injected_write_failure_and_reconciliation[after_append] PASSED [ 78%]
+factory/tests/core/test_events_recovery.py::test_injected_write_failure_and_reconciliation[after_commit] PASSED [ 80%]
+factory/tests/core/test_events_recovery.py::test_read_failure_is_unknown_not_empty PASSED [ 81%]
+factory/tests/core/test_events_recovery.py::test_replay_restart_and_immutable_audit PASSED [ 82%]
+factory/tests/core/test_events_recovery.py::test_random_crash_schedule_converges PASSED [ 83%]
+factory/tests/core/test_events_recovery.py::test_orphan_recovery_and_relay_grace PASSED [ 84%]
+factory/tests/core/test_events_recovery.py::test_real_process_exit_atomicity[after_append-False] PASSED [ 85%]
+factory/tests/core/test_events_recovery.py::test_real_process_exit_atomicity[after_commit-True] PASSED [ 86%]
+factory/tests/core/test_events_recovery.py::test_causation_blocks_ack_and_rolls_back PASSED [ 87%]
+factory/tests/core/test_events_recovery.py::test_git_journal_export_restore_new_database PASSED [ 88%]
+factory/tests/core/test_memory_handoff_qa.py::test_typed_knowledge_exact_fail_scope_and_cold_history PASSED [ 90%]
+factory/tests/core/test_memory_handoff_qa.py::test_handoff_cold_start_and_expired_authority PASSED [ 91%]
+factory/tests/core/test_memory_handoff_qa.py::test_no_runner_no_qa_green PASSED [ 92%]
+factory/tests/core/test_memory_handoff_qa.py::test_qa_requires_exact_verified_runtime[wrong-sha] PASSED [ 93%]
+factory/tests/core/test_memory_handoff_qa.py::test_qa_requires_exact_verified_runtime[failed] PASSED [ 94%]
+factory/tests/core/test_memory_handoff_qa.py::test_qa_requires_exact_verified_runtime[hash-corrupt] PASSED [ 95%]
+factory/tests/core/test_memory_handoff_qa.py::test_qa_requires_exact_verified_runtime[wrong-runner] PASSED [ 96%]
+factory/tests/core/test_memory_handoff_qa.py::test_qa_requires_exact_verified_runtime[no-verifier] PASSED [ 97%]
+factory/tests/core/test_memory_handoff_qa.py::test_runtime_evidence_gate_and_approval_chain PASSED [ 98%]
+factory/tests/core/test_memory_handoff_qa.py::test_new_fail_blocks_only_same_candidate_acceptance PASSED [100%]
+
+- generated xml file: /workspace/xxsc/frameworks/agensh-lite-v4.2/deliveries/CODEX_CORE_R01/pytest-results.xml -
+============================== 90 passed in 2.75s ==============================
+
+STDERR:
+
+EXIT_CODE: 0
+
+COMMAND: /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m factory.agl.contracts.demo
+START: 2026-10-25T15:30:35.110052+00:00
+STDOUT:
+{
+  "mode": "LOCAL_SIMULATION",
+  "authority": "LOCAL_SQLITE_ONLY",
+  "lease_status": "GRANTED",
+  "fencing_epoch": 1,
+  "replay_equal": true,
+  "after_restart_delivery_action": "ACK_ONLY",
+  "fresh_board_status": "UNKNOWN",
+  "cloud_deployment": "NOT_DEPLOYED"
+}
+
+STDERR:
+
+EXIT_CODE: 0
+
+COMMAND: git diff --check
+START: 2026-10-25T15:30:35.184498+00:00
+STDOUT:
+
+STDERR:
+
+EXIT_CODE: 0
