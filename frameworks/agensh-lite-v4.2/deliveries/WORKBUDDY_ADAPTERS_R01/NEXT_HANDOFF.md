@@ -15,11 +15,14 @@ bash factory/tools/local_evidence.sh
 
 # 3. 真实仓库只读探针（需 token）
 export PYTHONPATH=factory GITHUB_TOKEN=***
-python3.11 -m agl.cli probe --agent WORKBUDDY_01 --config /tmp/agl-r01-probe.json --transport api
+python3.11 -m agl.cli probe --agent WORKBUDDY_01 \
+  --config factory/config/pool_probe_devbranch.example.json --transport api
 ```
 
-`/tmp/agl-r01-probe.json` 是绑定 `dev/agl-v4.2-workbuddy-adapters` 的 6 人池配置；等价配置可用
-`python3.11 -m agl.cli gen-pool --n 6 --out <path>` 生成后改 `ref` 与 `runtime_root`。
+`factory/config/pool_probe_devbranch.example.json` 是绑定 `dev/agl-v4.2-workbuddy-adapters`
+的 6 人池夹具（`ADMITTED_ACTIVE` 仅表示"假定准入以便走通代码路径"，不是准入证据）。
+其它规模用 `python3.11 -m agl.cli gen-pool --n <N> --out <path>` 生成，再把 `ref` 与
+`runtime_root` 改成目标分支。
 
 ## 代码地图（只看这几处即可接手）
 

@@ -113,7 +113,8 @@ bash factory/tools/local_evidence.sh
 
 # 真实仓库（需 GITHUB_TOKEN）
 export PYTHONPATH=factory
-python3.11 -m agl.cli verify-roundtrip --config /tmp/agl-r01-probe.json \
+python3.11 -m agl.cli verify-roundtrip \
+  --config factory/config/pool_probe_devbranch.example.json \
   --transport api --apply --repo kaibahaha/xxsc \
   --branch dev/agl-v4.2-workbuddy-adapters --project AGL-R01-PROBE --run-id RUN-XXX
 ```
