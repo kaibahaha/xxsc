@@ -27,13 +27,13 @@ TEST_SOURCE_BLOB_SHA=e666569fcf2ad8a6403908595a49069fb6dcac5b
 /results/scheduled-model-20261025/P03.py（目标路径）
 
 ## CODE_COMMIT_SHA
-4b23dae72ab111e7cb2e250e794fea444b5f9a95 —— 承载 P03 源码的 commit，已 push 到 `exp/scheduled-coding-blind-20261025`（推送成功）。
+eb6e1482148871fcc44da7bb8f4a16b039da0015 —— 承载 P03 源码的最终 commit（`git log -1 -- results/scheduled-model-20261025/P03.py`），已 push 到 `exp/scheduled-coding-blind-20261025`。
 
 ## CODE_BLOB_SHA
 5b4fbb7a626585b342b73369ab2d07a6a82e5698 —— 已入库，远端回读一致。
 
 ## GIT_READBACK_STATUS
-GIT_READBACK_PASS（push 后回读同分支同路径，blob SHA = 5b4fbb7a626585b342b73369ab2d07a6a82e5698）
+GIT_READBACK_PASS（push 后经 GitHub API 回读同分支同路径，blob SHA = 5b4fbb7a626585b342b73369ab2d07a6a82e5698）
 
 ## TEST_EXECUTION_STATUS
 EXECUTED_LOCAL_PYTHON311（真实执行，非静态检查）

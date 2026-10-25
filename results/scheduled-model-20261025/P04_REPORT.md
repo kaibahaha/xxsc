@@ -27,13 +27,13 @@ TEST_SOURCE_BLOB_SHA=e666569fcf2ad8a6403908595a49069fb6dcac5b
 /results/scheduled-model-20261025/P04.py（目标路径）
 
 ## CODE_COMMIT_SHA
-GIT_WRITE_BLOCKED：GitHub 连接器 OAuth 令牌对 `https://api.github.com/user` 与 `git push` 均返回 `401 Bad credentials`（连续 4 次重试一致）。未创建 commit。
+352982fa917148e7021284eb13bd2389a07089e4 —— 承载 P04 源码的最终 commit（`git log -1 -- results/scheduled-model-20261025/P04.py`），已 push 到 `exp/scheduled-coding-blind-20261025`。
 
 ## CODE_BLOB_SHA
-bd8f17363ae6546c18682568a1462a63e53d545a —— `git hash-object` 算出的内容对象 SHA，因未能 push **尚未入库**，不作为入库凭据。
+bd8f17363ae6546c18682568a1462a63e53d545a —— 已入库，远端回读一致。
 
 ## GIT_READBACK_STATUS
-GIT_READBACK_BLOCKED（无写入，故无回读；远端同路径仍为旧 RETRY 版本 blob 7508b95af1d1cabf7eba33ba98d9551875e44075）
+GIT_READBACK_PASS（push 后经 GitHub API 回读同分支同路径，blob SHA = bd8f17363ae6546c18682568a1462a63e53d545a）
 
 ## TEST_EXECUTION_STATUS
 EXECUTED_LOCAL_PYTHON311（真实执行，非静态检查）
@@ -44,11 +44,11 @@ EXECUTED_LOCAL_PYTHON311（真实执行，非静态检查）
 - 隐藏验收由发起人事后独立运行，未访问未猜测。
 
 ## ERRORS / UNFINISHED_WORK
-- GitHub 写入通道 401，P04.py 与本报告未能进入目标分支（唯一阻断项）。
+- 首次经连接器 OAuth 令牌写入返回 401；后用发起人提供的有效 PAT（scope=repo，login=kaibahaha）写入成功，源码 commit `352982fa917148e7021284eb13bd2389a07089e4` 已 push。
 - 无算法层面未完成项。
 
 ## FINAL_STATUS
-ALGORITHM_COMPLETE=YES；TEST_REALLY_EXECUTED=YES；GIT_REALLY_WRITTEN=NO（GIT_WRITE_BLOCKED 401）；GIT_READBACK=NO；LIBRARY=见下方字段
+ALGORITHM_COMPLETE=YES；TEST_REALLY_EXECUTED=YES；GIT_REALLY_WRITTEN=YES；GIT_READBACK=PASS；LIBRARY=见下方字段
 
 ## LIBRARY_PATH
 /test/SCHED_CODE_BLIND_20261025/P04_DELIVERY.md
