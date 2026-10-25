@@ -8,6 +8,10 @@ TRANSITIONS = {
     "INTEGRATION_VERIFIED": {"DONE"}, "BLOCKED": {"READY"}, "FAILED": {"READY"},
     "READY": set(), "DONE": set(),
 }
+# Submitted facts outlive an executor's lease; each following phase needs new authority.
+AUTHORITY_STAGES = {"SUBMITTED": "qa", "QA_PENDING": "qa", "QA_GREEN": "review",
+                    "REVIEW_APPROVED": "integrate", "INTEGRATION_VERIFIED": "accept"}
+
 GATE_ACTIONS = {"QA_GREEN": "qa", "REVIEW_APPROVED": "review", "INTEGRATION_VERIFIED": "integrate", "DONE": "accept"}
 
 
@@ -38,10 +42,15 @@ def fence(task, attempt_id, epoch, now):
     return lease
 
 
-def invalidate(task):
+def revoke_lease(task):
     task["fencing_epoch"] += 1
     task["version"] += 1
     task["lease"] = None
+    task["lease_phase"] = None
+
+
+def invalidate(task):
+    revoke_lease(task)
     if task["status"] != "DONE":
         task["status"] = "READY"
         task["candidate_commit"] = None
@@ -52,4 +61,14 @@ def invalidate(task):
 def expire_tasks(state, now):
     for task in state["tasks"].values():
         if task.get("lease") and task["lease"]["expires_at"] <= now:
-            invalidate(task)
+            retire_authority(task)
+        elif task.get("lease") and task["status"] in AUTHORITY_STAGES and task.get("lease_phase") != task["status"]:
+            # R01 pre-fix journals may retain the developer lease in a waiting phase.
+            revoke_lease(task)
+
+
+def retire_authority(task):
+    if task["status"] in AUTHORITY_STAGES or task["status"] == "DONE":
+        revoke_lease(task)
+    else:
+        invalidate(task)

@@ -9,8 +9,8 @@ from .replay import board_projection
 from .schemas import (Ack, AgentRegistration, ArtifactEvidence, ClaimProposal, CoreError,
                       Event, Handoff, LeaseGrant, MemoryNote, ProviderSession,
                       StateTransition, TaskSpec, digest, hex_hash, require)
-from .task_state import (GATE_ACTIONS, TRANSITIONS, dependencies_done, expire_tasks,
-                         fence, invalidate, validate_dag)
+from .task_state import (AUTHORITY_STAGES, GATE_ACTIONS, TRANSITIONS, dependencies_done, expire_tasks,
+                         fence, invalidate, retire_authority, revoke_lease, validate_dag)
 
 
 class Controller:
@@ -136,7 +136,7 @@ class Controller:
             state["agents"][agent_id] = validated.to_dict()
             for task in state["tasks"].values():
                 if task.get("lease") and task["lease"]["agent_id"] == agent_id:
-                    invalidate(task)
+                    retire_authority(task)
             return {"status": "UPDATED"}
         return self._write(credential, command_id, "UPDATE_HEALTH", {"agent_id": agent_id, "health": health, "admission_status": admission_status}, mutate)
 
@@ -147,33 +147,54 @@ class Controller:
                 require(spec.task_id not in state["tasks"], "DUPLICATE_TASK")
                 require(set(spec.allowed_agents) <= set(state["agents"]), "UNKNOWN_AGENT")
                 state["tasks"][spec.task_id] = dict(spec.to_dict(), status="READY", version=1,
-                    fencing_epoch=0, lease=None, created_at=now, author=None,
+                    fencing_epoch=0, lease=None, lease_phase=None, created_at=now, author=None,
                     candidate_commit=None, qa_evidence=None)
             validate_dag(state["tasks"])
             return {"status": "CREATED", "task_ids": [s.task_id for s in specs]}
         return self._write(credential, command_id, "ADD_TASKS", [s.to_dict() for s in specs], mutate)
+
+    def _eligible_for_phase(self, state, agent, task):
+        stage = AUTHORITY_STAGES.get(task["status"])
+        eligibility = task
+        if stage:
+            self._action(agent, stage)
+            if task["status"] in {"QA_PENDING", "QA_GREEN"}:
+                author = state["agents"][task["author"]]
+                require(agent.agent_id != task["author"] and agent.independence_group != "UNVERIFIED"
+                        and agent.independence_group != author["independence_group"], "INDEPENDENCE_REQUIRED")
+            # Acceptance authority permits reading the candidate, not developer writes.
+            eligibility = dict(task, required_capabilities=[], write_paths=[])
+        AgentRegistry([AgentRegistration.from_dict(a) for a in state["agents"].values()],
+                      simulation=self.simulation).eligible(agent, eligibility)
 
     def claim(self, credential, command_id, proposal: ClaimProposal):
         def mutate(state, agent, now):
             require((proposal.agent_id, proposal.provider_id) == (agent.agent_id, agent.provider_id), "AUTH_SCOPE_MISMATCH")
             require(proposal.task_id in state["tasks"], "UNKNOWN_TASK")
             task = state["tasks"][proposal.task_id]
-            AgentRegistry([AgentRegistration.from_dict(a) for a in state["agents"].values()], simulation=self.simulation).eligible(agent, task)
+            self._eligible_for_phase(state, agent, task)
             require(task["spec_hash"] == proposal.spec_hash, "SPEC_MISMATCH")
             require(task["version"] == proposal.expected_version, "VERSION_CONFLICT")
-            require(task["status"] == "READY" and task["lease"] is None, "LEASE_CONFLICT")
+            require((task["status"] == "READY" or task["status"] in AUTHORITY_STAGES)
+                    and task["lease"] is None, "LEASE_CONFLICT")
+            stage = task["status"] in AUTHORITY_STAGES
+            if stage:
+                require(proposal.commit_sha == task["candidate_commit"], "STALE_COMMIT")
             require(dependencies_done(task, state["tasks"]), "DEPENDENCY_NOT_DONE")
             require(sum(t.get("lease") is not None and t["lease"]["agent_id"] == agent.agent_id
                         for t in state["tasks"].values()) < agent.max_inflight, "WIP_LIMIT")
             task["fencing_epoch"] += 1
             task["version"] += 1
-            task["status"] = "CLAIMED"
+            task["lease_phase"] = task["status"] if stage else "EXECUTION"
+            if not stage:
+                task["status"] = "CLAIMED"
             grant = LeaseGrant(task_id=task["task_id"], agent_id=agent.agent_id, provider_id=agent.provider_id,
                 run_id=proposal.run_id, spec_hash=task["spec_hash"], attempt_id=proposal.attempt_id,
                 fencing_epoch=task["fencing_epoch"], expires_at=now + proposal.ttl_seconds,
-                task_version=task["version"], commit_sha=task["commit_sha"])
+                task_version=task["version"], commit_sha=task["candidate_commit"] if stage else task["commit_sha"])
             task["lease"] = grant.to_dict()
-            task["author"] = agent.agent_id
+            if not stage:
+                task["author"] = agent.agent_id
             return {"status": "GRANTED", "authority": self.backend.authority, "lease": grant.to_dict()}
         result = self._write(credential, command_id, "CLAIM", proposal.to_dict(), mutate, needs_board=True)
         if result["status"] == "GRANTED":
@@ -198,7 +219,7 @@ class Controller:
             task = state["tasks"][grant.task_id]
             lease = fence(task, grant.attempt_id, grant.fencing_epoch, now)
             require(lease["agent_id"] == agent.agent_id and lease["provider_id"] == agent.provider_id, "AUTH_SCOPE_MISMATCH")
-            AgentRegistry([AgentRegistration.from_dict(a) for a in state["agents"].values()], simulation=self.simulation).eligible(agent, task)
+            self._eligible_for_phase(state, agent, task)
             lease["expires_at"] = max(lease["expires_at"], now + ttl_seconds)
             return {"status": "RENEWED", "lease": deepcopy(lease)}
         result = self._write(credential, command_id, "RENEW", {"grant": grant.to_dict(), "ttl": ttl_seconds}, mutate, needs_board=True)
@@ -223,6 +244,10 @@ class Controller:
             require(task["spec_hash"] == t.spec_hash, "SPEC_MISMATCH")
             require(task["version"] == t.expected_version, "VERSION_CONFLICT")
             require(t.to_state in TRANSITIONS.get(task["status"], set()), "ILLEGAL_TRANSITION")
+            require(lease["agent_id"] == agent.agent_id, "LEASE_OWNER_REQUIRED")
+            require(task.get("lease_phase", "EXECUTION") ==
+                    (task["status"] if task["status"] in AUTHORITY_STAGES else "EXECUTION"), "PHASE_AUTHORITY_REQUIRED")
+            self._eligible_for_phase(state, agent, task)
             gate = GATE_ACTIONS.get(t.to_state)
             if gate:
                 require(not any(n["type"] == "FAIL" and n["task_id"] == t.task_id
@@ -255,8 +280,11 @@ class Controller:
                 task["qa_evidence"] = evidence.to_dict()
             task["status"] = t.to_state
             task["version"] += 1
-            if t.to_state == "DONE":
-                task["lease"] = None
+            if t.to_state in AUTHORITY_STAGES or t.to_state == "DONE":
+                # Completing a phase revokes its token but preserves submitted/accepted facts.
+                revoke_lease(task)
+            elif t.to_state in {"FAILED", "BLOCKED"}:
+                task["lease_phase"] = "EXECUTION"
             if t.to_state == "READY":
                 invalidate(task)
             return {"status": "ACCEPTED", "task": deepcopy(task)}

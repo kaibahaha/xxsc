@@ -12,6 +12,19 @@ from conftest import Clock, SPEC, COMMIT, agent, authenticator, proposal, reconc
 
 def move(c, grant, target, *, actor=0, command=None, **kw):
     task = c.snapshot()["tasks"][grant["task_id"]]
+    if task["status"] in {"SUBMITTED", "QA_PENDING", "QA_GREEN", "REVIEW_APPROVED", "INTEGRATION_VERIFIED"}:
+        # Acceptance no longer borrows the developer token. Acquire the current phase explicitly.
+        current = task.get("lease")
+        if current and current["agent_id"] == f"agent-{actor}" and current["expires_at"] > c.clock():
+            grant = current
+        else:
+            result = c.claim(token(actor), (command or target) + "-phase-claim", proposal(actor,
+                task_id=task["task_id"], version=task["version"], attempt_id=(command or target) + "-phase",
+                commit_sha=task["candidate_commit"]))
+            if result["status"] != "GRANTED":
+                return result
+            grant = result["lease"]
+        task = c.snapshot()["tasks"][grant["task_id"]]
     values = dict(task_id=task["task_id"], agent_id=f"agent-{actor}", provider_id=agent(actor).provider_id,
         run_id=f"run-{actor}", spec_hash=SPEC, attempt_id=grant["attempt_id"], fencing_epoch=grant["fencing_epoch"],
         expected_version=task["version"], to_state=target, commit_sha=task["candidate_commit"], evidence_refs=("verified-ref",))
