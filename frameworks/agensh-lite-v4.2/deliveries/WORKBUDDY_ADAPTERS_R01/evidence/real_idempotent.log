@@ -1,0 +1,46 @@
+=== REAL API roundtrip RUN-RT-REAL-2 (first write) ===
+{
+  "ok": true,
+  "repo": "kaibahaha/xxsc",
+  "ref": "dev/agl-v4.2-workbuddy-adapters",
+  "ref_head_at_start": "6961e58a7d85b9aeceebf006225c95893c8ececa",
+  "path": "factory/projects/AGL-R01-PROBE/_probe/ROUNDTRIP_RUN-RT-REAL-2.json",
+  "commit_sha": "a0ae03b595f36bc7af17a72209b05cf601e3a1be",
+  "blob_sha": "54276ebad59ca4da07f2d75ceecff73afb868225",
+  "content_sha256": "49ad3bbb632ba38f4a52ecfd8dbb399006e5468852b854c97c5e7b42800df19f",
+  "readback_sha256": "49ad3bbb632ba38f4a52ecfd8dbb399006e5468852b854c97c5e7b42800df19f",
+  "readback_blob_sha": "54276ebad59ca4da07f2d75ceecff73afb868225",
+  "matches": true,
+  "transport": "github_rest",
+  "times": {
+    "written_at": "2026-10-25T16:19:18Z",
+    "read_at": "2026-10-25T16:19:22Z"
+  },
+  "run_id": "RUN-RT-REAL-2"
+}
+[exit=0]
+
+=== REAL API roundtrip RUN-RT-REAL-2 (retry, must be idempotent) ===
+{
+  "ok": true,
+  "repo": "kaibahaha/xxsc",
+  "ref": "dev/agl-v4.2-workbuddy-adapters",
+  "ref_head_at_start": "a0ae03b595f36bc7af17a72209b05cf601e3a1be",
+  "path": "factory/projects/AGL-R01-PROBE/_probe/ROUNDTRIP_RUN-RT-REAL-2.json",
+  "commit_sha": "a0ae03b595f36bc7af17a72209b05cf601e3a1be",
+  "blob_sha": "54276ebad59ca4da07f2d75ceecff73afb868225",
+  "content_sha256": "49ad3bbb632ba38f4a52ecfd8dbb399006e5468852b854c97c5e7b42800df19f",
+  "readback_sha256": "49ad3bbb632ba38f4a52ecfd8dbb399006e5468852b854c97c5e7b42800df19f",
+  "readback_blob_sha": "54276ebad59ca4da07f2d75ceecff73afb868225",
+  "matches": true,
+  "transport": "github_rest",
+  "times": {
+    "written_at": "2026-10-25T16:19:25Z",
+    "read_at": "2026-10-25T16:19:26Z"
+  },
+  "run_id": "RUN-RT-REAL-2"
+}
+[exit=0]
+
+=== branch head after both calls (must be unchanged after retry) ===
+a0ae03b595f36bc7af17a72209b05cf601e3a1be

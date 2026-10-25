@@ -1,0 +1,32 @@
+=== REAL API roundtrip (run 1) ===
+{
+  "ok": true,
+  "repo": "kaibahaha/xxsc",
+  "ref": "dev/agl-v4.2-workbuddy-adapters",
+  "ref_head_at_start": "02566162b99b1bd0711e321ae55b714efbad9346",
+  "path": "factory/projects/AGL-R01-PROBE/_probe/ROUNDTRIP_RUN-RT-REAL-1.json",
+  "commit_sha": "6961e58a7d85b9aeceebf006225c95893c8ececa",
+  "blob_sha": "e8631eb17dcc0d78bcd52935a8d4e3d8714bc4ad",
+  "content_sha256": "53d73395a18ee4c8cb5623b0c4a9f0e4f7c46dd3adede5152e6318b47f48ba75",
+  "readback_sha256": "53d73395a18ee4c8cb5623b0c4a9f0e4f7c46dd3adede5152e6318b47f48ba75",
+  "readback_blob_sha": "e8631eb17dcc0d78bcd52935a8d4e3d8714bc4ad",
+  "matches": true,
+  "transport": "github_rest",
+  "times": {
+    "written_at": "2026-10-25T16:18:25Z",
+    "read_at": "2026-10-25T16:18:29Z"
+  },
+  "run_id": "RUN-RT-REAL-1"
+}
+[exit=0]
+
+=== REAL API roundtrip (run 2, same run-id) ===
+{
+  "ok": false,
+  "code": "CONFLICT",
+  "message": "immutable target already exists with different content: factory/projects/AGL-R01-PROBE/_probe/ROUNDTRIP_RUN-RT-REAL-1.json",
+  "existing_sha256": "53d73395a18ee4c8cb5623b0c4a9f0e4f7c46dd3adede5152e6318b47f48ba75",
+  "incoming_sha256": "84167706b803b78e37c236ce3d174144039ea3f6d795c730d9c2dfc91c72bb13",
+  "existing_blob_sha": "e8631eb17dcc0d78bcd52935a8d4e3d8714bc4ad"
+}
+[exit=3]

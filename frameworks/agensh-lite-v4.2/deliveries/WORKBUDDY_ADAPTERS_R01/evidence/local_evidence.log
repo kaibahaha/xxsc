@@ -1,0 +1,549 @@
+
+### environment
+$ python3.11 -c import sys, platform; print(sys.version.split()[0], platform.platform())
+3.11.1 Linux-6.6.117-45.11.6.tl4.x86_64-x86_64-with-glibc2.39
+[exit=0]
+$ git --version
+git version 2.43.0
+[exit=0]
+workdir=/tmp/agl-evidence-Kch8ke
+
+### prepare bare remote from current checkout
+$ git -C /tmp/agl-evidence-Kch8ke/remote.git rev-parse refs/heads/exp/test
+6055f2e63e0c79a56af68d44e6b7d0651d0fefce
+[exit=0]
+
+### generate N=6 pool bound to the local ref
+config written /tmp/agl-evidence-Kch8ke/pool.json
+$ python3.11 -m agl.cli validate-config --config /tmp/agl-evidence-Kch8ke/pool.json
+config      : /tmp/agl-evidence-Kch8ke/pool.json
+result      : PASS
+pool size N : 6
+providers   : {'chatgpt': 3, 'workbuddy': 2, 'codex': 1}
+  [warning] QUOTA_UNVERIFIED: chatgpt: capacity 3 not verified; 3 agents enabled (advisory only)
+  [warning] QUOTA_UNVERIFIED: workbuddy: quota unknown; must not be treated as unlimited
+  [warning] QUOTA_UNVERIFIED: codex: quota unknown; must not be treated as unlimited
+[exit=0]
+
+### pool sizes 2/3/5/6/10/20
+$ python3.11 -m agl.cli gen-pool --n 2 --out /tmp/agl-evidence-Kch8ke/n2.json --project AGL-N2
+wrote /tmp/agl-evidence-Kch8ke/n2.json with N=2
+[exit=0]
+$ python3.11 -m agl.cli validate-config --config /tmp/agl-evidence-Kch8ke/n2.json
+config      : /tmp/agl-evidence-Kch8ke/n2.json
+result      : PASS
+pool size N : 2
+providers   : {'chatgpt': 1, 'workbuddy': 1}
+  [warning] QUOTA_UNVERIFIED: chatgpt: capacity 3 not verified; 1 agents enabled (advisory only)
+  [warning] QUOTA_UNVERIFIED: workbuddy: quota unknown; must not be treated as unlimited
+[exit=0]
+$ python3.11 -m agl.cli gen-pool --n 3 --out /tmp/agl-evidence-Kch8ke/n3.json --project AGL-N3
+wrote /tmp/agl-evidence-Kch8ke/n3.json with N=3
+[exit=0]
+$ python3.11 -m agl.cli validate-config --config /tmp/agl-evidence-Kch8ke/n3.json
+config      : /tmp/agl-evidence-Kch8ke/n3.json
+result      : PASS
+pool size N : 3
+providers   : {'chatgpt': 1, 'workbuddy': 1, 'codex': 1}
+  [warning] QUOTA_UNVERIFIED: chatgpt: capacity 3 not verified; 1 agents enabled (advisory only)
+  [warning] QUOTA_UNVERIFIED: workbuddy: quota unknown; must not be treated as unlimited
+  [warning] QUOTA_UNVERIFIED: codex: quota unknown; must not be treated as unlimited
+[exit=0]
+$ python3.11 -m agl.cli gen-pool --n 5 --out /tmp/agl-evidence-Kch8ke/n5.json --project AGL-N5
+wrote /tmp/agl-evidence-Kch8ke/n5.json with N=5
+[exit=0]
+$ python3.11 -m agl.cli validate-config --config /tmp/agl-evidence-Kch8ke/n5.json
+config      : /tmp/agl-evidence-Kch8ke/n5.json
+result      : PASS
+pool size N : 5
+providers   : {'chatgpt': 2, 'workbuddy': 2, 'codex': 1}
+  [warning] QUOTA_UNVERIFIED: chatgpt: capacity 3 not verified; 2 agents enabled (advisory only)
+  [warning] QUOTA_UNVERIFIED: workbuddy: quota unknown; must not be treated as unlimited
+  [warning] QUOTA_UNVERIFIED: codex: quota unknown; must not be treated as unlimited
+[exit=0]
+$ python3.11 -m agl.cli gen-pool --n 6 --out /tmp/agl-evidence-Kch8ke/n6.json --project AGL-N6
+wrote /tmp/agl-evidence-Kch8ke/n6.json with N=6
+[exit=0]
+$ python3.11 -m agl.cli validate-config --config /tmp/agl-evidence-Kch8ke/n6.json
+config      : /tmp/agl-evidence-Kch8ke/n6.json
+result      : PASS
+pool size N : 6
+providers   : {'chatgpt': 2, 'workbuddy': 2, 'codex': 2}
+  [warning] QUOTA_UNVERIFIED: chatgpt: capacity 3 not verified; 2 agents enabled (advisory only)
+  [warning] QUOTA_UNVERIFIED: workbuddy: quota unknown; must not be treated as unlimited
+  [warning] QUOTA_UNVERIFIED: codex: quota unknown; must not be treated as unlimited
+[exit=0]
+$ python3.11 -m agl.cli gen-pool --n 10 --out /tmp/agl-evidence-Kch8ke/n10.json --project AGL-N10
+wrote /tmp/agl-evidence-Kch8ke/n10.json with N=10
+[exit=0]
+$ python3.11 -m agl.cli validate-config --config /tmp/agl-evidence-Kch8ke/n10.json
+config      : /tmp/agl-evidence-Kch8ke/n10.json
+result      : PASS
+pool size N : 10
+providers   : {'chatgpt': 4, 'workbuddy': 3, 'codex': 3}
+  [warning] QUOTA_UNVERIFIED: chatgpt: capacity 3 not verified; 4 agents enabled (advisory only)
+  [warning] QUOTA_RESERVED_OVERLAP: chatgpt: enabled 4 + reserved 2 exceeds declared budget
+  [warning] QUOTA_UNVERIFIED: workbuddy: quota unknown; must not be treated as unlimited
+  [warning] QUOTA_UNVERIFIED: codex: quota unknown; must not be treated as unlimited
+[exit=0]
+$ python3.11 -m agl.cli gen-pool --n 20 --out /tmp/agl-evidence-Kch8ke/n20.json --project AGL-N20
+wrote /tmp/agl-evidence-Kch8ke/n20.json with N=20
+[exit=0]
+$ python3.11 -m agl.cli validate-config --config /tmp/agl-evidence-Kch8ke/n20.json
+config      : /tmp/agl-evidence-Kch8ke/n20.json
+result      : PASS
+pool size N : 20
+providers   : {'chatgpt': 7, 'workbuddy': 7, 'codex': 6}
+  [warning] QUOTA_UNVERIFIED: chatgpt: capacity 3 not verified; 7 agents enabled (advisory only)
+  [warning] QUOTA_RESERVED_OVERLAP: chatgpt: enabled 7 + reserved 2 exceeds declared budget
+  [warning] QUOTA_UNVERIFIED: workbuddy: quota unknown; must not be treated as unlimited
+  [warning] QUOTA_UNVERIFIED: codex: quota unknown; must not be treated as unlimited
+[exit=0]
+
+### offset tables K=1..6
+$ python3.11 -m agl.cli offsets --k 1
+{"k": 1, "cadence": 60, "offsets": [0]}
+[exit=0]
+$ python3.11 -m agl.cli offsets --k 2
+{"k": 2, "cadence": 60, "offsets": [0, 30]}
+[exit=0]
+$ python3.11 -m agl.cli offsets --k 3
+{"k": 3, "cadence": 60, "offsets": [0, 20, 40]}
+[exit=0]
+$ python3.11 -m agl.cli offsets --k 4
+{"k": 4, "cadence": 60, "offsets": [0, 15, 30, 45]}
+[exit=0]
+$ python3.11 -m agl.cli offsets --k 5
+{"k": 5, "cadence": 60, "offsets": [0, 12, 24, 36, 48]}
+[exit=0]
+$ python3.11 -m agl.cli offsets --k 6
+{"k": 6, "cadence": 60, "offsets": [0, 10, 20, 30, 40, 50]}
+[exit=0]
+
+### schedule manifest (per provider)
+$ python3.11 -m agl.cli plan-schedules --config /tmp/agl-evidence-Kch8ke/pool.json --json
+{
+  "generated_at": "2026-10-25T16:29:07Z",
+  "project_id": "AGL-EVIDENCE-006",
+  "verified": false,
+  "approval_required": true,
+  "creates_real_schedule": false,
+  "note": "This manifest is a proposal. No platform schedule is created or modified by this tool; a human must register it and then record the real schedule_id.",
+  "providers": {
+    "chatgpt": {
+      "cadence_minutes": 60,
+      "account_scope": "chatgpt-main",
+      "slots": [
+        {
+          "agent_id": "CHATGPT_01",
+          "provider_id": "chatgpt",
+          "account_scope": "chatgpt-main",
+          "cadence_minutes": 60,
+          "offset_minutes": 0,
+          "minute_in_hour": 0,
+          "timezone": "Asia/Shanghai",
+          "schedule_id": null,
+          "planned_next_utc": "2026-10-25T17:00:00Z",
+          "source": "EQUAL_SPACED_WITHIN_PROVIDER",
+          "note": "",
+          "verified": false
+        },
+        {
+          "agent_id": "CHATGPT_02",
+          "provider_id": "chatgpt",
+          "account_scope": "chatgpt-main",
+          "cadence_minutes": 60,
+          "offset_minutes": 20,
+          "minute_in_hour": 20,
+          "timezone": "Asia/Shanghai",
+          "schedule_id": null,
+          "planned_next_utc": "2026-10-25T17:20:00Z",
+          "source": "EQUAL_SPACED_WITHIN_PROVIDER",
+          "note": "",
+          "verified": false
+        },
+        {
+          "agent_id": "CHATGPT_03",
+          "provider_id": "chatgpt",
+          "account_scope": "chatgpt-main",
+          "cadence_minutes": 60,
+          "offset_minutes": 40,
+          "minute_in_hour": 40,
+          "timezone": "Asia/Shanghai",
+          "schedule_id": null,
+          "planned_next_utc": "2026-10-25T16:40:00Z",
+          "source": "EQUAL_SPACED_WITHIN_PROVIDER",
+          "note": "",
+          "verified": false
+        }
+      ],
+      "registration_required": true
+    },
+    "codex": {
+      "cadence_minutes": null,
+      "account_scope": "codex-main",
+      "slots": [
+        {
+          "agent_id": "CODEX_01",
+          "provider_id": "codex",
+          "account_scope": "codex-main",
+          "cadence_minutes": null,
+          "offset_minutes": null,
+          "minute_in_hour": null,
+          "timezone": "Asia/Shanghai",
+          "schedule_id": null,
+          "planned_next_utc": null,
+          "source": "NATIVE_UNVERIFIED",
+          "note": "cadence unknown: register in the platform UI and record the real interval",
+          "verified": false
+        }
+      ],
+      "registration_required": true
+    },
+    "workbuddy": {
+      "cadence_minutes": 20,
+      "account_scope": "workbuddy-main",
+      "slots": [
+        {
+          "agent_id": "WORKBUDDY_01",
+          "provider_id": "workbuddy",
+          "account_scope": "workbuddy-main",
+          "cadence_minutes": 20,
+          "offset_minutes": 0,
+          "minute_in_hour": 0,
+          "timezone": "Asia/Shanghai",
+          "schedule_id": null,
+          "planned_next_utc": "2026-10-25T17:00:00Z",
+          "source": "EQUAL_SPACED_WITHIN_PROVIDER",
+          "note": "",
+          "verified": false
+        },
+        {
+          "agent_id": "WORKBUDDY_02",
+          "provider_id": "workbuddy",
+          "account_scope": "workbuddy-main",
+          "cadence_minutes": 20,
+          "offset_minutes": 10,
+          "minute_in_hour": 10,
+          "timezone": "Asia/Shanghai",
+          "schedule_id": null,
+          "planned_next_utc": "2026-10-25T17:10:00Z",
+          "source": "EQUAL_SPACED_WITHIN_PROVIDER",
+          "note": "",
+          "verified": false
+        }
+      ],
+      "registration_required": true
+    }
+  },
+  "offset_policy": "per_provider_schedule",
+  "global_pool_size": 6
+}
+[exit=0]
+
+### capability probes (read-only, local git)
+$ python3.11 -m agl.cli probe --agent CHATGPT_01 --config /tmp/agl-evidence-Kch8ke/pool.json --transport local --local-remote /tmp/agl-evidence-Kch8ke/remote.git
+agent               provider    read        write       reread      trigger     execute     schedule    
+--------------------------------------------------------------------------------------------------------
+CHATGPT_01          chatgpt     SUPPORTED   UNSUPPORTED UNSUPPORTED UNSUPPORTED UNSUPPORTED UNKNOWN     
+    read      SUPPORTED   [LOCAL_GIT] kaibahaha/xxsc@exp/test readable, head=6055f2e63e0c
+    write     UNSUPPORTED [STATIC] chat connector has no repository write API in this deployment; outputs are produced as TEST_REQUEST / notes for a runner to commit
+    reread    UNSUPPORTED [STATIC] nothing written by this adapter
+    trigger   UNSUPPORTED [STATIC] provider offers no webhook/API to wake a scheduled chat task
+    execute   UNSUPPORTED [STATIC] chat sessions have no verified shell/CI execution tool
+    schedule  UNKNOWN     [STATIC] no public schedule API; planned vs actual wake-ups are recorded separately
+
+write probe skipped (dry-run): write/reread are not SUPPORTED until --apply runs a real write
+[exit=0]
+$ python3.11 -m agl.cli probe --agent WORKBUDDY_01 --config /tmp/agl-evidence-Kch8ke/pool.json --transport local --local-remote /tmp/agl-evidence-Kch8ke/remote.git
+agent               provider    read        write       reread      trigger     execute     schedule    
+--------------------------------------------------------------------------------------------------------
+WORKBUDDY_01        workbuddy   SUPPORTED   UNSUPPORTED UNKNOWN     UNSUPPORTED BLOCKED     UNKNOWN     
+    read      SUPPORTED   [LOCAL_GIT] kaibahaha/xxsc@exp/test readable, head=6055f2e63e0c
+    write     UNSUPPORTED [STATIC] adapter is read-only: no write credential/scope for this provider
+    reread    UNKNOWN     [STATIC] nothing written by this adapter
+    trigger   UNSUPPORTED [STATIC] no webhook receiver verified; Git mailbox + own cadence only
+    execute   BLOCKED     [STATIC] no runner bound to this session -> BLOCKED_EXECUTOR
+    schedule  UNKNOWN     [STATIC] no public schedule API; planned vs actual wake-ups are recorded separately
+
+write probe skipped (dry-run): write/reread are not SUPPORTED until --apply runs a real write
+[exit=0]
+$ python3.11 -m agl.cli probe --agent CODEX_01 --config /tmp/agl-evidence-Kch8ke/pool.json --transport local --local-remote /tmp/agl-evidence-Kch8ke/remote.git
+agent               provider    read        write       reread      trigger     execute     schedule    
+--------------------------------------------------------------------------------------------------------
+CODEX_01            codex       SUPPORTED   UNSUPPORTED UNKNOWN     UNSUPPORTED UNKNOWN     UNKNOWN     
+    read      SUPPORTED   [LOCAL_GIT] kaibahaha/xxsc@exp/test readable, head=6055f2e63e0c
+    write     UNSUPPORTED [STATIC] adapter is read-only: no write credential/scope for this provider
+    reread    UNKNOWN     [STATIC] nothing written by this adapter
+    trigger   UNSUPPORTED [STATIC] no verified push/webhook channel; platform reads Git on its own cadence
+    execute   UNKNOWN     [STATIC] Codex cloud execution exists on its own platform; no verified endpoint from here
+    schedule  UNKNOWN     [STATIC] no public schedule API; planned vs actual wake-ups are recorded separately
+
+write probe skipped (dry-run): write/reread are not SUPPORTED until --apply runs a real write
+[exit=0]
+
+### write probe (real immutable write + independent readback)
+$ python3.11 -m agl.cli probe --agent WORKBUDDY_01 --config /tmp/agl-evidence-Kch8ke/pool.json --transport local --local-remote /tmp/agl-evidence-Kch8ke/remote.git --apply --repo kaibahaha/xxsc --branch exp/test --project AGL-EVIDENCE-006 --json
+[
+  {
+    "agent_id": "WORKBUDDY_01",
+    "provider_id": "workbuddy",
+    "adapter_id": "github_mailbox",
+    "transport": "local_git",
+    "probed_at": "2026-10-25T16:29:07Z",
+    "overall": "PARTIAL",
+    "items": {
+      "read": {
+        "op": "read",
+        "state": "SUPPORTED",
+        "detail": "kaibahaha/xxsc@exp/test readable, head=6055f2e63e0c",
+        "method": "LOCAL_GIT",
+        "evidence": "kaibahaha/xxsc@6055f2e63e0c79a56af68d44e6b7d0651d0fefce",
+        "verified_at": "2026-10-25T16:29:07Z"
+      },
+      "write": {
+        "op": "write",
+        "state": "SUPPORTED",
+        "detail": "immutable write to own outbox ok (CREATED)",
+        "method": "LOCAL_GIT",
+        "evidence": "factory/projects/AGL-EVIDENCE-006/05_outbox/WORKBUDDY_01/_probe/RUN-8277501e.json@98c09e6ad386928aa0e2b924db5fa6c76080e60b",
+        "verified_at": "2026-10-25T16:29:07Z"
+      },
+      "reread": {
+        "op": "reread",
+        "state": "SUPPORTED",
+        "detail": "independent readback matches=True",
+        "method": "LOCAL_GIT",
+        "evidence": "blob=3705c7813bbfc7963cc31db030233cd9e71142d6",
+        "verified_at": "2026-10-25T16:29:07Z"
+      },
+      "trigger": {
+        "op": "trigger",
+        "state": "UNSUPPORTED",
+        "detail": "no webhook receiver verified; Git mailbox + own cadence only",
+        "method": "STATIC",
+        "evidence": null,
+        "verified_at": "2026-10-25T16:29:07Z"
+      },
+      "execute": {
+        "op": "execute",
+        "state": "BLOCKED",
+        "detail": "no runner bound to this session -> BLOCKED_EXECUTOR",
+        "method": "STATIC",
+        "evidence": null,
+        "verified_at": "2026-10-25T16:29:07Z"
+      },
+      "schedule": {
+        "op": "schedule",
+        "state": "UNKNOWN",
+        "detail": "no public schedule API; planned vs actual wake-ups are recorded separately",
+        "method": "STATIC",
+        "evidence": null,
+        "verified_at": "2026-10-25T16:29:07Z"
+      }
+    }
+  }
+]
+[exit=0]
+
+### roundtrip: write + independent readback
+$ python3.11 -m agl.cli verify-roundtrip --config /tmp/agl-evidence-Kch8ke/pool.json --transport local --local-remote /tmp/agl-evidence-Kch8ke/remote.git --apply --repo kaibahaha/xxsc --branch exp/test --project AGL-EVIDENCE-006 --json
+{
+  "ok": true,
+  "repo": "kaibahaha/xxsc",
+  "ref": "exp/test",
+  "ref_head_at_start": "98c09e6ad386928aa0e2b924db5fa6c76080e60b",
+  "path": "factory/projects/AGL-EVIDENCE-006/_probe/ROUNDTRIP_RUN-RT-dfaaee78.json",
+  "commit_sha": "cc1c49440f60cbcd8ea8f24a001c13183e61dd7d",
+  "blob_sha": "5527bd0bdeb9d6b09ae61e1994539eb77f7cb683",
+  "content_sha256": "0782ece97eaa3c69f44d7b8af537ff9e803e6895b31328a1bdba2e3368e36955",
+  "readback_sha256": "0782ece97eaa3c69f44d7b8af537ff9e803e6895b31328a1bdba2e3368e36955",
+  "readback_blob_sha": "5527bd0bdeb9d6b09ae61e1994539eb77f7cb683",
+  "matches": true,
+  "transport": "local_git",
+  "times": {
+    "written_at": "2026-10-25T16:29:07Z",
+    "read_at": "2026-10-25T16:29:07Z"
+  },
+  "run_id": "RUN-RT-dfaaee78"
+}
+[exit=0]
+
+### event submit -> reconcile -> audit
+event written
+$ python3.11 -m agl.cli submit-event --event /tmp/agl-evidence-Kch8ke/ev.json --config /tmp/agl-evidence-Kch8ke/pool.json
+dry-run: event EV-EVIDENCE-0001 sha256=d7b81d3b6f953dfda434a9efca5ad38dcda64852b56108491e796aeed6735d8a
+         targets=['CHATGPT_01', 'WORKBUDDY_01', 'CODEX_01'] bytes=560
+         re-run with --apply --repo --branch --project to write
+[exit=0]
+$ python3.11 -m agl.cli submit-event --event /tmp/agl-evidence-Kch8ke/ev.json --config /tmp/agl-evidence-Kch8ke/pool.json --transport local --local-remote /tmp/agl-evidence-Kch8ke/remote.git --apply --repo kaibahaha/xxsc --branch exp/test --project AGL-EVIDENCE-006
+CHATGPT_01          CREATED             factory/projects/AGL-EVIDENCE-006/03_events/20261025/EV-EVIDENCE-0001/CHATGPT_01.json
+WORKBUDDY_01        CREATED             factory/projects/AGL-EVIDENCE-006/03_events/20261025/EV-EVIDENCE-0001/WORKBUDDY_01.json
+CODEX_01            CREATED             factory/projects/AGL-EVIDENCE-006/03_events/20261025/EV-EVIDENCE-0001/CODEX_01.json
+[exit=0]
+$ python3.11 -m agl.cli submit-event --event /tmp/agl-evidence-Kch8ke/ev.json --config /tmp/agl-evidence-Kch8ke/pool.json --transport local --local-remote /tmp/agl-evidence-Kch8ke/remote.git --apply --repo kaibahaha/xxsc --branch exp/test --project AGL-EVIDENCE-006
+CHATGPT_01          IDEMPOTENT_REPLAY   factory/projects/AGL-EVIDENCE-006/03_events/20261025/EV-EVIDENCE-0001/CHATGPT_01.json
+WORKBUDDY_01        IDEMPOTENT_REPLAY   factory/projects/AGL-EVIDENCE-006/03_events/20261025/EV-EVIDENCE-0001/WORKBUDDY_01.json
+CODEX_01            IDEMPOTENT_REPLAY   factory/projects/AGL-EVIDENCE-006/03_events/20261025/EV-EVIDENCE-0001/CODEX_01.json
+[exit=0]
+$ python3.11 -m agl.cli reconcile --event-id EV-EVIDENCE-0001 --config /tmp/agl-evidence-Kch8ke/pool.json --transport local --local-remote /tmp/agl-evidence-Kch8ke/remote.git --json
+{
+  "date": "20261025",
+  "manifest": {
+    "created_at": "2026-10-25T16:00:00Z",
+    "event_id": "EV-EVIDENCE-0001",
+    "kind": "FACT_PUBLISHED",
+    "payload_sha256": "d7b81d3b6f953dfda434a9efca5ad38dcda64852b56108491e796aeed6735d8a",
+    "producer": "WORKBUDDY_01",
+    "schema_version": "1.0",
+    "target_agents": [
+      "CHATGPT_01",
+      "CODEX_01",
+      "WORKBUDDY_01"
+    ],
+    "task_id": "TASK-DEMO"
+  },
+  "targets": [
+    {
+      "target": "CHATGPT_01",
+      "event_present": true,
+      "event_sha256": "8382461ce6b5afec05dfee818abc2b992e03bb47ca24bc5c1aef463cbfe62976",
+      "ack_present": false,
+      "ack_result": null,
+      "ack_commit": null
+    },
+    {
+      "target": "CODEX_01",
+      "event_present": true,
+      "event_sha256": "8382461ce6b5afec05dfee818abc2b992e03bb47ca24bc5c1aef463cbfe62976",
+      "ack_present": false,
+      "ack_result": null,
+      "ack_commit": null
+    },
+    {
+      "target": "WORKBUDDY_01",
+      "event_present": true,
+      "event_sha256": "8382461ce6b5afec05dfee818abc2b992e03bb47ca24bc5c1aef463cbfe62976",
+      "ack_present": false,
+      "ack_result": null,
+      "ack_commit": null
+    }
+  ]
+}
+[exit=0]
+$ python3.11 -m agl.cli audit --config /tmp/agl-evidence-Kch8ke/pool.json --transport local --local-remote /tmp/agl-evidence-Kch8ke/remote.git --json
+{
+  "events": 1,
+  "receipts": 0,
+  "problems": []
+}
+[exit=0]
+$ python3.11 -m agl.cli rebuild-board --config /tmp/agl-evidence-Kch8ke/pool.json --transport local --local-remote /tmp/agl-evidence-Kch8ke/remote.git --deterministic
+# BOARD (adapter projection)
+
+project_id: AGL-EVIDENCE-006
+repo: kaibahaha/xxsc
+ref: exp/test
+events: 1
+events_digest: 8588aace11ea3f4353400e319e4d0b51190f5b1e274abfd598ad45262388513a
+
+> This file is a deterministic projection over immutable events. The
+> authoritative board is produced by the Controller (M09); this copy is
+> for audit and must not be used to grant leases.
+
+## Agents
+
+| agent | provider | state | capabilities |
+| --- | --- | --- | --- |
+| CHATGPT_01 | chatgpt | ADMITTED_ACTIVE | research,requirements,review,code_draft |
+| CHATGPT_02 | chatgpt | ADMITTED_ACTIVE | research,requirements,review,code_draft |
+| CHATGPT_03 | chatgpt | ADMITTED_ACTIVE | research,requirements,review,code_draft |
+| CODEX_01 | codex | ADMITTED_ACTIVE | architecture,complex_coding,review |
+| WORKBUDDY_01 | workbuddy | ADMITTED_ACTIVE | code_execution,test_run,git_write |
+| WORKBUDDY_02 | workbuddy | ADMITTED_ACTIVE | code_execution,test_run,git_write |
+
+## Events
+
+| date/event | kind | task | producer | targets |
+| --- | --- | --- | --- | --- |
+| 20261025/EV-EVIDENCE-0001 | FACT_PUBLISHED | TASK-DEMO | WORKBUDDY_01 | CHATGPT_01,CODEX_01,WORKBUDDY_01 |
+
+
+(dry-run) would CAS-publish to factory/projects/AGL-EVIDENCE-006/08_projections/BOARD.md
+[exit=0]
+
+### seed a READY task into the isolated repo
+seeded CREATED 48eb60574086 aefbd6f885bd
+
+### publish board projection (needed before polling)
+$ python3.11 -m agl.cli rebuild-board --config /tmp/agl-evidence-Kch8ke/pool.json --transport local --local-remote /tmp/agl-evidence-Kch8ke/remote.git --apply --repo kaibahaha/xxsc --branch exp/test --project AGL-EVIDENCE-006 --deterministic
+published factory/projects/AGL-EVIDENCE-006/08_projections/BOARD.md commit=4aace212c7b6f452e5000c3fb0abd2417209c13c sha256=96ef8ca809b32fe633f997e62750b032930c578228f9a07e5b6e33e6de091757
+[exit=0]
+
+### poll (dry-run then apply)
+$ python3.11 -m agl.cli poll --agent WORKBUDDY_01 --run-id RUN-EV-1 --config /tmp/agl-evidence-Kch8ke/pool.json --transport local --local-remote /tmp/agl-evidence-Kch8ke/remote.git
+run_id     : RUN-EV-1
+agent      : WORKBUDDY_01 (workbuddy)
+status     : DRY_RUN
+planned_at : 2026-10-25T16:29:08Z
+actual_at  : 2026-10-25T16:29:08Z
+task       : TASK-DEMO
+event      : EV-RUN-EV-1-CLAIM-TASK-DEMO
+controller : CONTROLLER_UNAVAILABLE
+[exit=0]
+$ python3.11 -m agl.cli poll --agent WORKBUDDY_01 --run-id RUN-EV-1 --config /tmp/agl-evidence-Kch8ke/pool.json --transport local --local-remote /tmp/agl-evidence-Kch8ke/remote.git --apply --repo kaibahaha/xxsc --branch exp/test --project AGL-EVIDENCE-006
+run_id     : RUN-EV-1
+agent      : WORKBUDDY_01 (workbuddy)
+status     : CLAIM_PROPOSED
+planned_at : 2026-10-25T16:29:09Z
+actual_at  : 2026-10-25T16:29:09Z
+task       : TASK-DEMO
+event      : EV-RUN-EV-1-CLAIM-TASK-DEMO
+controller : CONTROLLER_UNAVAILABLE
+[exit=0]
+
+### run-sample-test (real pytest inside the checkout)
+$ python3.11 -m agl.cli run-sample-test --task TASK-DEMO --commit 6055f2e63e0c79a56af68d44e6b7d0651d0fefce --worktree /root/.codebuddy/artifact/xxsc/factory --command python3.11 -m pytest tests/adapters/test_offsets.py -q -p no:cacheprovider --config /tmp/agl-evidence-Kch8ke/pool.json --transport local --local-remote /tmp/agl-evidence-Kch8ke/remote.git --apply --repo kaibahaha/xxsc --branch exp/test --project AGL-EVIDENCE-006
+request    : TR-7d1f819278e3
+status     : PASS
+exit_code  : 0
+commit     : 6055f2e63e0c79a56af68d44e6b7d0651d0fefce
+stdout     : /root/.codebuddy/artifact/xxsc/factory/factory/projects/AGL-EVIDENCE-006/06_evidence/TASK-DEMO/RUN-TEST-491bb660/stdout.log sha256=eb27a136c18598aedc0e4f11e6893b614a04335a9faf3ec03433325d777e2663
+stderr     : /root/.codebuddy/artifact/xxsc/factory/factory/projects/AGL-EVIDENCE-006/06_evidence/TASK-DEMO/RUN-TEST-491bb660/stderr.log sha256=4ff18afb9c2fd30dc7f4e706224a2f0bc1240ec593af6ee90c8f6a99611c55c7
+env        : linux-x86_64-py3.11
+acceptance : PENDING_CORE (requires M04 Controller)
+[exit=0]
+
+### run-sample-test with a stale SHA (must be STALE_TEST)
+$ python3.11 -m agl.cli run-sample-test --task TASK-DEMO --commit 0000000000000000000000000000000000000000 --worktree /root/.codebuddy/artifact/xxsc/factory --command true --config /tmp/agl-evidence-Kch8ke/pool.json --transport local --local-remote /tmp/agl-evidence-Kch8ke/remote.git --apply --repo kaibahaha/xxsc --branch exp/test --project AGL-EVIDENCE-006
+request    : TR-ef53f4f4c10d
+status     : STALE_TEST
+exit_code  : None
+commit     : 6055f2e63e0c79a56af68d44e6b7d0651d0fefce
+stdout     : None sha256=None
+stderr     : None sha256=None
+env        : linux-x86_64-py3.11
+acceptance : PENDING_CORE (requires M04 Controller)
+note       : worktree HEAD 6055f2e63e0c79a56af68d44e6b7d0651d0fefce != requested 0000000000000000000000000000000000000000; test not run
+[exit=5]
+
+### run-sample-test with no executor (must be BLOCKED_EXECUTOR)
+$ python3.11 -m agl.cli run-sample-test --task TASK-DEMO --commit 6055f2e63e0c79a56af68d44e6b7d0651d0fefce --command true --config /tmp/agl-evidence-Kch8ke/pool.json --transport local --local-remote /tmp/agl-evidence-Kch8ke/remote.git --apply --repo kaibahaha/xxsc --branch exp/test --project AGL-EVIDENCE-006
+BLOCKED_EXECUTOR: no runner configured
+[exit=3]
+
+### apply guard: missing --repo/--branch/--project
+$ python3.11 -m agl.cli poll --agent WORKBUDDY_01 --config /tmp/agl-evidence-Kch8ke/pool.json --transport local --local-remote /tmp/agl-evidence-Kch8ke/remote.git --apply
+ERROR: --apply requires explicit --repo, --branch, --project
+[exit=2]
+
+### final ref state
+$ git -C /tmp/agl-evidence-Kch8ke/remote.git log --oneline -5 refs/heads/exp/test
+18595a1 ack TEST-TR-ef53f4f4c10d (CHATGPT_01)
+fb1766c TEST_RESULT TR-ef53f4f4c10d STALE_TEST
+1671a85 TEST_REQUEST TR-ef53f4f4c10d
+54df9f6 ack TEST-TR-7d1f819278e3 (CHATGPT_01)
+2a45f85 TEST_RESULT TR-7d1f819278e3 PASS
+[exit=0]
+
+workdir kept at /tmp/agl-evidence-Kch8ke

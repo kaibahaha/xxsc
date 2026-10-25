@@ -1,0 +1,24 @@
+/root/.pyenv/versions/3.11.1/lib/python3.11/site-packages/pylama/lint/__init__.py:10: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import iter_entry_points
+============================= test session starts ==============================
+platform linux -- Python 3.11.1, pytest-9.0.2, pluggy-1.6.0
+rootdir: /root/.codebuddy/artifact/xxsc/factory
+configfile: pyproject.toml
+plugins: pylama-8.4.1, anyio-4.12.1, Faker-40.1.2
+collected 117 items
+
+factory/tests/adapters/test_execution.py ...........                     [  9%]
+factory/tests/adapters/test_github_live.py s.s.                          [ 12%]
+factory/tests/adapters/test_github_storage.py .................          [ 27%]
+factory/tests/adapters/test_ledger.py ............                       [ 37%]
+factory/tests/adapters/test_offsets.py ............                      [ 47%]
+factory/tests/adapters/test_providers.py .......                         [ 53%]
+factory/tests/adapters/test_registry_pool.py ....................        [ 70%]
+factory/tests/integration/test_cli.py ......................             [ 89%]
+factory/tests/integration/test_event_pipeline.py ............            [100%]
+
+- generated xml file: /root/.codebuddy/artifact/xxsc/frameworks/agensh-lite-v4.2/deliveries/WORKBUDDY_ADAPTERS_R01/evidence/junit.xml -
+=========================== short test summary info ============================
+SKIPPED [1] factory/tests/adapters/test_github_live.py:39: GitHub read unavailable: RATE_LIMITED 403 rate limited: API rate limit exceeded for 49.232.230.217. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)
+SKIPPED [1] factory/tests/adapters/test_github_live.py:60: GitHub read unavailable: RATE_LIMITED
+======================= 115 passed, 2 skipped in 11.16s ========================
