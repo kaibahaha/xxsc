@@ -19,7 +19,7 @@
 | M06 Dynamic Poll + AgentAdapter | 完成；K=1..6 错峰表与规范逐字一致；只读 provider 不可发布 |
 | M08 Executor Bridge | 完成；真实子进程运行、exit code、原始日志、STALE/BLOCKED 路径 |
 | M10 CLI / CI / 测试 | 完成；11 条子命令，默认 dry-run，`--apply` 三重显式门禁 |
-| 自动化测试 | **115 passed / 2 skipped**（skip 为无凭据只读探针触发限流） |
+| 自动化测试 | **115 passed / 2 skipped**（skip 为无凭据只读探针触发限流；限流更严时为 3 skipped，均不影响 115 项通过） |
 | 真实 PR | 已创建（draft），未合并 |
 
 ## 2. 提交与分支实况
