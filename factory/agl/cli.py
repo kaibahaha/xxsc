@@ -471,9 +471,14 @@ def cmd_verify_roundtrip(args: argparse.Namespace) -> int:
     ctx = built
     run_id = args.run_id or f"RUN-RT-{uuid.uuid4().hex[:8]}"
     path = f"{ctx.registry.runtime_root}/_probe/ROUNDTRIP_{run_id}.json"
+    # Deterministic payload: a retry with the same --run-id must be an
+    # IDEMPOTENT_REPLAY, not a collision. Wall-clock time is recorded in the
+    # receipt (observed_at / verified_at), not in the file body.
     body = canonical_json_bytes({
-        "run_id": run_id, "agent": "WORKBUDDY_ADAPTERS_R01", "at": utc_now(),
+        "run_id": run_id,
+        "agent": "WORKBUDDY_ADAPTERS_R01",
         "purpose": "GitHub roundtrip evidence",
+        "schema": "agl.roundtrip.v1",
     })
     if not args.apply:
         print(f"dry-run: would write {path} ({len(body)} bytes, sha256={sha256_hex(body)})")

@@ -219,6 +219,9 @@ def test_token_never_leaks_into_error_text():
     assert redact("token=abc1234567890") == "token=***REDACTED***"
 
 
-def test_rest_transport_reports_auth_state():
+def test_rest_transport_reports_auth_state(monkeypatch):
     assert RestTransport(token="x" * 20).authenticated is True
-    assert RestTransport(token=None).authenticated in (True, False)  # env may provide one
+    monkeypatch.setenv("GITHUB_TOKEN", "ghp_" + "e" * 30)
+    assert RestTransport(token=None).authenticated is True
+    # explicit empty string must override the ambient token
+    assert RestTransport(token="").authenticated is False

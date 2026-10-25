@@ -158,8 +158,17 @@ def test_blocked_runner_reports_unavailable():
     assert runner.available()[0] is False
 
 
+def test_local_runner_accepts_subdirectory(worktree):
+    path, _ = worktree
+    sub = path / "sub"
+    sub.mkdir()
+    ok, detail = LocalSubprocessRunner(sub).available()
+    assert ok is True
+    assert "toplevel" in detail
+
+
 def test_local_runner_rejects_non_worktree(tmp_path):
     runner = LocalSubprocessRunner(tmp_path)
     ok, detail = runner.available()
     assert ok is False
-    assert "not a git worktree" in detail
+    assert "not inside a git worktree" in detail

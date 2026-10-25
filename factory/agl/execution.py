@@ -173,11 +173,19 @@ class LocalSubprocessRunner:
         self.env_extra = env or {}
 
     def available(self) -> tuple[bool, str]:
-        if not (self.worktree / ".git").exists() and not (self.worktree / "HEAD").exists():
-            return False, f"not a git worktree: {self.worktree}"
         if shutil.which("git") is None:
             return False, "git not on PATH"
-        return True, f"worktree={self.worktree}"
+        if not self.worktree.is_dir():
+            return False, f"directory missing: {self.worktree}"
+        # a real worktree may be any subdirectory of the repository
+        proc = subprocess.run(
+            ["git", "rev-parse", "--show-toplevel"], cwd=str(self.worktree),
+            capture_output=True, timeout=20,
+        )
+        if proc.returncode != 0:
+            return False, f"not inside a git worktree: {self.worktree}"
+        top = proc.stdout.decode().strip()
+        return True, f"worktree={self.worktree} (toplevel={top})"
 
     def _head(self) -> str | None:
         try:

@@ -96,7 +96,13 @@ class RestTransport:
         user_agent: str = "agl-adapter/4.2",
         retry_sleep=time.sleep,
     ) -> None:
-        self._token = token or os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+        # token=None  -> fall back to the environment (normal operation)
+        # token=""    -> explicitly unauthenticated (probes/tests must never
+        #                borrow ambient credentials and write to a shared ref)
+        if token is None:
+            self._token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+        else:
+            self._token = token
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
         self.max_retries = max_retries

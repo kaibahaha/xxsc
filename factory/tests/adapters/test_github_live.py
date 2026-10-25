@@ -21,9 +21,14 @@ FROZEN = "2d4c1a6fc0792a1182777262b41bfb4c09c0b5d2"
 TASK_PATH = "frameworks/agensh-lite-v4.2/workorders/AGL-WB-ADAPTERS-R01/TASK.md"
 
 
+DEV_BRANCH = "dev/agl-v4.2-workbuddy-adapters"
+
+
 @pytest.fixture(scope="module")
 def transport():
-    return RestTransport(token=None, timeout=20, max_retries=1)
+    # token="" (not None) so an ambient GITHUB_TOKEN can never turn a
+    # read-only probe into a write against a shared branch.
+    return RestTransport(token="", timeout=20, max_retries=1)
 
 
 @pytest.mark.network
@@ -62,8 +67,11 @@ def test_workorder_task_md_readable_and_hashed(transport):
 
 @pytest.mark.network
 def test_unauthenticated_write_is_refused(transport):
+    assert transport.authenticated is False, "probe transport must not use ambient credentials"
+    # never target the frozen baseline: only the adapter's own dev branch
+    assert DEV_BRANCH != BASELINE
     try:
-        transport.create_file(REPO, BASELINE, "factory/_probe/should-not-exist.json", b"{}\n",
+        transport.create_file(REPO, DEV_BRANCH, "factory/_probe/should-not-exist.json", b"{}\n",
                               "probe that must fail without credentials")
     except AglError as exc:
         assert exc.code in (ErrorCode.NO_PERMISSION, ErrorCode.AUTH_MISSING,

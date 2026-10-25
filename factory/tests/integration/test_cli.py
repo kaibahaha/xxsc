@@ -200,6 +200,17 @@ def test_verify_roundtrip_apply(cli_argv, capsys):
     assert payload["content_sha256"] == payload["readback_sha256"]
 
 
+def test_verify_roundtrip_is_idempotent_for_same_run_id(cli_argv, capsys, bare_remote):
+    """Same --run-id twice: second call replays, no new commit."""
+    first = main(cli_argv("verify-roundtrip", "--run-id", "RUN-RT-IDEM", "--json", apply=True))
+    assert first == EXIT_OK
+    out1 = json.loads(capsys.readouterr().out)
+    second = main(cli_argv("verify-roundtrip", "--run-id", "RUN-RT-IDEM", "--json", apply=True))
+    assert second == EXIT_OK
+    out2 = json.loads(capsys.readouterr().out)
+    assert out1["commit_sha"] == out2["commit_sha"]
+
+
 def test_verify_roundtrip_dry_run(cli_argv, capsys):
     assert main(cli_argv("verify-roundtrip")) == EXIT_OK
     assert "dry-run" in capsys.readouterr().out
