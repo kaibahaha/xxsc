@@ -62,7 +62,7 @@ class SQLiteLeaseBackend:
     def snapshot(self):
         return rebuild(self.records())
 
-    def transact(self, command_id, request, now, apply):
+    def transact(self, command_id, request, now, apply, *, initialize=False):
         require(isinstance(command_id, str) and bool(command_id), "MISSING_IDEMPOTENCY_KEY")
         self.fault("before_read")
         with self.connect() as db:
@@ -70,6 +70,10 @@ class SQLiteLeaseBackend:
             try:
                 records = self._records(db)
                 state = rebuild(records)
+                if initialize and records:
+                    require(records[0]["command_id"] == "bootstrap", "INVALID_GENESIS")
+                    db.execute("ROLLBACK")
+                    return {"status": "EXISTING", "simulation": state["meta"]["simulation"]}
                 old = next((r for r in records if r["command_id"] == command_id), None)
                 if old:
                     require(old["request_hash"] == digest(request), "COMMAND_ID_COLLISION")

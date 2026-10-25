@@ -25,9 +25,10 @@ class Controller:
         request = {"kind": "BOOTSTRAP", "agents": initial, "simulation": self.simulation, "quotas": registry.quotas}
         def bootstrap(state):
             state["agents"] = initial
-            state["meta"] = {"board": "UNKNOWN", "last_time": now, "simulation": self.simulation, "quotas": registry.quotas}
-            return {"status": "INITIALIZED", "authority": backend.authority}
-        backend.transact("bootstrap", request, now, bootstrap)
+            state["meta"] = {"board": "UNKNOWN", "last_time": now, "simulation": self.simulation, "quotas": registry.quotas, "registry_version": 1}
+            return {"status": "INITIALIZED", "authority": backend.authority, "simulation": self.simulation}
+        initialized = backend.transact("bootstrap", request, now, bootstrap, initialize=True)
+        require(initialized["simulation"] == self.simulation, "SIMULATION_MODE_MISMATCH")
 
     def _now(self):
         now = self.clock()
@@ -113,32 +114,94 @@ class Controller:
             return {"status": "BOARD_UNKNOWN"}
         return self._write(credential, command_id, "BOARD_UNKNOWN", {"reason": reason}, mutate)
 
-    def register_agent(self, credential, command_id, registration: AgentRegistration):
-        def mutate(state, agent, now):
-            self._action(agent, "registry_admin")
-            require(registration.agent_id not in state["agents"], "DUPLICATE_AGENT")
-            require(self.simulation or registration.admission_status != "MOCK_ACTIVE", "MOCK_NOT_PRODUCTION")
-            AgentRegistry([AgentRegistration.from_dict(a) for a in state["agents"].values()] + [registration],
-                          simulation=self.simulation, quotas=state["meta"].get("quotas", []))
-            state["agents"][registration.agent_id] = registration.to_dict()
-            return {"status": "REGISTERED"}
-        return self._write(credential, command_id, "REGISTER_AGENT", registration.to_dict(), mutate)
+    def registry_version(self):
+        # Pre-fix journals have implicit registry version 1; no startup migration writes.
+        return self.snapshot()["meta"].get("registry_version", 1)
 
-    def update_health(self, credential, command_id, agent_id, *, health, admission_status):
+    @staticmethod
+    def _check_registry_version(state, expected_version):
+        current = state["meta"].get("registry_version", 1)
+        require(expected_version is None or (type(expected_version) is int and expected_version == current),
+                "REGISTRY_VERSION_CONFLICT")
+        return current
+
+    def _registry_changes(self, state, registrations, quotas):
+        ids = [a.agent_id for a in registrations]
+        require(len(ids) == len(set(ids)), "DUPLICATE_AGENT")
+        merged = dict(state["agents"])
+        changed = set()
+        for registration in registrations:
+            require(self.simulation or registration.admission_status != "MOCK_ACTIVE", "MOCK_NOT_PRODUCTION")
+            record = registration.to_dict()
+            old = merged.get(registration.agent_id)
+            if old:
+                require(all(old[k] == record[k] for k in ("provider_id", "account_scope", "credential_principal")),
+                        "IDENTITY_CHANGE_REQUIRES_NEW_AGENT")
+            if old != record:
+                changed.add(registration.agent_id)
+            merged[registration.agent_id] = record
+        policies = state["meta"].get("quotas", []) if quotas is None else quotas
+        AgentRegistry([AgentRegistration.from_dict(a) for a in merged.values()],
+                      simulation=self.simulation, quotas=policies)
+        if not changed and policies == state["meta"].get("quotas", []):
+            return False
+        state["agents"] = merged
+        state["meta"]["quotas"] = deepcopy(policies)
+        state["meta"]["registry_version"] = state["meta"].get("registry_version", 1) + 1
+        # Any permission/admission edit fences the identity's old authority.
+        for task in state["tasks"].values():
+            if task.get("lease") and task["lease"]["agent_id"] in changed:
+                retire_authority(task)
+        return True
+
+    def apply_registry(self, credential, command_id, registrations: list[AgentRegistration], *,
+                       expected_version: int, quotas=None):
+        """Authorized versioned upserts; omissions never delete identities or history.
+
+        Startup registry objects are intent only. Apply changes explicitly after authentication.
+        Admission probe references are verified by the trusted integration service.
+        """
         def mutate(state, agent, now):
             self._action(agent, "registry_admin")
+            require(type(expected_version) is int and expected_version >= 1, "REGISTRY_VERSION_CONFLICT")
+            self._check_registry_version(state, expected_version)
+            changed = self._registry_changes(state, registrations, quotas)
+            return {"status": "REGISTRY_UPDATED" if changed else "REGISTRY_UNCHANGED",
+                    "registry_version": state["meta"].get("registry_version", 1)}
+        payload = {"registrations": [a.to_dict() for a in registrations],
+                   "expected_version": expected_version, "quotas": quotas}
+        return self._write(credential, command_id, "APPLY_REGISTRY", payload, mutate)
+
+    def register_agent(self, credential, command_id, registration: AgentRegistration, *, expected_version=None):
+        # Compatible single-add API; config changes should use apply_registry with explicit CAS.
+        def mutate(state, agent, now):
+            self._action(agent, "registry_admin")
+            self._check_registry_version(state, expected_version)
+            old = state["agents"].get(registration.agent_id)
+            if old:
+                require(old == registration.to_dict(), "DUPLICATE_AGENT")
+                return {"status": "DUPLICATE", "registry_version": state["meta"].get("registry_version", 1)}
+            self._registry_changes(state, [registration], None)
+            return {"status": "REGISTERED", "registry_version": state["meta"]["registry_version"]}
+        payload = registration.to_dict()
+        if expected_version is not None:
+            payload = {"registration": payload, "expected_version": expected_version}
+        return self._write(credential, command_id, "REGISTER_AGENT", payload, mutate)
+
+    def update_health(self, credential, command_id, agent_id, *, health, admission_status, expected_version=None):
+        def mutate(state, agent, now):
+            self._action(agent, "registry_admin")
+            self._check_registry_version(state, expected_version)
             require(agent_id in state["agents"], "UNKNOWN_AGENT")
             record = dict(state["agents"][agent_id], health=health, admission_status=admission_status)
             validated = AgentRegistration.from_dict(record)
-            require(self.simulation or admission_status != "MOCK_ACTIVE", "MOCK_NOT_PRODUCTION")
-            # This API only degrades; readmission requires a new reviewed configuration/version.
             require(admission_status in {"DRAINING", "UNAVAILABLE"}, "READMISSION_REQUIRES_PROBE")
-            state["agents"][agent_id] = validated.to_dict()
-            for task in state["tasks"].values():
-                if task.get("lease") and task["lease"]["agent_id"] == agent_id:
-                    retire_authority(task)
-            return {"status": "UPDATED"}
-        return self._write(credential, command_id, "UPDATE_HEALTH", {"agent_id": agent_id, "health": health, "admission_status": admission_status}, mutate)
+            self._registry_changes(state, [validated], None)
+            return {"status": "UPDATED", "registry_version": state["meta"].get("registry_version", 1)}
+        payload = {"agent_id": agent_id, "health": health, "admission_status": admission_status}
+        if expected_version is not None:
+            payload["expected_version"] = expected_version
+        return self._write(credential, command_id, "UPDATE_HEALTH", payload, mutate)
 
     def add_tasks(self, credential, command_id, specs: list[TaskSpec]):
         def mutate(state, agent, now):
@@ -259,8 +322,6 @@ class Controller:
                     author = state["agents"][task["author"]]
                     require(agent.agent_id != task["author"] and agent.independence_group != "UNVERIFIED"
                             and agent.independence_group != author["independence_group"], "INDEPENDENCE_REQUIRED")
-            else:
-                require(lease["agent_id"] == agent.agent_id, "LEASE_OWNER_REQUIRED")
             if t.to_state == "SUBMITTED":
                 require(hex_hash(t.commit_sha, 40), "INVALID_COMMIT")
                 task["candidate_commit"] = t.commit_sha
