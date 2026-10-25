@@ -42,3 +42,9 @@
 - C4-05 任何成功均有 Git 链接+commit SHA+hash/测试原始日志；缺一项不报告为通过。
 
 阶段签发：P0/P1/P2 全绿且 CI 实验通过，再由用户授权调度器变更。本文是验收计划，不是已通过证据。
+## C5 异构资源池（全为待测试）
+- C5-01 3 ChatGPT +2 WorkBuddy +1 Codex=N6 及 N8/N12 测试通过；不存在全局 N<=5 硬约束。
+- C5-02 ChatGPT 示例预算5/预留2，三个 ChatGPT 合法且另外3个异构 Agent 不占这5槽，单平台超预算拒绝。
+- C5-03 仅 REGISTERED/DESIRED_ENABLED 或 Adapter UNKNOWN 不得获得真正业务 Lease。
+- C5-04 跨 ChatGPT→WorkBuddy→Codex 的 Git 事件、HANDOFF、ACK 和独立回读；无真实连接时只能标 MOCK 或 BLOCKED。
+- C5-05 Provider 下线/撤销后安全 DRAIN、fencing 递增和重新认领，历史事件保留。

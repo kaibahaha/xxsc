@@ -1,15 +1,16 @@
-# Agensh-Lite V4.2 · 弹性定时 Agent 池 / Controller MVP 施工指令
+# Agensh-Lite V4.2 · 跨平台开放式 Agent 池 / Controller MVP 施工指令
 
 状态：IMPLEMENTATION-PLAN，尚非已上线运行系统。日期：2026-10-25。
 源协议：../agensh-lite-v4.1/（必须阅读其 01–11、agents/COMMON.md、schemas/、tests/）。
 Microsoft Agensh：microsoft/Agensh@0468a3e6a58b51dc2b84871fcaa0df22b0d1033e；按 MIT 许可证依法使用，引用见 V4.1 的 00_SOURCES_AND_ADOPTION.md。
 
-## 首要修正：不是固定五个
-目标为 N>=2 个已启用的跨 Provider Agent，**不设固定上限**；Agent 可以是 ChatGPT、WorkBuddy、Codex 或未来其他平台成员。ChatGPT 计划任务名额与 WorkBuddy/Codex 各自调度额度分开核定。原 ChatGPT A–E 只是示例而非全局成员列表，N=6/10 等无需重写 Controller。具体能力须实测。
+## 最新需求：至少2个 Agent，数量无系统级上限
+ChatGPT、WorkBuddy、Codex、ChatGPT Work（有真实权限时）及其他厂商可以混合加入共享任务池。**总池 N>=2（含2）且没有全局 max_active=5 上限**。每个 Provider 的配额、调度、鉴权、执行能力独立管理；ChatGPT 五个名额仅是一个用户待核实的平台配额示例，不是全系统上限。每个 Agent 须注册独立身份/能力/触发方式，并在探针核实后获得准入资格。配置的 desired_enabled 不是已上线证据。示例：3 ChatGPT + 2 WorkBuddy + 1 Codex = N=6。
 
 核心目标：跨独立定时会话执行 GATHER → CLAIM → ACT → VERIFY → PUBLISH/HANDOFF；可继续已授权的长任务，也能在依赖满足时自由认领新任务；所有状态跨轮存储在 Git，可靠控制器处理并发、幂等与验收；无需用户本地电脑常开。
 
 ## 阅读顺序
+先读 `docs/AGENT_ADAPTER_CONTRACT.md` 与 `config/mixed_pool.example.json`，两者是本次用户修正后的必读合同。
 1. config/agent_pool.example.json、docs/POOL_AND_SCHEDULING.md、docs/MULTI_PROVIDER_AGENT_REGISTRY.md：开放式异构注册、配额与排班。
 2. docs/PROJECT_MODULES.md：10 个开发模块、拆分、接口与验收定义。
 3. docs/CLOUD_CONTROLLER.md：Git+Controller 可行实现边界、正确性与故障回退。

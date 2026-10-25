@@ -33,3 +33,6 @@ mini-router/src/state.ts（event_id 去重/ACK/retry）、src/board_client.ts（
 Codex 主责 M01/M03/M04/M05/M07/M09；你主责 M02/M06/M08/M10。不要重复实现 Controller。两个开发分支由单一集成者审计与合并，不修改生产 main。无法真实提交远程仓库时保存 patch 与日志，标 NOT_PUSHED，不伪造 Git 成功。
 ## 追加的强制开发要求（本节覆盖之前的五 Agent 假设）
 实现可插拔 ProviderAdapter 和 AgentRegistry，总成员 N>=2 无固定上限。ChatGPT 内部 K 个小时任务可分别按 K=2/3/4/5/6 错峰，WorkBuddy/Codex 使用自身真实 cadence/配额/schedule_id，不得对异构 N 套 60/N；必须完成 ChatGPT→WorkBuddy Git 接力实测或如实标 BLOCKED_PROVIDER。参见 docs/MULTI_PROVIDER_AGENT_REGISTRY.md。
+
+## WorkBuddy 新增交付：开放式 Adapter
+请实现可插拔 AgentAdapter，先 mock 再对真实 ChatGPT/WorkBuddy/Codex 分别探测 GitHub read/write/reread、调度和执行能力，必要时新增 custom Provider，无须改 Controller。严禁把手工配置 enabled 或伪调度视为真实 ACTIVE。相关接口见 docs/AGENT_ADAPTER_CONTRACT.md；需提交跨平台 N=6 端到端证据或明确阻断报告。

@@ -31,7 +31,7 @@ factory/agl/handoff.py, context.py；每次保存 TASK_ID/SPEC_HASH/DECISION_LOG
 完成：断开/错过两个小时后仍能从 Git 证据正确续作，若 lease 已失效不能继续对旧 attempt 推进。
 
 ## M08 外部 ProviderAdapter 与测试接口 / WorkBuddy（P4）
-factory/agl/execution.py；TEST_REQUEST → 外部获权 Runner → stdout/stderr、exit_code、test_summary、environment_id、commit_sha、sha256 → TEST_RESULT/ACK；WorkBuddy 和 Codex 适配器需通过可用性探针，云端 webhook/API 未实测前状态 DISCONNECTED。
+factory/agl/execution.py；TEST_REQUEST → 外部获权 Runner → stdout/stderr、exit_code、test_summary、environment_id、commit_sha、sha256 → TEST_RESULT/ACK；ChatGPT、WorkBuddy、Codex 和 custom 适配器均需通过能力与权限探针，云端 webhook/API 未实测前状态 DISCONNECTED。
 完成：真实执行端对固定测试程序给出 PASS/FAIL 证据，错误 SHA 的测试不能验收；关闭云端执行器返回 BLOCKED_EXECUTOR 不伪造。
 
 ## M09 审计、事件重放与恢复 / Codex（P2/P5）
@@ -53,3 +53,8 @@ M01+M02 可并行；M03+M05+M07 依赖 Schema；M04 必须在 M02/M03 后集成�
 Codex = 设计/状态机/并发正确性/难点实现/代码复核；WorkBuddy = GitHub 云端通路/CLI/流水线/真实隔离测试/交付。两边只在自己的开发分支写，统一 Integrator 通过 PR + QA 合并。用户批准前不改 main、不创建真实 ChatGPT 定时任务、不接入付费 API。
 ## V4.2 跨平台强制修订
 所有 M01–M10 模块必须支持 N>=2、无固定最大人数的异构 registry 和 per-provider 调度/配额/运行权限。优先阅读 docs/MULTI_PROVIDER_AGENT_REGISTRY.md，不允许依赖固定 ChatGPT A–E 顺序或全局 60/N 排班。首次真实接入 WorkBuddy 只能在凭据、云端触发、Git 回读、QA 全部实测成功后宣布通过。
+
+## 最新强制要求：M01/M06/M08 横向支持异构扩容
+- M01 实现通用 AgentRegistry (agent_id, provider_id, account_scope, adapter_id, admission, capabilities, allowed_paths, health)；全局 N>=2 且 max_active 不设上限。各 provider/account_scope quota 独立，ChatGPT 五任务槽只是示例。
+- M06 动态生成 per-provider schedule/trigger 与标准化轮询包；同一个 GitHub TASK 可交付到 ChatGPT、WorkBuddy、Codex 中任何真实已准入且能力匹配的 Agent。
+- M08 WorkBuddy Agent 与 Runner 不可混用权限；新增 custom provider 只增加 Adapter，无须改 Controller/Lease/UEM 状态机。详见 docs/AGENT_ADAPTER_CONTRACT.md。

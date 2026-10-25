@@ -26,6 +26,9 @@ Microsoft: prompts/agents.txt；board-service/shared_lessons.py / main.py / veri
 在 coding 前先将 interfaces/contracts 与 WorkBuddy 可实现适配器签名明确写在 dev 分支；另一执行者以这份接口开发 M02/M06/M08/M10。不得同时编辑同一个文件。向集成者提交 PR，不直接合并 main。无法跨分支共享时用稳定冻结 spec SHA 和 PR 信息交接。
 
 ## 合格标准
-必须满足 tests/ACCEPTANCE_MATRIX.md 所有 P0/P1/P2 项；尤其任意启用 N=2/3/4/5/6/10/20 的跨平台池；停用角色的未完任务会重新进入待接手队列（保留原审计链），无双租约、无丢事件、无假 QA。输出实测证据；遇到云端权限/额度障碍明确 STOP 而不伪造。
+必须满足 tests/ACCEPTANCE_MATRIX.md 所有 P0/P1/P2 项；尤其任意启用 N=2/3/4/5/6/8/12 及多 provider/6/10/20 的跨平台池；停用角色的未完任务会重新进入待接手队列（保留原审计链），无双租约、无丢事件、无假 QA。输出实测证据；遇到云端权限/额度障碍明确 STOP 而不伪造。
 ## 追加的强制设计要求（本节覆盖之前的五 Agent 假设）
 跨 Provider AgentRegistry（ChatGPT/WorkBuddy/Codex/后续插件），总 N>=2 不设最大值；分平台调度/配额、统一 Git UEM/HANDOFF/lease/fencing/QA；核心 Controller 不能枚举固定五人，需证明 N=6/10/20 与异构故障恢复。先读 docs/MULTI_PROVIDER_AGENT_REGISTRY.md。
+
+## 最优先：实现异构 Provider Adapter 合同
+用户明确要求至少2个（含2），以后可能加入大量 WorkBuddy/Codex 或自定义 Agent。禁止将 ChatGPT 最多5个计划任务写成全局最大成员数。先冻结 registry/schema/admission/lease 的 provider-neutral 接口，测试跨平台并发 claim、N=6/8/12、掉线转交和按平台 budget 限流；必读 docs/AGENT_ADAPTER_CONTRACT.md、config/mixed_pool.example.json。

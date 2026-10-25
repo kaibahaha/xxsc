@@ -21,3 +21,6 @@ INTENT / WRITTEN / READBACK_VERIFIED / ACK / BUSINESS_ACCEPTED 各自独立。Co
 Board 读/写异常即 UNKNOWN；暂停新增高风险认领，已完成成果保存到本人 outbox；Controller 恢复从事件账本回放；连续拒绝/安全拦截立即熔断该通路。不要替用户自行开启新部署或付费运行。
 ## 多 Provider 扩容修订
 Controller 使用统一 AgentRegistration/ProviderAdapter，而非五个 ChatGPT 固定角色。工作领取由 capability、权限、状态和 epoch 决定；调度由各平台独立管理。ChatGPT、WorkBuddy、Codex 总体 N>=2 无固定协议上限，实际容量受各平台配额、计算成本和 GitHub 限流约束；Provider 失联时安全移交已有工单而非丢历史。
+
+## 7. 总数与平台解耦（最新需求）
+Controller 通过 AgentRegistry 与标准化 Task/Lease/UEM/ACK 接口接收 2个及以上跨平台 Agent，不存在全局固定5个工位。ChatGPT/WorkBuddy/Codex 的调度预算、连接器、运行方式由各自 Adapter 负责探针和健康状态。注册与启用意图不等于运行准入。详见 docs/AGENT_ADAPTER_CONTRACT.md。

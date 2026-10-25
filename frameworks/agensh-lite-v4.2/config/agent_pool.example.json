@@ -13,10 +13,12 @@
       "CHATGPT_C",
       "CHATGPT_E"
     ],
-    "offset_policy": "per_provider",
+    "offset_policy": "per_provider_schedule",
     "allow_agent_join_leave": true,
     "max_primary_tasks_per_run": 1,
-    "limit_policy": "no_fixed_global_max"
+    "limit_policy": "no_fixed_global_max",
+    "admission_required": true,
+    "active_agent_ids_meaning": "desired_enabled_only_not_verified_runtime_active"
   },
   "agents": [
     {
@@ -37,7 +39,11 @@
       "agent_kind": "scheduled_contributor",
       "schedule_id": null,
       "transport_state": "UNVERIFIED",
-      "permissions_state": "UNVERIFIED"
+      "permissions_state": "UNVERIFIED",
+      "account_scope": "chatgpt-main",
+      "adapter_id": "github_mailbox",
+      "trigger_type": "scheduled",
+      "admission_status": "PENDING_PROBE"
     },
     {
       "agent_id": "CHATGPT_B",
@@ -56,7 +62,11 @@
       "agent_kind": "scheduled_contributor",
       "schedule_id": null,
       "transport_state": "UNVERIFIED",
-      "permissions_state": "UNVERIFIED"
+      "permissions_state": "UNVERIFIED",
+      "account_scope": "chatgpt-main",
+      "adapter_id": "github_mailbox",
+      "trigger_type": "scheduled",
+      "admission_status": "PENDING_PROBE"
     },
     {
       "agent_id": "CHATGPT_C",
@@ -75,7 +85,11 @@
       "agent_kind": "scheduled_contributor",
       "schedule_id": null,
       "transport_state": "UNVERIFIED",
-      "permissions_state": "UNVERIFIED"
+      "permissions_state": "UNVERIFIED",
+      "account_scope": "chatgpt-main",
+      "adapter_id": "github_mailbox",
+      "trigger_type": "scheduled",
+      "admission_status": "PENDING_PROBE"
     },
     {
       "agent_id": "CHATGPT_D",
@@ -94,7 +108,11 @@
       "agent_kind": "scheduled_contributor",
       "schedule_id": null,
       "transport_state": "UNVERIFIED",
-      "permissions_state": "UNVERIFIED"
+      "permissions_state": "UNVERIFIED",
+      "account_scope": "chatgpt-main",
+      "adapter_id": "github_mailbox",
+      "trigger_type": "scheduled",
+      "admission_status": "PENDING_PROBE"
     },
     {
       "agent_id": "CHATGPT_E",
@@ -113,11 +131,15 @@
       "agent_kind": "scheduled_contributor",
       "schedule_id": null,
       "transport_state": "UNVERIFIED",
-      "permissions_state": "UNVERIFIED"
+      "permissions_state": "UNVERIFIED",
+      "account_scope": "chatgpt-main",
+      "adapter_id": "github_mailbox",
+      "trigger_type": "scheduled",
+      "admission_status": "PENDING_PROBE"
     },
     {
       "agent_id": "WORKBUDDY_DEV_01",
-      "provider_id": "workbuddy",
+      "provider_id": "chatgpt",
       "enabled": false,
       "agent_kind": "scheduled_or_triggered",
       "capabilities": [
@@ -130,11 +152,15 @@
       "max_inflight_tasks": 1,
       "schedule_id": null,
       "transport_state": "UNVERIFIED",
-      "permissions_state": "UNVERIFIED"
+      "permissions_state": "UNVERIFIED",
+      "account_scope": "chatgpt-main",
+      "adapter_id": "github_mailbox",
+      "trigger_type": "scheduled",
+      "admission_status": "PENDING_PROBE"
     },
     {
       "agent_id": "WORKBUDDY_QA_01",
-      "provider_id": "workbuddy",
+      "provider_id": "chatgpt",
       "enabled": false,
       "agent_kind": "scheduled_or_triggered",
       "capabilities": [
@@ -146,11 +172,15 @@
       "max_inflight_tasks": 1,
       "schedule_id": null,
       "transport_state": "UNVERIFIED",
-      "permissions_state": "UNVERIFIED"
+      "permissions_state": "UNVERIFIED",
+      "account_scope": "chatgpt-main",
+      "adapter_id": "github_mailbox",
+      "trigger_type": "scheduled",
+      "admission_status": "PENDING_PROBE"
     },
     {
       "agent_id": "CODEX_CLOUD_01",
-      "provider_id": "codex",
+      "provider_id": "chatgpt",
       "enabled": false,
       "agent_kind": "scheduled_or_triggered",
       "capabilities": [
@@ -163,7 +193,65 @@
       "max_inflight_tasks": 1,
       "schedule_id": null,
       "transport_state": "UNVERIFIED",
-      "permissions_state": "UNVERIFIED"
+      "permissions_state": "UNVERIFIED",
+      "account_scope": "chatgpt-main",
+      "adapter_id": "github_mailbox",
+      "trigger_type": "scheduled",
+      "admission_status": "PENDING_PROBE"
+    },
+    {
+      "agent_id": "WORKBUDDY_DEV_01",
+      "enabled": false,
+      "provider_id": "workbuddy",
+      "account_scope": "workbuddy-main",
+      "adapter_id": "github_mailbox",
+      "trigger_type": "scheduled",
+      "admission_status": "PENDING_PROBE",
+      "capabilities": [
+        "code_execution",
+        "git_write"
+      ],
+      "preferred_domains": [
+        "implementation"
+      ],
+      "outbox": "05_outbox/WORKBUDDY_DEV_01",
+      "max_inflight_tasks": 1
+    },
+    {
+      "agent_id": "WORKBUDDY_QA_01",
+      "enabled": false,
+      "provider_id": "workbuddy",
+      "account_scope": "workbuddy-main",
+      "adapter_id": "github_mailbox",
+      "trigger_type": "scheduled",
+      "admission_status": "PENDING_PROBE",
+      "capabilities": [
+        "test_execution",
+        "qa"
+      ],
+      "preferred_domains": [
+        "testing"
+      ],
+      "outbox": "05_outbox/WORKBUDDY_QA_01",
+      "max_inflight_tasks": 1
+    },
+    {
+      "agent_id": "CODEX_01",
+      "enabled": false,
+      "provider_id": "codex",
+      "account_scope": "codex-main",
+      "adapter_id": "github_mailbox",
+      "trigger_type": "manual_or_scheduled",
+      "admission_status": "PENDING_PROBE",
+      "capabilities": [
+        "architecture",
+        "code_execution"
+      ],
+      "preferred_domains": [
+        "architecture"
+      ],
+      "outbox": "05_outbox/CODEX_01",
+      "max_inflight_tasks": 1
     }
   ],
   "controller": {
@@ -172,7 +260,8 @@
     "allow_unverified_claim_as_lock": false,
     "projection_single_writer": true,
     "wip_task_global_limit": 3,
-    "enable_in_production": false
+    "enable_in_production": false,
+    "admission_required_for_new_lease": true
   },
   "external_executors": {
     "workbuddy": {
@@ -227,5 +316,29 @@
     "provider quotas checked separately",
     "unverified transport cannot be asserted active in actual execution",
     "no production scheduler changes without explicit approval"
-  ]
+  ],
+  "provider_schedules": {
+    "chatgpt": {
+      "account_scope": "chatgpt-main",
+      "slot_budget_example": 5,
+      "capacity_verified": false,
+      "reserved_other_use": 2,
+      "interval_minutes": 60,
+      "timezone": "Asia/Shanghai"
+    },
+    "workbuddy": {
+      "account_scope": "workbuddy-main",
+      "capacity": null,
+      "capacity_verified": false,
+      "interval_minutes": 20,
+      "timezone": "Asia/Shanghai"
+    },
+    "codex": {
+      "account_scope": "codex-main",
+      "capacity": null,
+      "capacity_verified": false,
+      "interval_minutes": null,
+      "timezone": "Asia/Shanghai"
+    }
+  }
 }
