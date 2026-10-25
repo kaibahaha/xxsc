@@ -1,0 +1,44 @@
+=== submit EV-R01-COLLIDE-1 payload A ===
+WORKBUDDY_01        CREATED             factory/projects/AGL-R01-PROBE/03_events/20261025/EV-R01-COLLIDE-1/WORKBUDDY_01.json
+[exit=0]
+
+=== submit same event_id, different payload (must be COLLISION, exit 6) ===
+{
+  "event_id": "EV-R01-COLLIDE-1",
+  "results": [
+    {
+      "target": "WORKBUDDY_01",
+      "status": "COLLISION",
+      "message": "EVENT_ID_COLLISION: EV-R01-COLLIDE-1 already recorded with a different payload"
+    }
+  ]
+}
+[exit=6]
+
+=== reconcile ===
+{
+  "date": "20261025",
+  "manifest": {
+    "created_at": "2026-10-25T16:20:00Z",
+    "event_id": "EV-R01-COLLIDE-1",
+    "kind": "FACT_PUBLISHED",
+    "payload_sha256": "2bd34b1b622755f99e9bc449d83f7986c7b57e0296825054b3f6647aa909eada",
+    "producer": "WORKBUDDY_01",
+    "schema_version": "1.0",
+    "target_agents": [
+      "WORKBUDDY_01"
+    ],
+    "task_id": "TASK-R01-PROBE"
+  },
+  "targets": [
+    {
+      "target": "WORKBUDDY_01",
+      "event_present": true,
+      "event_sha256": "ba1b261bf620c1356eba40bbce190b7dea0ba09daba596b0eb30251da52bcd36",
+      "ack_present": false,
+      "ack_result": null,
+      "ack_commit": null
+    }
+  ]
+}
+[exit=0]

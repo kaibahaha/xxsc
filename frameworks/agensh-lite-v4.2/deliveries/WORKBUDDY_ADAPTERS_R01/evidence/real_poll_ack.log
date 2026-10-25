@@ -1,0 +1,37 @@
+=== seed task on real branch ===
+seeded CREATED commit 34f316bd965a blob f23a03e0b8d6
+readback_matches True
+
+=== publish board (CAS) ===
+published factory/projects/AGL-R01-PROBE/08_projections/BOARD.md commit=c5d5dcdd4f839623a8a5cddda09c1addf04bc7ce sha256=e2c88f044ca7d699e5a2341aa145d6f31b813938c6222f6c695b8e7eedbf087e
+[exit=0]
+
+=== poll on real branch ===
+run_id     : RUN-R01-REAL-POLL
+agent      : WORKBUDDY_01 (workbuddy)
+status     : CLAIM_PROPOSED
+planned_at : 2026-10-25T16:21:42Z
+actual_at  : 2026-10-25T16:22:05Z
+task       : TASK-R01-PROBE
+event      : EV-RUN-R01-REAL-POLL-CLAIM-TASK-R01-PROBE
+controller : CONTROLLER_UNAVAILABLE
+[exit=0]
+
+=== ACK + reconcile on real branch ===
+ack CREATED factory/projects/AGL-R01-PROBE/07_receipts/WORKBUDDY_01/EV-R01-COLLIDE-1.json
+cursor {'agent': 'WORKBUDDY_01', 'cursor': '2026-10-25T16:20:00Z', 'status': 'CREATED', 'commit_sha': 'ef19faa1919619bd15d694e9277bb203457d84d9'}
+cursor_back {'agent': 'WORKBUDDY_01', 'cursor': '2026-10-25T16:20:00Z', 'status': 'MONOTONIC_NOOP'}
+    ],
+    "task_id": "TASK-R01-PROBE"
+  },
+  "targets": [
+    {
+      "target": "WORKBUDDY_01",
+      "event_present": true,
+      "event_sha256": "ba1b261bf620c1356eba40bbce190b7dea0ba09daba596b0eb30251da52bcd36",
+      "ack_present": true,
+      "ack_result": "DELIVERY_ACK",
+      "ack_commit": null
+    }
+  ]
+}

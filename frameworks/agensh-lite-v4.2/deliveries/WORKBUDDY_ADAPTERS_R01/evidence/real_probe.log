@@ -1,0 +1,27 @@
+=== REAL capability probe: WORKBUDDY_01 (write probe enabled) ===
+agent               provider    read        write       reread      trigger     execute     schedule    
+--------------------------------------------------------------------------------------------------------
+WORKBUDDY_01        workbuddy   SUPPORTED   SUPPORTED   SUPPORTED   UNSUPPORTED BLOCKED     UNKNOWN     
+    read      SUPPORTED   [REAL] kaibahaha/xxsc@dev/agl-v4.2-workbuddy-adapters readable, head=0954f21521ca
+    write     SUPPORTED   [REAL] immutable write to own outbox ok (CREATED)
+    reread    SUPPORTED   [REAL] independent readback matches=True
+    trigger   UNSUPPORTED [STATIC] no webhook receiver verified; Git mailbox + own cadence only
+    execute   BLOCKED     [STATIC] no runner bound to this session -> BLOCKED_EXECUTOR
+    schedule  UNKNOWN     [STATIC] no public schedule API; planned vs actual wake-ups are recorded separately
+
+write probe executed
+[exit=0]
+
+=== REAL capability probe: CHATGPT_01 (read-only provider) ===
+agent               provider    read        write       reread      trigger     execute     schedule    
+--------------------------------------------------------------------------------------------------------
+CHATGPT_01          chatgpt     SUPPORTED   UNSUPPORTED UNSUPPORTED UNSUPPORTED UNSUPPORTED UNKNOWN     
+    read      SUPPORTED   [REAL] kaibahaha/xxsc@dev/agl-v4.2-workbuddy-adapters readable, head=fec0b9a02b03
+    write     UNSUPPORTED [STATIC] chat connector has no repository write API in this deployment; outputs are produced as TEST_REQUEST / notes for a runner to commit
+    reread    UNSUPPORTED [STATIC] nothing written by this adapter
+    trigger   UNSUPPORTED [STATIC] provider offers no webhook/API to wake a scheduled chat task
+    execute   UNSUPPORTED [STATIC] chat sessions have no verified shell/CI execution tool
+    schedule  UNKNOWN     [STATIC] no public schedule API; planned vs actual wake-ups are recorded separately
+
+write probe skipped (dry-run): write/reread are not SUPPORTED until --apply runs a real write
+[exit=0]
