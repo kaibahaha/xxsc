@@ -1,12 +1,15 @@
 # V4.2 最小验收矩阵（NOT_TESTED，需真实执行）
 
-## C0 配置与调度（必须）
-- C0-01 N=2、3、4、5 自动错峰分别为 [0,30]、[0,20,40]、[0,15,30,45]、[0,12,24,36,48]。
-- C0-02 agent_id 可选择非连续子集 A/C/E，启用 3、预留 2；所有业务逻辑从 active_agent_ids 获取，不对数组第5项做越界引用。
-- C0-03 N=1、N=6、重复 ID、off/未声明的 ID、保留名额超预算、无效时区均 fail-closed。
-- C0-04 停用 B、D 时原有 HANDOFF、ACK 与历史保留；不可领取新任务，原有租约按安全流程撤销、旧结果不得晋升。
-- C0-05 修改 pool N 后不改源码即可重排；实际 ChatGPT 计划任务状态必须独立探针证明，不以打印时间表当创建成功。
-- C0-06 并行两个运行实例重叠时，单任务只有一份有效 lease；错峰不是锁。
+## C0 跨平台开放式成员配置（必须）
+- C0-01 总 N=2/3/4/5/6/10/20 均被配置/业务逻辑接受，N=1 拒绝；不得硬编码固定五个 Agent。
+- C0-02 3 ChatGPT A/C/E + 7 WorkBuddy 的逻辑混合池支持 10 人；ChatGPT 自身预留两个平台计划任务槽，WorkBuddy 预算独立（前提为真实平台可用）。
+- C0-03 Agent ID 重复、失效权限、已核实平台预算超限、无效时区必须 fail-closed；UNKNOWN 额度不得冒充 unlimited。
+- C0-04 ChatGPT 本平台每小时 K=2/3/4/5/6 建议错峰为 [0,30]/[0,20,40]/[0,15,30,45]/[0,12,24,36,48]/[0,10,20,30,40,50]；不同 Provider 不能对总 N 简单套用 60/N。
+- C0-05 禁用或退出任一 ChatGPT/WorkBuddy/Codex Agent 保留 HANDOFF、ACK 和历史，吊销旧租约，新 Agent 只有在能力匹配且授权时接手。
+- C0-06 动态扩容只改配置/登记，不改核心源码；实际真实 schedule_id、fired_at、Git 写后回读独立验证。
+- C0-07 未验证 Provider 返回 PROBE_PENDING/BLOCKED_PROVIDER，而非宣称跨平台已连通。
+- C0-08 多 Provider 并行抢同一 Task，Controller 只授出一个有效 lease。
+- C0-09 压测 N=20 时不宣称无限吞吐，记录 API/并发/成本阈值。
 
 ## C1 Git 与事件（必须）
 - C1-01 创建后用第二次 API 请求回读准确 repo/branch/path/commit/blob/content。
@@ -33,9 +36,9 @@
 
 ## C4 运行可靠性（上线前）
 - C4-01 2 Agent shadow 真实往返 Git + ACK，带各自真实 run_id/commit。
-- C4-02 3 Agent shadow、4 Agent shadow、5 Agent shadow 配置切换与退场再加入。
+- C4-02 3/4/5/6/10 Agent shadow（含跨 Provider） 配置切换与退场再加入。
 - C4-03 断开 Controller / Board / Git / Executor 故障注入，状态 fail-closed。
-- C4-04 24 小时影子真实计划轮次 vs 实际唤醒/结果/延迟/故障审计。
+- C4-04 24 小时按 Provider 统计影子真实计划轮次 vs 实际唤醒/结果/延迟/故障审计。
 - C4-05 任何成功均有 Git 链接+commit SHA+hash/测试原始日志；缺一项不报告为通过。
 
 阶段签发：P0/P1/P2 全绿且 CI 实验通过，再由用户授权调度器变更。本文是验收计划，不是已通过证据。

@@ -1,27 +1,20 @@
-# 弹性池、调度与配额：N=2..5 均为一等公民
+# 开放式弹性 Agent 池与调度（全局 N>=2，无固定上限）
 
-## 硬约束
-- 配置以 pool.active_agent_ids 决定运行池，数量必须为 2、3、4 或 5；不能写死五个工位或要求名字必须连续。Agent 标识与会话身份稳定，角色仅是能力/偏好，不是固定流程位置。
-- task_slot_budget 可配置，代表当前计划任务页面已核实的总预算；一个 ChatGPT Agent 对应一个每小时计划任务槽，但已存在的 Work 或其他任务如占同一平台额度，也必须从预算扣除。只有实际调度平台能创建和启停任务，本代码写配置不能替代实际平台计划任务登记。
-- reserved_task_slots_for_other_uses 是用户明确保留的容量，满足 active_count + reserved <= slot_budget。示例启用 A/C/E=3，预留 2。不要擅自删除或改排班历史任务腾槽。
+## 两个独立概念
+全局成员池可包括 ChatGPT、WorkBuddy、Codex 等 N>=2 个 Agent；不存在硬编码的五人上限。但资源必须按 provider_id 分开核实，系统吞吐/并发/费用也受现实限制。一个 Provider 的预算不限制其他 Provider 的逻辑注册成员。ChatGPT 平台保留两个 Work/其他计划任务槽，并不限制额外加入 WorkBuddy Agent。
+统一 TASK/Claim/Event/Handoff/ACK/QA 状态机在 GitHub 上跨平台复用。不同平台用独立 scheduler_id、时区、cadence、transport_status 和权限记录。配置是建议，不是实际平台已创建的定时任务。
+详见 MULTI_PROVIDER_AGENT_REGISTRY.md。
 
-## 等间隔错峰
-各 Agent 一小时触发一次，活动池按 agent_id 或用户指定稳定顺序排序，偏移分钟 = 60*i/N（N=2..5 均整除）。默认小时零分起始，可用 phase_minutes 整体平移，必须以真实平台时区验证。
-N=2 → :00,:30；平均相隔 30 分钟。
-N=3 → :00,:20,:40；平均相隔 20 分钟。
-N=4 → :00,:15,:30,:45；平均相隔 15 分钟。
-N=5 → :00,:12,:24,:36,:48；平均相隔 12 分钟。
-若用户坚持非均匀错峰，支持 explicit_offsets=[...分钟]；校验长度、范围和重叠警告。不可声称 N=2/3 每 15 分钟都会触发一次 ChatGPT 工位。
+## ChatGPT 内部错峰
+只有在同一 Provider 上的 K 个 Agent 都以每小时一次被真实配置时，才可在时钟分钟粒度下用 floor(60*i/K) 计算推荐错峰。
+K=2：:00,:30；K=3：:00,:20,:40；K=4：:00,:15,:30,:45；K=5：:00,:12,:24,:36,:48；K=6：:00,:10,:20,:30,:40,:50。
+K>60 时须处理分钟精度冲突或 provider 限制，不能承诺每个触发点唯一。多个不同 Provider 或不同 cadence 的 Agent 无法按全局 N 套用 60/N。
+WorkBuddy 的原生计划任务和 Codex 的可能触发模式需逐项探针验证，不能因聊天/编程界面可以调用就断定后台可调度。记录实际 schedule_id、fired_at 和 git 写后回读证据。
 
-## 生效语义
-所生成的是建议时刻而非平台真实运行记录。动态池变更先保存新 policy_revision，校验配额，再人工/已授权调度器更新实际任务，最后经独立观测确认 active schedule IDs、下一次计划时间和真实 fired 时间。生效前保持旧策略标记；若平台更新失败则回滚计划，不允许只改 BOARD 而声称已生效。
+## 伸缩流程
+扩容：登记候选 agent_id / provider_id → 只读探针 → 能力/授权/预算核对 → 沙盒 Git 写入回读 → 验证真实触发 → ACTIVE；失败则保持 BLOCKED。
+缩容：停止授新 lease → DRAINING → 确认原有 attempt/lease 到期或安全撤销且 fencing_epoch 增长 → 保留 HISTORY/HANDOFF → 让其他有能力且获权 Agent 重新领取 → 验证真实停止调度。
+没有原子 Controller 时只采用 L0 隔离写入和 CLAIM_PROPOSED，不把 CLAIM 当排他锁。
 
-## 加入/退出与未完任务
-启用/停用工位不删除其事件、ACK、cursor、HANDOFF、outbox 历史；工位退出时先停止新 CLAIM，落不可变 DRAINING 事件、清理/移交原业务待办，并由 Controller 原子撤销/过期旧 lease 以及提高 fencing_epoch。另一工位可领取的是当前有效的新 attempt；旧 attempt 的迟到结果只能留档。
-当一次定时 RUN 结束，不把“软任务归属 preferred_owner”冒充跨小时排他租约。跨轮续作必须重新查询最新 task/spec_sha，向 Controller 续租或重新领取；若别人已经合法接管，原 Agent 不得推进状态。读板失败为 UNKNOWN，不可理解为没有工单。
-
-## 在没有常驻 Controller 时
-严格降级成 L0：按配置的 task_shard / isolated outbox 进行静态分区；允许发布 CLAIM_PROPOSED、研究稿、测试方案；不能宣称任意 Agent 都有动态排他领单能力。后续实现 Git 上的严格 CAS Controller / 云端持久事务再切换到 L1。
-
-## 正确指标
-对所有 N 分别测：有效交付数/日、重复有效认领=0、事件丢失=0、拒绝越权=100%、实际唤醒覆盖率、平均/p95 就绪至领取延迟、任务孤儿数、每有效成果的调用成本。更换 N 不得要求改 Python 源码、只改配置与获授权的调度器登记。
+## 验收
+单元和压力测试覆盖 N=2/3/4/5/6/10/20，至少测一次 ChatGPT+WorkBuddy 异构组合；N=1 和重复 agent_id 拒绝；已证实 Provider 配额不足拒绝；未知配额标 UNKNOWN 而非无限；24 小时真实唤醒由各 Provider 独立核对。

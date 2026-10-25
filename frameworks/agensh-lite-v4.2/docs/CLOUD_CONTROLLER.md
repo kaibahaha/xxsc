@@ -19,3 +19,5 @@ INTENT / WRITTEN / READBACK_VERIFIED / ACK / BUSINESS_ACCEPTED 各自独立。Co
 
 ## 6. 控制器停机
 Board 读/写异常即 UNKNOWN；暂停新增高风险认领，已完成成果保存到本人 outbox；Controller 恢复从事件账本回放；连续拒绝/安全拦截立即熔断该通路。不要替用户自行开启新部署或付费运行。
+## 多 Provider 扩容修订
+Controller 使用统一 AgentRegistration/ProviderAdapter，而非五个 ChatGPT 固定角色。工作领取由 capability、权限、状态和 epoch 决定；调度由各平台独立管理。ChatGPT、WorkBuddy、Codex 总体 N>=2 无固定协议上限，实际容量受各平台配额、计算成本和 GitHub 限流约束；Provider 失联时安全移交已有工单而非丢历史。

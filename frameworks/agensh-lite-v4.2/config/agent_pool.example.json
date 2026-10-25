@@ -6,24 +6,17 @@
   "ref": "exp/agensh-lite-v4.2-controller-mvp-20261025",
   "runtime_root": "factory/projects/AGL-SHADOW-001",
   "timezone": "Asia/Shanghai",
-  "platform_schedule": {
-    "period_minutes_per_agent": 60,
-    "task_slot_budget": 5,
-    "reserved_task_slots_for_other_uses": 2,
-    "actual_scheduler_update": "manual_or_explicitly_authorized",
-    "enable_on_deploy": false
-  },
   "pool": {
     "min_active": 2,
-    "max_active": 5,
     "active_agent_ids": [
       "CHATGPT_A",
       "CHATGPT_C",
       "CHATGPT_E"
     ],
-    "offset_policy": "equal_spaced_within_hour",
+    "offset_policy": "per_provider",
     "allow_agent_join_leave": true,
-    "max_primary_tasks_per_run": 1
+    "max_primary_tasks_per_run": 1,
+    "limit_policy": "no_fixed_global_max"
   },
   "agents": [
     {
@@ -39,7 +32,12 @@
         "requirements"
       ],
       "outbox": "05_outbox/CHATGPT_A",
-      "max_inflight_tasks": 1
+      "max_inflight_tasks": 1,
+      "provider_id": "chatgpt",
+      "agent_kind": "scheduled_contributor",
+      "schedule_id": null,
+      "transport_state": "UNVERIFIED",
+      "permissions_state": "UNVERIFIED"
     },
     {
       "agent_id": "CHATGPT_B",
@@ -53,7 +51,12 @@
         "architecture"
       ],
       "outbox": "05_outbox/CHATGPT_B",
-      "max_inflight_tasks": 1
+      "max_inflight_tasks": 1,
+      "provider_id": "chatgpt",
+      "agent_kind": "scheduled_contributor",
+      "schedule_id": null,
+      "transport_state": "UNVERIFIED",
+      "permissions_state": "UNVERIFIED"
     },
     {
       "agent_id": "CHATGPT_C",
@@ -67,7 +70,12 @@
         "code_draft"
       ],
       "outbox": "05_outbox/CHATGPT_C",
-      "max_inflight_tasks": 1
+      "max_inflight_tasks": 1,
+      "provider_id": "chatgpt",
+      "agent_kind": "scheduled_contributor",
+      "schedule_id": null,
+      "transport_state": "UNVERIFIED",
+      "permissions_state": "UNVERIFIED"
     },
     {
       "agent_id": "CHATGPT_D",
@@ -81,7 +89,12 @@
         "test_design"
       ],
       "outbox": "05_outbox/CHATGPT_D",
-      "max_inflight_tasks": 1
+      "max_inflight_tasks": 1,
+      "provider_id": "chatgpt",
+      "agent_kind": "scheduled_contributor",
+      "schedule_id": null,
+      "transport_state": "UNVERIFIED",
+      "permissions_state": "UNVERIFIED"
     },
     {
       "agent_id": "CHATGPT_E",
@@ -95,7 +108,62 @@
         "audit"
       ],
       "outbox": "05_outbox/CHATGPT_E",
-      "max_inflight_tasks": 1
+      "max_inflight_tasks": 1,
+      "provider_id": "chatgpt",
+      "agent_kind": "scheduled_contributor",
+      "schedule_id": null,
+      "transport_state": "UNVERIFIED",
+      "permissions_state": "UNVERIFIED"
+    },
+    {
+      "agent_id": "WORKBUDDY_DEV_01",
+      "provider_id": "workbuddy",
+      "enabled": false,
+      "agent_kind": "scheduled_or_triggered",
+      "capabilities": [
+        "code_execution",
+        "test_run",
+        "git_write"
+      ],
+      "preferred_domains": [],
+      "outbox": "05_outbox/WORKBUDDY_DEV_01",
+      "max_inflight_tasks": 1,
+      "schedule_id": null,
+      "transport_state": "UNVERIFIED",
+      "permissions_state": "UNVERIFIED"
+    },
+    {
+      "agent_id": "WORKBUDDY_QA_01",
+      "provider_id": "workbuddy",
+      "enabled": false,
+      "agent_kind": "scheduled_or_triggered",
+      "capabilities": [
+        "test_run",
+        "review"
+      ],
+      "preferred_domains": [],
+      "outbox": "05_outbox/WORKBUDDY_QA_01",
+      "max_inflight_tasks": 1,
+      "schedule_id": null,
+      "transport_state": "UNVERIFIED",
+      "permissions_state": "UNVERIFIED"
+    },
+    {
+      "agent_id": "CODEX_CLOUD_01",
+      "provider_id": "codex",
+      "enabled": false,
+      "agent_kind": "scheduled_or_triggered",
+      "capabilities": [
+        "complex_coding",
+        "review",
+        "test_run"
+      ],
+      "preferred_domains": [],
+      "outbox": "05_outbox/CODEX_CLOUD_01",
+      "max_inflight_tasks": 1,
+      "schedule_id": null,
+      "transport_state": "UNVERIFIED",
+      "permissions_state": "UNVERIFIED"
     }
   ],
   "controller": {
@@ -124,5 +192,40 @@
   "stop": {
     "production_writes_allowed": false,
     "require_explicit_cutover": true
-  }
+  },
+  "scheduler_policies": {
+    "chatgpt": {
+      "timezone": "Asia/Shanghai",
+      "cadence_minutes": 60,
+      "offset_policy": "per_provider_equal_spaced",
+      "task_slot_budget_example_unverified": 5,
+      "reserved_slots_for_other_chatgpt_uses": 2,
+      "real_schedule_status": "UNVERIFIED",
+      "user_approval_required": true
+    },
+    "workbuddy": {
+      "timezone": "Asia/Shanghai",
+      "cadence_minutes": null,
+      "schedule_policy": "provider_native",
+      "quota": "UNVERIFIED",
+      "real_schedule_status": "UNVERIFIED",
+      "user_approval_required": true
+    },
+    "codex": {
+      "timezone": "Asia/Shanghai",
+      "cadence_minutes": null,
+      "schedule_policy": "provider_native_or_triggered",
+      "quota": "UNVERIFIED",
+      "real_schedule_status": "UNVERIFIED",
+      "user_approval_required": true
+    }
+  },
+  "registry_version": "2.0",
+  "registry_rules": [
+    "active_agent_ids equal enabled agent IDs",
+    "N>=2 no fixed upper limit",
+    "provider quotas checked separately",
+    "unverified transport cannot be asserted active in actual execution",
+    "no production scheduler changes without explicit approval"
+  ]
 }

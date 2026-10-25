@@ -5,12 +5,12 @@
 Microsoft Agensh：microsoft/Agensh@0468a3e6a58b51dc2b84871fcaa0df22b0d1033e；按 MIT 许可证依法使用，引用见 V4.1 的 00_SOURCES_AND_ADOPTION.md。
 
 ## 首要修正：不是固定五个
-目标为 N=2..5 个已启用 ChatGPT 定时 Agent，且 N 必须由配置/注册表计算，绝不在代码里假设固定有 A/B/C/D/E。用户可将未占用的计划任务名额用于 ChatGPT Work、审计或其他实验。不同配置均必须通过相同验收。五个时槽只是 N=5 时的一个示例。
+目标为 N>=2 个已启用的跨 Provider Agent，**不设固定上限**；Agent 可以是 ChatGPT、WorkBuddy、Codex 或未来其他平台成员。ChatGPT 计划任务名额与 WorkBuddy/Codex 各自调度额度分开核定。原 ChatGPT A–E 只是示例而非全局成员列表，N=6/10 等无需重写 Controller。具体能力须实测。
 
 核心目标：跨独立定时会话执行 GATHER → CLAIM → ACT → VERIFY → PUBLISH/HANDOFF；可继续已授权的长任务，也能在依赖满足时自由认领新任务；所有状态跨轮存储在 Git，可靠控制器处理并发、幂等与验收；无需用户本地电脑常开。
 
 ## 阅读顺序
-1. config/agent_pool.example.json、docs/POOL_AND_SCHEDULING.md：弹性池配置、余量分配。
+1. config/agent_pool.example.json、docs/POOL_AND_SCHEDULING.md、docs/MULTI_PROVIDER_AGENT_REGISTRY.md：开放式异构注册、配额与排班。
 2. docs/PROJECT_MODULES.md：10 个开发模块、拆分、接口与验收定义。
 3. docs/CLOUD_CONTROLLER.md：Git+Controller 可行实现边界、正确性与故障回退。
 4. dispatch/CODEX_MASTER_TASK.md：Codex 技术设计/高复杂度模块任务指令。
@@ -29,4 +29,4 @@ PROPOSED_RUNTIME_ROOT=/factory/
 此次只提交开发计划与模板；没有创建实际 ChatGPT 定时任务、没有接通 ChatGPT → WorkBuddy 云端 webhook、没有宣布代码测试通过。开发者须从零建设并以真实运行日志证明所声称能力。若云端执行能力/权限不存在，记录 BLOCKED_CONNECTOR、不得伪造成功。
 
 ## 单一版本路线
-P0 只读探针 → P1 纯 Git 双 Agent 接力 → P2 原子 Controller+错误重放 → P3 N=2..5 动态池/热切换 → P4 WorkBuddy 测试接力/QA → P5 24h 影子运行。每阶段独立验收通过后才扩大权限或迁移现有任务。
+P0 只读探针 → P1 纯 Git 双 Agent 接力 → P2 原子 Controller+错误重放 → P3 N>=2 动态异构池/热切换 → P4 ChatGPT→WorkBuddy 跨平台接力/QA → P5 24h 影子运行。每阶段独立验收通过后才扩大权限或迁移现有任务。

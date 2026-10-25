@@ -27,7 +27,9 @@ mini-router/src/state.ts（event_id 去重/ACK/retry）、src/board_client.ts（
 提供一条 CLI 完成 local/isolated Git test；命令包括 validate-config、plan-schedules、dry-run-poll、submit-event、reconcile、rebuild-board、audit、run-sample-test。命令默认 read-only 或 dry-run，写入必须显式 --apply --repo --branch --project 并通过白名单检查。CI 测试不需要启动用户本机电脑。
 
 ## 要求交付
-源码、依赖锁、pytest、集成测试真实输出、操作手册、权限/网络探针、测试结果文件、每阶段 Git commit/PR 链接、尚未连接的能力清单。先两 Agent 自循环实验成功再扩到 N=5，不要在未经实际验证时报告上线。完整读取 tests/ACCEPTANCE_MATRIX.md。
+源码、依赖锁、pytest、集成测试真实输出、操作手册、权限/网络探针、测试结果文件、每阶段 Git commit/PR 链接、尚未连接的能力清单。先两 Agent 自循环成功再扩到 N=3/5/6/10 与跨平台池，不要在未经实际验证时报告上线。完整读取 tests/ACCEPTANCE_MATRIX.md。
 
 ## 严格分工
 Codex 主责 M01/M03/M04/M05/M07/M09；你主责 M02/M06/M08/M10。不要重复实现 Controller。两个开发分支由单一集成者审计与合并，不修改生产 main。无法真实提交远程仓库时保存 patch 与日志，标 NOT_PUSHED，不伪造 Git 成功。
+## 追加的强制开发要求（本节覆盖之前的五 Agent 假设）
+实现可插拔 ProviderAdapter 和 AgentRegistry，总成员 N>=2 无固定上限。ChatGPT 内部 K 个小时任务可分别按 K=2/3/4/5/6 错峰，WorkBuddy/Codex 使用自身真实 cadence/配额/schedule_id，不得对异构 N 套 60/N；必须完成 ChatGPT→WorkBuddy Git 接力实测或如实标 BLOCKED_PROVIDER。参见 docs/MULTI_PROVIDER_AGENT_REGISTRY.md。

@@ -3,8 +3,8 @@
 目标：云端可运行的、可测试的 Python 3.11+ 小型控制系统。首版控制面与执行面分开，不绑定任何模型 API；GitHub/Markdown 是消息面，Controller 负责短事务，独立 Runner/QA 负责真实执行。必要时可用外部 SQLite/Postgres 单主事务后端，但单机 SQLite 不等于云端持久化。
 
 ## M01 配置与协议验证 / Codex（P0）
-代码 factory/agl/config.py, schemas.py；载入 agent_pool.json；验证 N=2..5、active IDs 唯一、能力、配额、allowed_paths、schema_version、绝对 repo/ref 以及安全默认值；兼容 V4.1 Task/Event/Receipt JSON Schema；非法配置明确退出无写入。
-完成：2/3/4/5 配置通过；1、6、重复 ID、超预算、错误权限配置失败；配置文件改 N 无需改代码。
+代码 factory/agl/config.py, schemas.py；载入 agent_pool.json；验证 N>=2、active IDs 唯一、能力、配额、allowed_paths、schema_version、绝对 repo/ref 以及安全默认值；兼容 V4.1 Task/Event/Receipt JSON Schema；非法配置明确退出无写入。
+完成：N=2/3/4/5/6/10/20 配置通过；1、重复 ID、已核实的 Provider 额度超限和权限错误失败；增加 WorkBuddy/Codex 不需修改核心源码。
 
 ## M02 GitHub 存储适配 / WorkBuddy（P0/P1）
 factory/agl/storage/github.py；严格 repo/branch/path 映射；读 branch SHA、提交不可变事件、Git blob+commit SHA 回读、超时后只读 reconciliation、CAS 更新专职 projection；规范事件唯一名；细分 NO_PERMISSION/NOT_FOUND/CONFLICT/UNKNOWN_WRITE。
@@ -23,14 +23,14 @@ factory/agl/memory.py；FACT、OBSERVED、FAIL、CLAIM、PATCH_SUMMARY 五类，
 完成：新增 FAIL 使受影响候选待复核，而不误伤其他 commit；不把字符串“passed”当实际测试通过；热摘要容量可配置。
 
 ## M06 定时工位轮询包 / WorkBuddy（P1/P3）
-factory/agl/poll.py；按 pool.active_agent_ids 动态生成运行指令上下文，先看旧 HANDOFF/任务状态，再领取一项 READY；计算 N 个时槽，生成 schedule manifest 供用户在真实平台登记；记录计划与实触发分离。
-完成：任意 enabled agent_id 可独立冷启动；N 改变后无需重写 prompt 或 Python；disabled Agent 不可新领任务。
+factory/agl/poll.py；按跨 Provider 注册表动态生成运行指令上下文，先看旧 HANDOFF/任务状态，再领取一项 READY；按各 Provider 的原生 cadence/预算独立计算建议错峰和真实 schedule_id，生成 schedule manifest 供用户在真实平台登记；记录计划与实触发分离。
+完成：任意已验证的 ACTIVE agent_id 可冷启动；N=6/10 及异构 Provider 不需修改 Python；disabled/unverified/draining Agent 不可领共享写入任务。
 
 ## M07 交接与断点恢复 / Codex（P1/P3）
 factory/agl/handoff.py, context.py；每次保存 TASK_ID/SPEC_HASH/DECISION_LOG/OPEN_ISSUES/NEXT_ACTION/EVIDENCE_REFS，HOT/WARM/COLD 和逐 Agent cursor；个人上下文不依赖浏览器对话长度；上轮失败可恢复。
 完成：断开/错过两个小时后仍能从 Git 证据正确续作，若 lease 已失效不能继续对旧 attempt 推进。
 
-## M08 外部测试接口 / WorkBuddy（P4）
+## M08 外部 ProviderAdapter 与测试接口 / WorkBuddy（P4）
 factory/agl/execution.py；TEST_REQUEST → 外部获权 Runner → stdout/stderr、exit_code、test_summary、environment_id、commit_sha、sha256 → TEST_RESULT/ACK；WorkBuddy 和 Codex 适配器需通过可用性探针，云端 webhook/API 未实测前状态 DISCONNECTED。
 完成：真实执行端对固定测试程序给出 PASS/FAIL 证据，错误 SHA 的测试不能验收；关闭云端执行器返回 BLOCKED_EXECUTOR 不伪造。
 
@@ -51,3 +51,5 @@ M01+M02 可并行；M03+M05+M07 依赖 Schema；M04 必须在 M02/M03 后集成�
 
 ## 开发权责
 Codex = 设计/状态机/并发正确性/难点实现/代码复核；WorkBuddy = GitHub 云端通路/CLI/流水线/真实隔离测试/交付。两边只在自己的开发分支写，统一 Integrator 通过 PR + QA 合并。用户批准前不改 main、不创建真实 ChatGPT 定时任务、不接入付费 API。
+## V4.2 跨平台强制修订
+所有 M01–M10 模块必须支持 N>=2、无固定最大人数的异构 registry 和 per-provider 调度/配额/运行权限。优先阅读 docs/MULTI_PROVIDER_AGENT_REGISTRY.md，不允许依赖固定 ChatGPT A–E 顺序或全局 60/N 排班。首次真实接入 WorkBuddy 只能在凭据、云端触发、Git 回读、QA 全部实测成功后宣布通过。
