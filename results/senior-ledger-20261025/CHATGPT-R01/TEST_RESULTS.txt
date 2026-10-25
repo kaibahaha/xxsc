@@ -1,0 +1,82 @@
+SENIOR-LEDGER-20261025 / CHATGPT-R01 â ACTUAL TEST EXECUTION RECORD
+Interpreter: Python 3.13.5 (Python 3.11 unavailable in execution environment)
+Frozen public test Git blob SHA verified: 242db970a4700aa83e18afcf8b5fb905e6c01947
+Frozen public test file used without modification.
+Execution root: /mnt/data/senior-ledger-20261025/CHATGPT-R01
+PYTHONPATH=/mnt/data/senior-ledger-20261025/CHATGPT-R01/src
+
+PUBLIC TESTS
+Command: python -m unittest discover -s /mnt/data/senior-ledger-20261025/frozen_tests -p test_public.py -v
+Exit code: 0
+Executed: 23; Passed: 23; Failures: 0; Errors: 0
+--- COMPLETE ORIGINAL STDOUT+STDERR ---
+test_amount_bool_rejected (test_public.LedgerTests.test_amount_bool_rejected) ... ok
+test_audit_clean (test_public.LedgerTests.test_audit_clean) ... ok
+test_audit_detects_forged_journal (test_public.LedgerTests.test_audit_detects_forged_journal) ... ok
+test_audit_detects_missing_entry (test_public.LedgerTests.test_audit_detects_missing_entry) ... ok
+test_audit_detects_tampered_balance (test_public.LedgerTests.test_audit_detects_tampered_balance) ... ok
+test_concurrent_overdraw_prevented (test_public.LedgerTests.test_concurrent_overdraw_prevented) ... ok
+test_concurrent_same_request_once (test_public.LedgerTests.test_concurrent_same_request_once) ... ok
+test_credit_overflow_is_atomic (test_public.LedgerTests.test_credit_overflow_is_atomic) ... ok
+test_duplicate_account_conflict (test_public.LedgerTests.test_duplicate_account_conflict) ... ok
+test_duplicate_changed_payload_conflicts (test_public.LedgerTests.test_duplicate_changed_payload_conflicts) ... ok
+test_duplicate_exact_idempotent (test_public.LedgerTests.test_duplicate_exact_idempotent) ... ok
+test_duplicate_other_destination_conflicts (test_public.LedgerTests.test_duplicate_other_destination_conflicts) ... ok
+test_insufficient_no_side_effect (test_public.LedgerTests.test_insufficient_no_side_effect) ... ok
+test_missing_account_no_side_effect (test_public.LedgerTests.test_missing_account_no_side_effect) ... ok
+test_negative_amount_rejected (test_public.LedgerTests.test_negative_amount_rejected) ... ok
+test_nonblank_ids (test_public.LedgerTests.test_nonblank_ids) ... ok
+test_opening_balance_bool_rejected (test_public.LedgerTests.test_opening_balance_bool_rejected) ... ok
+test_overflow_initial_balance (test_public.LedgerTests.test_overflow_initial_balance) ... ok
+test_reopen_is_durable (test_public.LedgerTests.test_reopen_is_durable) ... ok
+test_rollback_on_injected_crash (test_public.LedgerTests.test_rollback_on_injected_crash) ... ok
+test_self_transfer_rejected (test_public.LedgerTests.test_self_transfer_rejected) ... ok
+test_snapshot_order (test_public.LedgerTests.test_snapshot_order) ... ok
+test_transfer_and_balances (test_public.LedgerTests.test_transfer_and_balances) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.365s
+
+OK
+
+REGRESSION TESTS
+Command: python -m unittest discover -s /mnt/data/senior-ledger-20261025/CHATGPT-R01/tests -p test_regression.py -v
+Exit code: 0
+Executed: 22; Passed: 22; Failures: 0; Errors: 0
+--- COMPLETE ORIGINAL STDOUT+STDERR ---
+test_audit_duplicate_journal (test_regression.RegressionTests.test_audit_duplicate_journal) ... ok
+test_audit_journal_unknown_account (test_regression.RegressionTests.test_audit_journal_unknown_account) ... ok
+test_audit_negative_balance (test_regression.RegressionTests.test_audit_negative_balance) ... ok
+test_audit_never_repairs_corruption (test_regression.RegressionTests.test_audit_never_repairs_corruption) ... ok
+test_audit_orphan_journal (test_regression.RegressionTests.test_audit_orphan_journal) ... ok
+test_audit_transfer_amount_mismatch (test_regression.RegressionTests.test_audit_transfer_amount_mismatch) ... ok
+test_audit_uncommitted_transfer (test_regression.RegressionTests.test_audit_uncommitted_transfer) ... ok
+test_bool_and_numeric_bounds (test_regression.RegressionTests.test_bool_and_numeric_bounds) ... ok
+test_callback_only_on_new_success (test_regression.RegressionTests.test_callback_only_on_new_success) ... ok
+test_callback_rollback_and_retry (test_regression.RegressionTests.test_callback_rollback_and_retry) ... ok
+test_conflict_payload_dimensions (test_regression.RegressionTests.test_conflict_payload_dimensions) ... ok
+test_credit_overflow_is_atomic (test_regression.RegressionTests.test_credit_overflow_is_atomic) ... ok
+test_idempotency_after_balance_exhausted (test_regression.RegressionTests.test_idempotency_after_balance_exhausted) ... ok
+test_invalid_ids_preserve_original_string (test_regression.RegressionTests.test_invalid_ids_preserve_original_string) ... ok
+test_maximum_valid_transfer (test_regression.RegressionTests.test_maximum_valid_transfer) ... ok
+test_path_validation (test_regression.RegressionTests.test_path_validation) ... ok
+test_process_duplicate_once (test_regression.RegressionTests.test_process_duplicate_once) ... /usr/lib/python3.13/multiprocessing/popen_fork.py:67: DeprecationWarning: This process (pid=467) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  self.pid = os.fork()
+ok
+test_process_overdraw (test_regression.RegressionTests.test_process_overdraw) ... ok
+test_self_transfer_and_notfound (test_regression.RegressionTests.test_self_transfer_and_notfound) ... ok
+test_snapshot_order_and_durability (test_regression.RegressionTests.test_snapshot_order_and_durability) ... ok
+test_thread_duplicate_once (test_regression.RegressionTests.test_thread_duplicate_once) ... ok
+test_thread_overdraw (test_regression.RegressionTests.test_thread_overdraw) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.365s
+
+OK
+
+NOT EXECUTED
+Python 3.11 interpreter tests: NOT_EXECUTED (interpreter unavailable).
+Hidden evaluation tests: NOT_EXECUTED (not accessible; no score claimed).
+Other independent external grading: NOT_EXECUTED.
+
+Caveat: Python 3.13.5 multiprocessing emitted a DeprecationWarning about fork() in a multithreaded process. Both multiprocess tests completed successfully with exit code 0.
