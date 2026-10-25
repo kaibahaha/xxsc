@@ -1,137 +1,73 @@
-"""P01 - 半开时间窗合并与幂等去重.
-
-SCHED-CODE-20261025-BLIND-T5-R2
-Deliverable: results/scheduled-model-20261025/P01.py
-Entrypoint : merge_windows(events, gap) -> list[dict]
-
-仅使用 Python 3.11 标准库。
-"""
-
-from __future__ import annotations
-
-_REQUIRED_FIELDS = ("event_id", "tenant", "start", "end")
+"""Solution for P01: merge half-open event windows by tenant."""
 
 
-def _is_real_int(value) -> bool:
-    """True only for genuine ints; bool is explicitly rejected."""
+def _is_int(value):
     return isinstance(value, int) and not isinstance(value, bool)
 
 
-def _is_non_empty_str(value) -> bool:
-    return isinstance(value, str) and value != ""
+def merge_windows(events: list[dict], gap: int) -> list[dict]:
+    """Deduplicate events globally, then merge nearby windows per tenant.
 
-
-def merge_windows(events, gap):
-    """Merge half-open [start, end) windows per tenant with an idempotent dedup.
-
-    Steps
-    -----
-    1. Validate ``gap`` and the ``events`` container.
-    2. Validate every event, then perform a global idempotent dedup on
-       ``event_id``.  Identical duplicates collapse; the same id with any
-       differing field raises ``ValueError``.
-    3. Group the surviving events by tenant, sort each group by
-       ``(start, end, event_id)`` and sweep once, merging a window when
-       ``next.start <= current.end + gap`` (touching windows merge).
-    4. Emit ``{"tenant", "start", "end", "count"}`` records sorted by
-       ``(tenant, start, end)``.
-
-    Complexity: O(n log n) time (dominated by sorting), O(n) extra space
-    excluding the output.
-
-    The input objects are never mutated.
+    Runs in O(n log n) time and uses O(n) auxiliary space.
     """
     if not isinstance(events, list):
         raise ValueError("events must be a list")
-    if not _is_real_int(gap) or gap < 0:
+    if not _is_int(gap) or gap < 0:
         raise ValueError("gap must be a non-negative integer")
 
-    # ---- validate + idempotent dedup -------------------------------------
-    canonical: dict = {}
-    for index, event in enumerate(events):
-        if not isinstance(event, dict):
-            raise ValueError("events[%d] must be a dict" % index)
-        for field in _REQUIRED_FIELDS:
-            if field not in event:
-                raise ValueError("events[%d] is missing required field %r" % (index, field))
+    required = {"event_id", "tenant", "start", "end"}
+    by_event_id = {}
+    unique_events = []
+
+    for event in events:
+        if not isinstance(event, dict) or not required.issubset(event):
+            raise ValueError("each event must contain all required fields")
 
         event_id = event["event_id"]
         tenant = event["tenant"]
         start = event["start"]
         end = event["end"]
+        if not isinstance(event_id, str) or not event_id:
+            raise ValueError("event_id must be a non-empty string")
+        if not isinstance(tenant, str) or not tenant:
+            raise ValueError("tenant must be a non-empty string")
+        if not _is_int(start) or not _is_int(end) or start >= end:
+            raise ValueError("start and end must be integers with start < end")
 
-        if not _is_non_empty_str(event_id):
-            raise ValueError("events[%d].event_id must be a non-empty string" % index)
-        if not _is_non_empty_str(tenant):
-            raise ValueError("events[%d].tenant must be a non-empty string" % index)
-        if not _is_real_int(start):
-            raise ValueError("events[%d].start must be an integer (bool rejected)" % index)
-        if not _is_real_int(end):
-            raise ValueError("events[%d].end must be an integer (bool rejected)" % index)
-        if start >= end:
-            raise ValueError("events[%d] must satisfy start < end" % index)
+        previous = by_event_id.get(event_id)
+        if previous is not None:
+            if previous != event:
+                raise ValueError("conflicting events share an event_id")
+            continue
+        by_event_id[event_id] = event
+        unique_events.append((tenant, start, end, event_id))
 
-        signature = (tenant, start, end)
-        previous = canonical.get(event_id)
-        if previous is None:
-            canonical[event_id] = signature
-        elif previous != signature:
-            raise ValueError("conflicting payload for duplicate event_id %r" % (event_id,))
-
-    # ---- group by tenant --------------------------------------------------
-    by_tenant: dict = {}
-    for event_id, (tenant, start, end) in canonical.items():
-        by_tenant.setdefault(tenant, []).append((start, end, event_id))
+    grouped = {}
+    for tenant, start, end, event_id in unique_events:
+        grouped.setdefault(tenant, []).append((start, end, event_id))
 
     result = []
-    for tenant in sorted(by_tenant):
-        windows = sorted(by_tenant[tenant], key=lambda item: (item[0], item[1], item[2]))
-
-        cur_start = None
-        cur_end = None
-        cur_ids = set()
-
-        for start, end, event_id in windows:
-            if cur_start is None:
-                cur_start, cur_end, cur_ids = start, end, {event_id}
-                continue
-            if start <= cur_end + gap:
-                if end > cur_end:
-                    cur_end = end
-                cur_ids.add(event_id)
+    for tenant, windows in grouped.items():
+        windows.sort()
+        current_start = current_end = None
+        count = 0
+        for start, end, _event_id in windows:
+            if current_start is None:
+                current_start, current_end, count = start, end, 1
+            elif start <= current_end + gap:
+                current_end = max(current_end, end)
+                count += 1
             else:
                 result.append(
-                    {
-                        "tenant": tenant,
-                        "start": cur_start,
-                        "end": cur_end,
-                        "count": len(cur_ids),
-                    }
+                    {"tenant": tenant, "start": current_start,
+                     "end": current_end, "count": count}
                 )
-                cur_start, cur_end, cur_ids = start, end, {event_id}
-
-        if cur_start is not None:
+                current_start, current_end, count = start, end, 1
+        if current_start is not None:
             result.append(
-                {
-                    "tenant": tenant,
-                    "start": cur_start,
-                    "end": cur_end,
-                    "count": len(cur_ids),
-                }
+                {"tenant": tenant, "start": current_start,
+                 "end": current_end, "count": count}
             )
 
-    # Tenants are emitted in sorted order and windows inside a tenant have
-    # strictly increasing start, so the whole list is already ordered by
-    # (tenant, start, end).
+    result.sort(key=lambda item: (item["tenant"], item["start"], item["end"]))
     return result
-
-
-if __name__ == "__main__":  # pragma: no cover - manual smoke check
-    sample = [
-        {"event_id": "e1", "tenant": "x", "start": 0, "end": 5},
-        {"event_id": "e2", "tenant": "x", "start": 7, "end": 9},
-        {"event_id": "e3", "tenant": "x", "start": 9, "end": 10},
-        {"event_id": "e4", "tenant": "y", "start": 1, "end": 3},
-        {"event_id": "e2", "tenant": "x", "start": 7, "end": 9},
-    ]
-    print(merge_windows(sample, 2))
