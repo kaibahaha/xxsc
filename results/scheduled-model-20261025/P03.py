@@ -99,13 +99,3 @@ def schedule(jobs: list[dict], completed: list[str], capacity: int) -> dict:
         remaining.difference_update(selected)
 
     return {"waves": waves, "total_waves": len(waves)}
-
-
-if __name__ == "__main__":  # pragma: no cover - manual smoke check
-    sample = [
-        {"id": "a", "depends": [], "cost": 2, "priority": 5},
-        {"id": "b", "depends": [], "cost": 2, "priority": 4},
-        {"id": "c", "depends": ["a"], "cost": 1, "priority": 10},
-        {"id": "d", "depends": [], "cost": 1, "priority": 3},
-    ]
-    print(schedule(sample, [], 3))
