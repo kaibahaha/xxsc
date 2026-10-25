@@ -1,77 +1,178 @@
-"""Deterministic wave scheduling for a capacity-constrained DAG."""
+"""P03 - 带依赖与容量上限的确定性批调度.
 
-from collections import deque
+SCHED-CODE-20261025-BLIND-T5-R2
+Deliverable: results/scheduled-model-20261025/P03.py
+Entrypoint : schedule(jobs, completed, capacity) -> dict
+
+仅使用 Python 3.11 标准库。
+"""
+
+from __future__ import annotations
+
+_REQUIRED_FIELDS = ("id", "depends", "cost", "priority")
 
 
-def schedule(jobs: list[dict], completed: list[str], capacity: int) -> dict:
-    """Validate all jobs, reject cycles, then greedily schedule ready jobs by wave.
+def _is_real_int(value) -> bool:
+    return isinstance(value, int) and not isinstance(value, bool)
 
-    With V jobs and E dependencies: O(V(V+E) + V^2 log V) worst-case
-    time using per-wave scans and sorts; O(V+E) auxiliary space.
+
+def _is_non_empty_str(value) -> bool:
+    return isinstance(value, str) and value != ""
+
+
+def _validate(jobs, completed, capacity):
+    """Validate inputs and return (job_specs, completed_set, capacity).
+
+    job_specs maps job id -> (cost, priority, depends tuple).
     """
-    if (type(jobs) is not list or type(completed) is not list or
-            type(capacity) is not int or capacity <= 0):
-        raise ValueError("invalid jobs, completed, or capacity")
+    if not isinstance(jobs, list):
+        raise ValueError("jobs must be a list")
+    if not isinstance(completed, list):
+        raise ValueError("completed must be a list")
+    if not _is_real_int(capacity) or capacity <= 0:
+        raise ValueError("capacity must be a positive integer (bool rejected)")
 
-    indexed = {}
-    for job in jobs:
-        if type(job) is not dict or any(
-                field not in job for field in ("id", "depends", "cost", "priority")):
-            raise ValueError("invalid job structure")
+    specs: dict = {}
+    for index, job in enumerate(jobs):
+        if not isinstance(job, dict):
+            raise ValueError("jobs[%d] must be a dict" % index)
+        for field in _REQUIRED_FIELDS:
+            if field not in job:
+                raise ValueError("jobs[%d] is missing required field %r" % (index, field))
+
         job_id = job["id"]
-        deps = job["depends"]
-        cost, priority = job["cost"], job["priority"]
-        if (type(job_id) is not str or not job_id or job_id in indexed or
-                type(deps) is not list or
-                type(cost) is not int or not 1 <= cost <= capacity or
-                type(priority) is not int):
-            raise ValueError("invalid job fields or duplicate id")
-        if any(type(d) is not str or not d for d in deps) or len(set(deps)) != len(deps):
-            raise ValueError("invalid or duplicate dependency")
-        indexed[job_id] = job
+        depends = job["depends"]
+        cost = job["cost"]
+        priority = job["priority"]
 
-    for job in jobs:
-        if any(dep not in indexed for dep in job["depends"]):
-            raise ValueError("dependency refers to an unknown job")
+        if not _is_non_empty_str(job_id):
+            raise ValueError("jobs[%d].id must be a non-empty string" % index)
+        if job_id in specs:
+            raise ValueError("duplicate job id %r" % (job_id,))
 
-    if any(type(x) is not str or not x for x in completed):
-        raise ValueError("invalid completed job id")
-    if len(set(completed)) != len(completed) or any(x not in indexed for x in completed):
-        raise ValueError("unknown or repeated completed job id")
+        if not isinstance(depends, list):
+            raise ValueError("jobs[%d].depends must be a list" % index)
+        seen_deps = set()
+        for dep in depends:
+            if not _is_non_empty_str(dep):
+                raise ValueError("jobs[%d].depends entries must be non-empty strings" % index)
+            if dep in seen_deps:
+                raise ValueError("jobs[%d].depends contains duplicate entry %r" % (index, dep))
+            seen_deps.add(dep)
 
-    # Check the *whole* dependency graph, including precompleted jobs.
-    indegree = {job_id: len(job["depends"]) for job_id, job in indexed.items()}
-    successors = {job_id: [] for job_id in indexed}
-    for job in jobs:
-        for dep in job["depends"]:
-            successors[dep].append(job["id"])
-    ready = deque(job_id for job_id, degree in indegree.items() if degree == 0)
-    visited = 0
-    while ready:
-        job_id = ready.popleft()
-        visited += 1
-        for nxt in successors[job_id]:
-            indegree[nxt] -= 1
-            if indegree[nxt] == 0:
-                ready.append(nxt)
-    if visited != len(indexed):
-        raise ValueError("cyclic dependency graph")
+        if not _is_real_int(cost):
+            raise ValueError("jobs[%d].cost must be an integer (bool rejected)" % index)
+        if cost < 1 or cost > capacity:
+            raise ValueError("jobs[%d].cost must satisfy 1 <= cost <= capacity" % index)
+        if not _is_real_int(priority):
+            raise ValueError("jobs[%d].priority must be an integer (bool rejected)" % index)
 
-    done = set(completed)
+        specs[job_id] = (cost, priority, tuple(depends))
+
+    # ---- validate depends references / self loops -------------------------
+    for job_id, (_cost, _priority, depends) in specs.items():
+        for dep in depends:
+            if dep == job_id:
+                raise ValueError("job %r depends on itself" % (job_id,))
+            if dep not in specs:
+                raise ValueError("job %r depends on undefined job %r" % (job_id, dep))
+
+    # ---- validate completed ----------------------------------------------
+    completed_set = set()
+    for entry in completed:
+        if not _is_non_empty_str(entry):
+            raise ValueError("completed entries must be non-empty strings")
+        if entry in completed_set:
+            raise ValueError("completed contains duplicate entry %r" % (entry,))
+        if entry not in specs:
+            raise ValueError("completed references undefined job %r" % (entry,))
+        completed_set.add(entry)
+
+    # ---- the whole dependency graph must be acyclic -----------------------
+    _assert_acyclic(specs)
+
+    return specs, completed_set, capacity
+
+
+def _assert_acyclic(specs):
+    """Kahn's algorithm over the full graph; any remaining node means a cycle."""
+    indegree = {job_id: 0 for job_id in specs}
+    dependents: dict = {job_id: [] for job_id in specs}
+    for job_id, (_cost, _priority, depends) in specs.items():
+        for dep in depends:
+            dependents[dep].append(job_id)
+            indegree[job_id] += 1
+
+    queue = [job_id for job_id in specs if indegree[job_id] == 0]
+    processed = 0
+    while queue:
+        node = queue.pop()
+        processed += 1
+        for child in dependents[node]:
+            indegree[child] -= 1
+            if indegree[child] == 0:
+                queue.append(child)
+
+    if processed != len(specs):
+        remaining = sorted(job_id for job_id in specs if indegree[job_id] > 0)
+        raise ValueError("dependency graph contains a cycle involving %r" % (remaining,))
+
+
+def schedule(jobs, completed, capacity):
+    """Deterministic wave scheduler with dependencies and a capacity budget.
+
+    Each wave considers jobs that are not yet done and whose dependencies were
+    already done *before* the wave started (jobs picked in the current wave do
+    not unlock their dependents until the next wave).  Candidates are ordered
+    by ``(-priority, id)`` and greedily packed: a job that does not fit the
+    remaining capacity is skipped and the sweep continues with the following
+    candidates.
+
+    Complexity: O(V + E) for validation plus O(W * (V log V)) for the wave
+    sweep (W waves, each sorting the candidate set); space O(V + E).
+    Inputs are never mutated.
+    """
+    specs, done, capacity = _validate(jobs, completed, capacity)
+
     waves = []
-    while len(done) < len(indexed):
-        candidates = [job for job in jobs
-                      if job["id"] not in done and
-                      all(dep in done for dep in job["depends"])]
-        candidates.sort(key=lambda job: (-job["priority"], job["id"]))
+    remaining = set(specs) - done
+
+    while remaining:
+        # Candidates: dependencies satisfied before this wave starts.
+        candidates = [
+            job_id
+            for job_id in remaining
+            if all(dep in done for dep in specs[job_id][2])
+        ]
+        candidates.sort(key=lambda job_id: (-specs[job_id][1], job_id))
+
         chosen = []
         load = 0
-        for job in candidates:
-            if load + job["cost"] <= capacity:
-                chosen.append(job["id"])
-                load += job["cost"]
+        for job_id in candidates:
+            cost = specs[job_id][0]
+            if load + cost <= capacity:
+                chosen.append(job_id)
+                load += cost
+
         if not chosen:
-            raise ValueError("unable to schedule any remaining job")
+            raise ValueError(
+                "no schedulable job: %d job(s) remain but none fits capacity %d"
+                % (len(remaining), capacity)
+            )
+
         waves.append({"job_ids": chosen, "load": load})
-        done.update(chosen)  # Unlocks successors only in the *next* wave.
+        # Jobs chosen here only count as done for the *next* wave.
+        done = done | set(chosen)
+        remaining = remaining - set(chosen)
+
     return {"waves": waves, "total_waves": len(waves)}
+
+
+if __name__ == "__main__":  # pragma: no cover - manual smoke check
+    sample = [
+        {"id": "a", "depends": [], "cost": 2, "priority": 5},
+        {"id": "b", "depends": [], "cost": 2, "priority": 4},
+        {"id": "c", "depends": ["a"], "cost": 1, "priority": 10},
+        {"id": "d", "depends": [], "cost": 1, "priority": 3},
+    ]
+    print(schedule(sample, [], 3))
