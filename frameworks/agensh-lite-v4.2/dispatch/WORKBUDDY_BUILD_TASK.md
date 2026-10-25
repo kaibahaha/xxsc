@@ -18,7 +18,7 @@ mini-router/src/state.ts（event_id 去重/ACK/retry）、src/board_client.ts（
 使用可用的 GitHub API/CLI/SDK，只在隔离 dev 分支下提交独立事件/结果、读回 commit/blob/hash。创建与更新必须区分，CAS 冲突须重读并判断重复还是冲突；重试必须带原 event_id/operation_id。敏感凭据不进仓库日志。附真实读写探针成功/失败矩阵。
 
 ## M06 Dynamic Poll Adapter
-一个定时工位对应一个 active agent id，每轮从最新状态冷启动；生成 N=2/3/4/5 的建议错峰窗口（N=2→30m，3→20m，4→15m，5→12m）。启停 Agent 只需改 JSON 配置+用户批准的调度器登记，不允许把启用数硬编码成5。本人旧任务仍有效先续，否则按 READY 选单；无租约时 fail-closed。打印计划时间与真实执行时间独立字段。
+每个平台的定时工位对应独立 agent_id，每轮从最新状态冷启动；全池 N>=2 无固定上限，按 ChatGPT、WorkBuddy、Codex 各自已核实的 cadence、时区、schedule_id 建议和读取排班。ChatGPT 内部同为每小时触发的 K=2/3/4/5/6 工位建议平均间隔 30/20/15/12/10 分钟，跨平台不能套总 N 的 60/N。启停成员需要改变注册表并通过用户授权的实际调度器确认，不得将平台示例五名额误作系统上限。本人旧任务仍有效先续，否则按 READY 选单；无租约时 fail-closed。打印计划时间与真实执行时间独立字段。
 
 ## M08 Executor Bridge
 把代码测试设计为 GitHub TEST_REQUEST + authorized runner + TEST_RESULT/TEST_ACK。优先实现本环境内可实际验证的 shell/Python 假数据测试，随后评估 WorkBuddy 云端运行实例/ChatGPT Webhook 的真实调用能力。若没连接则产出 BLOCKED_EXECUTOR，不能宣称 webhook 跑通。严禁新建付费 API、无批准部署对外服务。
