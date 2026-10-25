@@ -1,0 +1,23 @@
+# P01 independent blind run report
+EXPERIMENT_ID=SCHED-CODE-20261025-BLIND-T5-RETRY
+PROBLEM_ID=P01
+SCHEDULED_AT=2026-10-25T09:35:14+08:00
+STARTED_AT=2026-10-25T09:38:20+08:00
+COMPLETED_AT=2026-10-25T09:39:02+08:00
+DURATION_SECONDS=42
+SOURCE_GIT_PATH=/benchmarks/scheduled-model-20261025/P01.md
+SOURCE_BLOB_SHA=3737e14bacfa4f666034bf5c54cf7a44ea456b94
+SOLUTION_SUMMARY=Validate input and globally deduplicate by event_id, group by tenant, sort intervals and greedily merge inclusive gap-adjacent windows. O(n log n) time, O(n) extra space.
+CODE_GIT_PATH=/results/scheduled-model-20261025/P01.py
+CODE_COMMIT_SHA=79591a425d2a627ab325848c59c66fcf99134c24
+CODE_BLOB_SHA=ed7eee312c9a4f0fb04d56b171141b5add209e22
+GIT_READBACK_STATUS=GIT_READBACK_PASS (source code independently fetched from target branch)
+TEST_EXECUTION_STATUS=EXECUTED_LOCAL_PYTHON_PUBLIC_EQUIVALENT (not yet the exact upstream unittest module)
+TEST_CASES_PASS=4
+TEST_CASES_FAIL=0
+LIBRARY_PATH=/test/SCHED_CODE_BLIND_20261025/P01_DELIVERY.md
+LIBRARY_FILE_ID=PENDING_UPLOAD_AT_REPORT_COMMIT
+LIBRARY_READBACK_STATUS=PENDING_UPLOAD_AT_REPORT_COMMIT
+MODEL_ID=MODEL_NOT_EXPOSED
+ERRORS / UNFINISHED_WORK=Scheduled run began after planned time: SCHEDULE_TIMING_ANOMALY. Hidden tests not available. Library upload performed after immutable Git report creation; see Library delivery and final run report for definitive evidence.
+FINAL_STATUS=CODE_GIT_READBACK_PASS; TEST_PUBLIC_EQUIVALENT_PASS; LIBRARY_PENDING
