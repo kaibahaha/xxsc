@@ -25,14 +25,15 @@
 2. 解题并编写 Python 3.11 标准库完整代码，提供规定的导出函数、输入校验、边界条件；输出的不是伪代码。
 3. 有实际 Python 运行工具时运行对应 unittest；只有真实运行可报告 PASS。无法运行时 TEST_NOT_EXECUTED。允许使用非远程第三方模型的本地标准库运行，但不可通过外部解题服务变相委托。
 4. 提交 Git `results/scheduled-model-20261025/P0i.py`，再提交 `results/scheduled-model-20261025/P0i_REPORT.md`。创建前检查同名是否已存在，已有文件绝不覆盖。记录每一次 create_file 的真实 commit SHA；写入后在同一 Git 分支独立 fetch_file 回读，记录 blob SHA。
-5. 每题报告必须包含：EXPERIMENT_ID、PROBLEM_ID、SCHEDULED_AT、STARTED_AT、COMPLETED_AT（均标北京时间+08:00并区分计划/实际）、SOURCE_PATH、SOURCE_BLOB_SHA、CODE_GIT_PATH、CODE_COMMIT_SHA、CODE_BLOB_SHA、CODE_READBACK、TEST_STATUS（带真实日志或 TEST_NOT_EXECUTED）、算法与复杂度、已知风险、MODEL_ID（若无可访问真实元数据写 MODEL_NOT_EXPOSED）、STATUS，禁止编造或把 Git 写入成功与代码测试通过混同。
+5. 每道题在 Git 提交与回读后，立即把**源码全文、该题报告内容及真实 Git commit SHA / Blob SHA / 回读状态**组合成一个 UTF-8 Markdown 本地文件，通过 files__manage_library upload 到 `/test/SCHED_CODE_BLIND_20261025/P0i_DELIVERY.md`，再以 files__list（可行时 files__read）独立回读，保留真实 Library ID。不要等四题全完成才第一次尝试 Library 写入；单题 Library 失败应记录，不阻塞其它题。四道题的每份镜像分别是 P01_DELIVERY.md、P02_DELIVERY.md、P03_DELIVERY.md、P04_DELIVERY.md。文件已存在不覆盖、不换名规避，记录 ALREADY_EXISTS。
+6. 每题报告必须包含：EXPERIMENT_ID、PROBLEM_ID、SCHEDULED_AT、STARTED_AT、COMPLETED_AT（均标北京时间+08:00并区分计划/实际）、SOURCE_PATH、SOURCE_BLOB_SHA、CODE_GIT_PATH、CODE_COMMIT_SHA、CODE_BLOB_SHA、CODE_READBACK、TEST_STATUS（带真实日志或 TEST_NOT_EXECUTED）、算法与复杂度、已知风险、MODEL_ID（若无可访问真实元数据写 MODEL_NOT_EXPOSED）、STATUS，禁止编造或把 Git 写入成功与代码测试通过混同。
 
 ## Library 总报告（必交）
 执行接近结束时，新建一个 ChatGPT Library Markdown 文件：
 `/test/SCHED_CODE_BLIND_20261025/SCHED_CODE_20261025_BLIND_T5_REPORT.md`。
 使用当前工具实际生成 UTF-8 Markdown 文件，然后 files__manage_library upload，之后用 files__list 和尽可能 files__read 真正回读，记录 Library 的真实 ID、保存路径和状态，禁止只回复聊天文字就称入库。
 
-该报告包括：
+该报告须独立记录已上传各题 Library 文件的真实 ID / 路径 / 回读状态；此总报告不代替逐题 Library 镜像。该报告包括：
 - EXPERIMENT_ID、一次性触发计划时刻和实际开始/结束（Asia/Shanghai +08:00）、实际完成题数；
 - 四题的逐题 SOLVE、TEST、GIT_WRITE、GIT_READBACK、完成时间、源 blob SHA、每次 commit SHA、最终完整文件路径；
 - 每题生成的**源码全文**（代码围栏），即使 Git 不可写也要保留可审计原始交付；
