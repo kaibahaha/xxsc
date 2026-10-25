@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AgenshLiteReceipt",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "event_id",
+    "target",
+    "result",
+    "verified_at",
+    "evidence_ref"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "event_id": {
+      "type": "string"
+    },
+    "target": {
+      "type": "string",
+      "enum": [
+        "GITHUB",
+        "DRIVE",
+        "LIBRARY",
+        "EVENT_INBOX",
+        "CONTROLLER"
+      ]
+    },
+    "result": {
+      "type": "string"
+    },
+    "verified_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evidence_ref": {
+      "type": "string"
+    },
+    "readback_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "commit_sha": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "writer": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

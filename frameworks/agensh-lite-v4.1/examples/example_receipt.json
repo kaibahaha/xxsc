@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "event_id": "EV-SHADOW-001",
+  "target": "EVENT_INBOX",
+  "result": "DEMO_ONLY",
+  "verified_at": "2026-10-25T00:00:00Z",
+  "evidence_ref": "example-only:DO-NOT-USE",
+  "readback_hash": null,
+  "commit_sha": null,
+  "writer": "DEMO"
+}

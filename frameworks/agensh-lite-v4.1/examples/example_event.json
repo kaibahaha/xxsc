@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "event_id": "EV-SHADOW-001",
+  "project_id": "PROJECT-SHADOW",
+  "task_id": "T-EXAMPLE-001",
+  "producer": "A",
+  "target_agents": [
+    "B"
+  ],
+  "kind": "FACT_PUBLISHED",
+  "source": "github",
+  "observed_at": "2026-10-25T00:00:00Z",
+  "summary": "仅为演示事件，非真实完成",
+  "raw_ref": "example-only:DO-NOT-USE",
+  "payload_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "spec_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "run_id": "RUN-SHADOW-001",
+  "causation_id": null
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "type": "FAIL",
+  "event_id": "EV-SHADOW-002",
+  "project_id": "PROJECT-SHADOW",
+  "task_id": "T-EXAMPLE-001",
+  "producer": "B",
+  "summary": "示例失败知识，不对应真实运行",
+  "detail_ref": "example-only:DO-NOT-USE",
+  "evidence_ref": "example-only:DO-NOT-USE",
+  "created_at": "2026-10-25T00:00:00Z",
+  "affected_commit": null,
+  "spec_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "status": "PROPOSED"
+}

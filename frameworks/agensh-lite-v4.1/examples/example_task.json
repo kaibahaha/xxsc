@@ -1,0 +1,19 @@
+{
+  "project_id": "PROJECT-SHADOW",
+  "task_id": "T-EXAMPLE-001",
+  "status": "READY",
+  "spec_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "revision": 1,
+  "acceptance_criteria": [
+    "示例演示：必须有有效读取回执",
+    "本示例禁止作为真实运行证据"
+  ],
+  "dependencies": [],
+  "allowed_agents": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ]
+}

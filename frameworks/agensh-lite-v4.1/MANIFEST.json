@@ -1,0 +1,207 @@
+{
+  "version": "4.1-DRAFT",
+  "created_date": "2026-10-25",
+  "upstream_commit": "0468a3e6a58b51dc2b84871fcaa0df22b0d1033e",
+  "files": [
+    {
+      "path": "00_SOURCES_AND_ADOPTION.md",
+      "bytes": 5483,
+      "sha256": "ea2784e4284747fc75359183bf8997038b4656c7f9b23a0de26cfd55b3905b87"
+    },
+    {
+      "path": "01_ARCHITECTURE_AND_AUTHORITY.md",
+      "bytes": 2944,
+      "sha256": "964871a5b169c11806dab6100913606edd851d46af417029eec05ef528b05bf4"
+    },
+    {
+      "path": "02_GITHUB_LAYOUT_AND_WRITES.md",
+      "bytes": 2520,
+      "sha256": "32a67ed101e55d01393b772fb9739eac58d8fcb48ead89b5044b78b8327d85db"
+    },
+    {
+      "path": "03_TASK_CLAIMS_AND_LEASES.md",
+      "bytes": 2175,
+      "sha256": "506c7074cd10579c04b18f64edc16a96af44eb091530dd3981d326b77140437a"
+    },
+    {
+      "path": "04_UEM_EVENTS_AND_DELIVERY.md",
+      "bytes": 2487,
+      "sha256": "f66505ebda17aa4f29cce4f5fcb8bd6f6d10470610e15902659738cf64375f11"
+    },
+    {
+      "path": "05_SHARED_MEMORY_AND_CONTEXT.md",
+      "bytes": 2882,
+      "sha256": "b65676078794ede5c366d70681deaf96769e934feb592bd6a98dd183fe9f7bfa"
+    },
+    {
+      "path": "06_LIFECYCLE_AND_HANDOFF.md",
+      "bytes": 2908,
+      "sha256": "2df23eb29415581dd2ad028975b73b9ddad35f1cbd3b76c47e14e03b784e6419"
+    },
+    {
+      "path": "07_QA_GATES_AND_PROVENANCE.md",
+      "bytes": 2517,
+      "sha256": "13b99e0805187e876fe1ecabb706ff25b20d7cef970d8c70150988b8c68797ae"
+    },
+    {
+      "path": "08_FAILURE_SCENARIOS.md",
+      "bytes": 2263,
+      "sha256": "b4a008a748fc37399972b4a6f136e8d8f0b6aea841bcdc694df3299f69ac4a8d"
+    },
+    {
+      "path": "09_FIVE_AGENTS_SCHEDULING.md",
+      "bytes": 2370,
+      "sha256": "c1478e779d9fd37472420516d03194467679f3d2700b0ca2ba822030d1b92642"
+    },
+    {
+      "path": "10_IMPLEMENTATION_ROADMAP.md",
+      "bytes": 2096,
+      "sha256": "0c7aefe7d38cb8a2919a6bde5d09a04a0bc5b47541f2d99807e10192701c3af0"
+    },
+    {
+      "path": "11_SECURITY_AND_LIMITS.md",
+      "bytes": 1370,
+      "sha256": "eee61a1e0f03cac3ab7f20d09329a92497fecd9b1d2dd132839d877fc03f9599"
+    },
+    {
+      "path": "NOTICE.md",
+      "bytes": 802,
+      "sha256": "83a756fd6e40b2f6e845a7233a2dad22c840a31bd4acc4f461b1f40413245c05"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2940,
+      "sha256": "1526d062fa107d101c9fcb4b01a8db3ac39397ed20ae016be0883972bebd9a96"
+    },
+    {
+      "path": "agents/CHATGPT_A_SCHEDULE_PROMPT.md",
+      "bytes": 1750,
+      "sha256": "74728b5e1942e5d462399f0725184f7a56004d014bd81ec05818f0ebff583c60"
+    },
+    {
+      "path": "agents/CHATGPT_B_SCHEDULE_PROMPT.md",
+      "bytes": 1752,
+      "sha256": "b31aa7f34794105d04da8a9a3c532bafa93690fd37661ac11b97f6d0224627e3"
+    },
+    {
+      "path": "agents/CHATGPT_C_SCHEDULE_PROMPT.md",
+      "bytes": 1781,
+      "sha256": "37ffc7b59c3aed51a8766d16726f20360bb716946757a2b187a3e6ebe931740a"
+    },
+    {
+      "path": "agents/CHATGPT_D_SCHEDULE_PROMPT.md",
+      "bytes": 1776,
+      "sha256": "16377d9c825cad11a24b82d505e3265201560c919e1ee6d160aca27818995553"
+    },
+    {
+      "path": "agents/CHATGPT_E_SCHEDULE_PROMPT.md",
+      "bytes": 1801,
+      "sha256": "8007d0af02709d20fd14e8f24cee49e3e1435909fbdd7f9e83a175819c660cae"
+    },
+    {
+      "path": "agents/COMMON.md",
+      "bytes": 2637,
+      "sha256": "f458164dcb5d548b42a1ceb7f7f8e83e0aa9480cf38ea7311bb9cf91e080ffc9"
+    },
+    {
+      "path": "examples/example_event.json",
+      "bytes": 587,
+      "sha256": "bf7b9eaa9dd504d0eb159fd13e149aaed83bfacada18b32f8db40e84fb337935"
+    },
+    {
+      "path": "examples/example_note.json",
+      "bytes": 483,
+      "sha256": "7b1223aa259c8333d8e450f7ea5fbd064f0ba0a3eca215c24c2576b21d70dacc"
+    },
+    {
+      "path": "examples/example_receipt.json",
+      "bytes": 266,
+      "sha256": "f8bd550d552affcf54cb01c414626498c65c8ba41f742353a30e8bfd93b153f4"
+    },
+    {
+      "path": "examples/example_task.json",
+      "bytes": 409,
+      "sha256": "7711f7266ecac57058bfb9e74ba0901978d16e83dc128ce51ce494f385a7e59e"
+    },
+    {
+      "path": "schemas/event.schema.json",
+      "bytes": 1380,
+      "sha256": "3f16797fbd79cce047cca71a7a96efc42d332be935c356d2e47e09e0eda31dd3"
+    },
+    {
+      "path": "schemas/note.schema.json",
+      "bytes": 1253,
+      "sha256": "561fb7d4da790eb4692b305d3c208bccdae46362837a6847d3afcf010a294ec5"
+    },
+    {
+      "path": "schemas/receipt.schema.json",
+      "bytes": 996,
+      "sha256": "64101b5ea26503d7121f71df808cfe09d37225190f262806e8cb4a12b8c18505"
+    },
+    {
+      "path": "schemas/task.schema.json",
+      "bytes": 871,
+      "sha256": "317323a586874541217b5dd86724290f2ed43fc890bcdfc9b32772f414bb55ff"
+    },
+    {
+      "path": "templates/ACK.md",
+      "bytes": 308,
+      "sha256": "2875e57dae4df8a7f547528d08985d2fff6bef75c7e3474f213d18a049ebab81"
+    },
+    {
+      "path": "templates/BOARD.md",
+      "bytes": 740,
+      "sha256": "8aad8bd1c70c9ece00379b4d823914d9ed9334fa46acb4b11ac2c123577d0992"
+    },
+    {
+      "path": "templates/CAPABILITY_REGISTRY.md",
+      "bytes": 865,
+      "sha256": "0925db3636d58c2fea2cb954e8ad91e61e6d31cc6588f8b06554aa8f210ff088"
+    },
+    {
+      "path": "templates/CLAIM.md",
+      "bytes": 427,
+      "sha256": "1c634d650be65f1a9df2ca6b7f7df45f6dbf9d48275e00487a3f34d0944de5b6"
+    },
+    {
+      "path": "templates/EVENT.md",
+      "bytes": 322,
+      "sha256": "84e2a6e75a6c13d371815315a939f84600cb565552ec9acd801c2f6467c5586b"
+    },
+    {
+      "path": "templates/HANDOFF.md",
+      "bytes": 485,
+      "sha256": "dc8793dbde7a460060bc40796bc5326a24e3423caa82cbff658c01971bc750b7"
+    },
+    {
+      "path": "templates/NOTE.md",
+      "bytes": 653,
+      "sha256": "0517c3b94efea45ad12b18a269a5f7aedaf33921d0720ebe48d511165b90156a"
+    },
+    {
+      "path": "templates/PATCH_SUMMARY.md",
+      "bytes": 381,
+      "sha256": "edcb1ff62e3f5f75e0be47bfe170bba1bbaae9d829ff23d920c9e3b36ffcfaed"
+    },
+    {
+      "path": "templates/RUN_REPORT.md",
+      "bytes": 676,
+      "sha256": "834d134a889291643cdd16ca003abfa48aee5fd9906aae553774d900a551c86c"
+    },
+    {
+      "path": "templates/TASK.md",
+      "bytes": 567,
+      "sha256": "66b1958a30a384e3b74cb4b705fc21b928e6fdc165f42e25331739a97da3f8ac"
+    },
+    {
+      "path": "tests/ACCEPTANCE_CASES.md",
+      "bytes": 1348,
+      "sha256": "326b664be9cda8f1e321780ba808059692b6bb405457c68ba9560633c9ccf6a0"
+    },
+    {
+      "path": "tools/validate_examples.py",
+      "bytes": 1537,
+      "sha256": "95a1827dafcce85b3fa06c624c7467c59ba0979116a464dacb1fe71d4f986071"
+    }
+  ]
+}
