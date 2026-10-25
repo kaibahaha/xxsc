@@ -1,5 +1,7 @@
 # R01 冻结接口与兼容性
 
+> P1 Review 后续已修复：请优先读取 REVIEW_FIX_R01_REPORT.md 与 contracts/README.md 的当前阶段授权/版本化注册表约定；本文件其余内容保留首轮交付记录。
+
 权威版本：源码提交 `001a7f2db4ea9d1ef3c6e164456d900a0cb7d41c`；Python 3.11+；schema_version=2.0。首轮合同提交 `4728f69` 为早期骨架，集成请固定最终源码提交及 SOURCE_ARTIFACTS.json 中 schema hash。
 
 所有 DTO 为 keyword-only dataclass，支持 `.to_dict()`/`.from_dict()`，拒绝未知字段及不支持的版本。结构 schema：factory/agl/contracts/core.schema.json。语义校验仍在 Python；schema 不承担身份认证。

@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-25T16:10:12.715562+00:00",
+  "baseline": "208e20f70e8c8f38ca6da87751534ab1e8d6dc09",
+  "source_commit": "acc39e97ba4281197bcc65e2a7187a994e8b81f0",
+  "original_tests_unchanged": [
+    {
+      "path": "factory/tests/core/test_config_contracts.py",
+      "test_functions": 9,
+      "identical_test_function_asts": true
+    },
+    {
+      "path": "factory/tests/core/test_controller_leases.py",
+      "test_functions": 24,
+      "identical_test_function_asts": true
+    },
+    {
+      "path": "factory/tests/core/test_events_recovery.py",
+      "test_functions": 12,
+      "identical_test_function_asts": true
+    },
+    {
+      "path": "factory/tests/core/test_memory_handoff_qa.py",
+      "test_functions": 6,
+      "identical_test_function_asts": true
+    }
+  ],
+  "added_phase_tests": 15,
+  "added_registry_tests": 11,
+  "only_shared_move_helper_adapted": true,
+  "source_files_match_commit": 25
+}

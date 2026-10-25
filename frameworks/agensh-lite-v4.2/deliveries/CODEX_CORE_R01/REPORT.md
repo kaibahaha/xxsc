@@ -1,5 +1,7 @@
 # AGL-CODEX-CORE-R01 实际交付报告
 
+> P1 Review 后续已修复：请优先读取 REVIEW_FIX_R01_REPORT.md 与 contracts/README.md 的当前阶段授权/版本化注册表约定；本文件其余内容保留首轮交付记录。
+
 状态：**SELF_TESTED / INTEGRATION_PENDING / BLOCKED_ATOMIC_LEASE（云端）**。
 
 已交付可运行 Python 核心及 90 项实际通过测试，失败 0、跳过 0，pytest exit_code=0，耗时 2.75s。源码和测试提交为 `001a7f2db4ea9d1ef3c6e164456d900a0cb7d41c`，完整输出见 TEST_RESULTS.txt，机器可读结果见 pytest-results.xml。之后的提交仅归档交付证据；本报告不尝试自引用其所在提交 SHA。最终分支 SHA 可从 PR head 和 Git 回读取得。

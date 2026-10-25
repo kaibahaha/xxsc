@@ -1,0 +1,46 @@
+BASELINE: 208e20f + P1-01 patch only; bootstrap/registry code not yet fixed
+AT: 2026-10-25T16:00:06.833961+00:00
+COMMAND: ['/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python', '-m', 'pytest', 'factory/tests/core/test_review_fix_registry_restart.py', '-v', '--tb=short', '--junitxml=frameworks/agensh-lite-v4.2/deliveries/CODEX_CORE_R01/REVIEW_FIX_R01_P102_BEFORE.xml']
+STDOUT:
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.7.0 -- /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python
+cachedir: .pytest_cache
+rootdir: /workspace/xxsc
+plugins: anyio-4.14.2
+collecting ... collected 2 items
+
+factory/tests/core/test_review_fix_registry_restart.py::test_p102_two_to_six_new_config_restart_preserves_all_history FAILED [ 50%]
+factory/tests/core/test_review_fix_registry_restart.py::test_p102_six_to_ten_new_config_restart_preserves_all_history FAILED [100%]
+
+=================================== FAILURES ===================================
+________ test_p102_two_to_six_new_config_restart_preserves_all_history _________
+factory/tests/core/test_review_fix_registry_restart.py:36: in test_p102_two_to_six_new_config_restart_preserves_all_history
+    fresh = Controller(c.backend, pool(6), authenticator, clock=clock)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+factory/agl/controller.py:30: in __init__
+    backend.transact("bootstrap", request, now, bootstrap)
+factory/agl/leases.py:75: in transact
+    require(old["request_hash"] == digest(request), "COMMAND_ID_COLLISION")
+factory/agl/schemas.py:22: in require
+    raise CoreError(code)
+E   factory.agl.schemas.CoreError: COMMAND_ID_COLLISION
+________ test_p102_six_to_ten_new_config_restart_preserves_all_history _________
+factory/tests/core/test_review_fix_registry_restart.py:50: in test_p102_six_to_ten_new_config_restart_preserves_all_history
+    fresh = Controller(c.backend, pool(10), authenticator, clock=clock)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+factory/agl/controller.py:30: in __init__
+    backend.transact("bootstrap", request, now, bootstrap)
+factory/agl/leases.py:75: in transact
+    require(old["request_hash"] == digest(request), "COMMAND_ID_COLLISION")
+factory/agl/schemas.py:22: in require
+    raise CoreError(code)
+E   factory.agl.schemas.CoreError: COMMAND_ID_COLLISION
+- generated xml file: /workspace/xxsc/frameworks/agensh-lite-v4.2/deliveries/CODEX_CORE_R01/REVIEW_FIX_R01_P102_BEFORE.xml -
+=========================== short test summary info ============================
+FAILED factory/tests/core/test_review_fix_registry_restart.py::test_p102_two_to_six_new_config_restart_preserves_all_history
+FAILED factory/tests/core/test_review_fix_registry_restart.py::test_p102_six_to_ten_new_config_restart_preserves_all_history
+============================== 2 failed in 0.13s ===============================
+
+STDERR:
+
+EXIT_CODE: 1

@@ -1,5 +1,7 @@
 # 给 WorkBuddy / R02 Integrator 的交接
 
+> P1 Review 后续已修复：请优先读取 REVIEW_FIX_R01_REPORT.md 与 contracts/README.md 的当前阶段授权/版本化注册表约定；本文件其余内容保留首轮交付记录。
+
 PR：https://github.com/kaibahaha/xxsc/pull/1 （Draft，勿合并）。目标分支 `exp/agensh-lite-v4.2-controller-mvp-20261025`。源码/测试/最终合同提交 `001a7f2db4ea9d1ef3c6e164456d900a0cb7d41c`；交付证据另有后续提交，最终 head 由 PR 回读取得。
 
 1. 先读取 factory/agl/contracts/README.md、core.schema.json 和 INTERFACES.md，核对 SOURCE_ARTIFACTS.json 的精确哈希。沿用 AgentRegistration/ProviderSession/TaskSpec/Event/UEM/Ack/ClaimProposal/LeaseGrant/StateTransition/TaskTransition/MemoryNote/Handoff/ArtifactEvidence；Config 在 config.py、AgentRegistry 在 registry.py。

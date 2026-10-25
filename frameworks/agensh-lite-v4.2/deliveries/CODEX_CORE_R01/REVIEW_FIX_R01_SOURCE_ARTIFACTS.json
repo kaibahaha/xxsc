@@ -1,0 +1,130 @@
+{
+  "source_commit": "acc39e97ba4281197bcc65e2a7187a994e8b81f0",
+  "files": [
+    {
+      "path": "factory/agl/audit.py",
+      "sha256": "92ed8f7bdaafc53413f474f5c1216f577309cd8f95f7439329c65873493dc35c",
+      "git_blob_sha": "e47f119b0f829763d1d44b79d6a6cf3775d464fc"
+    },
+    {
+      "path": "factory/agl/config.py",
+      "sha256": "a78d8f1e362c6de88809e4d5b6bf6c3045b271e6bd85a454e233d6bf35c2d6a1",
+      "git_blob_sha": "238a88a124ad470869bff015886672b5f9f689d6"
+    },
+    {
+      "path": "factory/agl/context.py",
+      "sha256": "adc47274c34bf76a9717f850d2caa54665a2dc4517ae86d29edbc470e08c1de6",
+      "git_blob_sha": "449fcef94b19d2ecb64f3c425f7fa3077bf2db1e"
+    },
+    {
+      "path": "factory/agl/contracts/MICROSOFT_LICENSE.txt",
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "git_blob_sha": "9e841e7a26e4eb057b24511e7b92d42b257a80e5"
+    },
+    {
+      "path": "factory/agl/contracts/README.md",
+      "sha256": "e65f7483733911f9815cfaf19f9486f9d4bfe46db5f3e1216756774f20d6f347",
+      "git_blob_sha": "9352f18babdef6fd1601b9e816dff6d39da172d0"
+    },
+    {
+      "path": "factory/agl/contracts/__init__.py",
+      "sha256": "6757bca92bea064206d5e72d84d91f89dcf99e82dc0cc81ac941873ea0030928",
+      "git_blob_sha": "0e52df4eb9d67174fd4f6d41d537132092d58ea5"
+    },
+    {
+      "path": "factory/agl/contracts/core.schema.json",
+      "sha256": "f63a88e5ddda3a49e730c5387009bf0bd0f0abcf4d3e1200b4d22e083e0aea48",
+      "git_blob_sha": "5d98ac3a381e4119059e0f4fdf451fa251da86dc"
+    },
+    {
+      "path": "factory/agl/contracts/demo.py",
+      "sha256": "24e7039573f39fa2d56d4170b90a85ec0ee7e7d432fa1af0e039a5daf874c42d",
+      "git_blob_sha": "41f07cef514eabeb26129ba5ba3787aae07de952"
+    },
+    {
+      "path": "factory/agl/contracts/generate_schema.py",
+      "sha256": "aa54ff904fca3be1a39f6aeb8ac165a320a925a1da0b30d6204e9ef9584f1dc7",
+      "git_blob_sha": "edb1fce103f428292b35881ba5b0ed76733844be"
+    },
+    {
+      "path": "factory/agl/controller.py",
+      "sha256": "c00ea31882ff6c724836c022399e609757db87563913a4ac50309a099575981a",
+      "git_blob_sha": "985e0596e8db4e8c5e1e3713d8226fd25e9a309c"
+    },
+    {
+      "path": "factory/agl/events.py",
+      "sha256": "29c96115ff957ac73135fa8ebd64d980abc22ba36862b6813410479b79b70c11",
+      "git_blob_sha": "3070ccade20ccf57c69ce4e1e2fbd45b468dcb20"
+    },
+    {
+      "path": "factory/agl/handoff.py",
+      "sha256": "79cd10b3435485d52409e09cda57d7af88aae507317fb8821afd80c5fc82a713",
+      "git_blob_sha": "7cb022f310a4b1deeec23f2fb2b947ef0f68f2a8"
+    },
+    {
+      "path": "factory/agl/leases.py",
+      "sha256": "ebeb886fa1e4e78084ca241b8e36fc277d14a831a614b269ae40b323b1207bf1",
+      "git_blob_sha": "761bd607f931de972c6d32d1d97608087cff515a"
+    },
+    {
+      "path": "factory/agl/memory.py",
+      "sha256": "f72e51f1fae0f4c1562294eeeb0da0ce16d0eaf39a4d6029d464752de8254472",
+      "git_blob_sha": "f596d73a0874e64a60ee2dc21f6911a273dd2d7a"
+    },
+    {
+      "path": "factory/agl/registry.py",
+      "sha256": "053850c129d8e1da89ff72ba00766cdfed76eea5c5fcbe8d25012213f7c59785",
+      "git_blob_sha": "22ac1fc8f7fd7a42720e180e0b03c882f043d1db"
+    },
+    {
+      "path": "factory/agl/replay.py",
+      "sha256": "aa5f9cd354fbeb3af7843a4989c883efce5c3deec667cfd87972fe287f04b736",
+      "git_blob_sha": "c00044c26e5527d291198e3ed4119bce1ed4bad5"
+    },
+    {
+      "path": "factory/agl/schemas.py",
+      "sha256": "56bb1d7ddbf242485caff0f5e3cf3f81ff8d7f7fde230f4e4d254850bcc9d744",
+      "git_blob_sha": "e26f948b6c4549616b49f7c0cc7a22e4c16e49e9"
+    },
+    {
+      "path": "factory/agl/task_state.py",
+      "sha256": "22da006e55628b6342e1e39ebf0c4c93af29fefb208e7cbb2a94377df8ac15df",
+      "git_blob_sha": "9e7a0d841a77722b8792e793d447affaff4bf6d5"
+    },
+    {
+      "path": "factory/tests/core/conftest.py",
+      "sha256": "e9786c50ef54b94de282ac63b7337a94dfe121821f4a6a4e5cdcc2c56d3ea5e1",
+      "git_blob_sha": "405f308c723f5b6f6fa9494c7931b13b8cf158d9"
+    },
+    {
+      "path": "factory/tests/core/test_config_contracts.py",
+      "sha256": "6e33236d9b5af444ae9844cb7339b8d8f50beeedc0cf4197b875b89df5dc4c2d",
+      "git_blob_sha": "4d99ef6c0d9ca2b27e3793aa819482da077eaa99"
+    },
+    {
+      "path": "factory/tests/core/test_controller_leases.py",
+      "sha256": "c2990ffece9d1d5d242266465af77b600163a3051fe240181d243883cb60bf93",
+      "git_blob_sha": "919e2fdfe7b756c9305f9276d21a070f2acedc29"
+    },
+    {
+      "path": "factory/tests/core/test_events_recovery.py",
+      "sha256": "053de1569c9981a2467cfc46429ca731b091e849b99c0681885c08a3721c204f",
+      "git_blob_sha": "337b5f3d4f5f3411694e4af9736a6c838cc02224"
+    },
+    {
+      "path": "factory/tests/core/test_memory_handoff_qa.py",
+      "sha256": "13582a238c9bfc86350af525a949e90710f5545344bdab4d86828807d23e31d7",
+      "git_blob_sha": "29c0d824fceb352ef01e6d2a3948a247b1ccf36f"
+    },
+    {
+      "path": "factory/tests/core/test_review_fix_phase_authority.py",
+      "sha256": "5c6680f863701c4d93ecfbaf1f24d0cd2a9271b6b53e19bd8cddad8ab43ce2e9",
+      "git_blob_sha": "cc279f12078a3d0e852eedbc26f179954f34b522"
+    },
+    {
+      "path": "factory/tests/core/test_review_fix_registry_restart.py",
+      "sha256": "0d13eaddef948b0ad95adf9bda0437cd080c352b6151b4a50ca7f75cf7e38116",
+      "git_blob_sha": "37799e5081b806ecf0fb1bcd8876e5647131798c"
+    }
+  ]
+}
