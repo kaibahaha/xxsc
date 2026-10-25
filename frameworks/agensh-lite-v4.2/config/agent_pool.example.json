@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "project_id": "AGL-SHADOW-001",
+  "mode": "shadow",
+  "repo": "kaibahaha/xxsc",
+  "ref": "exp/agensh-lite-v4.2-controller-mvp-20261025",
+  "runtime_root": "factory/projects/AGL-SHADOW-001",
+  "timezone": "Asia/Shanghai",
+  "platform_schedule": {
+    "period_minutes_per_agent": 60,
+    "task_slot_budget": 5,
+    "reserved_task_slots_for_other_uses": 2,
+    "actual_scheduler_update": "manual_or_explicitly_authorized",
+    "enable_on_deploy": false
+  },
+  "pool": {
+    "min_active": 2,
+    "max_active": 5,
+    "active_agent_ids": [
+      "CHATGPT_A",
+      "CHATGPT_C",
+      "CHATGPT_E"
+    ],
+    "offset_policy": "equal_spaced_within_hour",
+    "allow_agent_join_leave": true,
+    "max_primary_tasks_per_run": 1
+  },
+  "agents": [
+    {
+      "agent_id": "CHATGPT_A",
+      "enabled": true,
+      "capabilities": [
+        "research",
+        "requirements",
+        "review",
+        "code_draft"
+      ],
+      "preferred_domains": [
+        "requirements"
+      ],
+      "outbox": "05_outbox/CHATGPT_A",
+      "max_inflight_tasks": 1
+    },
+    {
+      "agent_id": "CHATGPT_B",
+      "enabled": false,
+      "capabilities": [
+        "architecture",
+        "review",
+        "code_draft"
+      ],
+      "preferred_domains": [
+        "architecture"
+      ],
+      "outbox": "05_outbox/CHATGPT_B",
+      "max_inflight_tasks": 1
+    },
+    {
+      "agent_id": "CHATGPT_C",
+      "enabled": true,
+      "capabilities": [
+        "code_draft",
+        "test_design",
+        "review"
+      ],
+      "preferred_domains": [
+        "code_draft"
+      ],
+      "outbox": "05_outbox/CHATGPT_C",
+      "max_inflight_tasks": 1
+    },
+    {
+      "agent_id": "CHATGPT_D",
+      "enabled": false,
+      "capabilities": [
+        "test_design",
+        "review",
+        "research"
+      ],
+      "preferred_domains": [
+        "test_design"
+      ],
+      "outbox": "05_outbox/CHATGPT_D",
+      "max_inflight_tasks": 1
+    },
+    {
+      "agent_id": "CHATGPT_E",
+      "enabled": true,
+      "capabilities": [
+        "integration_review",
+        "audit",
+        "documentation"
+      ],
+      "preferred_domains": [
+        "audit"
+      ],
+      "outbox": "05_outbox/CHATGPT_E",
+      "max_inflight_tasks": 1
+    }
+  ],
+  "controller": {
+    "backend_preference": "git_cas",
+    "lease_mode": "atomic_controller_only",
+    "allow_unverified_claim_as_lock": false,
+    "projection_single_writer": true,
+    "wip_task_global_limit": 3,
+    "enable_in_production": false
+  },
+  "external_executors": {
+    "workbuddy": {
+      "enabled": false,
+      "transport": "pending_probe"
+    },
+    "codex": {
+      "enabled": false,
+      "transport": "pending_probe"
+    }
+  },
+  "provenance": {
+    "require_source_ref": true,
+    "require_commit_sha": true,
+    "require_readback_ack": true
+  },
+  "stop": {
+    "production_writes_allowed": false,
+    "require_explicit_cutover": true
+  }
+}
