@@ -1,0 +1,807 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:agl:core:r01:2.0",
+  "$defs": {
+    "AgentRegistration": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "2.0"
+        },
+        "agent_id": {
+          "type": "string"
+        },
+        "provider_id": {
+          "type": "string"
+        },
+        "account_scope": {
+          "type": "string"
+        },
+        "adapter_id": {
+          "type": "string"
+        },
+        "credential_principal": {
+          "type": "string"
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allowed_reads": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allowed_writes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allowed_actions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "runtime_mode": {
+          "type": "string"
+        },
+        "desired_enabled": {
+          "type": "boolean"
+        },
+        "admission_status": {
+          "type": "string"
+        },
+        "health": {
+          "type": "string"
+        },
+        "max_inflight": {
+          "type": "integer"
+        },
+        "independence_group": {
+          "type": "string"
+        },
+        "probe_evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "agent_id",
+        "provider_id",
+        "account_scope",
+        "adapter_id",
+        "credential_principal",
+        "capabilities",
+        "allowed_reads",
+        "allowed_writes"
+      ]
+    },
+    "ProviderSession": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "2.0"
+        },
+        "agent_id": {
+          "type": "string"
+        },
+        "provider_id": {
+          "type": "string"
+        },
+        "principal": {
+          "type": "string"
+        },
+        "account_scope": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "agent_id",
+        "provider_id",
+        "principal",
+        "account_scope"
+      ]
+    },
+    "TaskSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "2.0"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "spec_hash": {
+          "type": "string"
+        },
+        "project_id": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "integer"
+        },
+        "acceptance_criteria": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allowed_agents": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "required_capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "write_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "read_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "commit_sha": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "task_id",
+        "spec_hash"
+      ]
+    },
+    "ClaimProposal": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "2.0"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "agent_id": {
+          "type": "string"
+        },
+        "provider_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "spec_hash": {
+          "type": "string"
+        },
+        "attempt_id": {
+          "type": "string"
+        },
+        "expected_version": {
+          "type": "integer"
+        },
+        "ttl_seconds": {
+          "type": "number"
+        },
+        "commit_sha": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "task_id",
+        "agent_id",
+        "provider_id",
+        "run_id",
+        "spec_hash",
+        "attempt_id",
+        "expected_version"
+      ]
+    },
+    "LeaseGrant": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "2.0"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "agent_id": {
+          "type": "string"
+        },
+        "provider_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "spec_hash": {
+          "type": "string"
+        },
+        "attempt_id": {
+          "type": "string"
+        },
+        "fencing_epoch": {
+          "type": "integer"
+        },
+        "expires_at": {
+          "type": "number"
+        },
+        "task_version": {
+          "type": "integer"
+        },
+        "commit_sha": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "task_id",
+        "agent_id",
+        "provider_id",
+        "run_id",
+        "spec_hash",
+        "attempt_id",
+        "fencing_epoch",
+        "expires_at",
+        "task_version"
+      ]
+    },
+    "StateTransition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "2.0"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "agent_id": {
+          "type": "string"
+        },
+        "provider_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "spec_hash": {
+          "type": "string"
+        },
+        "attempt_id": {
+          "type": "string"
+        },
+        "fencing_epoch": {
+          "type": "integer"
+        },
+        "expected_version": {
+          "type": "integer"
+        },
+        "to_state": {
+          "type": "string"
+        },
+        "commit_sha": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "task_id",
+        "agent_id",
+        "provider_id",
+        "run_id",
+        "spec_hash",
+        "attempt_id",
+        "fencing_epoch",
+        "expected_version",
+        "to_state"
+      ]
+    },
+    "ArtifactEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "2.0"
+        },
+        "evidence_id": {
+          "type": "string"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "spec_hash": {
+          "type": "string"
+        },
+        "commit_sha": {
+          "type": "string"
+        },
+        "runner_agent_id": {
+          "type": "string"
+        },
+        "environment_id": {
+          "type": "string"
+        },
+        "command": {
+          "type": "string"
+        },
+        "exit_code": {
+          "type": "integer"
+        },
+        "stdout_sha256": {
+          "type": "string"
+        },
+        "stderr_sha256": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "test_summary": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "evidence_id",
+        "task_id",
+        "spec_hash",
+        "commit_sha",
+        "runner_agent_id",
+        "environment_id",
+        "command",
+        "exit_code",
+        "stdout_sha256",
+        "stderr_sha256",
+        "evidence_refs",
+        "test_summary"
+      ]
+    },
+    "Event": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "2.0"
+        },
+        "event_id": {
+          "type": "string"
+        },
+        "producer": {
+          "type": "string"
+        },
+        "provider_id": {
+          "type": "string"
+        },
+        "target_agents": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "observed_at": {
+          "type": "string"
+        },
+        "raw_ref": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "project_id": {
+          "type": "string"
+        },
+        "spec_hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "attempt_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fencing_epoch": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "commit_sha": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "causation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "payload": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "event_id",
+        "producer",
+        "provider_id",
+        "target_agents",
+        "task_id",
+        "kind",
+        "summary",
+        "observed_at",
+        "raw_ref",
+        "run_id"
+      ]
+    },
+    "Ack": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "2.0"
+        },
+        "event_id": {
+          "type": "string"
+        },
+        "agent_id": {
+          "type": "string"
+        },
+        "provider_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "event_sha256": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "event_id",
+        "agent_id",
+        "provider_id",
+        "run_id",
+        "event_sha256",
+        "evidence_refs"
+      ]
+    },
+    "MemoryNote": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "2.0"
+        },
+        "note_id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "agent_id": {
+          "type": "string"
+        },
+        "provider_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "spec_hash": {
+          "type": "string"
+        },
+        "commit_sha": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "summary": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "test_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "detail_ref": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expires_at": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "note_id",
+        "type",
+        "task_id",
+        "agent_id",
+        "provider_id",
+        "run_id",
+        "spec_hash",
+        "commit_sha",
+        "summary",
+        "evidence_refs"
+      ]
+    },
+    "Handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "2.0"
+        },
+        "handoff_id": {
+          "type": "string"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "agent_id": {
+          "type": "string"
+        },
+        "provider_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "spec_hash": {
+          "type": "string"
+        },
+        "attempt_id": {
+          "type": "string"
+        },
+        "fencing_epoch": {
+          "type": "integer"
+        },
+        "commit_sha": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "decision_log": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "open_issues": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "next_action": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "handoff_id",
+        "task_id",
+        "agent_id",
+        "provider_id",
+        "run_id",
+        "spec_hash",
+        "attempt_id",
+        "fencing_epoch",
+        "commit_sha",
+        "decision_log",
+        "open_issues",
+        "next_action",
+        "evidence_refs"
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/AgentRegistration"
+    },
+    {
+      "$ref": "#/$defs/ProviderSession"
+    },
+    {
+      "$ref": "#/$defs/TaskSpec"
+    },
+    {
+      "$ref": "#/$defs/ClaimProposal"
+    },
+    {
+      "$ref": "#/$defs/LeaseGrant"
+    },
+    {
+      "$ref": "#/$defs/StateTransition"
+    },
+    {
+      "$ref": "#/$defs/ArtifactEvidence"
+    },
+    {
+      "$ref": "#/$defs/Event"
+    },
+    {
+      "$ref": "#/$defs/Ack"
+    },
+    {
+      "$ref": "#/$defs/MemoryNote"
+    },
+    {
+      "$ref": "#/$defs/Handoff"
+    }
+  ]
+}

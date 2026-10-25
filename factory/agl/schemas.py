@@ -54,7 +54,10 @@ class Wire:
     @classmethod
     def from_dict(cls, value: Mapping):
         require(not (set(value) - {f.name for f in fields(cls)}), "UNKNOWN_FIELD")
-        return cls(**value)
+        try:
+            return cls(**value)
+        except TypeError:
+            raise CoreError("INVALID_CONTRACT_FIELDS") from None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -113,6 +116,7 @@ class TaskSpec(Wire):
     allowed_agents: tuple[str, ...] = ()
     required_capabilities: tuple[str, ...] = ()
     write_paths: tuple[str, ...] = ()
+    read_paths: tuple[str, ...] = ()
     priority: int = 0
     commit_sha: str | None = None
 
@@ -120,12 +124,12 @@ class TaskSpec(Wire):
         super().__post_init__()
         require(bool(self.task_id) and hex_hash(self.spec_hash), "INVALID_TASK")
         require(type(self.revision) is int and self.revision >= 1 and type(self.priority) is int, "INVALID_VERSION")
-        for name in ("acceptance_criteria", "dependencies", "allowed_agents", "required_capabilities", "write_paths"):
+        for name in ("acceptance_criteria", "dependencies", "allowed_agents", "required_capabilities", "write_paths", "read_paths"):
             value = getattr(self, name)
             require(isinstance(value, (tuple, list)) and all(isinstance(v, str) and v for v in value), "INVALID_LIST")
             require(len(value) == len(set(value)), "DUPLICATE_VALUE")
             object.__setattr__(self, name, tuple(value))
-        require(all(safe_path(p) for p in self.write_paths), "INVALID_PATH")
+        require(all(safe_path(p) for p in (*self.write_paths, *self.read_paths)), "INVALID_PATH")
         require(self.task_id not in self.dependencies, "DAG_CYCLE")
         require(self.commit_sha is None or hex_hash(self.commit_sha, 40), "INVALID_COMMIT")
 
@@ -203,6 +207,12 @@ class StateTransition(Wire):
     evidence_refs: tuple[str, ...] = ()
     evidence: dict | None = None
 
+    def __post_init__(self):
+        super().__post_init__()
+        require(all((self.task_id, self.agent_id, self.provider_id, self.run_id, self.attempt_id, self.to_state)), "INVALID_TRANSITION")
+        require(hex_hash(self.spec_hash) and type(self.expected_version) is int and self.expected_version >= 1
+                and type(self.fencing_epoch) is int and self.fencing_epoch >= 1, "INVALID_FENCE")
+
 
 TaskTransition = StateTransition
 
@@ -242,6 +252,8 @@ class Event(Wire):
         except (ValueError, AttributeError):
             raise CoreError("INVALID_TIME") from None
         object.__setattr__(self, "target_agents", tuple(self.target_agents))
+        require(self.causation_id != self.event_id, "CAUSATION_CYCLE")
+        canonical(self.payload)
 
 
 UEM = Event
@@ -303,3 +315,31 @@ class Handoff(Wire):
     def __post_init__(self):
         super().__post_init__()
         require(all((self.handoff_id, self.task_id, self.agent_id, self.run_id, self.next_action)) and hex_hash(self.spec_hash), "INVALID_HANDOFF")
+
+
+def import_v41(kind: str, data: dict, *, provider_id: str | None = None):
+    """Validate against frozen V4.1, preserve provenance, never infer admission.
+
+    jsonschema is needed only at this legacy boundary, not by the core runtime.
+    Receipt/Note remain validated legacy dictionaries because V4.1 lacks an
+    authenticated recipient (Receipt) or exact test scope (Note).
+    """
+    from pathlib import Path
+    from jsonschema import Draft202012Validator, FormatChecker
+    require(kind in {"task", "event", "receipt", "note"}, "UNKNOWN_LEGACY_TYPE")
+    schema_path = Path(__file__).resolve().parents[2] / "frameworks/agensh-lite-v4.1/schemas" / (kind + ".schema.json")
+    schema = json.loads(schema_path.read_text())
+    errors = list(Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(data))
+    require(not errors, "INVALID_V41_PAYLOAD")
+    if kind == "task":
+        require(data["status"] == "READY", "LEGACY_STATE_REQUIRES_REVIEW")
+        return TaskSpec.from_dict({k: v for k, v in data.items() if k != "status"})
+    if kind == "event":
+        require(bool(provider_id), "PROVIDER_BINDING_REQUIRED")
+        values = {k: v for k, v in data.items() if k != "payload_sha256"}
+        values.update(schema_version=SCHEMA_VERSION, provider_id=provider_id)
+        # Preserve the external byte hash as provenance; it is not our canonical envelope hash.
+        values["payload"] = {"legacy_payload_sha256": data.get("payload_sha256")}
+        require(bool(values.get("run_id")), "LEGACY_RUN_ID_REQUIRED")
+        return Event.from_dict(values)
+    return json.loads(canonical(data))
