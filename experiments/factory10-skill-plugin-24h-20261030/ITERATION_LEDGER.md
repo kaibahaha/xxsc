@@ -9,6 +9,8 @@
 | R03 | F3 游戏与互动体验 | `5b8ee940847e42f2` | PENDING / MCP已派单 / Git状态回读待核 | NOT_EVALUABLE | — | 首圈基线 | R02跨厂P0：worktree非沙箱、headless权限过宽；R03须严格区分游戏引擎执行与资产版权 | M1≥8官方证据；M2权限边界反例；M3五案例运行状态+种子重放 | 待WorkBuddy正文；不能宣称改进有效 |
 | R04 | F4 图像与视觉创作 | `5458b23070ac460c` | PENDING / 已派单 / STATUS已回读 | NOT_EVALUABLE | — | 首圈基线 | 继承R02事实核查与权限许可风险；R03尚无报告 | M1证据与连接状态、M2版权/隐私反例、M3五案例视觉资产合同 | 待正文，不能推断质量改善 |
 
+| R05 | F5 视频与音频内容 | `6f4057fc78094c63` | QUEUED / MCP已派单 / Git反馈回读 | NOT_EVALUABLE | — | 首圈基线 | 继承R01/R02能力事实核查、R02权限/许可证缺陷；R03/R04仍QUEUED | M1≥8官方证据与状态分层；M2商用许可/平台授权负例；M3五例真实状态与回滚 | 等待正文；跨厂提升NOT_EVALUABLE |
+
 ## 交付目录和防重
 - R01：`rounds/R01/` 三文件完整、已回读，禁止重复派单。
 - R02：`rounds/R02/FEEDBACK_TO_BUDDY.md` 已在派单前创建并回读，完整反馈内容实际发给WorkBuddy；`STATUS.md` 与 `ADAPTATION.md` 已写并回读。R02原文、独立审计、STATUS、反馈及ADAPTATION均已Git回读，Job `f77da8aaab28496d` DONE；**禁止重复派单R02**。下一轮R03须读取R02审计及ADAPTATION，并把三项研究方法改进实际注入WorkBuddy prompt。
@@ -17,3 +19,5 @@
 - R03：F3首圈，唯一Job `5b8ee940847e42f2`；派单后[ running ]，尚无正文；反馈与ADAPTATION已写入Git并回读，研究报告/评分待补交。下一轮必须先追单，不重复派单。
 
 - R04：F4首圈，唯一WorkBuddy Job `5458b23070ac460c`，派单后仍PENDING/0字；反馈、ADAPTATION、STATUS已Git写入并逐项回读。R03 Job `5b8ee940847e42f2` 尚未返回正文，下一轮应先追R03和R04，不重复派单。R04研究报告与审计评分待补交。
+
+- R05：F5首圈唯一Job `6f4057fc78094c63`；真实派单后list_jobs=QUEUED/0字；反馈、ADAPTATION已写入并回读；本轮无原文/审计评分。R03/R04两个Job仍QUEUED/0字；R06须优先追取并补交，不得为R03/R04/R05重复派单。
