@@ -64,3 +64,5 @@
 | 20261030-0232-R02 | C rate/circuit | `fb21843915d24025` | `7db4a2fa2edc4ab0` | QUEUED | GIT_PENDING | PENDING |
 
 - Metadata write commits: A TASK `e04f0fcc94e17700470b0f0864aba21491829182`; A AUDIT `12d91bda5ec110b2074c56a037d1160a42e8d0bc`; B TASK `70f6331f8d38b86655672f8cee9c45c162200cc8`; B AUDIT `2186121e2b9eaefbadd3ab4b48b50ad43d507e43`; C TASK `e806d16e339c0c967ee65b87afeabc8af7666384`; C AUDIT `bb89bf403393cc056f8c509e53608135690f9ab1`; ROUND_REPORT `160e037f1b50d1305178684f603cd7c488fcbb51`.
+
+- **R02 Git verification:** 8/8 management files (3 TASK, 3 AUDIT, ROUND_REPORT, INDEX) independently read back from `exp/factory24-20261030`; all contained expected R02 job IDs. Latest ROUND_REPORT verification update commit `e3c87060eed21cd9d122b386c48cf2f530cf8821`. **GIT_VERIFIED_METADATA_ONLY**, **GIT_CODE_PENDING**. This does not imply self-tests or independent audits passed.
