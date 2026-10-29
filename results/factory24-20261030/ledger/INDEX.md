@@ -121,3 +121,18 @@
 | 20261030-0332-R03 | B audit ledger | `e09bacf7e42349a1` | QUEUED | GIT_PENDING | PENDING/N/A |
 | 20261030-0432-R04 | A TTL cache | `5669468a86524c07` | QUEUED | GIT_PENDING | PENDING/N/A |
 | 20261030-0532-R05 | A fault injection/replay | `f8de6c9938a94e90` | QUEUED | GIT_PENDING | PENDING/N/A |
+
+
+## 20261030-0632-R06 — Adaptive one-job submission; queue high-watermark 7
+
+- Planned Beijing 2026-10-30 06:32; actual live tools around 06:30–06:31 (slightly early). Bridge health HTTP200, v3.3, codebuddy_reachable=true, max_concurrent_jobs=1, active_jobs=7 at initial health. Job list 102 total (50 displayed), then 103 total (50 displayed).
+- Initial running=1 (R03-A `fd0bc26fcc7b489b`, 2737s running), global Q_before=6 = programming 3 (R03-B, R04-A, R05-A) + research 3 (F4/F5/F6), other 0. Q>=5 => exactly 1 programming job.
+- New R06-A crash-consistent multi-partition message queue `FACTORY24-20261030-20261030-0632-R06-A` accepted by real `submit_workbuddy_task`, **job_id=`a5076503a4164622`**, verified **QUEUED** in subsequent list. No duplicate POST; accepted 1/1, blocked 0, 429 0.
+- Q_after_A=7, Q_peak(R06)=7, cumulative observed **Q_high_watermark=7**; after submission 1 running+7 queued = 8 active (inferred from list). `QUEUE_MAX_NOT_REACHED`, only capacity >=7 observed; no hard queue ceiling evidence.
+- R05-A `f8de6c9938a94e90` QUEUED 3463s; R04-A `5669468a86524c07` QUEUED 7129s; R03-B `e09bacf7e42349a1` QUEUED 10945s; R03-A RUNNING 2737s. No programming DONE, no source/tests returned. R02 A/B/C FAILED 3600s timeouts (prior), old pre-restart A/B/C INTERRUPTED; none upgraded to PASS. Git R03-A and R05-A target directories read as TASK/AUDIT only, remote disk unverified.
+- R06-A source/tests/README/REPORT/TEST_RESULTS/MANIFEST **GIT_PENDING**, no self-test or independent audit score. `audit_job_id=NONE` because no finished code to audit; audit status PENDING/N/A.
+- Git R06 management commits: A TASK `41521de6cc045c4edb621029d2cf2f6ed91d86b3`; A AUDIT `bb3e860d7ba08b99e0458b26f885830d050606d3`; ROUND_REPORT `7b4b95d441f4505887b618c5764e41c0bc236c10`. Independent readback pending verification below. Report: `results/factory24-20261030/rounds/20261030-0632-R06/ROUND_REPORT.md`.
+
+| Slot | Task | job_id | Last observed | Code Git | Independent audit |
+|---|---|---|---|---|---|
+| 20261030-0632-R06 | A partitioned crash-consistent message queue | `a5076503a4164622` | QUEUED | GIT_PENDING | PENDING/N/A |
