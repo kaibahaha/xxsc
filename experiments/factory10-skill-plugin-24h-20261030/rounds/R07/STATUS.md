@@ -9,3 +9,8 @@
 - **Git方法记录**：`ADAPTATION.md`已创建并逐字回读PASS，commit `8db8d47c84a3e1197cdf14aa7593d60ff767532b`，blob `b774722e5e4d65ac120118c2737f03bde30f74fc`。STATUS本文件及总账写入、回读须另行验证，不将Git提交回执冒充回读。
 - **下一轮交接**：R08/F8先凭本Job ID追R07，不重复submit；若有完整正文才补交原始报告和固定100分审计；若429则记录FAILED_RATE_LIMIT_429，不伪造评分。F8重点机器人真实硬件/仿真边界、传感器校准、安全停机和权限。
 - **安全边界**：未安装插件、未切模型、未付费授权、未发布或操作其他Git分支/实验、未创建新定时任务；不得因429擅自切换模型。
+
+## Git写入后独立回读与R07补查
+- STATUS首次提交 `45286f1c5044603cf88bffbfcfff0b946444115a`，随后GitHub fetch_file逐字一致、blob `3395362e7326a568da20d7a479d4d4aa85c2292f`：PASS。
+- ITERATION_LEDGER已通过最新blob SHA更新，commit `8d167b96cc8e5fbcbe523c3b107d02a1bf83055e`，随后GitHub fetch_file逐字一致、blob `d19f965e7e6eb2615d8d5d972ecaa340a939deb0`：PASS。
+- R07 Job `1941bb3a79e84c7f` 再次实际get_result(wait_seconds=35)仍 `[running]`，运行约120秒、0字。无可审计研究正文，维持PENDING/NOT_EVALUABLE；未重复submit。由于此前R04–R06真实429，不预设R07必然成功或失败，后续必须按该Job ID回读最终结果。
