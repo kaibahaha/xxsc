@@ -14,3 +14,5 @@
 - STATUS首次提交 `45286f1c5044603cf88bffbfcfff0b946444115a`，随后GitHub fetch_file逐字一致、blob `3395362e7326a568da20d7a479d4d4aa85c2292f`：PASS。
 - ITERATION_LEDGER已通过最新blob SHA更新，commit `8d167b96cc8e5fbcbe523c3b107d02a1bf83055e`，随后GitHub fetch_file逐字一致、blob `d19f965e7e6eb2615d8d5d972ecaa340a939deb0`：PASS。
 - R07 Job `1941bb3a79e84c7f` 再次实际get_result(wait_seconds=35)仍 `[running]`，运行约120秒、0字。无可审计研究正文，维持PENDING/NOT_EVALUABLE；未重复submit。由于此前R04–R06真实429，不预设R07必然成功或失败，后续必须按该Job ID回读最终结果。
+
+- **最新追单**：同一Job `1941bb3a79e84c7f` 经 `get_workbuddy_result(wait_seconds=65)` 再查，约197秒仍 `[running]`、0字；不创建报告/审计、不重复派单。此结果晚于上文120秒检查。
