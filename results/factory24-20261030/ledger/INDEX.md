@@ -66,3 +66,20 @@
 - Metadata write commits: A TASK `e04f0fcc94e17700470b0f0864aba21491829182`; A AUDIT `12d91bda5ec110b2074c56a037d1160a42e8d0bc`; B TASK `70f6331f8d38b86655672f8cee9c45c162200cc8`; B AUDIT `2186121e2b9eaefbadd3ab4b48b50ad43d507e43`; C TASK `e806d16e339c0c967ee65b87afeabc8af7666384`; C AUDIT `bb89bf403393cc056f8c509e53608135690f9ab1`; ROUND_REPORT `160e037f1b50d1305178684f603cd7c488fcbb51`.
 
 - **R02 Git verification:** 8/8 management files (3 TASK, 3 AUDIT, ROUND_REPORT, INDEX) independently read back from `exp/factory24-20261030`; all contained expected R02 job IDs. Latest ROUND_REPORT verification update commit `e3c87060eed21cd9d122b386c48cf2f530cf8821`. **GIT_VERIFIED_METADATA_ONLY**, **GIT_CODE_PENDING**. This does not imply self-tests or independent audits passed.
+
+
+## 20261030-0332-R03 — Restarted schedule round 3 (adaptive two jobs)
+
+- Planned Beijing: 2026-10-30 03:32; this run observed Beijing time ~03:27–03:29, slightly before nominal slot. MCP v3.3, max_concurrent_jobs=1, active_jobs=4 at entry, 6 after submission.
+- Q_before=3 (R02 programming B/C queued=2, research F3 queued=1); R02-A running. Adaptive rule → **2 new programming jobs**, both accepted by actual submit_workbuddy_task.
+- R03-A DAG workflow engine: `fd0bc26fcc7b489b`, QUEUED, source/tests GIT_PENDING, independent audit PENDING.
+- R03-B append-only verifiable audit ledger: `e09bacf7e42349a1`, QUEUED, source/tests GIT_PENDING, independent audit PENDING.
+- Q_after_A=4; Q_after_B=5. **Q_peak=5; Q_high_watermark=5**; no 429 or queue rejection, **QUEUE_MAX_NOT_REACHED** (proven capacity >=5 queued jobs, true maximum unknown). Final running=1, queued=5 (programming=4, research=1).
+- R02 A `15a3ffc753c64dcb` RUNNING (~3434s at last read), B `8529435fc4da4624` QUEUED, C `7db4a2fa2edc4ab0` QUEUED. None DONE; no independent code tests or score available. Old A/B/C interrupted historical tasks unchanged.
+- Git R03 management commits: A TASK `16b6043567982a05173fe636db9aa65b3111ae3e`; B TASK `08976593dccc8089d08afc0ca7974b8a6733a2ba`; A AUDIT `3aa557aa087b60f262c5e4c5af6f198874cc85a9`; B AUDIT `4365687a25685eff4ba5d85e07b5ed765a2cf601`; ROUND_REPORT `96aac606ce720b7a2925b73d4f1a8bd3d7a957b5`.
+- Source/tests/REPORT/MANIFEST from WorkBuddy **GIT_PENDING**; ChatGPT management documents are not code delivery. Report `results/factory24-20261030/rounds/20261030-0332-R03/ROUND_REPORT.md`.
+
+| Slot | Task | job_id | Latest state | Git code | Independent audit |
+|---|---|---|---|---|---|
+| 20261030-0332-R03 | A DAG workflow | `fd0bc26fcc7b489b` | QUEUED | GIT_PENDING | PENDING |
+| 20261030-0332-R03 | B audit ledger | `e09bacf7e42349a1` | QUEUED | GIT_PENDING | PENDING |
