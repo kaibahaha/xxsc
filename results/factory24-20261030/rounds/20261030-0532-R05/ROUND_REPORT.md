@@ -35,3 +35,13 @@ Old PRE-RESTART A/B/C `9712edf966b54027`, `a154efd28abc4eb5`, `fb21843915d24025`
 - No modifications to bridge configuration, models, other jobs or other branches; no extra automation created. Next round should inspect prior timeouts' remote workdirs when possible, reconcile Git source delivery, and check R03/R04/R05 terminal states without duplicating jobs.
 
 **R05 status at report creation: 1 accepted new job, QUEUED; queue high-watermark 6; GIT_METADATA_WRITING / GIT_CODE_PENDING; audit PENDING.**
+
+
+## GitHub connector independent readback (completed)
+
+- R05-A TASK.md: committed `aa0a28dcefb135b7363fd3481cb42eabcfcf79d1`, blob `72ec5eb2dc09df2b648744b426dcd3d90e4437b1`; verified correct job_id.
+- R05-A AUDIT.md: committed `d37544a1c7b51ed84fb405a6a4a18885480cd88e`, blob `da06cf34725b67f5180e49b7f78fd1552d51a7a3`; verified.
+- R05 ROUND_REPORT.md: initial commit `126b4a23bafe7922bee8b50b9d31c3e065be2fc7`, initial blob `a85be8823edf25a609cacbb208749991caff08fc`; verified.
+- Historical R02-C AUDIT.md update: commit `2c3a51678ead83755150d20397aec7ee8bcdea05`, blob `650d509c10cb166ab0d001907c5dc433ecaeb4e7`; verified timeout evidence.
+- ledger/INDEX.md: commit `835c1af3c8e54140945274ed11c08dc8292bb443`, blob `0b1fd998f9f9c9b4feed838247f45ee1293936b5`; verified R05 job and queue high-watermark.
+- All **5/5 Git management documents independently read back**: `GIT_VERIFIED_METADATA_ONLY`. GitHub directory listing for R05-A contained only `TASK.md` and `AUDIT.md`, **0 source/test files**; `GIT_CODE_PENDING`. These are distinct from actual code deliverables and from any independent test run.
