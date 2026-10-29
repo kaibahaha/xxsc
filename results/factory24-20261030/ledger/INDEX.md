@@ -138,3 +138,23 @@
 | 20261030-0632-R06 | A partitioned crash-consistent message queue | `a5076503a4164622` | QUEUED | GIT_PENDING | PENDING/N/A |
 
 - **R06 independent Git readback:** 4/4 management files (TASK, AUDIT, ROUND_REPORT, INDEX) successfully fetched and matched job_id `a5076503a4164622`. R06 final report update commit `7ac5ee37682b48c7a9b1f62260ce205f146177b3`; Git metadata `GIT_VERIFIED_METADATA_ONLY`. R06-A directory contains only TASK/AUDIT; actual code/tests 0, `GIT_CODE_PENDING`. No source SHA256 manifest or independent test score.
+
+
+## 20261030-0732-R07 — Three recovery programming jobs accepted
+
+- Scheduled slot: 2026-10-30 07:32 Asia/Shanghai; actual live calls ~07:27–07:30, early. Bridge v3.3, HTTP200, codebuddy_reachable=true, max_concurrent_jobs=1, active_jobs initially 0; list_workbuddy_jobs showed 100 total, 50 newest, then 103 total.
+- Q_before=0 => adaptive decision 3; all three distinct submit_workbuddy_task calls accepted with real job_ids. After A Q=0 (A RUNNING); after B Q=1; after C Q=2. R07 Q_peak=2; experiment Q_high_watermark remains **7** from R06. No queue capacity 429, `QUEUE_MAX_NOT_REACHED`.
+- R07-A durable lease scheduler `6f4ee441c0d34b3f` RUNNING at ~98s; parent INTERRUPTED `9712edf966b54027`, R02 failed predecessor `15a3ffc753c64dcb`.
+- R07-B safe incremental policy DSL `979fd16d94c74e3d` QUEUED ~82s; parent INTERRUPTED `a154efd28abc4eb5`, R02 failed predecessor `8529435fc4da4624`.
+- R07-C multi-tenant rate/circuit control `88ba054e03ce42fe` QUEUED ~68s; parent INTERRUPTED `fb21843915d24025`, R02 failed predecessor `7db4a2fa2edc4ab0`.
+- Old original A/B/C remain INTERRUPTED, R02 A/B/C FAILED_TIMEOUT 3600s. R03-A `fd0bc26fcc7b489b`, R03-B `e09bacf7e42349a1`, R04-A `5669468a86524c07`, R05-A `f8de6c9938a94e90`, R06-A `a5076503a4164622` all list `done` but real result is **FAILED_UPSTREAM_QUOTA_429** (model quota reset advertised at 2026-10-30 23:00 UTC+8), not PASS. Original five AUDIT.md files updated; commits: R03-A `a1a709e9201eb6c590cce904931468ec6965cb6e`; R03-B `0ac7eeee2c0d5d86e4c6b7fde73ef67440b46fde`; R04-A `bb93b91a2e36e7bad01f2f0d9a19b86fd6666e14`; R05-A `451b889f0433162e881c1338ea2be77488d5bd1b`; R06-A `b8fd925598a52c1109e2663590e95cd42c05a114`.
+- R07 A/B/C Git management TASK/AUDIT committed: A `2eaebc572e99c3957414a9b9ed29382ec4b45da4` / `d2726242b6f644f9970d0677ccaac4f6574ca2a3`; B `6215e8f8b41fb30ac99fd7bae567a00042d1f8f6` / `3c67bd711da7b466290645f40b62a6f7e7c7c985`; C `fd7d599afcb1382226fc36fc9d428d3203f14b9c` / `6f2649034cdb73152bfda85c57800269f4b050f2`. R07 ROUND_REPORT commit `fdc7d9902211ee1c3e4ef039d8d23d9e888f4bb3`.
+- R07 Git directories independently listed after submission: TASK.md/AUDIT.md only. Code/tests/REPORT/TEST_RESULTS/MANIFEST not present at observation, so `GIT_PENDING_SOURCE`, independent audit PENDING/N/A; `audit_job_id=NONE`. Remote disk not inspected by ChatGPT. The 3 new WorkBuddy jobs have instructions to inspect historical workdirs and recover without overwriting originals. No model change, cancellation or other factory modification.
+
+| Slot | Task | job_id | parent_job_id | State | Code Git | Independent audit |
+|---|---|---|---|---|---|---|
+| 20261030-0732-R07 | A lease scheduler | `6f4ee441c0d34b3f` | `9712edf966b54027` | RUNNING | GIT_PENDING_SOURCE | PENDING/N/A |
+| 20261030-0732-R07 | B policy DSL | `979fd16d94c74e3d` | `a154efd28abc4eb5` | QUEUED | GIT_PENDING_SOURCE | PENDING/N/A |
+| 20261030-0732-R07 | C rate/circuit | `88ba054e03ce42fe` | `fb21843915d24025` | QUEUED | GIT_PENDING_SOURCE | PENDING/N/A |
+
+- Report: `results/factory24-20261030/rounds/20261030-0732-R07/ROUND_REPORT.md`. Next round: verify actual src/tests/README/REPORT/TEST_RESULTS/MANIFEST and real exit codes; don't mistake accepted queue or 429 done for program completion. The R07 report/ledger management Git readback is pending final verification below.
