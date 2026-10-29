@@ -1,7 +1,9 @@
-# R02-B｜独立验收待执行
+# R02-B｜3600秒执行超时，独立验收待证据
 
-- Job: `8529435fc4da4624`; parent interrupted: `a154efd28abc4eb5`.
-- Initial status: PENDING (QUEUED).
-- Source/test availability: NOT YET VERIFIED. Self-test: NOT YET RETURNED. Independent audit score: N/A.
-- On job completion: retrieve original result, inspect real Git source and tests, verify SHA256, rerun `python3 -m unittest discover -s tests -v` independently and add >=10 adversarial counterexamples covering edge cases, idempotency, concurrency, fault recovery, API boundaries. Grade P0–P3 with file:line evidence and score /100. A WorkBuddy self-test alone is NOT independent verification.
-- Git code status: GIT_PENDING, not GIT_VERIFIED. Do not claim PASS before independent verification.
+- Job ID: `8529435fc4da4624`; parent interrupted: `a154efd28abc4eb5`。
+- MCP实际返回：`[task failed] 触及单任务硬上限 3600s，被执行器终止且未回传正文`，`status=error`。
+- 结果分类：**FAILED_EXECUTION_TIMEOUT**，不是代码测试失败；流无有效正文。
+- Git目标目录在R04只读检查时仅有`TASK.md`和`AUDIT.md`，没有可回读源码或测试文件。
+- 远端工作目录残留尚未检查；后续只读核查磁盘文件，已有真实文件则补Git和独立测试，不能凭空重建。
+- 自测：NO_RETURN；独立审计：**PENDING_EVIDENCE**；100分评分N/A；P0-P3代码缺陷N/A。
+- Git代码状态：**GIT_BLOCKED_MISSING_SOURCE**，管理元数据不等于代码交付。
