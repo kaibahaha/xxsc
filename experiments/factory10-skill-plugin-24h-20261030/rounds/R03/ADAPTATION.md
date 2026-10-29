@@ -13,3 +13,9 @@
 - 完整研究委托和跨厂反馈见本轮 `FEEDBACK_TO_BUDDY.md`；实际MCP prompt必须包含其具体问题、五案例和三项方法，不得只发送Git链接。
 - 取得WorkBuddy正文后，ChatGPT固定五维100分独立审计，并将本文件追加结果验证；如果PENDING只记录Job ID、阻塞和下一轮追单，不能打分。
 - R04/F4继承本轮已观察的1–3个方法变化，具体根据R03真实结果选择；R13再次研究F3时必须同厂复盘。
+
+## 本轮实际MCP派单与状态回填
+- 2026-10-29 Phoenix 约11:55启动R03，读取本轮反馈包Git原文2327字符，并作为实际 `submit_workbuddy_task` prompt组成部分全文传给WorkBuddy（实际prompt约3460字符）；没有仅发送链接。
+- 唯一Job ID：`5b8ee940847e42f2`，conversation_id `FACTORY10-SKILL-24H-20261030-R03-F3`。随后 `get_workbuddy_result(wait_seconds=0)` 返回 `[running]`，已8秒、0字；尚无可审计正文。
+- M1–M3均已注入真实prompt，但当前结果仅证明派单与反馈传递，不能证明方法有效。效果状态统一 `NOT_EVALUABLE / PENDING`。
+- 后续轮次必须先按Job ID追单，补交真实报告与审计并回填本文件；不能为R03再次submit。R04研究提示词的改进需依据后续完成的证据，暂以M1–M3为待验证假设。
