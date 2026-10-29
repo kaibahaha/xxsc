@@ -136,3 +136,5 @@
 | Slot | Task | job_id | Last observed | Code Git | Independent audit |
 |---|---|---|---|---|---|
 | 20261030-0632-R06 | A partitioned crash-consistent message queue | `a5076503a4164622` | QUEUED | GIT_PENDING | PENDING/N/A |
+
+- **R06 independent Git readback:** 4/4 management files (TASK, AUDIT, ROUND_REPORT, INDEX) successfully fetched and matched job_id `a5076503a4164622`. R06 final report update commit `7ac5ee37682b48c7a9b1f62260ce205f146177b3`; Git metadata `GIT_VERIFIED_METADATA_ONLY`. R06-A directory contains only TASK/AUDIT; actual code/tests 0, `GIT_CODE_PENDING`. No source SHA256 manifest or independent test score.
