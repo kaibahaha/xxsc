@@ -83,3 +83,22 @@
 |---|---|---|---|---|---|
 | 20261030-0332-R03 | A DAG workflow | `fd0bc26fcc7b489b` | QUEUED | GIT_PENDING | PENDING |
 | 20261030-0332-R03 | B audit ledger | `e09bacf7e42349a1` | QUEUED | GIT_PENDING | PENDING |
+
+
+## 20261030-0432-R04 — Single adaptive submission; two 3600s hard timeouts discovered
+
+- Planned Beijing: 2026-10-30 04:32; tools began around 04:31. Bridge v3.3, `max_concurrent_jobs=1`; initial `active_jobs=6`, global Q_before=5 (programming queued=3, research queued=2, other=0), RUNNING=R02-B.
+- Adaptive rule Q>=5 => exactly **1** new programming job submitted and accepted: R04-A deterministic multi-tenant TTL cache/singleflight `5669468a86524c07`, QUEUED, unique `FACTORY24-20261030-20261030-0432-R04-A`. No 429 or safety block.
+- During submission R02-B `8529435fc4da4624` transitioned RUNNING -> FAILED at 3600s hard limit; R02-C `7db4a2fa2edc4ab0` transitioned QUEUED -> RUNNING. R02-A `15a3ffc753c64dcb` also FAILED at 3600s. Neither R02-A nor R02-B returned output; their Git directories contain management TASK/AUDIT only, no source/tests. WorkBuddy local disk may contain code; not yet inspected. Do not call these successful builds or verified tests.
+- R03-A `fd0bc26fcc7b489b` and R03-B `e09bacf7e42349a1` remain QUEUED. Research F3 `5b8ee940847e42f2`, F4 `5458b23070ac460c` QUEUED. Latest Q_after=5 (programming 3, research 2), running=1; `Q_peak=5`, `Q_high_watermark=5`, `QUEUE_MAX_NOT_REACHED`.
+- R04-A Git code/tests=GIT_PENDING, self-test not returned, independent audit PENDING/N/A. No read-only audit job dispatched because no finished source and executor backlog. R02-A/B AUDIT.md updated to FAILED_EXECUTION_TIMEOUT/PENDING_EVIDENCE; no P0-P3 code defects asserted without source.
+- R04 management files: `A/TASK.md` commit `abb5790213602b62a324dce7689b6341f9c43c59`; `A/AUDIT.md` commit `93218bd88dfce654ce5b4427ed65bf8742f3ddcd`; `ROUND_REPORT.md` commit `216b428de99289845014bc7dff2cf5b9af21e4ab`. Management readback to verify separately; source Git pending.
+
+| Slot | Task | Job ID | Last state | Code Git | Independent audit |
+|---|---|---|---|---|---|
+| 20261030-0232-R02 | A lease scheduler | `15a3ffc753c64dcb` | FAILED_EXECUTION_TIMEOUT 3600s | MISSING_SOURCE | PENDING_EVIDENCE/N/A |
+| 20261030-0232-R02 | B policy DSL | `8529435fc4da4624` | FAILED_EXECUTION_TIMEOUT 3600s | MISSING_SOURCE | PENDING_EVIDENCE/N/A |
+| 20261030-0232-R02 | C rate/circuit | `7db4a2fa2edc4ab0` | RUNNING | GIT_PENDING | PENDING/N/A |
+| 20261030-0332-R03 | A DAG | `fd0bc26fcc7b489b` | QUEUED | GIT_PENDING | PENDING/N/A |
+| 20261030-0332-R03 | B audit ledger | `e09bacf7e42349a1` | QUEUED | GIT_PENDING | PENDING/N/A |
+| 20261030-0432-R04 | A TTL cache/singleflight | `5669468a86524c07` | QUEUED | GIT_PENDING | PENDING/N/A |
