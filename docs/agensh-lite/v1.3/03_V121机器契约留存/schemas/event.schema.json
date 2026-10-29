@@ -1,0 +1,443 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AGL_LITE_V1_2_1_EVENT",
+  "description": "V1.2.1路由Schema：TASK_CREATED仅ABSENT→PROPOSED；非TASK事件没有TASK状态迁移字段。跨对象权限另由Python守卫实现。",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "AGL_LITE_V1_2_1"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9-]{2,79}$"
+    },
+    "policy_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at_utc": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_-]{2,100}$"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_-]{2,100}$"
+    },
+    "attempt_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "actor_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{1,79}$"
+    },
+    "event_type": {
+      "enum": [
+        "TASK_CREATED",
+        "TASK_READY",
+        "SOFT_CLAIM_PROPOSED",
+        "CLAIM_EXPIRED",
+        "ATTEMPT_STARTED",
+        "DEV_SUBMITTED",
+        "REVIEW_REQUESTED",
+        "REVIEW_ACCEPTED",
+        "REVIEW_CHANGES",
+        "INTEGRATION_REQUESTED",
+        "INTEGRATION_PASSED",
+        "INTEGRATION_FAILED",
+        "BUSINESS_ACCEPTED",
+        "TASK_BLOCKED",
+        "TASK_QUARANTINED",
+        "MESSAGE_COMMITTED",
+        "MESSAGE_ACK",
+        "DELIVERY_INTENT",
+        "DELIVERY_VERIFIED"
+      ]
+    },
+    "expected_state": {
+      "enum": [
+        "ABSENT",
+        "PROPOSED",
+        "READY",
+        "CLAIMED",
+        "IMPLEMENTING",
+        "SELF_TESTED",
+        "REVIEW_PENDING",
+        "REVIEW_APPROVED",
+        "INTEGRATION_PENDING",
+        "INTEGRATION_FAILED",
+        "ACCEPTED",
+        "BLOCKED",
+        "QUARANTINED"
+      ]
+    },
+    "requested_state": {
+      "enum": [
+        "PROPOSED",
+        "READY",
+        "CLAIMED",
+        "IMPLEMENTING",
+        "SELF_TESTED",
+        "REVIEW_PENDING",
+        "REVIEW_APPROVED",
+        "INTEGRATION_PENDING",
+        "INTEGRATION_FAILED",
+        "ACCEPTED",
+        "BLOCKED",
+        "QUARANTINED"
+      ]
+    },
+    "attempt_epoch": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "spec_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_commit_sha": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "evidence_ref": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 1024
+    },
+    "operation_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_-]{2,100}$"
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 8
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "target_kind": {
+      "enum": [
+        "TASK",
+        "CLAIM",
+        "MESSAGE",
+        "ACK",
+        "DELIVERY",
+        "BUSINESS"
+      ]
+    },
+    "target_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_-]{2,100}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "policy_version",
+    "created_at_utc",
+    "event_id",
+    "actor_id",
+    "event_type",
+    "evidence_ref",
+    "operation_id",
+    "idempotency_key",
+    "target_kind",
+    "target_id"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "TASK_CREATED"
+          }
+        },
+        "required": [
+          "event_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "target_kind": {
+            "const": "TASK"
+          },
+          "expected_state": {
+            "const": "ABSENT"
+          },
+          "requested_state": {
+            "const": "PROPOSED"
+          }
+        },
+        "required": [
+          "task_id",
+          "expected_state",
+          "requested_state",
+          "attempt_epoch",
+          "spec_hash"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "enum": [
+              "TASK_READY",
+              "ATTEMPT_STARTED",
+              "DEV_SUBMITTED",
+              "REVIEW_REQUESTED",
+              "REVIEW_ACCEPTED",
+              "REVIEW_CHANGES",
+              "INTEGRATION_REQUESTED",
+              "INTEGRATION_PASSED",
+              "INTEGRATION_FAILED",
+              "TASK_BLOCKED",
+              "TASK_QUARANTINED"
+            ]
+          }
+        },
+        "required": [
+          "event_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "target_kind": {
+            "const": "TASK"
+          },
+          "expected_state": {
+            "not": {
+              "const": "ABSENT"
+            }
+          },
+          "requested_state": {
+            "not": {
+              "const": "ABSENT"
+            }
+          }
+        },
+        "required": [
+          "task_id",
+          "expected_state",
+          "requested_state",
+          "attempt_epoch",
+          "spec_hash"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "enum": [
+              "SOFT_CLAIM_PROPOSED",
+              "CLAIM_EXPIRED"
+            ]
+          }
+        },
+        "required": [
+          "event_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "target_kind": {
+            "const": "CLAIM"
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "expected_state"
+              ]
+            },
+            {
+              "required": [
+                "requested_state"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "enum": [
+              "MESSAGE_COMMITTED"
+            ]
+          }
+        },
+        "required": [
+          "event_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "target_kind": {
+            "const": "MESSAGE"
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "expected_state"
+              ]
+            },
+            {
+              "required": [
+                "requested_state"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "enum": [
+              "MESSAGE_ACK"
+            ]
+          }
+        },
+        "required": [
+          "event_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "target_kind": {
+            "const": "ACK"
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "expected_state"
+              ]
+            },
+            {
+              "required": [
+                "requested_state"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "enum": [
+              "DELIVERY_INTENT",
+              "DELIVERY_VERIFIED"
+            ]
+          }
+        },
+        "required": [
+          "event_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "target_kind": {
+            "const": "DELIVERY"
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "expected_state"
+              ]
+            },
+            {
+              "required": [
+                "requested_state"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "enum": [
+              "BUSINESS_ACCEPTED"
+            ]
+          }
+        },
+        "required": [
+          "event_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "target_kind": {
+            "const": "BUSINESS"
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "expected_state"
+              ]
+            },
+            {
+              "required": [
+                "requested_state"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "target_kind": {
+            "const": "TASK"
+          }
+        },
+        "required": [
+          "target_kind"
+        ]
+      },
+      "then": {
+        "required": [
+          "task_id",
+          "expected_state",
+          "requested_state",
+          "attempt_epoch",
+          "spec_hash"
+        ]
+      }
+    }
+  ]
+}
