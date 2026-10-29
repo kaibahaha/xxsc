@@ -17,3 +17,9 @@
 - `STATUS.md` 首次创建：commit `8a2662fb32ef08bd151b6f2e8bddd975eb2df4e6`，blob `44ab63cbecd33f6038b0cfedd77dfcf3d5c0d815`，首次回读逐字一致，PASS；本段是后续更新，最终blob须以再次回读为准。
 - 根目录 `ITERATION_LEDGER.md`：commit `2345c9266212eb672b55528c0242c8c5bc760ea7`，blob `9dad483d5b1accacbc1f55d6295d9f8bdaa05f50`，更新后回读逐字一致，PASS。
 - 以上证明**状态/反馈/适应记录交付成功**；R06 WorkBuddy研究正文仍QUEUED、未完成，`WORKBUDDY_REPORT.md`与`CHATGPT_AUDIT.md`不得伪造。
+
+
+## R07追单结果：429额度失败
+- 追单时间：计划R07（Phoenix 2026-10-29 16:00 / 北京2026-10-30 07:00）；通过真实WorkBuddy MCP `get_workbuddy_result(job_id=52441e82f15942ab,wait_seconds=0)` 回读：`Error: 429 您的使用量已超出频率限制，将在 2026-10-30 23:00:00 UTC+8 重置`（省略追踪标识）。
+- 结合 `list_workbuddy_jobs`：该Job显示 `done`、0–1秒、143字；这仅表示桥接任务终止，**不是研究成功**。实际状态修正为 `FAILED_RATE_LIMIT_429`，无WorkBuddy研究正文，审计 `NOT_EVALUABLE`，不创建虚假 `WORKBUDDY_REPORT.md` 或评分。
+- 不重复提交此轮；保留原Job ID和原派单、反馈、Git写入历史。额度恢复后如需重新研究，应先另行制定明确补跑/去重协议并授权，不将失败任务伪装为待完成队列。当前没有切模型、安装插件、改其他任务或跨分支写入。
