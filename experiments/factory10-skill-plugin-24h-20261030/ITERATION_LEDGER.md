@@ -6,8 +6,11 @@
 |---|---|---|---|---|---:|---|---|---|---|
 | R01 | F1 API与模型服务 | `c901454bfc4042c3` | DONE / AUDITED / Git回读 | 21/16/12/12/9 | **70** | 首圈基线 | 原生调度误判、Agent API与推理网关混淆、硬预算误判 | 提出M1文档优先、M2能力/语法证据、M3案例负例与回滚 | 基线，无纵向效果 |
 | R02 | F2 软件与开源程序 | `f77da8aaab28496d` | DONE / AUDITED / Git回读 | 22/18/16/15/10 | **81** | 首圈基线（与F1不同厂，不计算Δ） | P0：worktree非安全沙箱、headless权限过宽；P1：GPL/AGPL许可判断过度简化、环境缺git/docker | M1官方文档核对；M2工具边界/命令核验；M3五案例负例/回滚 | M1具体错误已修复；M2部分有效；M3文本完整但运行NOT_TESTED |
+| R03 | F3 游戏与互动体验 | `5b8ee940847e42f2` | PENDING / MCP已派单 / Git状态回读待核 | NOT_EVALUABLE | — | 首圈基线 | R02跨厂P0：worktree非沙箱、headless权限过宽；R03须严格区分游戏引擎执行与资产版权 | M1≥8官方证据；M2权限边界反例；M3五案例运行状态+种子重放 | 待WorkBuddy正文；不能宣称改进有效 |
 
 ## 交付目录和防重
 - R01：`rounds/R01/` 三文件完整、已回读，禁止重复派单。
 - R02：`rounds/R02/FEEDBACK_TO_BUDDY.md` 已在派单前创建并回读，完整反馈内容实际发给WorkBuddy；`STATUS.md` 与 `ADAPTATION.md` 已写并回读。R02原文、独立审计、STATUS、反馈及ADAPTATION均已Git回读，Job `f77da8aaab28496d` DONE；**禁止重复派单R02**。下一轮R03须读取R02审计及ADAPTATION，并把三项研究方法改进实际注入WorkBuddy prompt。
 - R11–R20对照同厂R-10；R21–R24对照同厂R-20与R-10。跨厂改进只比方法证据，不直接把不同工厂总分差当成因果效果。
+
+- R03：F3首圈，唯一Job `5b8ee940847e42f2`；派单后[ running ]，尚无正文；反馈与ADAPTATION已写入Git并回读，研究报告/评分待补交。下一轮必须先追单，不重复派单。
