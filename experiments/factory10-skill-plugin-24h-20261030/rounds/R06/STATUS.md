@@ -10,3 +10,10 @@
 - 本轮Git交付：`FEEDBACK_TO_BUDDY.md`已回读PASS；`ADAPTATION.md`、`STATUS.md`、根目录`ITERATION_LEDGER.md`须以本轮实际写入及独立回读结果为准。Commit SHA和回读不得混淆。
 - 下一轮R07/F7先追R04/R05/R06，若获得真实正文则补交独立审计与Git回读；队列单执行槽瓶颈仍在。不得为同轮重复submit。
 - 安全：未安装插件、未授权外部平台、未改变模型/调度/其他实验、未输出凭据。
+
+## R06 Git真实写入与独立回读校验
+- `FEEDBACK_TO_BUDDY.md`：commit `d5b4a5b387d349e299a1e8d428661022a2df172d`，blob `c4297760b60c8187c49fc040524f650a5871cc75`，创建后GitHub fetch_file逐字一致，PASS。
+- `ADAPTATION.md`：commit `1d2d2ec17e2c80a6fc09f03fdecf4a214a7df771`，blob `194141ea660dcdad48e44e0992ea37b112def301`，创建后回读逐字一致，PASS。
+- `STATUS.md` 首次创建：commit `8a2662fb32ef08bd151b6f2e8bddd975eb2df4e6`，blob `44ab63cbecd33f6038b0cfedd77dfcf3d5c0d815`，首次回读逐字一致，PASS；本段是后续更新，最终blob须以再次回读为准。
+- 根目录 `ITERATION_LEDGER.md`：commit `2345c9266212eb672b55528c0242c8c5bc760ea7`，blob `9dad483d5b1accacbc1f55d6295d9f8bdaa05f50`，更新后回读逐字一致，PASS。
+- 以上证明**状态/反馈/适应记录交付成功**；R06 WorkBuddy研究正文仍QUEUED、未完成，`WORKBUDDY_REPORT.md`与`CHATGPT_AUDIT.md`不得伪造。
