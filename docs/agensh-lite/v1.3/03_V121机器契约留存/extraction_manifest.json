@@ -1,0 +1,41 @@
+{
+  "source": "纲领02_微软蜂群Lite_任务消息_开发评测与运维协议_V1.2.1_20261028.md",
+  "source_sha256": "db0fc79d1f979dd9a80e3f4652249310be719825aa2c48be7cc803b3f6796eaf",
+  "schemas": [
+    {
+      "object": "task",
+      "source_lines": "433-561",
+      "sha256": "0fa94cac35b1c09941008c03213cd15eec397e3b64b63a1657fe0610dcd1a66d"
+    },
+    {
+      "object": "event",
+      "source_lines": "563-1009",
+      "sha256": "414d3601f64f63f4a4fd67e083d24f663cf600dd05f7bd89269f57ccdfd79887"
+    },
+    {
+      "object": "message",
+      "source_lines": "1011-1104",
+      "sha256": "80168038dde56e146ca182982e7fcffa91c94b40e9824bf2a58d43d1678495a1"
+    },
+    {
+      "object": "ack",
+      "source_lines": "1106-1198",
+      "sha256": "5299f129d5084d8c673d79f80e4ffe73c177e259fa80d9bf163f0218d8673310"
+    },
+    {
+      "object": "review",
+      "source_lines": "1200-1314",
+      "sha256": "51ef3eee96afba210ad7a524fcc6a02781901c5caa639f17c52945fc5e86a503"
+    },
+    {
+      "object": "delivery",
+      "source_lines": "1316-1466",
+      "sha256": "ae2fa262a81ffc7d7972e4ed5f9b3623ae630db6e746040992859a146a61bc55"
+    },
+    {
+      "object": "run",
+      "source_lines": "1468-1580",
+      "sha256": "d678bcc25806ffe0a2e910b23b741ac8b5d703f3eb1f4641255e725685eb94e1"
+    }
+  ]
+}
