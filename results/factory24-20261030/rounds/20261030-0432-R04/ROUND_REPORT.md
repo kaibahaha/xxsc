@@ -31,3 +31,13 @@
 - R04-A的`TASK.md`和`AUDIT.md`为ChatGPT管理文档，`ROUND_REPORT.md`和`ledger/INDEX.md`为管理总账；应由GitHub连接器提交并回读。
 - WorkBuddy源码、测试、README、REPORT、TEST_RESULTS、MANIFEST：**GIT_PENDING**，0个已验证代码文件；ChatGPT独立测试：0，分数N/A。
 - Git管理文件commit及回读记录在本轮后续总账更新中登记。无真实代码时不得标`GIT_VERIFIED_CODE`。
+
+## GitHub连接器独立回读验收（本轮补充）
+
+- R04 `A/TASK.md` 创建commit `abb5790213602b62a324dce7689b6341f9c43c59`，回读成功。
+- R04 `A/AUDIT.md` 创建commit `93218bd88dfce654ce5b4427ed65bf8742f3ddcd`，回读成功。
+- R04 `ROUND_REPORT.md` 初次创建commit `216b428de99289845014bc7dff2cf5b9af21e4ab`，回读成功。
+- `ledger/INDEX.md` 本轮追加commit `a18e04e046267a2c90dc5f6400aa05acc8da3f0c`，回读成功。
+- 历史R02-A `AUDIT.md` 超时事实更新commit `36769ba5633641e6203e78eac281b825b2af0872`，回读成功。
+- 历史R02-B `AUDIT.md` 超时事实更新commit `634f7a42048e97a287bbeac78b79a9cc8e9793e8`，回读成功。
+- 合计6/6管理文件已由GitHub连接器独立回读，状态 **GIT_VERIFIED_METADATA_ONLY**。WorkBuddy源码/测试/运行结果仍为 **GIT_PENDING**；本轮代码文件数=0，独立测试数=0，评分N/A。不要将管理文档成功当作源码交付。
