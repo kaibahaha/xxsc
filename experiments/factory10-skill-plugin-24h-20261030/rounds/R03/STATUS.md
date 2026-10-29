@@ -1,0 +1,13 @@
+# R03 / F3 游戏与互动体验工厂｜派单前状态
+- 实验：FACTORY10-SKILL-24H-20261030
+- 计划时间：北京时间2026-10-30 03:00 / Phoenix 2026-10-29 12:00（调度提前启动不改变轮次映射）
+- 工厂：F3 游戏与互动体验工厂；首圈同厂基线BASELINE。
+- 已读取：README.md V2.0；R02 CHATGPT_AUDIT.md、ADAPTATION.md、STATUS.md；跨厂经验仅作为方法输入。
+- R02 Job `f77da8aaab28496d` DONE / AUDITED；不需追单。
+- 桥接器健康：HTTP200；查询时 active_jobs=3、max_concurrent_jobs=1；复杂编程实验有1 running、2 queued；**不干预其他实验**。
+- 本轮Git检查：R03 STATUS/FEEDBACK/WORKBUDDY_REPORT/CHATGPT_AUDIT此前均404，未见已派Job ID。
+- 当前阶段：PRE_SUBMIT；本轮唯一WorkBuddy Job ID尚未取得。完成反馈与方法文件回读后提交一次，随后更新本文件。
+- 同厂历史读取：不适用，R03是F3首轮；R13需回读R03。
+- 方法：M1官方版本与证据；M2权限边界反例；M3五案例运行阻塞与确定性种子重放。
+- 报告状态：NOT_EVALUABLE，尚无WorkBuddy正文；不得评分、不得创建伪WORKBUDDY_REPORT.md。
+- Git提交/回读：本文件创建后另行核验；不得将提交成功视为回读成功。
