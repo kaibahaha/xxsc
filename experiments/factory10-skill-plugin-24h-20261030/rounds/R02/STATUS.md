@@ -1,18 +1,17 @@
-# R02｜F2 软件与开源程序工厂｜执行状态
+# R02｜F2 软件与开源程序工厂｜最终执行状态
 
 - 实验：FACTORY10-SKILL-24H-20261030
-- 轮次：R02（计划北京时间2026-10-30 02:00；Phoenix 2026-10-29 11:00，调度可能提前触发）
-- 工厂：F2 软件与开源程序工厂
-- Git仓库：`kaibahaha/xxsc`；分支：`exp/factory10-skill-plugin-20261030`
-- 本轮状态：**PENDING_WORKBUDDY_RESULT**（此状态仅记录真实派单成功，尚未宣称报告交付）
-- WorkBuddy Job ID：`f77da8aaab28496d`；已通过真实 `submit_workbuddy_task` 返回；**本轮不可重复派单**。
-- 桥接器健康：本轮派单前 HTTP 200，CodeBuddy reachable=true，bridge v3.3，active_jobs=0，max_concurrent_jobs=1；队列最近20条未发现R02旧派单。
-- 同厂历史：R02属于首圈，无F2历史报告；标记 **BASELINE**，不计算同厂分差。
-- 跨厂经验：读取R01/F1的审计（70/100，21/16/12/12/9）和状态，继承“官方文档优先、功能边界清晰、命令与案例可复现”三项方法改进。
-- 反馈文件：`FEEDBACK_TO_BUDDY.md` 已提交并回读验证，blob `c4c8c587822cf3955b8879502516c3084701bb94`；完整内容已实际包含在发给WorkBuddy的MCP prompt中，非仅发送Git链接。
-- `WORKBUDDY_REPORT.md`：尚未取得完整原文，**不得生成虚假报告**。
-- `CHATGPT_AUDIT.md`：**NOT_EVALUABLE**，等待真实研究报告后按固定五维100分评分。
-- 改进效果：目前只有派单证据，M1/M2/M3均为 **PENDING**；不能宣称已提高质量。
-- 下一步：使用 `get_workbuddy_result(job_id="f77da8aaab28496d")` 查询，完成后提交原始报告并Git回读，再做独立核验、逐条反馈验收、100分评分与同厂基线记录；若仍running，下一轮先追单再处理F3。
-- 权限与安全：未安装插件、未切换模型、未更改其他实验或分支、未泄露凭据。
-- Git回读：本文件提交后由当前轮次再次fetch确认；后续完成阶段可按blob SHA更新。
+- 轮次：R02；计划北京时间2026-10-30 02:00 / Phoenix 2026-10-29 11:00
+- 工厂：F2 软件与开源程序工厂；同厂历史：**BASELINE（首圈）**，无同厂纵向差值。
+- Git：kaibahaha/xxsc；分支 exp/factory10-skill-plugin-20261030；路径 experiments/factory10-skill-plugin-24h-20261030/rounds/R02/
+- WorkBuddy：**DONE**；唯一Job ID `f77da8aaab28496d`，get_workbuddy_result真实返回完整研究文本，`RESULT_STATUS: COMPLETE`；原始正文23,826字符。**禁止重复派发R02**。
+- 研究报告：`WORKBUDDY_REPORT.md` 已Git写入且逐字回读校验，commit `5c3bbb0b1fc23de6bda78fa9524d6a0d7befaa66`，blob `5cd3c6f406310e3b1001675ec2e4875f5d08448e`，文件24,121字符。
+- 独立审计：`CHATGPT_AUDIT.md` 已Git写入且逐字回读校验，commit `92e8bab1153fa6b6fa77f5c5725b098240a6ac5c`，blob `0c57b55a014abd4c0ff94bd99ba14255cf397c87`，文件6,986字符。
+- 质量评分：**81/100 / CONDITIONAL_ACCEPT**。五维：证据22/25、战略18/20、Skill技巧16/20、五案例15/20、风险真实性10/15。仅评报告质量，**未执行插件或案例**。
+- 跨厂反馈：`FEEDBACK_TO_BUDDY.md` 已Git回读，blob `c4c8c587822cf3955b8879502516c3084701bb94`；其实际内容已由R02早期阶段完整传给WorkBuddy，原文§⑦有整改追踪表。
+- 方法迭代：`ADAPTATION.md` 已更新回读，commit `a3e19535bf9b2d1975a932540c1d88db4c06e915`，blob `27f50c318419f4edfaf5e0b5dcf58194ae440e34`。
+- 主要发现：R02已纠正R01“无原生scheduler”错误；新P0：worktree/--add-dir并非OS级安全隔离，headless的广泛Bash权限不足以保证安全；P1：GPL/AGPL许可义务不能一刀切、缺git/docker/uv造成实施阻塞。
+- 方法验证：M1具体问题已修复；M2部分有效（能力矩阵改进但安全边界仍有误）；M3案例字段完整但运行未实测。R01 F1 70分与R02 F2 81分不可直接当成同厂提升或因果改进。
+- 下一轮R03/F3：先读取本轮审计与ADAPTATION，实际派单注入官方文档版本核查、工作区与安全隔离分层、案例运行阻塞及确定性随机种子重放三项要求；R02无需追单。
+- 权限与安全：本轮未安装插件、未切换模型、未改生产桥接器、未更改其他任务或分支、未提交凭据。
+- 本STATUS文件写入后须单独fetch回读确认；如回读失败不得声称其已验证。
