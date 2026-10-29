@@ -35,3 +35,12 @@
 ## 安全与数据质量
 
 未修改其他实验、模型、桥接器或生产目录；未上传密钥。统计基于本轮真实MCP查询，任务历史列表截断为最近50条，但最新活跃任务都在可见窗口内。
+
+## GitHub回读核验（本轮）
+
+- ChatGPT已通过GitHub连接器写入8个Markdown文件（A/B/C各TASK与AUDIT共6个，加ROUND_REPORT、INDEX）。8次创建均返回真实commit SHA，失败0。
+- 已独立回读A/B/C三个TASK、A的AUDIT、ROUND_REPORT及INDEX：6/6可读取且内容与job_id相符；其余两个AUDIT已获Git提交确认，但未逐个回读。
+- ROUND_REPORT初始创建commit: `045f71c9a591be8235ab42282266ad3e2d094472`；INDEX初始创建commit: `b7e23c3ce99964ddec9ce42883bb52c4436a3209`。
+- 示例TASK commit A: `62f0ec6c016450fcce3c02fd8d9f148111a7d7de`，B: `da258aa46a69870e8346861b4abec85f585e66a9`，C: `921a9540f919d8cad59f3a472b48afeae4893746`。
+- 状态：ChatGPT元数据 `GIT_VERIFIED`；WorkBuddy源码/测试 `GIT_PENDING`。尝试读取A源码与测试的预期路径均返回404（作业尚在排队），不得把元数据已写入误认作代码已交付。
+- 最后复查任务列表：A/B/C仍为QUEUED；另一工厂F1仍RUNNING；队列深度3。get_workbuddy_result对未完成作业使用通用[ running ]提示，状态分类以list_workbuddy_jobs为准。
