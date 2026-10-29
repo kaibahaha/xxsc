@@ -14,3 +14,9 @@
 
 ## 派单后独立队列复查
 - 通过 `list_workbuddy_jobs(limit=9)` 复查：R04 Job `5458b23070ac460c` = **queued / 34秒 / 0字**；R03 Job `5b8ee940847e42f2` = **queued / 3702秒 / 0字**；共享执行槽正运行另一复杂编程任务。先前 `get_workbuddy_result` 返回的 `[running]` 是泛化占位，不应覆盖队列中的具体 `queued` 状态。R04与R03均未获得可审计正文。
+
+
+## R07追单结果：429额度失败
+- 追单时间：计划R07（Phoenix 2026-10-29 16:00 / 北京2026-10-30 07:00）；通过真实WorkBuddy MCP `get_workbuddy_result(job_id=5458b23070ac460c,wait_seconds=0)` 回读：`Error: 429 您的使用量已超出频率限制，将在 2026-10-30 23:00:00 UTC+8 重置`（省略追踪标识）。
+- 结合 `list_workbuddy_jobs`：该Job显示 `done`、0–1秒、143字；这仅表示桥接任务终止，**不是研究成功**。实际状态修正为 `FAILED_RATE_LIMIT_429`，无WorkBuddy研究正文，审计 `NOT_EVALUABLE`，不创建虚假 `WORKBUDDY_REPORT.md` 或评分。
+- 不重复提交此轮；保留原Job ID和原派单、反馈、Git写入历史。额度恢复后如需重新研究，应先另行制定明确补跑/去重协议并授权，不将失败任务伪装为待完成队列。当前没有切模型、安装插件、改其他任务或跨分支写入。
