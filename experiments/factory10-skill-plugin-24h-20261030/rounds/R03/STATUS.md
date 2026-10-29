@@ -1,13 +1,15 @@
-# R03 / F3 游戏与互动体验工厂｜派单前状态
-- 实验：FACTORY10-SKILL-24H-20261030
-- 计划时间：北京时间2026-10-30 03:00 / Phoenix 2026-10-29 12:00（调度提前启动不改变轮次映射）
-- 工厂：F3 游戏与互动体验工厂；首圈同厂基线BASELINE。
-- 已读取：README.md V2.0；R02 CHATGPT_AUDIT.md、ADAPTATION.md、STATUS.md；跨厂经验仅作为方法输入。
-- R02 Job `f77da8aaab28496d` DONE / AUDITED；不需追单。
-- 桥接器健康：HTTP200；查询时 active_jobs=3、max_concurrent_jobs=1；复杂编程实验有1 running、2 queued；**不干预其他实验**。
-- 本轮Git检查：R03 STATUS/FEEDBACK/WORKBUDDY_REPORT/CHATGPT_AUDIT此前均404，未见已派Job ID。
-- 当前阶段：PRE_SUBMIT；本轮唯一WorkBuddy Job ID尚未取得。完成反馈与方法文件回读后提交一次，随后更新本文件。
-- 同厂历史读取：不适用，R03是F3首轮；R13需回读R03。
-- 方法：M1官方版本与证据；M2权限边界反例；M3五案例运行阻塞与确定性种子重放。
-- 报告状态：NOT_EVALUABLE，尚无WorkBuddy正文；不得评分、不得创建伪WORKBUDDY_REPORT.md。
-- Git提交/回读：本文件创建后另行核验；不得将提交成功视为回读成功。
+# R03｜F3 游戏与互动体验工厂｜执行状态（PENDING）
+- 实验：FACTORY10-SKILL-24H-20261030；计划北京时间2026-10-30 03:00 / Phoenix 2026-10-29 12:00。任务提前唤醒，不改变R03固定轮次。
+- 工厂：F3 游戏与互动体验工厂；首圈同厂历史BASELINE；R13再做同厂复访。
+- Git目标：`kaibahaha/xxsc`，`exp/factory10-skill-plugin-20261030`，`experiments/factory10-skill-plugin-24h-20261030/rounds/R03/`。
+- 已回读README.md V2.0、R02审计/ADAPTATION/STATUS、R03派单前不存在的各文件。R02 Job `f77da8aaab28496d` DONE且审计81/100，不需追单。
+- WorkBuddy真实MCP提交：**唯一Job ID `5b8ee940847e42f2`**，conversation_id `FACTORY10-SKILL-24H-20261030-R03-F3`；提交返回“已提交”；随后 `get_workbuddy_result(wait_seconds=0)` 返回 **[running] 已8s/0字**，并明确服务器后台继续执行。**不得再次submit R03**。
+- 任务执行结果：**PENDING / NOT_EVALUABLE**；尚未收到完整研究报告，不创建伪`WORKBUDDY_REPORT.md`、不创建无依据评分`CHATGPT_AUDIT.md`。
+- 桥接器派单前HTTP200，`active_jobs=3`、`max_concurrent_jobs=1`，其他独立复杂编程实验有任务运行和排队；未改动/取消其他任务。后续轮次优先查询本Job，完成后补交原始报告与独立审计。
+- 反馈已真实传达：`FEEDBACK_TO_BUDDY.md` 2327字符全文作为实际MCP prompt一部分（总prompt约3460字符），包含R02跨厂问题与F3五案例，非仅发Git链接。首圈无同厂历史分数，不计算Δ。
+- 本轮方法M1：官方/版本/8项能力断言证据；M2：生成/执行/安全隔离/素材版权边界和反例；M3：五案例执行状态、阻塞、正反测试与确定性种子重放。三项已注入实际prompt，效果待正文审计。
+- Git已提交并回读：`FEEDBACK_TO_BUDDY.md` commit `326e0fc1a812cbdc8be68205824178f63607ba95`、blob `cbf13482c1ddbfc35dc095af784ad6bc552b1b93`；`ADAPTATION.md` 首次commit `6d2e33d56356cb1adb3eb9ba39018797d25e6615`、首次blob `09844f694daba13bb6984464988fc1b2a863b32b`；`STATUS.md` 首次commit `0f76f6f283f5fde2fd3392f12433ff7ddfaabf86`，首次blob `6439b4a863f42b9fe3571ac3b9fae631037b9024`。
+- 后续状态文件本次更新及总账更新须各自Git回读确认；新commit/blob见Git工具回执，不能把写入成功等同回读成功。
+- 阻碍：研究尚在远端运行且桥接器单执行槽，无法在本次响应中对质量评分或方法效果下结论。
+- 下一轮R04/F4：先按Job ID追取R03并补交审计；仅在获得正文后对M1–M3判断有效性；不能为F3重复派单。
+- 安全：未安装插件、未切换模型、未更改生产桥接器、未授权第三方、未写其他分支。
