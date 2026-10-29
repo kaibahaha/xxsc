@@ -35,3 +35,14 @@ Previous R05-A was not done; hence no independent source audit or separate read-
 - All other jobs, research factory, bridge model, max_concurrent_jobs, Git branches and automation schedules were left untouched.
 
 **R06 live result: 1 new job ACCEPTED and QUEUED; Q_high_watermark=7; no completed source or independent audit; Git metadata write/readback pending.**
+
+
+## GitHub connector independent readback (completed)
+
+Four R06 management files were **actually committed and fetched again from the same branch**; each contained the expected unique job_id `a5076503a4164622`:
+- `A/TASK.md`: commit `41521de6cc045c4edb621029d2cf2f6ed91d86b3`, fetched blob `14204c860f00693bbe35878b319ba8634a2a93e3`.
+- `A/AUDIT.md`: commit `bb3e860d7ba08b99e0458b26f885830d050606d3`, fetched blob `35eeb907bc8c46c23b89b80204ed67b463422e60`.
+- `ROUND_REPORT.md` initial: commit `7b4b95d441f4505887b618c5764e41c0bc236c10`, fetched blob `92735d2c1255a1fd23dbe75c8006a6b9fdb228a5`.
+- `ledger/INDEX.md`: commit `c01c245ac1c33f85679a73bcb7edf83531475305`, fetched blob `a7f67ca968227e772529d4ac6d9b82e1709394a0`.
+
+**GIT_VERIFIED_METADATA_ONLY (4/4 management files)**. Independent Git directory listing for R06-A shows only `TASK.md` and `AUDIT.md`: **0 actual source/test files**, 0 test result files, 0 code commits at this observation. Thus **GIT_CODE_PENDING**; `GIT_COMMITTED` applies only to management metadata. No verified `src/*.py` or `tests/*.py`, no actual `unittest` exit code, and no independent score. GitHub file SHA is blob identity, not the requested source SHA256 manifest; source MANIFEST remains missing.
