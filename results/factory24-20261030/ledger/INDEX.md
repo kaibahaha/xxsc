@@ -24,3 +24,21 @@
 - A/B/C TASK committed and read back: `62f0ec6c016450fcce3c02fd8d9f148111a7d7de`, `da258aa46a69870e8346861b4abec85f585e66a9`, `921a9540f919d8cad59f3a472b48afeae4893746`.
 - ROUND_REPORT initial commit `045f71c9a591be8235ab42282266ad3e2d094472`; INDEX initial commit `b7e23c3ce99964ddec9ce42883bb52c4436a3209`.
 - ChatGPT metadata: GIT_VERIFIED; WorkBuddy source/tests: GIT_PENDING. Independent code audits: PENDING.
+
+
+## 20261030-0132-R01 — Restarted 24-round schedule, first new slot
+
+- Scheduled: 2026-10-30 01:32 Asia/Shanghai. The prior 20261030-01 round is **PRE-RESTART/HISTORICAL_INTERRUPTED**, not counted as this restarted R01.
+- Old A/B/C `9712edf966b54027` / `a154efd28abc4eb5` / `fb21843915d24025`: **INTERRUPTED** confirmed by MCP, no final output. Git old task directories contained TASK.md and AUDIT.md only, no source/tests; remote workspace not yet inspected.
+- Bridge: v3.3; max_concurrent_jobs=1; active_jobs=0. Jobs total=90, recent list=50; no active jobs. Q_before=0, intended new programming jobs=3.
+- First A submit attempted and **BLOCKED by OpenAI safety checks** before a job ID was issued. Per protocol, no retry and no further B/C submits this round. Actual newly accepted programming jobs=**0**; A/B/C state=SUBMISSION_BLOCKED/DEFERRED, not QUEUED or DONE. No 429 observed.
+- Q_after=0, Q_peak this round=0, cumulative observed Q_high_watermark=3 (historical). QUEUE_MAX_NOT_REACHED; queue ceiling unknown.
+- Code/test deliveries=0; independent audits=0; scores=N/A; Git code=GIT_PENDING. Git metadata: 3 TASK + 3 AUDIT + 1 ROUND_REPORT committed, verify separately.
+- Report: `results/factory24-20261030/rounds/20261030-0132-R01/ROUND_REPORT.md`.
+- **Recovery priority**: inspect old remote workdirs read-only, then reissue with new unique job_id linked to parent if necessary; all recovery work counts in 1–3 programming jobs/hour. Do not delete historical artifacts or edit other factories.
+
+| Slot | Task | Parent interrupted job | New job_id | State | Code Git | Audit |
+|---|---|---|---|---|---|---|
+| 20261030-0132-R01 | A lease scheduler | `9712edf966b54027` | NONE | SUBMISSION_BLOCKED | PENDING | NOT_STARTED |
+| 20261030-0132-R01 | B policy DSL | `a154efd28abc4eb5` | NONE | DEFERRED_AFTER_A_BLOCK | PENDING | NOT_STARTED |
+| 20261030-0132-R01 | C rate/circuit | `fb21843915d24025` | NONE | DEFERRED_AFTER_A_BLOCK | PENDING | NOT_STARTED |
