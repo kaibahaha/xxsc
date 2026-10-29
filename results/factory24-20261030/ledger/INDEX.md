@@ -42,3 +42,5 @@
 | 20261030-0132-R01 | A lease scheduler | `9712edf966b54027` | NONE | SUBMISSION_BLOCKED | PENDING | NOT_STARTED |
 | 20261030-0132-R01 | B policy DSL | `a154efd28abc4eb5` | NONE | DEFERRED_AFTER_A_BLOCK | PENDING | NOT_STARTED |
 | 20261030-0132-R01 | C rate/circuit | `fb21843915d24025` | NONE | DEFERRED_AFTER_A_BLOCK | PENDING | NOT_STARTED |
+
+- **R01 Git metadata verification**: 8/8 TASK/AUDIT/ROUND_REPORT/INDEX files fetched successfully after writes. ROUND_REPORT verification update commit `dde45c3387888a1e0b55ce73a36619bfb36c8caa`; ledger initial R01 update commit `07c34d85ac24ecac0e9c429ac3ae9ea131b43467`. This verifies metadata only; code/test delivery remains pending. Submission blocker was client safety check, not 429 or confirmed queue saturation.
