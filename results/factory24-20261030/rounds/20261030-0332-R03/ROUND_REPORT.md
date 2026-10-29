@@ -38,3 +38,10 @@
 - A AUDIT placeholder commit: `3aa557aa087b60f262c5e4c5af6f198874cc85a9`.
 - B AUDIT placeholder commit: `4365687a25685eff4ba5d85e07b5ed765a2cf601`.
 - ROUND_REPORT and ledger commits: see subsequent ledger update after writes. Status of source/tests remains **GIT_PENDING**, not GIT_VERIFIED.
+
+
+## Verified Git management metadata (post-write readback)
+
+- Six expected management files (A/B TASK, A/B AUDIT, ROUND_REPORT, ledger INDEX) independently fetched from the exact target branch, all contained expected R03 IDs/queue data: **6/6 GIT_VERIFIED_METADATA_ONLY**.
+- Ledger update commit: `4d145f55d8beb62c4da41618ee5c90b39249a9e3`. This report's initial commit: `96aac606ce720b7a2925b73d4f1a8bd3d7a957b5`.
+- WorkBuddy code/test Git status remains **GIT_PENDING**, with **zero** verified source/test files and **zero** independent audit scores. Readback of management files is not evidence of code delivery.
