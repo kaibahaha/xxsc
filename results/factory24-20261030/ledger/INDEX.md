@@ -102,3 +102,22 @@
 | 20261030-0332-R03 | A DAG | `fd0bc26fcc7b489b` | QUEUED | GIT_PENDING | PENDING/N/A |
 | 20261030-0332-R03 | B audit ledger | `e09bacf7e42349a1` | QUEUED | GIT_PENDING | PENDING/N/A |
 | 20261030-0432-R04 | A TTL cache/singleflight | `5669468a86524c07` | QUEUED | GIT_PENDING | PENDING/N/A |
+
+
+## 20261030-0532-R05 — Adaptive single submission, queue depth 6, third R02 timeout
+
+- Planned Beijing: 2026-10-30 05:32. Bridge v3.3, `max_concurrent_jobs=1`, active_jobs before/after=6/7 (RUNNING+QUEUED).
+- At entry global Q_before=5: programming 3 (R03-A/B, R04-A), research 2 (F4/F5), other 0; RUNNING=research F3. Q>=5 => exactly 1 new programming job.
+- **R05-A** deterministic fault-injection/replay engine `FACTORY24-20261030-20261030-0532-R05-A` accepted with `job_id=f8de6c9938a94e90`; state QUEUED, source/test GIT_PENDING, independent audit PENDING/N/A.
+- Q_after=6: programming 4, research 2; Q_peak=6; experiment Q_high_watermark=**6**. No 429, queue refusal or safety block observed. `QUEUE_MAX_NOT_REACHED`, proven waiting capacity >=6, true maximum unknown. List total=100 before/101 after, display limit=50.
+- R02-C `7db4a2fa2edc4ab0` now **FAILED_EXECUTION_TIMEOUT** at ~3605s, original result `[task failed]` / 3600s hard kill / no body. Git R02-C directory contained TASK/AUDIT only, no source/test. R02-A/B previously same failure. R02 A/B/C = **3/3 failed by hard timeout**, 0/3 verified code deliveries; local remote artifacts remain unverified.
+- R03-A `fd0bc26fcc7b489b`, R03-B `e09bacf7e42349a1`, R04-A `5669468a86524c07` still QUEUED, no source/test. R05-A also QUEUED. No independent audit score; no audit_job_id (no completed code).
+- R05 management metadata commits: TASK `aa0a28dcefb135b7363fd3481cb42eabcfcf79d1`; AUDIT `d37544a1c7b51ed84fb405a6a4a18885480cd88e`; ROUND_REPORT `126b4a23bafe7922bee8b50b9d31c3e065be2fc7`; R02-C AUDIT updated `2c3a51678ead83755150d20397aec7ee8bcdea05`. Git source/tests: GIT_PENDING. Report: `results/factory24-20261030/rounds/20261030-0532-R05/ROUND_REPORT.md`.
+
+| Slot | Task | Job ID | Last state | Git code | Independent audit |
+|---|---|---|---|---|---|
+| 20261030-0232-R02 | C rate/circuit | `7db4a2fa2edc4ab0` | FAILED_EXECUTION_TIMEOUT 3600s | MISSING_SOURCE | PENDING_EVIDENCE/N/A |
+| 20261030-0332-R03 | A DAG | `fd0bc26fcc7b489b` | QUEUED | GIT_PENDING | PENDING/N/A |
+| 20261030-0332-R03 | B audit ledger | `e09bacf7e42349a1` | QUEUED | GIT_PENDING | PENDING/N/A |
+| 20261030-0432-R04 | A TTL cache | `5669468a86524c07` | QUEUED | GIT_PENDING | PENDING/N/A |
+| 20261030-0532-R05 | A fault injection/replay | `f8de6c9938a94e90` | QUEUED | GIT_PENDING | PENDING/N/A |
