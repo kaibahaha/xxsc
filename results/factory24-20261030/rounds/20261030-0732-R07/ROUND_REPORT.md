@@ -45,3 +45,10 @@ Each new job has a distinct job_id and isolated WorkBuddy directory under `/home
 2. Read Git actual source/tests/REPORT/MANIFEST, validate SHA256 and rerun independent standard-library unittest plus >=10 adversarial cases when real code becomes accessible. If only summary is available, enqueue a distinct read-only audit job and track its job_id and queue cost.
 3. Recover old A/B/C only with evidence and new job IDs; never overwrite interrupted history, change model, cancel jobs or alter another factory.
 4. Keep Q_high_watermark=7 until a higher real observation, mark `QUEUE_MAX_NOT_REACHED` absent hard rejection. Continue R08–R24 according to original schedule and adaptive 1–3 submission rule.
+
+
+## R07 Git independent readback confirmation
+
+- All **8/8** R07 management files (A/B/C TASK.md + AUDIT.md, ROUND_REPORT.md, ledger/INDEX.md) were independently read back from the target GitHub branch and matched the expected real job IDs. This is `GIT_VERIFIED_METADATA_ONLY`, not source delivery or test verification.
+- Original ROUND_REPORT creation commit: `fdc7d9902211ee1c3e4ef039d8d23d9e888f4bb3`; original ledger update commit: `268cd81ea594d2514cd59124b4dcb58a11fca4b7`.
+- At last MCP list R07 A `6f4ee441c0d34b3f` RUNNING ~148s; B `979fd16d94c74e3d` QUEUED ~132s; C `88ba054e03ce42fe` QUEUED ~118s. No independently verified source/tests. Preserve PENDING/N/A; no semantic success inferred.
