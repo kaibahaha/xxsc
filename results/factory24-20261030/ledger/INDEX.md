@@ -44,3 +44,23 @@
 | 20261030-0132-R01 | C rate/circuit | `fb21843915d24025` | NONE | DEFERRED_AFTER_A_BLOCK | PENDING | NOT_STARTED |
 
 - **R01 Git metadata verification**: 8/8 TASK/AUDIT/ROUND_REPORT/INDEX files fetched successfully after writes. ROUND_REPORT verification update commit `dde45c3387888a1e0b55ce73a36619bfb36c8caa`; ledger initial R01 update commit `07c34d85ac24ecac0e9c429ac3ae9ea131b43467`. This verifies metadata only; code/test delivery remains pending. Submission blocker was client safety check, not 429 or confirmed queue saturation.
+
+
+## 20261030-0232-R02 — Restarted schedule round 2 (accepted three programming jobs)
+
+- Scheduled Beijing: 2026-10-30 02:32; MCP v3.3, max_concurrent_jobs=1. Initial active_jobs=0, Q_before=0; 91 jobs visible count total (50 displayed).
+- Actual accepted A/B/C: **3/3**, all with returned job IDs. No 429, safety block or queue-capacity rejection. R01's submission blocker was not reproduced in R02.
+- A: `15a3ffc753c64dcb` RUNNING; parent interrupted `9712edf966b54027`.
+- B: `8529435fc4da4624` QUEUED; parent interrupted `a154efd28abc4eb5`.
+- C: `7db4a2fa2edc4ab0` QUEUED; parent interrupted `fb21843915d24025`.
+- Queue after A=0 (A running), after B=1, after C=2; final active_jobs=3 = 1 running+2 queued; Q_peak(R02)=2, Q_high_watermark(historical)=3; `QUEUE_MAX_NOT_REACHED`. Research factory F2 `f77da8aaab28496d` DONE; no research queued at observation.
+- Old job results individually reconfirmed INTERRUPTED; old Git has task briefs only; remote old workdir inspection delegated to new jobs, pending. No new code/test returned; no independent audit score yet.
+- Git management docs: 3 TASK + 3 AUDIT + ROUND_REPORT committed, independent readback tracked below. WorkBuddy code/tests: GIT_PENDING. Round report: `results/factory24-20261030/rounds/20261030-0232-R02/ROUND_REPORT.md`.
+
+| Slot | Task | parent_job_id | new job_id | Latest observed | Code Git | Independent audit |
+|---|---|---|---|---|---|---|
+| 20261030-0232-R02 | A lease scheduler | `9712edf966b54027` | `15a3ffc753c64dcb` | RUNNING | GIT_PENDING | PENDING |
+| 20261030-0232-R02 | B policy DSL | `a154efd28abc4eb5` | `8529435fc4da4624` | QUEUED | GIT_PENDING | PENDING |
+| 20261030-0232-R02 | C rate/circuit | `fb21843915d24025` | `7db4a2fa2edc4ab0` | QUEUED | GIT_PENDING | PENDING |
+
+- Metadata write commits: A TASK `e04f0fcc94e17700470b0f0864aba21491829182`; A AUDIT `12d91bda5ec110b2074c56a037d1160a42e8d0bc`; B TASK `70f6331f8d38b86655672f8cee9c45c162200cc8`; B AUDIT `2186121e2b9eaefbadd3ab4b48b50ad43d507e43`; C TASK `e806d16e339c0c967ee65b87afeabc8af7666384`; C AUDIT `bb89bf403393cc056f8c509e53608135690f9ab1`; ROUND_REPORT `160e037f1b50d1305178684f603cd7c488fcbb51`.
