@@ -158,3 +158,10 @@
 | 20261030-0732-R07 | C rate/circuit | `88ba054e03ce42fe` | `fb21843915d24025` | QUEUED | GIT_PENDING_SOURCE | PENDING/N/A |
 
 - Report: `results/factory24-20261030/rounds/20261030-0732-R07/ROUND_REPORT.md`. Next round: verify actual src/tests/README/REPORT/TEST_RESULTS/MANIFEST and real exit codes; don't mistake accepted queue or 429 done for program completion. The R07 report/ledger management Git readback is pending final verification below.
+
+
+## R07 Git independent readback confirmation
+
+- All **8/8** R07 management files (A/B/C TASK.md + AUDIT.md, ROUND_REPORT.md, ledger/INDEX.md) were independently read back from the target GitHub branch and matched the expected real job IDs. This is `GIT_VERIFIED_METADATA_ONLY`, not source delivery or test verification.
+- Original ROUND_REPORT creation commit: `fdc7d9902211ee1c3e4ef039d8d23d9e888f4bb3`; original ledger update commit: `268cd81ea594d2514cd59124b4dcb58a11fca4b7`.
+- At last MCP list R07 A `6f4ee441c0d34b3f` RUNNING ~148s; B `979fd16d94c74e3d` QUEUED ~132s; C `88ba054e03ce42fe` QUEUED ~118s. No independently verified source/tests. Preserve PENDING/N/A; no semantic success inferred.
