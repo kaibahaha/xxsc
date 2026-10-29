@@ -13,3 +13,10 @@
 - 阻碍：研究尚在远端运行且桥接器单执行槽，无法在本次响应中对质量评分或方法效果下结论。
 - 下一轮R04/F4：先按Job ID追取R03并补交审计；仅在获得正文后对M1–M3判断有效性；不能为F3重复派单。
 - 安全：未安装插件、未切换模型、未更改生产桥接器、未授权第三方、未写其他分支。
+
+## R06轮次追单补交：最终状态（覆盖上文历史PENDING，不删除历史）
+- R06查询WorkBuddy `list_workbuddy_jobs` 确认R03 Job `5b8ee940847e42f2` 为 **DONE**，31470字队列统计；`get_workbuddy_result` 返回完整报告、末尾 `RESULT_STATUS: COMPLETE`。
+- 真实原始报告已写 `WORKBUDDY_REPORT.md`，Git commit `057cbfed5171001d1751757c8a7ed31d8d31667a`，回读完全一致，blob `cdf594983d62daf197cf3b0b9c6e0d1e3846d1e3`。
+- ChatGPT独立审计 `CHATGPT_AUDIT.md` **83/100（20/19/16/16/12）**，Git commit `31c4c83cc4e0a553039a1a7583129996d41002b6`，回读完全一致，blob `a8727b6a48a3b15661260f56e09b3c0d038a692a`。
+- 主要整改：P0缺完整可重放源代码/原始日志，P0普通SHA不能证明抗篡改，P1教学泊松模型不能冒称真实IceCube物理；五例仅A为WorkBuddy自述实跑，B–E未执行。M1–M3为部分/基本文本落实，跨厂因果提升不可评估。
+- **最终：DONE / AUDITED / Git报告与审计回读PASS**；R13同厂复访必须读这两份文件并修复P0。未重复派单、未切换模型、未安装插件。
