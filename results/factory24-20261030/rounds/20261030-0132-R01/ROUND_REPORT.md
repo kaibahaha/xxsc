@@ -22,3 +22,11 @@
 ## Operational next steps
 
 At next scheduled round, check whether the submission tool is accessible; do not retry this same rejected request within this round. Preserve old job IDs and all existing files. If permitted, inspect remote old workspaces and use a new job ID linked by parent_job_id for recovery; count any recovery programming job in the 1–3 task limit. Do not disable the 24-hour automation for this single safety-check failure, as bridge health and Git access remain functional.
+
+
+## GitHub connector 独立回读验收（本轮追加）
+
+- **GIT_VERIFIED for metadata only**: 3 TASK.md + 3 AUDIT.md + ROUND_REPORT.md + ledger/INDEX.md = **8/8 files** independently fetched from the specified branch. Six TASK/AUDIT file creation commits: `aa39f876daa83bd7930a526c3b6aa8dfb5aa2fc7`, `71e37dc5e2b44bef75f84a887e4901112588048c`, `fcaf2b5a017fb6385320ad24d85f1231ca58c5f2`, `32c4830a676217f6e2058c3267ae804af3083ba7`, `98d86a648b06c595831e96bcba43effcf4368750`, `572213099e17a799fc0b4469138965395f1f1234`.
+- Initial ROUND_REPORT commit `5d33b6e0979d39f9f472374b3c7951904bb39991`; ledger update commit `07c34d85ac24ecac0e9c429ac3ae9ea131b43467`. These are verified write response commit SHAs, not source-code delivery SHAs.
+- Explicit source/test probes `results/factory24-20261030/rounds/20261030-0132-R01/A/src/main.py` and `results/factory24-20261030/rounds/20261030-0132-R01/A/tests/test_main.py` both 404. No source/test filenames have been provided by WorkBuddy; this is **GIT_CODE_PENDING**, not a failed independent test.
+- Original remote workdir contents remain unknown; do not infer disk absence from Git absence. No 100-point code score assigned.
