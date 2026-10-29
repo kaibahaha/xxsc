@@ -26,3 +26,10 @@
 - R01 (20261030-0132-R01) submitted 0 jobs due to client safety block; no R01 code to audit. This R02 successfully restored ability to submit.
 - All new tasks require >=6 modules, >=40 standard-library unittests, true test exit code, SHA256 manifest, Git full source/test push and independent readback. No code or tests have yet been returned. Self-test PASS count=0 verified, independent audit PASS count=0, scores=N/A.
 - This report and TASK/AUDIT metadata are ChatGPT management artifacts, **not WorkBuddy code delivery**. Commit SHA and verification status to be appended to ledger after connector writes; actual code Git state remains GIT_PENDING.
+
+
+## GitHub connector write/readback evidence
+
+- **GIT_VERIFIED for management metadata: 8/8 files** (3 TASK.md, 3 AUDIT.md, ROUND_REPORT.md, ledger/INDEX.md) independently fetched from the exact `exp/factory24-20261030` branch after writing.
+- Git write commits: A TASK `e04f0fcc94e17700470b0f0864aba21491829182`; A AUDIT `12d91bda5ec110b2074c56a037d1160a42e8d0bc`; B TASK `70f6331f8d38b86655672f8cee9c45c162200cc8`; B AUDIT `2186121e2b9eaefbadd3ab4b48b50ad43d507e43`; C TASK `e806d16e339c0c967ee65b87afeabc8af7666384`; C AUDIT `bb89bf403393cc056f8c509e53608135690f9ab1`; ROUND_REPORT initial `160e037f1b50d1305178684f603cd7c488fcbb51`; INDEX update `d6d6b5e25b06d01183705c87b55edc382713d739`.
+- Source/test/REPORT/MANIFEST from WorkBuddy: **GIT_PENDING**, because jobs have not completed; metadata verification is not code delivery. No independent score or PASS claim.
