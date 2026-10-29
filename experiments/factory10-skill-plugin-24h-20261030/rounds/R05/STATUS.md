@@ -15,3 +15,9 @@
 
 ## Git STATUS首次写入回读证据
 - STATUS首次创建commit `d4e62b619ec0f71020b8ba854dfa09bd8eda28bb`、blob `a6f88e8e6a98f88d120007d7b8fe1ad860267a17`；创建后重新调用GitHub fetch_file，返回内容与拟写文本完全一致（首次回读PASS）。本段为第二次更新，最终更新的commit及blob以GitHub实际回执和后续独立回读为准。
+
+
+## R07追单结果：429额度失败
+- 追单时间：计划R07（Phoenix 2026-10-29 16:00 / 北京2026-10-30 07:00）；通过真实WorkBuddy MCP `get_workbuddy_result(job_id=6f4057fc78094c63,wait_seconds=0)` 回读：`Error: 429 您的使用量已超出频率限制，将在 2026-10-30 23:00:00 UTC+8 重置`（省略追踪标识）。
+- 结合 `list_workbuddy_jobs`：该Job显示 `done`、0–1秒、143字；这仅表示桥接任务终止，**不是研究成功**。实际状态修正为 `FAILED_RATE_LIMIT_429`，无WorkBuddy研究正文，审计 `NOT_EVALUABLE`，不创建虚假 `WORKBUDDY_REPORT.md` 或评分。
+- 不重复提交此轮；保留原Job ID和原派单、反馈、Git写入历史。额度恢复后如需重新研究，应先另行制定明确补跑/去重协议并授权，不将失败任务伪装为待完成队列。当前没有切模型、安装插件、改其他任务或跨分支写入。
