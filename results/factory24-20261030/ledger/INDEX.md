@@ -203,3 +203,5 @@
 | 20261030-0832-R08 | B API gateway | `701606d2cbc14621` | QUEUED | GIT_PENDING | PENDING/N/A |
 | 20261030-0732-R07 | B policy DSL | `979fd16d94c74e3d` | FAILED_TIMEOUT | GIT_MISSING_AT_CHECK | PENDING_EVIDENCE/N/A |
 | 20261030-0732-R07 | C rate/circuit | `88ba054e03ce42fe` | RUNNING | GIT_PENDING | PENDING/N/A |
+
+- **R09 independent Git verification**: 7/7 management files read back successfully; R09 A/B src/tests each 404, no code/test verified. R09 ROUND_REPORT initial commit `fc623dd0755b21149dc1bf41175a43d14fb3cd2a`, verification update commit `SEE_R09_REPORT_COMMIT`; ledger first R09 append commit `24f6460e7400cbf242d8f213c3e4918f8d6ee482`. GIT_VERIFIED_METADATA_ONLY, GIT_CODE_PENDING, score N/A.
