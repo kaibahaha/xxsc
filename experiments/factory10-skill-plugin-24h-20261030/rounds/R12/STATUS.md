@@ -13,3 +13,8 @@
 ## 本轮末最新桥接健康变化（已真实核查）
 - `bridge_health` HTTP200、v3.3、`active_jobs=5`、`max_concurrent_jobs=1`，但**`codebuddy_reachable=false`**。这表明HTTP服务存活≠CodeBuddy后端可达；不能宣称已进入模型研究。
 - `list_workbuddy_jobs`：R11 `6f33514e027a48ab` queued/0字，R12 `00401c5228a34073` queued/0字；另有1个复杂编程Job running和2个queued。后续应先核后端恢复，再按现有Job ID追单；禁止重复提交。
+
+## R13时段22:57 Phoenix / 13:57北京时间追单更新（不新增派单）
+- 实际MCP list_workbuddy_jobs：R12唯一Job `00401c5228a34073` 已从QUEUED进入**RUNNING**（约486秒），0字；get_workbuddy_result(wait_seconds=0)再次确认[running]约495秒/0字。仍未取得完整研究报告，评分NOT_EVALUABLE，禁止重复派单。
+- 同时R11 `6f33514e027a48ab` QUEUED/0字，R13 `24a8fbd31257441a` QUEUED/0字。bridge_health HTTP200，`codebuddy_reachable=true`，`max_concurrent_jobs=1`，`active_jobs=7`。R12正在占用唯一远端执行槽。
+- R12原始报告及独立审计仍待完整正文返回；本次仅更新追单状态，不创建伪报告。
