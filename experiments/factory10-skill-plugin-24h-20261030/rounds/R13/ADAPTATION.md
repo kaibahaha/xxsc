@@ -9,3 +9,8 @@
 - 实际注入要求：上述M1–M3和R03专项反馈的完整事实与验收，必须与本轮`FEEDBACK_TO_BUDDY.md`全文一起写入WorkBuddy submit prompt；不可仅发Git链接。
 - 待验证：R13报告是否完整返回；同厂总分Δ和五维Δ；P0复发率；M1–M3按报告证据判已解决/部分/未解决/无法判断。**当前PENDING/NOT_EVALUABLE，尚未派单时不得写已生效**。
 - 下一轮R14/F4：优先追R11–R13现有Job，补交已完成原文/审计；F4首圈R04 429失败，若仍无报告则记录MISSING_BASELINE，不得伪造同厂评分；跨厂只继承验证方法，不复制F3游戏业务内容。
+
+## 派单后真实状态回填
+- 本轮反馈4242字符已从Git回读，并作为完整原文实际嵌入WorkBuddy MCP Stable `submit_workbuddy_task` prompt（总5216字符），唯一Job `24a8fbd31257441a`；M1–M3及R03六项整改均已真实传达，不只是写在Git。
+- MCP get_result首查[running]/0字，但list_jobs明确QUEUED/0字；桥接器HTTP200、后端可达、单执行槽、active_jobs=6。R11/R12同样QUEUED，不能判定R13研究质量。
+- 方法执行状态：PROMPT_INJECTED / RESULT_PENDING / EFFECT_NOT_EVALUABLE；待R13完整报告及ChatGPT独立审计后逐项回填，不虚构改善。
