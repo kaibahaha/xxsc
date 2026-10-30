@@ -244,3 +244,5 @@
 | 20261030-1132-R11 | A lease scheduler recovery | `e5909f9386404880` | RUNNING | GIT_PENDING | PENDING/N/A |
 | 20261030-1132-R11 | B tamper-evident ledger | `b4811053fb6e4b47` | QUEUED | GIT_PENDING | PENDING/N/A |
 | 20261030-1132-R11 | C schema migration | `112f0aee8cf5417e` | QUEUED | GIT_PENDING | PENDING/N/A |
+
+- **R11 Git independent readback verified:** 8/8 management files present with correct job IDs; A/B/C src/tests all 404 (6 checks), no code/tests or program commit SHA; GIT_VERIFIED_METADATA_ONLY / GIT_CODE_PENDING, score N/A. R11 report verification update commit `5416367a058e6fc86f59dd71f218abc2a379b715`. No independent source test executed.
