@@ -205,3 +205,23 @@
 | 20261030-0732-R07 | C rate/circuit | `88ba054e03ce42fe` | RUNNING | GIT_PENDING | PENDING/N/A |
 
 - **R09 independent Git verification**: 7/7 management files read back successfully; R09 A/B src/tests each 404, no code/test verified. R09 ROUND_REPORT initial commit `fc623dd0755b21149dc1bf41175a43d14fb3cd2a`, verification update commit `dc9066e4a115d643778857c6a8f1ec58801eb064`; ledger first R09 append commit `24f6460e7400cbf242d8f213c3e4918f8d6ee482`. GIT_VERIFIED_METADATA_ONLY, GIT_CODE_PENDING, score N/A.
+
+
+## 20261030-1032-R10 — R10: 3 accepted jobs, old queued jobs now failed pre-execution
+
+- Scheduled Beijing 2026-10-30 10:32, bridge HTTP200 v3.3, max_concurrent_jobs=1, active_jobs=1 at entry; total 111 jobs (50 displayed), 114 after. Q_before=0 (running unrelated other=1, queued=0), adaptive decision **3**, all accepted by real submit. No 429, no capacity rejection.
+- R10-A atomic configuration/version/canary `12db285ecfd6441c` QUEUED; R10-B Saga compensation `a299ef8305ae427c` QUEUED; R10-C CRDT convergence `bfb29f3cfc984fef` QUEUED. Q_after each 1/2/3; Q_peak=3, historical Q_high_watermark=7, QUEUE_MAX_NOT_REACHED. All source/tests GIT_PENDING, independent audit PENDING/N/A.
+- R09 A/B `15df528355094f8e` / `a9e2565b170d4e41` now FAILED_PRE_EXECUTION: original result `任务尚未提交到 CodeBuddy。status=None`, no source; R08 A/B `a13b941e4ea349be` / `701606d2cbc14621` same. R07-C `88ba054e03ce42fe` FAILED_CODEBUDDY_ERROR zero body. Historical audit files corrected in-place (5 commits). Cause of pre-execution failures unknown; don't misclassify as successful completion.
+- PRE-RESTART A/B/C original jobs still INTERRUPTED; remote disk UNVERIFIED. No completed source to independently audit; audit_job_id=NONE, tests not run, scores N/A. No other project modified.
+- R10 management files: A/B/C TASK and AUDIT committed (6 files); ROUND_REPORT initial commit `7be66951a62bb1d70fa0beab84daa5319a623cf8`; ledger updated this run. Source/test Git not verified; no code commit SHA. Full report: `results/factory24-20261030/rounds/20261030-1032-R10/ROUND_REPORT.md`.
+
+| Slot | Task | job_id | Observed status | Git code/tests | Independent audit |
+|---|---|---|---|---|---|
+| 20261030-1032-R10 | A config release | `12db285ecfd6441c` | QUEUED | GIT_PENDING | PENDING/N/A |
+| 20261030-1032-R10 | B Saga coordinator | `a299ef8305ae427c` | QUEUED | GIT_PENDING | PENDING/N/A |
+| 20261030-1032-R10 | C CRDT replication | `bfb29f3cfc984fef` | QUEUED | GIT_PENDING | PENDING/N/A |
+| 20261030-0932-R09 | A outbox/inbox | `15df528355094f8e` | FAILED_PRE_EXECUTION | GIT_MISSING_AT_CHECK | PENDING_EVIDENCE/N/A |
+| 20261030-0932-R09 | B binary parser | `a9e2565b170d4e41` | FAILED_PRE_EXECUTION | GIT_MISSING_AT_CHECK | PENDING_EVIDENCE/N/A |
+| 20261030-0832-R08 | A KV/WAL | `a13b941e4ea349be` | FAILED_PRE_EXECUTION | GIT_MISSING_AT_CHECK | PENDING_EVIDENCE/N/A |
+| 20261030-0832-R08 | B API gateway | `701606d2cbc14621` | FAILED_PRE_EXECUTION | GIT_MISSING_AT_CHECK | PENDING_EVIDENCE/N/A |
+| 20261030-0732-R07 | C rate/circuit | `88ba054e03ce42fe` | FAILED_CODEBUDDY_ERROR | GIT_MISSING_AT_CHECK | PENDING_EVIDENCE/N/A |
