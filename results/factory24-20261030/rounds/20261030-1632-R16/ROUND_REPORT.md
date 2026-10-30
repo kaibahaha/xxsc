@@ -39,3 +39,7 @@ Listed durations are not proven CodeBuddy execution time. R15 A/B/C original job
 - R16 source/test/README/REPORT/TEST_RESULTS/MANIFEST: **not obtained**; direct GitHub attempt to fetch `rounds/20261030-1632-R16/A/src/engine.py` returned 404. Program Git commit SHA=NONE, verified program file count=0 for inspected paths, test exit code=N/A, independent score=N/A. No invented code, commit or tests. R11-B source is also not accessible via GitHub.
 - Management metadata writes must be independently fetched to mark **GIT_VERIFIED_METADATA_ONLY**; this does not mean code delivery. If any readback fails, mark GIT_BLOCKED and retry later. The full historical list is truncated at 50.
 - The server's `codebuddy_reachable=true` only means transport reachability, **not model memory readiness**. Next round should first check backend recovery without unauthorized restart; if memory remains exhausted, report blocker and preserve jobs without duplicate POST.
+
+## R16 independent GitHub connector readback — VERIFIED
+- Seven management files fetched independently from target branch after writes: R16 A TASK/AUDIT, R16 ROUND_REPORT, ledger INDEX, R15 A/B/C AUDIT corrections. **7/7 fetched and content matched real job IDs/states**. This verifies management metadata only, **GIT_VERIFIED_METADATA_ONLY**; actual program source/tests remain **GIT_BLOCKED_SOURCE**.
+- Initial R16 report commit `e0784a8715e78febc1384495aa4d8a75e8dabace`; initial R16 ledger append commit `f015a9a66d2ffc9c4c5a165bb14e7506baff8ad9`. Final follow-up update commit is not self-embedded.
