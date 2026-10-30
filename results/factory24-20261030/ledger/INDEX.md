@@ -183,3 +183,5 @@
 | 20261030-0732-R07 | C rate/circuit | `88ba054e03ce42fe` | QUEUED | GIT_PENDING | PENDING / N/A |
 | 20261030-0832-R08 | A transaction KV/WAL | `a13b941e4ea349be` | QUEUED | GIT_PENDING | PENDING / N/A |
 | 20261030-0832-R08 | B API gateway | `701606d2cbc14621` | QUEUED | GIT_PENDING | PENDING / N/A |
+
+- **R08 independent Git readback**: 6/6 management files (A/B TASK, A/B AUDIT, ROUND_REPORT, INDEX) fetched and matched job IDs; R07-A corrected AUDIT also fetched. R08 A/B `src/` and `tests/` each 404 (4 checks). **GIT_VERIFIED_METADATA_ONLY**, **GIT_CODE_PENDING**, score N/A. ROUND_REPORT verification update commit `8b3fe6fadf79201a5a202c001e0638cf520069e3`. No real source/test files or completed unit tests verified.
