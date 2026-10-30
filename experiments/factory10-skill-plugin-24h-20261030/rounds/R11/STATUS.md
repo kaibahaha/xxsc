@@ -10,3 +10,10 @@
 - 已选择方法M1官方现行来源、M2可重放源码/日志、M3安全边界/权限/费用分层；**尚未确认实际传达到WorkBuddy**，效果证据不足。
 - 下轮交接：先修复或等待WorkBuddy MCP连接器恢复，再查R11是否已经入队；其次处理R12/F2同厂R02复盘；同时不重复派R10（其完整报告已补交76分）。
 - 权限：未安装插件、未切模型、未创建其他定时任务、未修改其他分支/实验、未泄露凭据。
+
+## 派单防重恢复：真实MCP Job已确认
+- 初次submit发生连接器内部错误且没有Job ID，随后健康与队列查询也失败。连接器恢复后真实list_workbuddy_jobs(limit=35)确认最近队列没有R11任务（R12唯一Job已存在），再使用同一R11 conversation_id和**Git已回读的FEEDBACK全文**重新submit。
+- 第二次调用实际返回**唯一可观察Job ID `6f33514e027a48ab`**；本次完整MCP prompt约4007字符，含FEEDBACK全文3458字符，要求逐条响应R01三项P0、五案例和M1–M3。
+- 最新真实list_workbuddy_jobs显示**QUEUED/0字**，get_workbuddy_result(wait_seconds=0)仅返回通用[running]/0字，不代表已开始模型研究。桥接器单槽共享、另有复杂编程任务running；**R11 PENDING / NOT_EVALUABLE**。
+- 防重：后续仅追 `6f33514e027a48ab`，不得再次submit R11；在R11正文真正到达前不生成伪WORKBUDDY_REPORT/CHATGPT_AUDIT。前次内部错误是否在服务端产生孤立任务无法绝对证明，但恢复后最近队列仅发现上述一个R11 Job。
+- R12也已派单，Job `00401c5228a34073`，队列中等待；不可互相代替轮次或重复派单。
