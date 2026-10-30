@@ -17,3 +17,9 @@
 - R13 ADAPTATION派单后追加“实际MCP注入与PENDING”回填，commit `177878f9c998b53131f000620d32d3c20c5ddf0b`；新blob `f946b8aa6bab2aaf2712f4b9176574c8197965c2`，仍须独立回读。
 - ITERATION_LEDGER以旧blob `f0d43ecf3b6436cdb8ddf5356728ad3d581dc7a2`合并新增R13行与交接，更新commit `aaf60136ae1205f699b04ff39de13829a48a5958`；再次Git fetch blob `eba1178766c931231ba4ae3636969ad4a427f201`，包含R13 Job ID，**PASS**。
 - 本STATUS本次追加核验记录属于第二次提交，最新commit/新blob以Git工具回执及独立fetch为准；不得把尚不存在的原始报告和独立审计计作交付。
+
+## 本计划R13时段末追单复核（Phoenix 2026-10-29 22:57 / 北京2026-10-30 13:57）
+- 已再次真实读取Git README契约、本轮STATUS/FEEDBACK/ADAPTATION、ITERATION_LEDGER；本轮报告及审计两文件仍404。R13唯一已派单Job `24a8fbd31257441a`，本次get_workbuddy_result(wait_seconds=0)返回[running]约3337秒/0字；list_workbuddy_jobs明确QUEUED约3326秒/0字，故**PENDING/QUEUED/NOT_EVALUABLE**，没有重复submit。
+- 同时追单：R11 `6f33514e027a48ab` QUEUED/0字；R12 `00401c5228a34073` 已进入RUNNING约486–495秒但0字，暂无完整正文可补交/审计。
+- bridge_health HTTP200、`codebuddy_reachable=true`、`active_jobs=7`、`max_concurrent_jobs=1`；可达不代表R13已开始运行。R13同厂R03基线83/100，Δ及方法M1–M3效果仍不可评估。
+- 本轮时段尚未到R14预定时点，不提前派R14。下次到R14时先追R11–R13，并读R04失败基线标MISSING_BASELINE。以上为追单复核，非新增轮次。
