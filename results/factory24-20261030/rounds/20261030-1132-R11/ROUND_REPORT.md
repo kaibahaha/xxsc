@@ -34,3 +34,10 @@
 
 ## Next round
 Continue by original Job IDs, confirm actual WorkBuddy status and code/test Git files, run independent standard-library unittest and >=10 counterexamples only when real code exists, preserve failures and parent links. Do not switch models, cancel jobs, restart bridge, modify research factory, or create a second automation.
+
+## Independent Git readback verification — R11
+
+- **8/8 management files verified** by ChatGPT through GitHub connector: A/B/C TASK.md and AUDIT.md (6), this ROUND_REPORT.md (1), ledger/INDEX.md (1). All contain expected R11 slot/job identifiers; readback confirmed after commits.
+- Git management report creation commit: `3d2030785092ad755c3335bda0cbd39b1c1a61f7`; ledger initial R11 update commit: `6bad0f80dd4ba3256ac6801fffec43785d29bd16`.
+- Independent checks for six actual code directories A/B/C `src/` and `tests/`: **6/6 HTTP 404** at check. Thus `GIT_VERIFIED_METADATA_ONLY`, `GIT_CODE_PENDING`, actual source/test files **0 verified**, program commit SHA **NONE**, self-test and independent test exits **N/A**, scores **N/A**. No full code delivery can be claimed.
+- No 429 during submissions. Historical high-watermark=7 is observed, not a hard queue maximum.
