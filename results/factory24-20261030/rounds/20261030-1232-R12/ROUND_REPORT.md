@@ -31,3 +31,14 @@
 - GitHub repository: `kaibahaha/xxsc`; branch: `exp/factory24-20261030`; root: `results/factory24-20261030/` only. ChatGPT writes A/B TASK.md and AUDIT.md, ROUND_REPORT.md, and ledger/INDEX.md. Do not confuse these management files with source/test delivery.
 - R12 management files: GIT_COMMITTED after actual write, GIT_VERIFIED only after connector readback. Source/tests/README/REPORT/TEST_RESULTS/MANIFEST: GIT_PENDING, code commit SHA UNKNOWN; source file count verified=0, independent tests NOT_RUN. Management commit SHAs and verification appended below after writes.
 - No secrets or production files were included in management content. No unrelated branch or factory modified.
+
+
+## GitHub connector independent readback (R12 completed)
+
+- R12-A TASK create commit `2541fdb703916cd8d086902eafa071f6a6e13cee`, R12-B TASK `a489c0de529735aa88323ea4d6b88f254848a2ee`.
+- R12-A AUDIT create commit `e6f304b403c27b1db35c2df1592e1e522a9363b1`, R12-B AUDIT `4df3cbcfdc8a19a72ed3fa99bf49e4e42515973a`.
+- ROUND_REPORT initial create commit `cc7390051b15ea460f12061424bae8c01e4b6dbe`.
+- INDEX append commit `f6e511312ef33659217253faa1dc1f23fe8d0254`; R11-A corrected AUDIT commit `19fcf94520545ee058458153eb39a8d9a8a9520c`.
+- GitHub connector independently fetched **7/7** management files after writing (R12 A/B TASK/AUDIT, R12 ROUND_REPORT, ledger INDEX, R11-A AUDIT). Each fetched successfully and the R12 job IDs matched the expected files. Management status **GIT_COMMITTED + GIT_VERIFIED_METADATA_ONLY**, verified file count 7.
+- R12-A src/, tests/, R12-B src/, tests/ each returned GitHub 404 (4 separate checks); **0** verified code/test files, no program commit SHA. Code status **GIT_PENDING**, independent tests **NOT_RUN**, score **N/A**. Do not interpret 7/7 metadata as successful program delivery.
+- Latest report verification commit SHA is the commit of this append operation; it is not embedded into its own content to avoid a self-reference cycle. Read it from the GitHub commit metadata.
