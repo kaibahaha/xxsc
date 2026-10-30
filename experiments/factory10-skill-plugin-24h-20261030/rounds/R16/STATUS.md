@@ -9,3 +9,10 @@
 - 桥接器本轮bridge_health HTTP200、codebuddy_reachable=true、version=3.3、max_concurrent_jobs=1，派单前active_jobs=1；另有外部桥接器候选传输任务running，但其部署成败未知。本轮未部署、未改配置、未取消其他作业。
 - R16 WORKBUDDY_REPORT.md与CHATGPT_AUDIT.md尚未创建，质量评分NOT_EVALUABLE；只有真实完整正文才能按固定25/20/20/20/15评分、评估整改回应与方法效果。下一轮R17/F7先追R16；F7同厂R07只有摘要，须追正文或标MISSING_BASELINE；不得机械复制F6案例。
 - Git状态：反馈/适应记录已写入并回读PASS；本STATUS和ITERATION_LEDGER的最终commit SHA以真实工具回执及独立回读为准。未安装插件、切换模型、授权、付费、创建定时任务或改动其他分支/实验。
+
+## R16最新真实终态复核（本轮提交后）
+- get_workbuddy_result(job_id=7445121c541e4f63,wait_seconds=0)实际返回：'Error: Model request paused: the daemon is still out of memory after reclaiming unused memory, so this turn cannot be processed safely. The conversation history was preserved unchanged. Restart the app to free memory, then continue.'
+- list_workbuddy_jobs显示R16为done/2s/232字；此done仅代表桥接Job结束，正文是**远端daemon内存不足错误**，不是研究报告。修正研究状态为**FAILED_REMOTE_OOM / NOT_EVALUABLE**，原本QUEUED为历史首查状态；绝不创建WORKBUDDY_REPORT或CHATGPT_AUDIT，不将232字错误当研究报告，不重复submit。
+- bridge_health仍HTTP200/v3.3、codebuddy_reachable=true、active_jobs=0、max_concurrent_jobs=1；后端可达不等于模型有足够内存。R14/R15均FAILED_NOT_SUBMITTED，R16失败原因不同，须分开统计。
+- 本轮已真实Git提交R16 STATUS初版commit db15f55db0b68b4637b8c2027be7a7243178faea并独立回读PASS；ITERATION_LEDGER更新commit 118bacc6ad6bf00f47c38366462863910f90f087并独立回读PASS。最终STATUS追加本段的commit SHA以GitHub真实更新回执及再次fetch为准。
+- 下一轮R17/F7应先确认模型内存故障是否恢复；若仍失败则保留失败与不重复派单，不能自行重启服务或切模型。原定24轮顺序和调度不变。
