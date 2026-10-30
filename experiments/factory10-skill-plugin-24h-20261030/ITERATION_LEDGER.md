@@ -45,3 +45,5 @@
 - R12时段追单回填R10：原文commit `bf6a63d71a6d9bb57753cd938823d8d29b266857`、审计commit `d26a3b4962e85fc7fcacd9878112493df3020673`，均真实Git回读PASS；R10最终76分（18/19/15/15/9），不可把跨厂分差归因RSI。
 
 - R11/R12（Phoenix 2026-10-29 21:00时段）补漏与本轮：R11原五文件缺失，已从R01同厂70分基线回读并制作针对三P0五案例反馈；首次submit工具内部错误无Job ID，恢复后list_jobs未见R11，才提交并获得唯一可观察Job `6f33514e027a48ab`。R12已从R02同厂81分基线回读并制作针对worktree/headless/许可/依赖/门禁五案反馈，唯一Job `00401c5228a34073`。两轮完整反馈分别3458/3699字符已实际注入各自MCP prompt。两Job均QUEUED/0字；研究与审计NOT_EVALUABLE，后续不得重复submit。R11/R12各FEEDBACK、ADAPTATION、STATUS均Git写入且独立回读PASS。
+
+- R11/R12派单后最新健康核验：HTTP200/v3.3但`codebuddy_reachable=false`，active_jobs=5，最大并发1；R11/R12均QUEUED/0字，属于后端可达性+队列双重阻碍，**不是报告已执行**。下轮先追既有Job，不盲目重派；本次健康变化为暂时性信号，不据此停用24轮任务。
