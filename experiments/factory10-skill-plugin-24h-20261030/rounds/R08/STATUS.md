@@ -18,3 +18,8 @@
 - R07 Job `1941bb3a79e84c7f` 仍是DONE_SUMMARY_ONLY，Git原报告与审计404；没有完整正文可供评分。R04–R06此前429失败，不将桥接done误认为研究完成。
 - 继承到R09的方法要求（尚未派单）：M1官方证据+完整可复核工件，M2模拟/真机与安全权限分层，M3五案例负例/费用/回滚和RUN/BLOCKED标签；R09须按预定时段且先查Git防重。没有改RRULE、模型、插件授权或其他实验。
 - 本段为本轮真实状态增量；写入和回读SHA在本次Git工具调用回执及随后独立fetch_file中验证，不预先宣称成功。
+
+## R09追单核实｜Phoenix 2026-10-29 18:56后
+- 实际调用WorkBuddy MCP get_workbuddy_result(job_id=fc588db4b904442c,wait_seconds=0)，返回：`[task failed] 任务尚未提交到 CodeBuddy。job_id=fc588db4b904442c status=None`。随后 list_workbuddy_jobs(limit=25)显示该Job **failed、0字**，桥接器health HTTP200/v3.3，max_concurrent_jobs=1；此前QUEUED状态已过期。
+- 最新可信结论：**FAILED_NOT_SUBMITTED_TO_CODEBUDDY / NO_REPORT / NOT_EVALUABLE**。不把failed当完成研究；不能断言具体失败根因，需服务端日志进一步排查。R08 WORKBUDDY_REPORT.md和CHATGPT_AUDIT.md仍未出现，不创建伪报告。
+- R09/F9已按计划另行唯一派单，Job `a178c0e82f10461d`；不重复提交R08，不切换模型、不取消他人Job。此段追加保留原始队列历史，非覆盖旧记录。
