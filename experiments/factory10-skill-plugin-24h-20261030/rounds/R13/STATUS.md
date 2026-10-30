@@ -23,3 +23,8 @@
 - 同时追单：R11 `6f33514e027a48ab` QUEUED/0字；R12 `00401c5228a34073` 已进入RUNNING约486–495秒但0字，暂无完整正文可补交/审计。
 - bridge_health HTTP200、`codebuddy_reachable=true`、`active_jobs=7`、`max_concurrent_jobs=1`；可达不代表R13已开始运行。R13同厂R03基线83/100，Δ及方法M1–M3效果仍不可评估。
 - 本轮时段尚未到R14预定时点，不提前派R14。下次到R14时先追R11–R13，并读R04失败基线标MISSING_BASELINE。以上为追单复核，非新增轮次。
+
+
+## R15时段最终状态复核
+- 真实MCP `get_workbuddy_result(job_id=24a8fbd31257441a,wait_seconds=0)` 返回`[task failed] 任务尚未提交到 CodeBuddy`，list_jobs显示failed/0字；原QUEUED/PENDING状态更正为**FAILED_NOT_SUBMITTED / NOT_EVALUABLE**。
+- 同厂R03基线83分（20/19/16/16/12）仍有效，但R13没有正文，无法比较Δ或验证三项改进；不重复submit、不创建伪报告。
