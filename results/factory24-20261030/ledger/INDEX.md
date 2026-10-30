@@ -246,3 +246,22 @@
 | 20261030-1132-R11 | C schema migration | `112f0aee8cf5417e` | QUEUED | GIT_PENDING | PENDING/N/A |
 
 - **R11 Git independent readback verified:** 8/8 management files present with correct job IDs; A/B/C src/tests all 404 (6 checks), no code/tests or program commit SHA; GIT_VERIFIED_METADATA_ONLY / GIT_CODE_PENDING, score N/A. R11 report verification update commit `5416367a058e6fc86f59dd71f218abc2a379b715`. No independent source test executed.
+
+
+## 20261030-1232-R12 — Adaptive two-job submission; R11-A timeout
+
+- Planned Beijing 2026-10-30 12:32; actual dispatch ~12:36. Bridge v3.3 HTTP200, CodeBuddy reachable, max_concurrent_jobs=1, active_jobs=4 before. Recent list 123 total/50 displayed; all active visible. Q_before=3 (programming R11-C 1; FACTORY10 research 2; other 0), RUNNING=R11-B 1. Adaptive target=2. Both async submit calls returned actual job IDs; no duplicate POST or 429.
+- R12-A event-sourced projections/snapshots `FACTORY24-20261030-20261030-1232-R12-A`: **job_id=`38e73a78f9e64bf8`**, initially QUEUED, code Git pending, audit PENDING/N/A.
+- R12-B chunked content-addressed object store/GC `FACTORY24-20261030-20261030-1232-R12-B`: **job_id=`6ff39f4b76a54cc6`**, initially QUEUED, code Git pending, audit PENDING/N/A.
+- Q_after_A=4, Q_after_B=5, Q_peak_R12=5; cumulative observed Q_high_watermark=7; QUEUE_MAX_NOT_REACHED. Final queue programming 3, research 2, other 0, RUNNING=1. Per-job wait time snapshot only; no real execution completed.
+- R11-A `e5909f9386404880`: original result FAILED_EXECUTION_TIMEOUT 3600s, 0 bytes; Git only TASK/AUDIT; source and remote disk UNVERIFIED. R11-B `b4811053fb6e4b47` RUNNING 0 bytes; R11-C `112f0aee8cf5417e` list QUEUED 0 bytes, while get_result said RUNNING (endpoint inconsistency). Neither has verified source. No independent tests/score. No audit job launched without accessible source.
+- Git management: R12 A/B TASK and AUDIT, ROUND_REPORT committed. Source/tests and program commit SHA PENDING; only management file readback can be marked GIT_VERIFIED_METADATA_ONLY. See `results/factory24-20261030/rounds/20261030-1232-R12/ROUND_REPORT.md`.
+- No other factory, bridge model, service, job, branch, or production file modified.
+
+| Slot | Task | job_id | Observed status | Git code/tests | Independent audit |
+|---|---|---|---|---|---|
+| 20261030-1232-R12 | A event-sourced projections | `38e73a78f9e64bf8` | QUEUED | GIT_PENDING | PENDING/N/A |
+| 20261030-1232-R12 | B chunked object store | `6ff39f4b76a54cc6` | QUEUED | GIT_PENDING | PENDING/N/A |
+| 20261030-1132-R11 | A lease scheduler | `e5909f9386404880` | FAILED_TIMEOUT | GIT_MISSING_AT_CHECK | PENDING_EVIDENCE/N/A |
+| 20261030-1132-R11 | B audit ledger | `b4811053fb6e4b47` | RUNNING | GIT_PENDING | PENDING/N/A |
+| 20261030-1132-R11 | C schema migration | `112f0aee8cf5417e` | QUEUED (result endpoint conflict) | GIT_PENDING | PENDING/N/A |
