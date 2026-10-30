@@ -16,7 +16,7 @@
 | R08 | F8 机器人感知与动作 | `fc588db4b904442c` | **FAILED_NOT_SUBMITTED_TO_CODEBUDDY** / MCP task failed / 0字 / STATUS回读 | NOT_EVALUABLE | — | 首圈基线 | get_result: 任务尚未提交到CodeBuddy、status=None；原QUEUED已过期；原因未查明 | M1来源工件、M2仿真/真机安全、M3五例停机 | 无正文，无法评估 |
 | R09 | F9 AIoT智能硬件 | `a178c0e82f10461d` | **FAILED_NOT_SUBMITTED_TO_CODEBUDDY** / 0字 / STATUS Git回读 | NOT_EVALUABLE | — | 首圈基线 | get_result确认任务未提交CodeBuddy、status=None；原QUEUED已失效 | M1官方证据+实跑工件、M2MQTT/OTA安全、M3五案例负例/费用/回滚 | 无正文，效果不可评估 |
 
-| R10 | F10 小说与叙事创作 | `09ede5860fdb4aaf` | **PENDING / QUEUED** / 0字 / FEEDBACK、ADAPTATION、STATUS Git回读 | NOT_EVALUABLE | — | 首圈基线 | R03完整工件缺失、R07仅摘要、R08/R09提交失败；F10权利链/长篇一致性待研究 | M1完整报告+工件、M2版权/权限/官方依据、M3五案例正反测试+回滚 | 反馈全文已真实注入MCP；研究未返回，效果证据不足 |
+| R10 | F10 小说与叙事创作 | `09ede5860fdb4aaf` | **DONE / AUDITED / Git回读** | **18/19/15/15/9** | **76** | 首圈BASELINE，Δ N/A | P0：NO FAKES Act法案误当现行法；RUN源码/日志指向其他实验不可独立复现；P1官方来源数误算 | M1全文+工件、M2法律/权限、M3案例负例/回滚 | 全文交付有效，源码复现/法律核查部分有效 |
 
 ## 交付目录和防重
 - R01：`rounds/R01/` 三文件完整、已回读，禁止重复派单。
@@ -38,3 +38,5 @@
 - R09/F9 首圈：README V2先读；R09原五文件均不存在，反馈包先Git写入并回读，完整2771字符实际嵌入MCP派单，唯一Job `a178c0e82f10461d`，MCP返回[running]/0字，队列显示queued，报告/审计尚不存在。R09 FEEDBACK commit `d35b790f2b18784f2c839abbc3ab9e3cf452ba8b`、ADAPTATION commit `941ef50ffd623f88cd0e0c4bfad8a94dab52e6f4`、STATUS commit `0f18b4b389d7c3eedf223db42cc29fcfccb056c7` 均已独立回读PASS。R08 Job `fc588db4b904442c` 已由MCP确认task failed、未提交到CodeBuddy、0字，R08 STATUS commit `f3dab771d9f1d6690761b5b6d6ee4238701873e0` 回读PASS；不重复提交任何轮次。R10先追R09，未取得完整正文不得评分。跨厂方法改进尚无新增有效性数据。
 
 - R10/F10：先读README V2，R10五文件初查不存在；R09 Job a178c0e82f10461d 追单明确 failed/未提交CodeBuddy/0字，R09 STATUS更新commit `ef0db10a13ae4c07f956bbe676cca03068c78f80`、回读PASS。R10 FEEDBACK（2719字符）派单前Git创建commit `83f38dd4b36bb59360af88edf066e0fdeba1dd00`、回读PASS，全文嵌入3350字符真实MCP prompt；唯一Job `09ede5860fdb4aaf`，首查list_jobs queued/0字，get_result通用running/0字，按PENDING记录。ADAPTATION commit `904b2877d8452600ff4ce715ce0e50227f432c28`、STATUS commit `aaa653b38220763449e3586444b40bd33fe73d1b`，均真实Git回读PASS。研究报告与独立审计未创建，评分NOT_EVALUABLE；下一轮R11先追R10，再针对同厂R01做纵向复盘；严禁重派R10。
+
+- R12时段追单回填R10：原文commit `bf6a63d71a6d9bb57753cd938823d8d29b266857`、审计commit `d26a3b4962e85fc7fcacd9878112493df3020673`，均真实Git回读PASS；R10最终76分（18/19/15/15/9），不可把跨厂分差归因RSI。
