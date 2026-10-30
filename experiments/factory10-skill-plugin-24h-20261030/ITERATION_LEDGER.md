@@ -13,7 +13,8 @@
 | R06 | F6 研究与报告 | `52441e82f15942ab` | **FAILED_RATE_LIMIT_429** / Job done仅为错误响应 / STATUS已回读 | NOT_EVALUABLE | — | 首圈基线 | 原派单有反馈，后续追单返回429，未形成研究正文 | M1原始来源/工件、M2学术证据/许可、M3案例复现 | 无正文，无法检验 |
 | R07 | F7 AI for Science科学研究 | `1941bb3a79e84c7f` | DONE_SUMMARY_ONLY / 完整报告未取得 / NOT_EVALUABLE | NOT_EVALUABLE | — | 首圈基线 | MCP仅返回约1309字摘要及私有报告路径/12工件自述，Git无原始正文或审计 | M1来源+实跑工件、M2科学有效性、M3五案例负例 | 有方法回应摘要，未见原文，暂不可评分 |
 
-| R08 | F8 机器人感知与动作 | `fc588db4b904442c` | **PENDING / QUEUED**（list_jobs约3220秒、0字；get_result通用running无正文）/ STATUS Git回读 | NOT_EVALUABLE | — | 首圈基线 | 共享单执行槽积压，尚无原文/审计；未重复派单 | M1官方来源+可复核工件、M2仿真/真机安全、M3五例负例/停机 | 延迟证据，尚不可评估 |
+| R08 | F8 机器人感知与动作 | `fc588db4b904442c` | **FAILED_NOT_SUBMITTED_TO_CODEBUDDY** / MCP task failed / 0字 / STATUS回读 | NOT_EVALUABLE | — | 首圈基线 | get_result: 任务尚未提交到CodeBuddy、status=None；原QUEUED已过期；原因未查明 | M1来源工件、M2仿真/真机安全、M3五例停机 | 无正文，无法评估 |
+| R09 | F9 AIoT智能硬件 | `a178c0e82f10461d` | **PENDING / QUEUED** / 0字 / FEEDBACK、ADAPTATION、STATUS Git回读 | NOT_EVALUABLE | — | 首圈基线 | R08已failed/0字；R07仅摘要；共享单执行槽积压 | M1官方证据+实跑工件、M2MQTT/OTA安全、M3五案例负例/费用/回滚 | 反馈已实际嵌入MCP prompt；研究仍待返回 |
 
 ## 交付目录和防重
 - R01：`rounds/R01/` 三文件完整、已回读，禁止重复派单。
@@ -32,3 +33,4 @@
 - R08 F8首圈唯一Job `fc588db4b904442c`；FEEDBACK已先Git写入回读且完整嵌入真实MCP prompt，STATUS/ADAPTATION写入回读；首查[running]/0字，NOT_EVALUABLE。R07 Job已DONE但仅返回摘要和私有文件路径，Git未有完整原文，不得将摘要当审计报告或重复派单。R09先追R08，按实际结果更新。
 
 - R08同轮17:56 Phoenix复查：MCP bridge_health=HTTP200/v3.3，active_jobs=5、max_concurrent_jobs=1；list_jobs显示唯一Job `fc588db4b904442c` QUEUED约3220秒、0字，get_result返回通用[running]约3230秒、0字。Git原报告及审计仍404。STATUS已写入并逐字回读，commit `6553333072ff102c36c28161879c2680b18422bd`；R08仍NOT_EVALUABLE。R09计划时段未到，不提前派单。
+- R09/F9 首圈：README V2先读；R09原五文件均不存在，反馈包先Git写入并回读，完整2771字符实际嵌入MCP派单，唯一Job `a178c0e82f10461d`，MCP返回[running]/0字，队列显示queued，报告/审计尚不存在。R09 FEEDBACK commit `d35b790f2b18784f2c839abbc3ab9e3cf452ba8b`、ADAPTATION commit `941ef50ffd623f88cd0e0c4bfad8a94dab52e6f4`、STATUS commit `0f18b4b389d7c3eedf223db42cc29fcfccb056c7` 均已独立回读PASS。R08 Job `fc588db4b904442c` 已由MCP确认task failed、未提交到CodeBuddy、0字，R08 STATUS commit `f3dab771d9f1d6690761b5b6d6ee4238701873e0` 回读PASS；不重复提交任何轮次。R10先追R09，未取得完整正文不得评分。跨厂方法改进尚无新增有效性数据。
