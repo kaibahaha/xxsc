@@ -8,3 +8,6 @@ M3 可信边界/权限/回读：观察R12回读失败仍done、跨Agent授权混
 以上M1-M3已包含于R16 FEEDBACK_TO_BUDDY.md；仅在真实MCP submit成功后才标实际注入。R16未有完整报告前，效果=EVIDENCE_INSUFFICIENT，不虚构质量提升。
 ## R17交接
 R17/F7 AI for Science：先追R16既有Job，若DONE先归档原文并独立审计；F7同厂R07只有约1309字摘要和私有路径，未得完整正文，须追取或标MISSING_BASELINE；只迁移证据分级、可复现工件、失败状态方法，不机械复制F6的商业研究案例。禁止安装、授权、付费、切模型、修改其他任务。
+## 实际传递与状态回填
+- R16 FEEDBACK先Git创建commit f192e50232a3225e8d1e02d4c2d096fc9d4363e4并独立回读PASS；ADAPTATION先创建commit 63970cb6465468115f34993313965a5606e6b746并独立回读PASS。
+- WorkBuddy MCP Stable submit_workbuddy_task真实仅调用一次，conversation_id=FACTORY10-SKILL-24H-20261030-R16-F6；实际prompt 5367字符，全文包含3628字符反馈包及本文件1052字符方法计划，返回Job ID **7445121c541e4f63**。后续list_jobs具体QUEUED/0字；get_result通用running占位0字，不能将其当成已实际执行。M1–M3实际研究效果仍NOT_EVALUABLE。
