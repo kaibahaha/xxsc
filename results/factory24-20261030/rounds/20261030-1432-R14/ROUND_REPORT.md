@@ -1,0 +1,29 @@
+# FACTORY24-20261030 — R14 / 20261030-1432-R14 ROUND_REPORT
+
+## Schedule and actual operations
+- Restart anchor: Beijing 2026-10-30 01:32:00; this is R14 of 24, nominal slot Beijing **2026-10-30 14:32:00**. The current conversation initiated a manual execution/check shortly before nominal 14:32; no claim that the scheduled automation fired. Unique slot_id is based on nominal slot, not actual wall time. Existing scheduled task was not modified or duplicated.
+- Pre-submit bridge_health: HTTP 200, status=ok, codebuddy_reachable=true, version=3.3, max_concurrent_jobs=1, min_run_timeout_ms=3600000, active_jobs=6. Pre-submit list_workbuddy_jobs(limit=50): 128 total, 50 shown. Six active jobs were all visible and reconcile with health (one running, five queued), so current Q_before=**5**, even though historical job list is truncated.
+- Q_before breakdown: programming tasks 3 (R12-A/B, R13-A), independent programming audit 1 (R11-B audit), FACTORY10 research 1; other=0. Running=1 (FACTORY10 research R11). Running and queued are not interchangeable; active_jobs includes both.
+- Adaptive rule Q>=5 => attempt exactly **1** programming task. Accepted actual async submit_workbuddy_task, no synchronous execute, no duplicate task ID. Unique ID `FACTORY24-20261030-20261030-1432-R14-A`, job_id `7afe0567bdf74102`, topic recoverable multiplexed binary framing and flow control.
+- Post-submit list: 129 total, 50 shown; job `7afe0567bdf74102` QUEUED ~5s, 0 bytes. Q_after_A=**6**, Q_peak_R14=**6**, active_jobs=7 (1 running+6 queued); breakdown programming 4, independent audit 1, FACTORY10 research 1, other 0. Historical Q_high_watermark remains **7** (observed in R13); QUEUE_MAX_NOT_REACHED, observed waiting capacity >=7, no hard queue limit known.
+- **Important health degradation:** post-submit bridge_health still HTTP 200/status=ok/version=3.3 but `codebuddy_reachable=false` with active_jobs=7. This is an observed mismatch/transient connectivity warning, not proof of a permanent outage; submit was already accepted. No second POST, restart, model change, cancellation, or retry bombardment. Future execution may be blocked until CodeBuddy reachability recovers.
+- No HTTP 429, capacity rejection or client safety rejection this round. Historical first raw 429 error cannot be fully reconstructed from 50-item recent list; do not claim none ever occurred. New accepted queue job proves admission only, not execution or maximum capacity.
+
+## Accepted job and pending audit
+| Slot | Job | ID | Submit | List status | Queue waiting at snapshot | Execution time | Git program source | Independent audit /100 |
+|---|---|---|---|---|---|---|---|---|
+| R14-A | Recoverable multiplexed frame/flow-control engine | `7afe0567bdf74102` | ACCEPTED | QUEUED | ~5s | 0s confirmed | GIT_PENDING_SOURCE | PENDING / N/A |
+
+- R13-A `b94e44fc583749de`: list QUEUED ~3215s/0 bytes. get_workbuddy_result says `[running]` ~3165s, but this endpoint appears to describe an unfinished job, not confirmed execution. **PENDING**, no independent score.
+- R13 read-only audit of R11-B `d1a4cb908a974675`: list QUEUED ~3240s/0 bytes, get_result says `[running]`; actual independent audit remains **PENDING**. No second audit submitted.
+- R12-A `38e73a78f9e64bf8` and R12-B `6ff39f4b76a54cc6`: list QUEUED ~6851s/~6847s, 0 bytes. get_result says `[running]` but queue list remains QUEUED. **PENDING**; no confirmed execution duration or author test.
+- R11-C `112f0aee8cf5417e`: **FAILED** after 3601s hard runtime timeout, 0 bytes. get_result original error: `[task failed] 触及单任务硬上限 3600s，被执行器终止且未回传正文。这是 timeoutMs 的硬杀线，不是读流超时；SSE 全有或全无，被杀即丢。` Git R11-C directory contains TASK/AUDIT only, no source/tests. Independent audit N/A; local remote artifacts unknown. R11-A was also FAILED at 3602s.
+- R11-B `b4811053fb6e4b47`: DONE; WorkBuddy author reports 10 modules, 69 unittest PASS, 13 adversarial cases and exit code 0. **AUTHOR_SELF_TEST_ONLY**. Git directory independently lists TASK/AUDIT only; source/tests/REPORT/MANIFEST absent. No verified program commit; independent audit `d1a4cb908a974675` still queued; score N/A.
+- Old pre-restart A/B/C `9712edf966b54027`, `a154efd28abc4eb5`, `fb21843915d24025`: get_result individually still INTERRUPTED, no valid body; no original job reused or rewritten. Their remote workspace may contain partial artifacts, not independently inspected; preserve parent IDs and prior Git history.
+
+## Git and capacity observations
+- Sole repository `kaibahaha/xxsc`, branch `exp/factory24-20261030`, root `/results/factory24-20261030/`. R14 management TASK/AUDIT/ROUND_REPORT and ledger INDEX are ChatGPT metadata, not program delivery. R11-C AUDIT is corrected to reflect real timeout.
+- Independent GitHub directory checks: R13-A, R12-A, R12-B, R11-B and R11-C directories contain only management TASK/AUDIT. No actual source or tests verified. Program source file count independently verified **0**, test exit code N/A, no independent PASS.
+- Q change within this run +1 queued (one accepted programming job). Program DONE throughput observed since R13: 0; one R11-C FAILED. Queue waiting and execution duration tracked separately; list QUEUED elapsed is not runtime. 429 frequency in this run 0/1 submit; no maximum queue ceiling proven. 128/129 total jobs is historical total, not queue depth.
+- This report will be committed and independently read back with R14 TASK/AUDIT and ledger INDEX. Commit SHAs are GitHub API outputs, never guessed. Full program GIT_PENDING_SOURCE; report GIT_COMMITTED_METADATA_ONLY until readback.
+- No changes to FACTORY10, A/B/C/D, other branches, model, bridge configuration, or other running jobs.
