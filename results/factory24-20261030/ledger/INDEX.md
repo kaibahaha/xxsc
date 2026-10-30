@@ -292,3 +292,19 @@
 | Slot | Task | job_id | Last state | Code Git | Audit | Score |
 |---|---|---|---|---|---|---|
 | 20261030-1432-R14 | A multiplexed binary protocol engine | `7afe0567bdf74102` | QUEUED | GIT_PENDING_SOURCE | PENDING | N/A |
+
+## 20261030-1532-R15 — three accepted new jobs, Q=0→3, prior failures confirmed
+- Planned Beijing 2026-10-30 15:32; observed live MCP UTC ~07:35–07:38. Bridge HTTP200, v3.3, codebuddy_reachable=true (R14 false recovered), max_concurrent_jobs=1; active_jobs before=1 (other job running), after=4 (other running + three new queued).
+- list_workbuddy_jobs: total 132→133→134→135, limit=50 (historical list truncated); active_jobs reconciles one running, Q_before=0. Adaptive rule Q=0/1 → attempt 3; **3/3 accepted**, no duplicate submit, 0 HTTP429/capacity refusals.
+- Q_after_A=1, Q_after_B=2, Q_after_C=3; Q_peak_R15=3; cumulative Q_high_watermark=7, QUEUE_MAX_NOT_REACHED (only lower bound >=7, no exact ceiling). Last observed queue wait A ~76s/B ~72s/C ~68s, execution time 0s confirmed, independent score N/A.
+- **R15-A** MVCC B+Tree/WAL: `6f832d28c1eb48b0` QUEUED, GIT_PENDING_SOURCE, audit PENDING/N/A.
+- **R15-B** CRDT anti-entropy simulator: `2a22271866934425` QUEUED, GIT_PENDING_SOURCE, audit PENDING/N/A.
+- **R15-C** checkpointed streaming ETL: `6d6908762aef4d48` QUEUED, GIT_PENDING_SOURCE, audit PENDING/N/A.
+- **R14-A** `7afe0567bdf74102` FAILED_BEFORE_CODEBUDDY_SUBMIT (status=None, 0 bytes); **R13-A** `b94e44fc583749de` same; **R13 audit R11-B** `d1a4cb908a974675` same, so independent audit failed without execution. **R12-A** `38e73a78f9e64bf8` FAILED_CODEBUDDY_ERROR (0 bytes), **R12-B** `6ff39f4b76a54cc6` FAILED_BEFORE_CODEBUDDY_SUBMIT (0 bytes). Audit files corrected in Git, no code test PASS.
+- R11-B `b4811053fb6e4b47` remains DONE with author self-test claim 69 PASS, but Git directory only TASK/AUDIT, no src/tests/REPORT/MANIFEST; author Git unavailable. Independent source/test validation NOT_RUN, score N/A. Historical pre-restart A/B/C remain INTERRUPTED; no replay or modification.
+- R15 management: 3 TASK, 3 AUDIT, 1 ROUND_REPORT and this INDEX. Five older AUDIT files corrected. All new source/tests/README/REPORT/TEST_RESULTS/MANIFEST **GIT_PENDING_SOURCE**. Git metadata commits (new R15): A TASK `14f819961461f2a4bffac43287e8d89116ee0f33`, A AUDIT `6d8a405ae83ea84d63f9b8c45a89d621fc89a900`; B TASK `60e03580d762c3367f003dcf5c1183d0ee195349`, B AUDIT `ffdf8115998c8daafebe06dce65978eee49a9b43`; C TASK `cc576f49b385bf3e76dd5ab790bfe5e61cb09590`, C AUDIT `9445ea5fe1627921fd114dbfa9c05ac4cd1379c7`; ROUND_REPORT `34d2e23814ebb90552dfff702b332caadd8991d9`. Git readback to verify separately. No model, bridge, other branch or factory changed.
+| Slot | Task | job_id | Last observed | Git program | Audit / score |
+|---|---|---|---|---|---|
+| 20261030-1532-R15 | A MVCC B+Tree/WAL | `6f832d28c1eb48b0` | QUEUED | GIT_PENDING_SOURCE | PENDING / N/A |
+| 20261030-1532-R15 | B CRDT anti-entropy | `2a22271866934425` | QUEUED | GIT_PENDING_SOURCE | PENDING / N/A |
+| 20261030-1532-R15 | C streaming ETL | `6d6908762aef4d48` | QUEUED | GIT_PENDING_SOURCE | PENDING / N/A |
