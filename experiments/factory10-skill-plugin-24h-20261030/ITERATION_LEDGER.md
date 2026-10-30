@@ -21,6 +21,8 @@
 | R11 | F1 API与模型服务 | `6f33514e027a48ab` | **PENDING / QUEUED** / FEEDBACK、ADAPTATION、STATUS Git回读 | NOT_EVALUABLE | — | R01 **70**(21/16/12/12/9) / Δ待评 | P0原生调度误判、Agent/LLM网关混淆、models.json硬预算错误；P1密钥/CLI/费用 | M1官方现行证据、M2源码+原始日志、M3权限/负例 | 反馈全文实际注入；未有报告，效果不可评估 |
 | R12 | F2 软件与开源程序 | `00401c5228a34073` | **PENDING / QUEUED** / FEEDBACK、ADAPTATION、STATUS Git回读 | NOT_EVALUABLE | — | R02 **81**(22/18/16/15/10) / Δ待评 | P0 worktree非OS沙箱、headless授权过宽；P1许可证/依赖/扫描器证据 | M1官方现行证据、M2源码+原始日志、M3系统权限负例 | 反馈全文实际注入；未有报告，效果不可评估 |
 
+| R13 | F3 游戏与互动体验 | `24a8fbd31257441a` | **PENDING / QUEUED** / FEEDBACK、ADAPTATION、STATUS Git回读 | NOT_EVALUABLE | — | R03 **83**(20/19/16/16/12) / Δ待评 | P0源码与原始日志缺失、普通SHA误作防篡改；P1物理校准/单HTML与多JS/授权发布 | M1完整可复制源码+日志、M2官方证据/权限分层、M3信任边界负例与五案例回滚 | 完整反馈4242字已注入MCP；正文未回，效果不可评估 |
+
 ## 交付目录和防重
 - R01：`rounds/R01/` 三文件完整、已回读，禁止重复派单。
 - R02：`rounds/R02/FEEDBACK_TO_BUDDY.md` 已在派单前创建并回读，完整反馈内容实际发给WorkBuddy；`STATUS.md` 与 `ADAPTATION.md` 已写并回读。R02原文、独立审计、STATUS、反馈及ADAPTATION均已Git回读，Job `f77da8aaab28496d` DONE；**禁止重复派单R02**。下一轮R03须读取R02审计及ADAPTATION，并把三项研究方法改进实际注入WorkBuddy prompt。
@@ -47,3 +49,5 @@
 - R11/R12（Phoenix 2026-10-29 21:00时段）补漏与本轮：R11原五文件缺失，已从R01同厂70分基线回读并制作针对三P0五案例反馈；首次submit工具内部错误无Job ID，恢复后list_jobs未见R11，才提交并获得唯一可观察Job `6f33514e027a48ab`。R12已从R02同厂81分基线回读并制作针对worktree/headless/许可/依赖/门禁五案反馈，唯一Job `00401c5228a34073`。两轮完整反馈分别3458/3699字符已实际注入各自MCP prompt。两Job均QUEUED/0字；研究与审计NOT_EVALUABLE，后续不得重复submit。R11/R12各FEEDBACK、ADAPTATION、STATUS均Git写入且独立回读PASS。
 
 - R11/R12派单后最新健康核验：HTTP200/v3.3但`codebuddy_reachable=false`，active_jobs=5，最大并发1；R11/R12均QUEUED/0字，属于后端可达性+队列双重阻碍，**不是报告已执行**。下轮先追既有Job，不盲目重派；本次健康变化为暂时性信号，不据此停用24轮任务。
+
+- R13/F3：同厂R03 83分基线原文/审计/状态/适应记录均回读；反馈4242字符先Git创建并回读，全文实际注入WorkBuddy MCP prompt（5216字符），唯一Job `24a8fbd31257441a`；list_jobs QUEUED/0字，R11/R12仍QUEUED，暂NOT_EVALUABLE。R13 FEEDBACK/ADAPTATION/STATUS写入回读，下一轮R14优先追R11–R13，禁止重复submit。
