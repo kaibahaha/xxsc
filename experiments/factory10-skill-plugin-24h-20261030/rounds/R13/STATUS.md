@@ -11,3 +11,9 @@
 - **Git本轮写入**：FEEDBACK与ADAPTATION已独立回读PASS；本STATUS写后须独立回读并记录commit；根目录ITERATION_LEDGER需取最新blob SHA合并写入后回读。写入成功与回读成功分开记录。
 - **下一轮R14 F4**：先追R11–R13已有Job，完整正文到达则补原文/独立审计/五维Δ；F4同厂R04基线因429失败，须读R04状态并标MISSING_BASELINE，不能虚构F4前次分数。方法继承M1–M3的可检验要求，不机械复用F3内容。
 - **安全**：未安装插件、未切模型、未授权或产生费用、未修改其他分支/实验/定时任务、未触碰凭据。到24轮自然结束。
+
+## Git提交与独立回读最终核验
+- R13 STATUS首次创建commit `3732bd2b967bce6842839ced34a81477ca59475d`，Git再次fetch回读blob `6831f37ce64b403b456a7c105d58960953b3d2ef`，内容包含唯一Job ID，**PASS**。
+- R13 ADAPTATION派单后追加“实际MCP注入与PENDING”回填，commit `177878f9c998b53131f000620d32d3c20c5ddf0b`；新blob `f946b8aa6bab2aaf2712f4b9176574c8197965c2`，仍须独立回读。
+- ITERATION_LEDGER以旧blob `f0d43ecf3b6436cdb8ddf5356728ad3d581dc7a2`合并新增R13行与交接，更新commit `aaf60136ae1205f699b04ff39de13829a48a5958`；再次Git fetch blob `eba1178766c931231ba4ae3636969ad4a427f201`，包含R13 Job ID，**PASS**。
+- 本STATUS本次追加核验记录属于第二次提交，最新commit/新blob以Git工具回执及独立fetch为准；不得把尚不存在的原始报告和独立审计计作交付。
