@@ -12,3 +12,7 @@
 ## Git提交与独立回读凭证
 - 本STATUS首次创建commit `6d43a7567c4e43cdd4c43915a5df156d15ccb279`，Git独立fetch返回blob `a949566b95eed1a8b8eb3114262f8ef98ef0a807`，内容逐字一致，**READBACK_PASS**。本节补录后的最终commit SHA以GitHub update_file真实回执为准，并再次fetch核验。
 - 本轮FEEDBACK/ADAPTATION/STATUS均已通过GitHub真实写入与回读；报告/审计尚未生成，不计为研究交付。
+
+## R16计划时段真实追单结果（北京时间2026-10-30 16:00）
+- MCP get_workbuddy_result(job_id=29fae48b6c084d44,wait_seconds=0)原样结果：'[task failed] 任务尚未提交到 CodeBuddy。job_id=29fae48b6c084d44 status=None'；list_workbuddy_jobs亦显示failed/0字，**最终修正为FAILED_NOT_SUBMITTED_TO_CODEBUDDY**，不再是QUEUED/PENDING。
+- 未获得任何研究正文，WORKBUDDY_REPORT.md与CHATGPT_AUDIT.md均不存在，评分NOT_EVALUABLE；R05同厂429无有效基线，Δ不可计算。不重复提交R15。原因只能确认未提交，不能未经证据归因为部署/重启。
