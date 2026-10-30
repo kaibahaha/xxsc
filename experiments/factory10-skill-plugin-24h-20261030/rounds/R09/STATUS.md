@@ -10,3 +10,8 @@
 - ADAPTATION：已Git提交并逐字回读，commit 941ef50ffd623f88cd0e0c4bfad8a94dab52e6f4，blob cd2792b9873145c67405feeb3df31377cc4ab244；三项可检验方法为证据工件双轨、硬件/网络安全分层、五案例正反验收；效果待真实正文。
 - 下一轮R10：先按Job a178c0e82f10461d追单，若取得完整正文则写原文和独立审计并回读；仅摘要/失败则保持NOT_EVALUABLE。R08已failed/0字，不得继续标QUEUED或重复submit；R07私有路径未形成可独立审计Git工件。R10 F10小说叙事仅迁移研究方法，不混淆不同工厂的业务内容。
 - 安全：未安装插件、未切换模型、未取消他人Job、未操作真实硬件或外部授权、未创建其他定时任务、未修改其他分支或实验。
+
+## R10追单纠偏（2026-10-30 10:57 北京 / 2026-10-29 19:57 Phoenix）
+- 实际调用 WorkBuddy `get_workbuddy_result(job_id=a178c0e82f10461d, wait_seconds=0)`：`[task failed] 任务尚未提交到 CodeBuddy。job_id=a178c0e82f10461d status=None`；`list_workbuddy_jobs`亦显示 failed / 577s / 0字。
+- 因此R09最新真实状态为 **FAILED_NOT_SUBMITTED_TO_CODEBUDDY**，不是原先QUEUED；没有研究正文，不生成WORKBUDDY_REPORT或CHATGPT_AUDIT，质量评分仍为NOT_EVALUABLE；原Job禁止重复派单。
+- 此追单纠偏仅修订R09状态，不改变R09历史委托、Job ID或其他实验。
