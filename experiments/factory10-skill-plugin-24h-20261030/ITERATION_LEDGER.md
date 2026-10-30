@@ -18,6 +18,9 @@
 
 | R10 | F10 小说与叙事创作 | `09ede5860fdb4aaf` | **DONE / AUDITED / Git回读** | **18/19/15/15/9** | **76** | 首圈BASELINE，Δ N/A | P0：NO FAKES Act法案误当现行法；RUN源码/日志指向其他实验不可独立复现；P1官方来源数误算 | M1全文+工件、M2法律/权限、M3案例负例/回滚 | 全文交付有效，源码复现/法律核查部分有效 |
 
+| R11 | F1 API与模型服务 | `6f33514e027a48ab` | **PENDING / QUEUED** / FEEDBACK、ADAPTATION、STATUS Git回读 | NOT_EVALUABLE | — | R01 **70**(21/16/12/12/9) / Δ待评 | P0原生调度误判、Agent/LLM网关混淆、models.json硬预算错误；P1密钥/CLI/费用 | M1官方现行证据、M2源码+原始日志、M3权限/负例 | 反馈全文实际注入；未有报告，效果不可评估 |
+| R12 | F2 软件与开源程序 | `00401c5228a34073` | **PENDING / QUEUED** / FEEDBACK、ADAPTATION、STATUS Git回读 | NOT_EVALUABLE | — | R02 **81**(22/18/16/15/10) / Δ待评 | P0 worktree非OS沙箱、headless授权过宽；P1许可证/依赖/扫描器证据 | M1官方现行证据、M2源码+原始日志、M3系统权限负例 | 反馈全文实际注入；未有报告，效果不可评估 |
+
 ## 交付目录和防重
 - R01：`rounds/R01/` 三文件完整、已回读，禁止重复派单。
 - R02：`rounds/R02/FEEDBACK_TO_BUDDY.md` 已在派单前创建并回读，完整反馈内容实际发给WorkBuddy；`STATUS.md` 与 `ADAPTATION.md` 已写并回读。R02原文、独立审计、STATUS、反馈及ADAPTATION均已Git回读，Job `f77da8aaab28496d` DONE；**禁止重复派单R02**。下一轮R03须读取R02审计及ADAPTATION，并把三项研究方法改进实际注入WorkBuddy prompt。
@@ -40,3 +43,5 @@
 - R10/F10：先读README V2，R10五文件初查不存在；R09 Job a178c0e82f10461d 追单明确 failed/未提交CodeBuddy/0字，R09 STATUS更新commit `ef0db10a13ae4c07f956bbe676cca03068c78f80`、回读PASS。R10 FEEDBACK（2719字符）派单前Git创建commit `83f38dd4b36bb59360af88edf066e0fdeba1dd00`、回读PASS，全文嵌入3350字符真实MCP prompt；唯一Job `09ede5860fdb4aaf`，首查list_jobs queued/0字，get_result通用running/0字，按PENDING记录。ADAPTATION commit `904b2877d8452600ff4ce715ce0e50227f432c28`、STATUS commit `aaa653b38220763449e3586444b40bd33fe73d1b`，均真实Git回读PASS。研究报告与独立审计未创建，评分NOT_EVALUABLE；下一轮R11先追R10，再针对同厂R01做纵向复盘；严禁重派R10。
 
 - R12时段追单回填R10：原文commit `bf6a63d71a6d9bb57753cd938823d8d29b266857`、审计commit `d26a3b4962e85fc7fcacd9878112493df3020673`，均真实Git回读PASS；R10最终76分（18/19/15/15/9），不可把跨厂分差归因RSI。
+
+- R11/R12（Phoenix 2026-10-29 21:00时段）补漏与本轮：R11原五文件缺失，已从R01同厂70分基线回读并制作针对三P0五案例反馈；首次submit工具内部错误无Job ID，恢复后list_jobs未见R11，才提交并获得唯一可观察Job `6f33514e027a48ab`。R12已从R02同厂81分基线回读并制作针对worktree/headless/许可/依赖/门禁五案反馈，唯一Job `00401c5228a34073`。两轮完整反馈分别3458/3699字符已实际注入各自MCP prompt。两Job均QUEUED/0字；研究与审计NOT_EVALUABLE，后续不得重复submit。R11/R12各FEEDBACK、ADAPTATION、STATUS均Git写入且独立回读PASS。
