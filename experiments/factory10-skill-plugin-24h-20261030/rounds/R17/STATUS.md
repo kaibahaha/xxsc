@@ -13,3 +13,11 @@
 
 ## Git STATUS 独立回读确认
 - 首次STATUS提交 b428b544003d4cf28b8efe7b13c135aa2622bfb2，随后fetch_file逐字一致、blob 6b5e11d68aef2a63a689d93432ec64065e932f57：PASS。后续若更新终态必须重新取当前blob SHA；本段更新本身仍以工具回执和下一次回读为准。
+
+## R17后续真实结果核验（2026-10-30 北京时间约17:55）
+- 本次首先重新读取README交付契约、R17 STATUS/FEEDBACK/ADAPTATION、同厂R07 STATUS并检查R17报告与审计仍Git 404；唯一已登记R17 Job为 `7f44d8908f3f440b`，**没有重复submit**。
+- 实际调用WorkBuddy MCP `get_workbuddy_result(job_id=7f44d8908f3f440b,wait_seconds=0)`，原始结果为：`Error: Model request paused: the daemon is still out of memory after reclaiming unused memory, so this turn cannot be processed safely. The conversation history was preserved unchanged. Restart the app to free memory, then continue.`。独立`list_workbuddy_jobs`显示R17 `done 3s 232字`，但232字是错误信息而非研究报告，**业务终态 FAILED_REMOTE_OOM / NOT_EVALUABLE**，不是DONE_RESEARCH。0字有效正文。
+- 同厂R07 Job `1941bb3a79e84c7f`再次实际get_result仍只返回约1309字摘要和WorkBuddy私有路径；完整原文/审计Git不存在。维持MISSING_BASELINE_FULL_TEXT；R07→R17评分差、五维差值、复发率均无法计算。
+- 健康检查HTTP200、v3.4-candidate、codebuddy_reachable=true、running_jobs=1、queued_jobs=7、pending_queue_depth=7、unresolved_orphan_count=0、orphan_ledger_persist_ok=true。健康可达不代表模型可处理：R17实测OOM。
+- R17已真实发送的反馈包和三项方法调整保留，因无有效研究正文，整改响应、五案例和方法有效性全部EVIDENCE_INSUFFICIENT；不得生成虚假的WORKBUDDY_REPORT.md或CHATGPT_AUDIT.md。后续R18应先检查真实Job与模型健康，若队列/模型持续故障仍记录状态，不切模型、不重启、不重复R17派单。
+- 本轮只更新本实验分支R17 STATUS、ADAPTATION和迭代总账，均需各自写后独立Git回读；未改任何其他任务、分支、服务或权限。
