@@ -277,3 +277,18 @@
 - R13 report: `results/factory24-20261030/rounds/20261030-1332-R13/ROUND_REPORT.md`. Management Git metadata committed, independent readback to be recorded; source/tests not yet delivered, tests not run by ChatGPT, audit PENDING/N/A.
 
 - **R13 Git verification addendum:** 6/6 management files independently fetched back; final ROUND_REPORT update commit `a25c1c6173ef7de2f242cfef289e09295f5faf88`. R13-A and R11-B src/tests directory checks all 404 at observation; `GIT_VERIFIED_METADATA_ONLY`, `GIT_BLOCKED_SOURCE`, independent audit still QUEUED, score N/A. No real source/test Git SHA available.
+
+## 20261030-1432-R14 — adaptive one programming task
+
+- Nominal Beijing slot 2026-10-30 14:32; this conversation manually executed shortly before nominal time; no assertion that the existing scheduled automation itself fired. Existing automation unchanged, no second task created.
+- MCP bridge v3.3, pre health HTTP 200/codebuddy_reachable=true, max_concurrent_jobs=1, active_jobs=6 (1 RUNNING + Q_before=5). After one accepted async programming submission, active_jobs=7 (1 RUNNING + Q_after=6); **post health codebuddy_reachable=false** despite HTTP 200/status=ok, monitor connectivity. List 128 then 129 total historical jobs (50 shown); all active jobs reconciled with health.
+- Queue breakdown before: programming queued R12 A/B and R13 A=3, read-only audit R11-B=1, research factory=1, other=0; after: programming queued=4, audit=1, research=1, other=0. Adaptive Q>=5 => 1 programming task; actual accepted=1/1. Q_peak_R14=6; experiment observed Q_high_watermark=7 (R13), no hard queue refusal; QUEUE_MAX_NOT_REACHED, capacity lower bound >=7 queued.
+- **R14-A** recoverable multiplexed binary frame protocol / credit-flow engine: unique ID `FACTORY24-20261030-20261030-1432-R14-A`; **job_id=`7afe0567bdf74102`**, accepted, list QUEUED ~5s, 0 bytes; WorkBuddy local `/home/workbuddy_agent/factory24_20261030/restart_20261030_0132/20261030-1432-R14/A/`. Git source/tests=GIT_PENDING_SOURCE, independent audit=PENDING/N/A, author test=N/A, code commit NONE. Management TASK `340a20a5e28b2eea6ecf197273bb135a3a595c79`; AUDIT `20636fe2627fa1f7d4ec23efd198c8623ada5d69`; ROUND_REPORT `384f74d4da8098eb3218ca7d1329553f87096b26` (initial report).
+- **R13-A** `b94e44fc583749de` list QUEUED ~3215s; **R13 read-only audit R11-B** `d1a4cb908a974675` list QUEUED ~3240s; **R12-A/B** `38e73a78f9e64bf8` / `6ff39f4b76a54cc6` list QUEUED ~6851s/~6847s; result endpoint '[running]' conflicts with list QUEUED and is not proof of actual running. No independent test results or scores.
+- **R11-C** `112f0aee8cf5417e` FAILED_EXECUTION_TIMEOUT at 3601s, 0 bytes; Git R11-C AUDIT correction commit `bcf44234b89493a095b7d21242788a86abc93805`. **R11-B** `b4811053fb6e4b47` DONE with author-reported 69 tests and 13 adversarial cases, **SELF_TEST_UNVERIFIED**; no Git source/tests, read-only audit job `d1a4cb908a974675` pending. Pre-restart historical A/B/C remain INTERRUPTED and unmodified.
+- Independent GitHub directory read: R13-A, R12-A/B, R11-B/C only TASK/AUDIT; 0 program src/tests verified. Program Git=GIT_BLOCKED/PENDING; ChatGPT metadata commits recorded above and verified by readback separately. No 429 this round; first historical raw 429 unknown from truncated history. No other project, model, branch or service changes.
+- Report: `results/factory24-20261030/rounds/20261030-1432-R14/ROUND_REPORT.md`.
+
+| Slot | Task | job_id | Last state | Code Git | Audit | Score |
+|---|---|---|---|---|---|---|
+| 20261030-1432-R14 | A multiplexed binary protocol engine | `7afe0567bdf74102` | QUEUED | GIT_PENDING_SOURCE | PENDING | N/A |
