@@ -1,0 +1,11 @@
+# R16 / F6 研究与报告工厂｜STATUS PENDING / QUEUED
+- 实验 FACTORY10-SKILL-24H-20261030；计划北京时间2026-10-30 16:00（Phoenix 2026-10-30 01:00）；R16固定F6，不改变顺序或24轮截止。执行前Git README V2已读；R16 WORKBUDDY_REPORT/CHATGPT_AUDIT/STATUS/FEEDBACK/ADAPTATION最初均404，确认本轮无既有派单。
+- 同厂R06完整复盘：已真实读取R06 STATUS/FEEDBACK/ADAPTATION；R06 WORKBUDDY_REPORT和CHATGPT_AUDIT均404。R06 Job 52441e82f15942ab 返回429额度失败、0字有效研究正文，MISSING_BASELINE；前次总分/五维/Δ/复发率均NOT_EVALUABLE。保留R06五案例研究计划，未假称已执行。
+- 近期跨厂真实审计：R12/F2 83(21/19/17/16/10)、R10/F10 76(18/19/15/15/9)、R03/F3 83(20/19/16/16/12)，仅继承方法，不把不同厂评分当F6质量提升。
+- R16反馈包FEEDBACK_TO_BUDDY.md 3628字符，Git创建commit f192e50232a3225e8d1e02d4c2d096fc9d4363e4，独立回读blob ce25bd125ce6971db950faa36cf4c9481b2261df PASS。包含R06真实429缺口、≥3项P0/P1整改、前次五案例逐案输入输出/负例/费用/回滚、R16差异化目标、证据分级及禁止无证据断言。
+- R16 ADAPTATION.md 初次1052字符，Git创建commit 63970cb6465468115f34993313965a5606e6b746，独立回读blob 9707c20a5c321a66127670318532bf3c4f55f983 PASS；M1官方一手来源/DOI时效，M2原始可复现工件/正反例，M3权限/费用/回读失败负例。
+- 真实MCP submit_workbuddy_task仅一次，conversation_id FACTORY10-SKILL-24H-20261030-R16-F6，实际prompt 5367字符完整嵌入反馈3628字符和自适应方法1052字符；返回唯一Job ID **7445121c541e4f63**。list_workbuddy_jobs明确QUEUED/0字；get_workbuddy_result通用[running] 13秒/0字，属于后台等待占位，不证明已运行；故状态PENDING / QUEUED / NOT_EVALUABLE，禁止重复派单。
+- R14 Job e14a5a97707c4bbe、R15 Job 29fae48b6c084d44 均真实MCP get_result确认 '[task failed] 任务尚未提交到 CodeBuddy'，list_jobs=failed/0字；已更新R14/R15 STATUS并Git独立回读；不重派，不虚构研究报告或审计。
+- 桥接器本轮bridge_health HTTP200、codebuddy_reachable=true、version=3.3、max_concurrent_jobs=1，派单前active_jobs=1；另有外部桥接器候选传输任务running，但其部署成败未知。本轮未部署、未改配置、未取消其他作业。
+- R16 WORKBUDDY_REPORT.md与CHATGPT_AUDIT.md尚未创建，质量评分NOT_EVALUABLE；只有真实完整正文才能按固定25/20/20/20/15评分、评估整改回应与方法效果。下一轮R17/F7先追R16；F7同厂R07只有摘要，须追正文或标MISSING_BASELINE；不得机械复制F6案例。
+- Git状态：反馈/适应记录已写入并回读PASS；本STATUS和ITERATION_LEDGER的最终commit SHA以真实工具回执及独立回读为准。未安装插件、切换模型、授权、付费、创建定时任务或改动其他分支/实验。
