@@ -8,3 +8,7 @@
 - 本轮`WORKBUDDY_REPORT.md`和`CHATGPT_AUDIT.md`暂不创建。R16 F6应先读R06同厂429失败基线、追R14/R15；将方法转为学术DOI/撤稿/许可/版本审计，不能机械复制音视频案例。
 - 桥接器HTTP200/v3.3，max_concurrent_jobs=1，active_jobs=3；另有部署任务运行，可能影响排队稳定性，但不能未经证据宣称部署已完成。未切模型、安装插件、改其他实验、创建定时任务或发布内容。
 - Git本STATUS创建及独立回读证据以工具回执为准。
+
+## Git提交与独立回读凭证
+- 本STATUS首次创建commit `6d43a7567c4e43cdd4c43915a5df156d15ccb279`，Git独立fetch返回blob `a949566b95eed1a8b8eb3114262f8ef98ef0a807`，内容逐字一致，**READBACK_PASS**。本节补录后的最终commit SHA以GitHub update_file真实回执为准，并再次fetch核验。
+- 本轮FEEDBACK/ADAPTATION/STATUS均已通过GitHub真实写入与回读；报告/审计尚未生成，不计为研究交付。
