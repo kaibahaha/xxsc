@@ -18,3 +18,10 @@
 - 实际MCP list_workbuddy_jobs：R12唯一Job `00401c5228a34073` 已从QUEUED进入**RUNNING**（约486秒），0字；get_workbuddy_result(wait_seconds=0)再次确认[running]约495秒/0字。仍未取得完整研究报告，评分NOT_EVALUABLE，禁止重复派单。
 - 同时R11 `6f33514e027a48ab` QUEUED/0字，R13 `24a8fbd31257441a` QUEUED/0字。bridge_health HTTP200，`codebuddy_reachable=true`，`max_concurrent_jobs=1`，`active_jobs=7`。R12正在占用唯一远端执行槽。
 - R12原始报告及独立审计仍待完整正文返回；本次仅更新追单状态，不创建伪报告。
+
+
+## R15时段真实追单与完整审计补交（北京时间2026-10-30 15时段）
+- 原唯一Job `00401c5228a34073` 真实MCP结果DONE，29204字符完整原文。原始报告已通过GitHub connector创建`WORKBUDDY_REPORT.md`，commit `f420bb7799a44b95026cf6be3ffd1506dcbe4d76`，内容回读PASS（29478字符含元数据）。
+- ChatGPT独立阅读R02审计、R12完整报告，并核对CodeBuddy官方worktree/权限/headless文档与GNU GPL FAQ；审计`CHATGPT_AUDIT.md`已创建commit `c54c83de425465c18c9803a7c320cd6dbd038e05`，独立回读PASS。**R12正式评分83/100（证据21、战略19、技巧17、案例16、风险10）**；R02 81（22/18/16/15/10），同厂Δ+2，五维Δ=-1/+1/+1/+1/0。仅研究质量变化，非RSI因果证据。
+- 主要新增P0：R12 Sim-E模拟在Git回读失败时仍把状态标done；P0残留：headless `-y`与`dontAsk`组合的权限优先级未实测，不能声称安全。所有自测stdout/exitcode仍是WorkBuddy自述，ChatGPT没有独立Shell复跑。
+- 本轮研究已从PENDING修正为**DONE / AUDITED / GIT_VERIFIED**，禁止重复submit。下一轮将修正后的状态与三项方法交接，不触碰其他实验。
