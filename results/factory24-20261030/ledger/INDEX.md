@@ -312,3 +312,13 @@
 ### R15 independent Git verification
 - **13/13** metadata files independently fetched after commits (6 R15 TASK/AUDIT, R15 ROUND_REPORT, INDEX, 5 earlier AUDIT corrections). R15 ROUND_REPORT creation commit `34d2e23814ebb90552dfff702b332caadd8991d9`; initial R15 INDEX update commit `7003be5c2cc5b576d4557757d3916414dc686561`.
 - R15 A/B/C Git directories each have only TASK.md/AUDIT.md. Explicit .py source/test fetches returned 404. **GIT_VERIFIED_METADATA_ONLY**; **GIT_PENDING_SOURCE** for all three jobs, 0 verified source/test files, independent tests NOT_RUN, score N/A.
+
+## 20261030-1632-R16 — accepted submission but backend OOM (NOT a successful program)
+- Scheduled Beijing 2026-10-30 16:32; bridge HTTP200 v3.3, codebuddy_reachable=true, max_concurrent_jobs=1, active_jobs=0; jobs total 143 then 144, latest 50 displayed, historical listing truncated. Q_before=0 per health, Q_after=0, Q_peak=0; conservative 1 task under QUEUE_ENUMERATION_TRUNCATED fallback. Experiment Q_high_watermark remains 7, QUEUE_MAX_NOT_REACHED, no 429/queue hard rejection this round.
+- R16-A incremental relational query/materialized view engine: actual accepted job_id `eaebe2e61cb644ca`; list `done` after ~1s, **original result is Model request paused: daemon out of memory after reclaiming unused memory**. Semantic status **UPSTREAM_OOM / NOT_DELIVERED**, NOT PASS. Program code/tests=GIT_BLOCKED_SOURCE; no test exit code, no SHA256, no independent audit; score N/A. No duplicate submission, no restart or model change.
+- R15 A `6f832d28c1eb48b0` FAILED_CODEBUDDY_STATUS_ERROR_NO_TEXT; B `2a22271866934425` FAILED_BEFORE_CODEBUDDY_SUBMIT; C `6d6908762aef4d48` FAILED_BEFORE_CODEBUDDY_SUBMIT; all zero output, no verified source. Their AUDIT.md status records corrected.
+- R11-B `b4811053fb6e4b47` still AUTHOR_SELF_TEST_ONLY (69 claimed PASS), code not available in Git, prior audit job `d1a4cb908a974675` failed; independent score N/A. Historical old A/B/C INTERRUPTED unchanged.
+- R16 report: `results/factory24-20261030/rounds/20261030-1632-R16/ROUND_REPORT.md`. R16 management TASK commit `f861510b4ac5b09b653633b25ae652641b70f8ea`, AUDIT commit `c77525e28e4e1bbcc6d24eca7138bf95d4ad610b`, report initial commit `e0784a8715e78febc1384495aa4d8a75e8dabace`. Git metadata readback to verify separately; code Git BLOCKED.
+| Slot | Task | job_id | Semantic status | Program Git | Audit |
+|---|---|---|---|---|---|
+| 20261030-1632-R16 | A incremental relational query engine | `eaebe2e61cb644ca` | **UPSTREAM_OOM / NOT_DELIVERED** | GIT_BLOCKED_SOURCE | NOT_RUN / N/A |
