@@ -27,7 +27,7 @@
 | R15 | F5 视频与音频内容 | `29fae48b6c084d44` | **FAILED_NOT_SUBMITTED** / 0字 / STATUS回读 | NOT_EVALUABLE | — | R05 429无报告 / MISSING_BASELINE | R05失败无同厂评分，R15派单一次 | M1官方/费用/授权、M2五例复现、M3版权/人工审批 | 待正文，未验证 |
 
 | R16 | F6 研究与报告 | `7445121c541e4f63` | **FAILED_REMOTE_OOM** / Job done仅错误232字 / STATUS Git回读PASS | NOT_EVALUABLE | — | R06 429无正文 / MISSING_BASELINE，Δ不可计算 | R06无原文/审计；官方DOI/撤稿、权限证据、五案例原始工件待查 | M1一手来源、M2可复现工件、M3权限/成本/回读负例 | 待真实报告，未验证 |
-| R17 | F7 AI for Science科学研究 | `7f44d8908f3f440b` | **PENDING/QUEUED** / 0字 / FEEDBACK+ADAPTATION+STATUS回读 | NOT_EVALUABLE | — | R07仅摘要，MISSING_BASELINE_FULL_TEXT，Δ不可评 | P0完整正文只留私有路径、E0无原始脚本/日志、科学来源原始响应不足 | M1来源12+、M2可重放RUN工件、M3权限状态/回读分层 | 待WorkBuddy正文，方法效果EVIDENCE_INSUFFICIENT |
+| R17 | F7 AI for Science科学研究 | `7f44d8908f3f440b` | **FAILED_REMOTE_OOM** / 结果232字错误、0字有效正文 / STATUS回读 | NOT_EVALUABLE | — | R07仅摘要，MISSING_BASELINE_FULL_TEXT，Δ不可评 | P0完整正文只留私有路径、E0无原始脚本/日志、科学来源原始响应不足 | M1来源12+、M2可重放RUN工件、M3权限状态/回读分层 | OOM无正文，方法效果EVIDENCE_INSUFFICIENT；不重复派单 |
 
 ## 交付目录和防重
 - R01：`rounds/R01/` 三文件完整、已回读，禁止重复派单。
