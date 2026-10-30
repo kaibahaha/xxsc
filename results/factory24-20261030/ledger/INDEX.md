@@ -185,3 +185,21 @@
 | 20261030-0832-R08 | B API gateway | `701606d2cbc14621` | QUEUED | GIT_PENDING | PENDING / N/A |
 
 - **R08 independent Git readback**: 6/6 management files (A/B TASK, A/B AUDIT, ROUND_REPORT, INDEX) fetched and matched job IDs; R07-A corrected AUDIT also fetched. R08 A/B `src/` and `tests/` each 404 (4 checks). **GIT_VERIFIED_METADATA_ONLY**, **GIT_CODE_PENDING**, score N/A. ROUND_REPORT verification update commit `8b3fe6fadf79201a5a202c001e0638cf520069e3`. No real source/test files or completed unit tests verified.
+
+
+## 20261030-0932-R09 — R09 adaptive two-job submission, second R07 timeout
+
+- Planned 2026-10-30 09:32 Asia/Shanghai; actual MCP calls ~09:27–09:29. Bridge HTTP200 v3.3, max_concurrent_jobs=1, initial active_jobs=5, total historical jobs=106 (50 displayed), then 108 after two submits.
+- Initial Q_before=**4** = programming 3 (R07-C, R08-A/B) + research 1 (F08) + other 0, RUNNING=R07-B. Adaptive decision **2**; both `submit_workbuddy_task` calls ACCEPTED. R09-A transactional outbox/inbox `15df528355094f8e` QUEUED, R09-B binary incremental parser/session `a9e2565b170d4e41` QUEUED.
+- Q_after_A=5; Q_after_B=5 (R07-B failed and R07-C started running concurrently), Q_peak=5; cumulative **Q_high_watermark=7**. QUEUE_MAX_NOT_REACHED, no capacity 429. Final 1 running+5 queued (programming 4, research 1). Wait snapshots R08 A/B ~3440/3426s; R09 A/B ~21/6s; R07-C previously queued ~7172s.
+- R08 A/B remain QUEUED, no source/test Git. R07-B `979fd16d94c74e3d` now FAILED_EXECUTION_TIMEOUT 3601s, original result 0 body, R07-B AUDIT updated (commit `1b79c9c2d05eadb870e8c48366debb94a5158bf0`). R07-A previously FAILED_TIMEOUT; R07-C now RUNNING. Old INTERRUPTED unchanged; R03–R06 upstream 429 records not PASS.
+- R09 Git management TASK/AUDIT commits A `196bf22434ca711045d9cd6347fa781ad7744d01`/`7cf5f1317bbcedc5bc5fe13724573177217ff454`, B `04a4782d36a69681eb818097017ade31c989dae4`/`ffa329bf9defd05a10d76fd67320e6bdafb86754`. R09 ROUND_REPORT commit `fc623dd0755b21149dc1bf41175a43d14fb3cd2a`. Actual source/tests: GIT_PENDING, independent audit N/A, audit_job_id=NONE, verified program deliveries=0. Full details `results/factory24-20261030/rounds/20261030-0932-R09/ROUND_REPORT.md`.
+
+| Slot | Task | job_id | Latest state | Git code/tests | Independent audit |
+|---|---|---|---|---|---|
+| 20261030-0932-R09 | A transactional outbox/inbox | `15df528355094f8e` | QUEUED | GIT_PENDING | PENDING/N/A |
+| 20261030-0932-R09 | B incremental binary parser/session | `a9e2565b170d4e41` | QUEUED | GIT_PENDING | PENDING/N/A |
+| 20261030-0832-R08 | A KV/WAL | `a13b941e4ea349be` | QUEUED | GIT_PENDING | PENDING/N/A |
+| 20261030-0832-R08 | B API gateway | `701606d2cbc14621` | QUEUED | GIT_PENDING | PENDING/N/A |
+| 20261030-0732-R07 | B policy DSL | `979fd16d94c74e3d` | FAILED_TIMEOUT | GIT_MISSING_AT_CHECK | PENDING_EVIDENCE/N/A |
+| 20261030-0732-R07 | C rate/circuit | `88ba054e03ce42fe` | RUNNING | GIT_PENDING | PENDING/N/A |
