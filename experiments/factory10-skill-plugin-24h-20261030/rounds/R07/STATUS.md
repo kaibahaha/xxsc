@@ -16,3 +16,6 @@
 - R07 Job `1941bb3a79e84c7f` 再次实际get_result(wait_seconds=35)仍 `[running]`，运行约120秒、0字。无可审计研究正文，维持PENDING/NOT_EVALUABLE；未重复submit。由于此前R04–R06真实429，不预设R07必然成功或失败，后续必须按该Job ID回读最终结果。
 
 - **最新追单**：同一Job `1941bb3a79e84c7f` 经 `get_workbuddy_result(wait_seconds=65)` 再查，约197秒仍 `[running]`、0字；不创建报告/审计、不重复派单。此结果晚于上文120秒检查。
+
+## R08后续追单补充（北京时间2026-10-30 08时）
+- R07唯一Job `1941bb3a79e84c7f` 实际get_workbuddy_result返回DONE摘要约1309字，称完整报告位于WorkBuddy私有路径 `/home/workbuddy_agent/f7_r07_baseline/F7_R07_REPORT.md` 并有12工件。Git R07 WORKBUDDY_REPORT.md、CHATGPT_AUDIT.md经fetch_file均404。未取得完整原文，故本轮只更正“RUNNING”为“DONE_SUMMARY_ONLY / FULL_REPORT_NOT_RETRIEVED / NOT_EVALUABLE”，不能把私有路径当Git交付，也不得虚构100分评分；未重复submit R07。
