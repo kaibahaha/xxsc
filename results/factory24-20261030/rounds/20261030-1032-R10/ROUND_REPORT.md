@@ -41,3 +41,15 @@
 - Management commits (TASK/AUDIT): A `270e53a2a7d1c8c1e215876ef9bdd35116aea856` / `ac56e25660a643aae7f5e1f3c6dc5f3e8e820a43`; B `d42483ee69a210f6297d48d713d4203e9ed60fed` / `913dd9c2ca696aff0d3719db83e9b8740c9109ca`; C `dbb7f4f99abdfa5d7a81ab409fb934052a8b3088` / `d6becc8bd2e0cee94d41651f126fef70768122d7`.
 - Five historical audit correction commits: R07-C `468d0e92eda597d8139775cd9c5dd66f18a3ed3e`; R08-A `ba74cddcfcd946ce1f243add06cb258002736c57`; R08-B `ee7edfa3e1ae385ea3fc873dd0076b376c3b7173`; R09-A `76f8e67aacff147d0ae450a18e103e34f120dbfa`; R09-B `81744ab079173a62554b60a575108a47a4d4ee2e`.
 - **Source/test delivery**: GIT_PENDING, verified code files=0, verified test files=0, independent audit score=N/A. Management Git status becomes **GIT_VERIFIED_METADATA_ONLY** only after independent connector readback; never report it as code delivery. Queue max remains unknown. No FINAL_REPORT before R24.
+
+
+## R10 Git independent readback addendum
+
+- After actual connector writes, ChatGPT fetched **8/8** management files independently from `exp/factory24-20261030`: R10 A/B/C `TASK.md`, R10 A/B/C `AUDIT.md`, R10 `ROUND_REPORT.md`, and cumulative `ledger/INDEX.md`. Each returned valid content; TASK files contain unique slot IDs, AUDIT files contain the correct original job IDs and PENDING statuses, report and ledger contain the slot. **GIT_VERIFIED_METADATA_ONLY**.
+- Six direct directory checks, R10 A/B/C each `src/` and `tests/`, all returned **GitHub 404** at verification. Code files verified=**0**, test files verified=**0**, actual `unittest` exit code=N/A, independent scores=N/A. WorkBuddy local disk not inspected; this is **not** proof it is empty. Source/test status **GIT_PENDING**, not GIT_VERIFIED.
+- Report initial Git commit `7be66951a62bb1d70fa0beab84daa5319a623cf8`; INDEX initial R10 update Git commit `64bf56bb1cef91057d356594e2ad7be2323e1d59`. Management files committed=8 new this round (6 TASK/AUDIT + ROUND_REPORT + INDEX update), plus 5 historical AUDIT corrections. Do not confuse this with code delivery.
+- Last list refresh: `共 115 个（显示 50）：`, active=4, queued=3.
+  - R10-A: `12db285ecfd6441c  running          51s       0字  FACTORY24-20261030-20261030-1032-R10-A`
+  - R10-B: `a299ef8305ae427c  queued          149s       0字  FACTORY24-20261030-20261030-1032-R10-B`
+  - R10-C: `bfb29f3cfc984fef  queued          146s       0字  FACTORY24-20261030-20261030-1032-R10-C`
+- `QUEUE_MAX_NOT_REACHED`, no queue capacity refusal. No additional programming tasks submitted beyond A/B/C; no audit task submitted without source.
