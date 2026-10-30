@@ -326,3 +326,20 @@
 ## R16 independent GitHub connector readback — VERIFIED
 - Seven management files fetched independently from target branch after writes: R16 A TASK/AUDIT, R16 ROUND_REPORT, ledger INDEX, R15 A/B/C AUDIT corrections. **7/7 fetched and content matched real job IDs/states**. This verifies management metadata only, **GIT_VERIFIED_METADATA_ONLY**; actual program source/tests remain **GIT_BLOCKED_SOURCE**.
 - Initial R16 report commit `e0784a8715e78febc1384495aa4d8a75e8dabace`; initial R16 ledger append commit `f015a9a66d2ffc9c4c5a165bb14e7506baff8ad9`. Final follow-up update commit is not self-embedded.
+
+
+## 20261030-1732-R17 — three programming jobs accepted; independent R11B audit started
+
+- Scheduled 2026-10-30 17:32 Beijing (R17/24); actual tool calls around 17:28–17:34. Bridge health HTTP200, **version 3.4-candidate** (previous R16 v3.3), first `active_jobs=0, running_jobs=0, queued_jobs=0`; latest recheck `active_jobs=10, running_jobs=1, queued_jobs=9`. `max_concurrent_jobs` field not visible due connector truncation, observed running=1; configured max_queue_size=100, max_slot_seconds=2100.
+- Q_before=0, adaptive decision=**3**, actual accepted new programming tasks=**3/3**, no 429/refusal; after A/B/C Q=4/5/6 because three external queued jobs arrived, later external research retries brought Q_peak=**9**; **Q_high_watermark=9**, QUEUE_MAX_NOT_REACHED. Latest queued breakdown FACTORY24 programming=3, FACTORY10 research=3, other=3; R11B audit running=1.
+- New R17 A `e247b90359204a84` (transactional outbox/inbox), B `1299ee08ce2b47ac` (bounded binary parser), C `deace1cca1ea4069` (distributed snapshot). All QUEUED, 0 verified source/test, author self-test unavailable, independent scores N/A. Each source Git status GIT_PENDING.
+- Separate read-only R11-B audit job `7a82c98b70834941` accepted and RUNNING, 0 output at ~131s; **AUDIT_PENDING**. R11B original `b4811053fb6e4b47` remains AUTHOR_SELF_TEST_ONLY 69/69 claimed, Git source/test fetch 404. R16-A original `eaebe2e61cb644ca` remains UPSTREAM_OOM / no verified source; new result retrieval attempt returned connector internal error, not a status upgrade.
+- Pre-restart original A/B/C `9712edf966b54027` / `a154efd28abc4eb5` / `fb21843915d24025` again INTERRUPTED, no reissue of old job IDs. No model change, bridge restart, cancellation, or modifications to other factory tasks by this run.
+- R17 management files: 3 TASK + 3 AUDIT, all 6 independently fetched from Git after creation; ROUND_REPORT created, ledger update follows. **GIT_VERIFIED_METADATA_ONLY / GIT_BLOCKED_SOURCE**, 0 source/test files independently verified. See `results/factory24-20261030/rounds/20261030-1732-R17/ROUND_REPORT.md` for detailed observations and commit SHAs.
+
+| Slot | Task | job_id | Last observed | Git code/tests | Independent audit |
+|---|---|---|---|---|---|
+| 20261030-1732-R17 | A Outbox/Inbox | `e247b90359204a84` | QUEUED | GIT_PENDING | PENDING / N/A |
+| 20261030-1732-R17 | B binary parser | `1299ee08ce2b47ac` | QUEUED | GIT_PENDING | PENDING / N/A |
+| 20261030-1732-R17 | C distributed snapshot | `deace1cca1ea4069` | QUEUED | GIT_PENDING | PENDING / N/A |
+| 20261030-1732-R17 | AUDIT-R11B | `7a82c98b70834941` | RUNNING | Read-only remote audit | PENDING / N/A |
