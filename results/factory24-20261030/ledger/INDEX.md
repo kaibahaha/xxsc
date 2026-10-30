@@ -308,3 +308,7 @@
 | 20261030-1532-R15 | A MVCC B+Tree/WAL | `6f832d28c1eb48b0` | QUEUED | GIT_PENDING_SOURCE | PENDING / N/A |
 | 20261030-1532-R15 | B CRDT anti-entropy | `2a22271866934425` | QUEUED | GIT_PENDING_SOURCE | PENDING / N/A |
 | 20261030-1532-R15 | C streaming ETL | `6d6908762aef4d48` | QUEUED | GIT_PENDING_SOURCE | PENDING / N/A |
+
+### R15 independent Git verification
+- **13/13** metadata files independently fetched after commits (6 R15 TASK/AUDIT, R15 ROUND_REPORT, INDEX, 5 earlier AUDIT corrections). R15 ROUND_REPORT creation commit `34d2e23814ebb90552dfff702b332caadd8991d9`; initial R15 INDEX update commit `7003be5c2cc5b576d4557757d3916414dc686561`.
+- R15 A/B/C Git directories each have only TASK.md/AUDIT.md. Explicit .py source/test fetches returned 404. **GIT_VERIFIED_METADATA_ONLY**; **GIT_PENDING_SOURCE** for all three jobs, 0 verified source/test files, independent tests NOT_RUN, score N/A.
