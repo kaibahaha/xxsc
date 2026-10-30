@@ -225,3 +225,5 @@
 | 20261030-0832-R08 | A KV/WAL | `a13b941e4ea349be` | FAILED_PRE_EXECUTION | GIT_MISSING_AT_CHECK | PENDING_EVIDENCE/N/A |
 | 20261030-0832-R08 | B API gateway | `701606d2cbc14621` | FAILED_PRE_EXECUTION | GIT_MISSING_AT_CHECK | PENDING_EVIDENCE/N/A |
 | 20261030-0732-R07 | C rate/circuit | `88ba054e03ce42fe` | FAILED_CODEBUDDY_ERROR | GIT_MISSING_AT_CHECK | PENDING_EVIDENCE/N/A |
+
+- **R10 Git independent verification addendum**: 8/8 management files read back, R10 A/B/C src/ and tests/ all 404 (6 checks); source/test code count 0 verified, tests N/A, independent scores N/A. Management status GIT_VERIFIED_METADATA_ONLY, code GIT_PENDING. ROUND_REPORT verification update commit `9700f2d40484ce92dd20510f6eacc05ff7c14adc`; INDEX initial R10 update `64bf56bb1cef91057d356594e2ad7be2323e1d59`. Last R10 A/B/C list statuses QUEUED, global Q=3. No source-level independent audit possible yet.
