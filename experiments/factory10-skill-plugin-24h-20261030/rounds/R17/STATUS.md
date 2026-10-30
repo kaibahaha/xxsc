@@ -10,3 +10,6 @@
 - **研究结果**：PENDING/QUEUED，0字；WorkBuddy完整正文尚无，R17 WORKBUDDY_REPORT.md与CHATGPT_AUDIT.md不创建伪文件；评分NOT_EVALUABLE，整改与方法效果EVIDENCE_INSUFFICIENT。后续只按同一Job ID追单，取得完整报告才按25/20/20/20/15独立评分并与R07比较（若R07仍缺全文则标不可比）。
 - **下一轮R18/F8**：先追R17唯一Job、补交原文/审计，若远端OOM/失败如实记终态；机器人方向只迁移证据、复现、权限方法，突出真机/仿真隔离、传感器校准、急停。禁止改动其他实验、插件安装/授权、模型切换、另建定时任务。
 - **Git状态**：本STATUS和总账需分别提交与独立回读，commit回执与回读不可混淆。
+
+## Git STATUS 独立回读确认
+- 首次STATUS提交 b428b544003d4cf28b8efe7b13c135aa2622bfb2，随后fetch_file逐字一致、blob 6b5e11d68aef2a63a689d93432ec64065e932f57：PASS。后续若更新终态必须重新取当前blob SHA；本段更新本身仍以工具回执和下一次回读为准。
