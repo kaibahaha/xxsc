@@ -26,7 +26,7 @@
 | R14 | F4 图像与视觉创作 | `e14a5a97707c4bbe` | **FAILED_NOT_SUBMITTED** / 0字 / STATUS回读 | NOT_EVALUABLE | — | R04 429无报告 / MISSING_BASELINE | R04原Job失败，R14缺轮补派仅一次 | M1官方证据/安装状态、M2资产manifest、M3版权负例 | 待正文，未验证 |
 | R15 | F5 视频与音频内容 | `29fae48b6c084d44` | **FAILED_NOT_SUBMITTED** / 0字 / STATUS回读 | NOT_EVALUABLE | — | R05 429无报告 / MISSING_BASELINE | R05失败无同厂评分，R15派单一次 | M1官方/费用/授权、M2五例复现、M3版权/人工审批 | 待正文，未验证 |
 
-| R16 | F6 研究与报告 | `7445121c541e4f63` | **PENDING / QUEUED** / FEEDBACK、ADAPTATION、STATUS Git回读PASS | NOT_EVALUABLE | — | R06 429无正文 / MISSING_BASELINE，Δ不可计算 | R06无原文/审计；官方DOI/撤稿、权限证据、五案例原始工件待查 | M1一手来源、M2可复现工件、M3权限/成本/回读负例 | 待真实报告，未验证 |
+| R16 | F6 研究与报告 | `7445121c541e4f63` | **FAILED_REMOTE_OOM** / Job done仅错误232字 / STATUS Git回读PASS | NOT_EVALUABLE | — | R06 429无正文 / MISSING_BASELINE，Δ不可计算 | R06无原文/审计；官方DOI/撤稿、权限证据、五案例原始工件待查 | M1一手来源、M2可复现工件、M3权限/成本/回读负例 | 待真实报告，未验证 |
 
 ## 交付目录和防重
 - R01：`rounds/R01/` 三文件完整、已回读，禁止重复派单。
@@ -68,3 +68,5 @@
 - 桥接器HTTP200/v3.3，单并发，active_jobs=3；另有运行中桥接器生产部署任务，是否完成/重启未知，不干预。下一轮R16/F6先追R14/R15并读R06同厂失败基线，继续固定25/20/20/20/15评分；不安装、不授权、不切模型、不改其他实验。
 
 - R16计划北京时间2026-10-30 16:00：README V2与R06同厂STATUS/FEEDBACK/ADAPTATION均已Git回读；R06原文/审计404且原Job 52441e82f15942ab 为429失败，MISSING_BASELINE。R16反馈3628字符先Git写入commit f192e50232a3225e8d1e02d4c2d096fc9d4363e4并回读；ADAPTATION先Git写入commit 63970cb6465468115f34993313965a5606e6b746并回读。唯一WorkBuddy submit Job 7445121c541e4f63，实际prompt 5367字符全文嵌入反馈与方法；list_jobs QUEUED/0字，尚无正文，不创建伪报告/评分。R14 e14a5a97707c4bbe、R15 29fae48b6c084d44 经get_result确认failed/未提交CodeBuddy/0字，已分别更新STATUS并Git回读；不重复提交。下一轮R17 F7先追R16，再核R07仅摘要基线。无跨实验修改。
+
+- R16终态复核：MCP get_result返回Model request paused/daemon out of memory，list_jobs done/2s/232字只表示错误响应已结束，**非研究完成**。R16未有正文/评分；STATUS追加真实错误并Git回读。此故障与R14/R15未提交CodeBuddy不同；不自动重派、不切模型、不重启。
