@@ -165,3 +165,21 @@
 - All **8/8** R07 management files (A/B/C TASK.md + AUDIT.md, ROUND_REPORT.md, ledger/INDEX.md) were independently read back from the target GitHub branch and matched the expected real job IDs. This is `GIT_VERIFIED_METADATA_ONLY`, not source delivery or test verification.
 - Original ROUND_REPORT creation commit: `fdc7d9902211ee1c3e4ef039d8d23d9e888f4bb3`; original ledger update commit: `268cd81ea594d2514cd59124b4dcb58a11fca4b7`.
 - At last MCP list R07 A `6f4ee441c0d34b3f` RUNNING ~148s; B `979fd16d94c74e3d` QUEUED ~132s; C `88ba054e03ce42fe` QUEUED ~118s. No independently verified source/tests. Preserve PENDING/N/A; no semantic success inferred.
+
+
+## 20261030-0832-R08 — Adaptive two-job submission, previous hard timeout
+
+- Planned Beijing 2026-10-30 08:32, actual checks about 08:30. Bridge HTTP200, version=3.3, max_concurrent_jobs=1, active_jobs=3 initially; list 104 total (50 displayed). Q_before=2 (programming=1, research=1), running=1. Adaptive Q=2 => **2** new distinct programming tasks, both actually accepted via submit_workbuddy_task.
+- R08-A transaction KV/WAL `FACTORY24-20261030-20261030-0832-R08-A`: **job_id=`a13b941e4ea349be`**, QUEUED; code Git GIT_PENDING, audit PENDING/N/A.
+- R08-B deterministic API gateway `FACTORY24-20261030-20261030-0832-R08-B`: **job_id=`701606d2cbc14621`**, QUEUED; code Git GIT_PENDING, audit PENDING/N/A.
+- Q_after_A=3, Q_after_B=4, Q_peak(R08)=4, cumulative Q_high_watermark remains **7** (R06). No submit 429 or capacity rejection; QUEUE_MAX_NOT_REACHED, proven observed queue capacity >=7, true max unknown. After B, RUNNING=1, QUEUED=4 (programming 3, research 1). No actual tests, code or score returned yet.
+- R07-A `6f4ee441c0d34b3f` **FAILED_EXECUTION_TIMEOUT 3600s**, 0 output; Git source/report absent at checked path, local remote workdir not inspected. R07-B `979fd16d94c74e3d` RUNNING, R07-C `88ba054e03ce42fe` QUEUED. Their audit PENDING. Historical old A/B/C remain INTERRUPTED. R03–R06 `done` records carry upstream quota 429, not successful programming.
+- ChatGPT Git management commits: R08-A TASK `8fc9cf4e44e356d5f2c0018a9d3a8f41483499ed`, B TASK `1f24328df24ea912a249b21a99451b0cb8a2a01e`, A AUDIT `0b731bf1b7efb0283f15e8810ea58c214bf9c4e8`, B AUDIT `78061c79fafdc94a9a39d083cf3606405ff8ada5`, ROUND_REPORT `764744a12549bc00a7442654e78ac7dc088464cb`. R07-A AUDIT correction `d51f82e74058bce675c9ea50b49c309780b57d50`. Code Git GIT_PENDING, no independent score. Report: `results/factory24-20261030/rounds/20261030-0832-R08/ROUND_REPORT.md`.
+
+| Slot | Task | job_id | Last observed | Git source/tests | Independent audit |
+|---|---|---|---|---|---|
+| 20261030-0732-R07 | A lease scheduler | `6f4ee441c0d34b3f` | FAILED_EXECUTION_TIMEOUT 3600s | GIT_MISSING_AT_CHECK | PENDING_EVIDENCE / N/A |
+| 20261030-0732-R07 | B policy DSL | `979fd16d94c74e3d` | RUNNING | GIT_PENDING | PENDING / N/A |
+| 20261030-0732-R07 | C rate/circuit | `88ba054e03ce42fe` | QUEUED | GIT_PENDING | PENDING / N/A |
+| 20261030-0832-R08 | A transaction KV/WAL | `a13b941e4ea349be` | QUEUED | GIT_PENDING | PENDING / N/A |
+| 20261030-0832-R08 | B API gateway | `701606d2cbc14621` | QUEUED | GIT_PENDING | PENDING / N/A |
