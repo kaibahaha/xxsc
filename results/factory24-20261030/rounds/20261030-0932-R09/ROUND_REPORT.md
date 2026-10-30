@@ -33,3 +33,11 @@
 - Repository `kaibahaha/xxsc`, branch `exp/factory24-20261030`, root `results/factory24-20261030/`. R09 management files A/B TASK.md and A/B AUDIT.md created through GitHub connector; R07-B AUDIT updated. ROUND_REPORT and ledger INDEX written by ChatGPT connector. All changes confined to experiment root; no code recreated from summaries.
 - Management commits: A TASK `196bf22434ca711045d9cd6347fa781ad7744d01`; B TASK `04a4782d36a69681eb818097017ade31c989dae4`; A AUDIT `7cf5f1317bbcedc5bc5fe13724573177217ff454`; B AUDIT `ffa329bf9defd05a10d76fd67320e6bdafb86754`; R07-B audit correction `1b79c9c2d05eadb870e8c48366debb94a5158bf0`.
 - At report composition: **GIT_COMMITTED_METADATA**, pending independent connector readback. Source/tests/README/REPORT/TEST_RESULTS/MANIFEST **GIT_PENDING**; no code commit SHA, code file count=0 verified, independent score N/A. Readback and management commit SHA recorded in subsequent verification addendum after actual checks. `FINAL_REPORT.md` intentionally not written before 24 rounds end.
+
+
+## Git independent readback addendum (completed in R09)
+
+- After the actual GitHub connector writes, ChatGPT independently fetched **7/7** management files: R09 A/B TASK.md, R09 A/B AUDIT.md, R09 ROUND_REPORT.md, cumulative ledger/INDEX.md, and corrected R07-B AUDIT.md. Contents and relevant job IDs matched; **GIT_VERIFIED_METADATA_ONLY**.
+- R09 source/test directory checks: `A/src`, `A/tests`, `B/src`, `B/tests` each returned **GitHub 404**. Verified code files=**0**, verified test files=**0**, test exit code=**N/A**, independently scored programs=**0**. Do not infer WorkBuddy local disk is empty.
+- ROUND_REPORT initial commit `fc623dd0755b21149dc1bf41175a43d14fb3cd2a`; ledger initial R09 update commit `24f6460e7400cbf242d8f213c3e4918f8d6ee482`. This addendum is a later report commit; ledger references original report commit and R09 addendum after readback.
+- Source/test Git status **GIT_PENDING** (not GIT_VERIFIED). No evidence of HTTP429 queue refusal, so **QUEUE_MAX_NOT_REACHED**.
