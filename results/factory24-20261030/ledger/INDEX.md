@@ -227,3 +227,20 @@
 | 20261030-0732-R07 | C rate/circuit | `88ba054e03ce42fe` | FAILED_CODEBUDDY_ERROR | GIT_MISSING_AT_CHECK | PENDING_EVIDENCE/N/A |
 
 - **R10 Git independent verification addendum**: 8/8 management files read back, R10 A/B/C src/ and tests/ all 404 (6 checks); source/test code count 0 verified, tests N/A, independent scores N/A. Management status GIT_VERIFIED_METADATA_ONLY, code GIT_PENDING. ROUND_REPORT verification update commit `9700f2d40484ce92dd20510f6eacc05ff7c14adc`; INDEX initial R10 update `64bf56bb1cef91057d356594e2ad7be2323e1d59`. Last R10 A/B/C list statuses QUEUED, global Q=3. No source-level independent audit possible yet.
+
+
+## 20261030-1132-R11 — R11 3 actual accepted, R10 failed
+
+- Planned Beijing 2026-10-30 11:32, actual MCP/Git check ~11:31–11:34. Bridge v3.3 HTTP200, reachable, max_concurrent_jobs=1, active_jobs before=0 after=3; 118 historical jobs before, 121 after, only 50 displayed (truncated historical list).
+- Q_before=0, adaptive target=3, 3 accepted via real async submit; Q_after_A=0 (A running), Q_after_B=1, Q_after_C=2; Q_peak_R11=2; Q_high_watermark historical observed=7, QUEUE_MAX_NOT_REACHED; 429/rejection=0/3. Latest running=1, queued=2, programming queue=2, research=0, other=0. No code or tests verified, audit scores N/A.
+- R11-A durable lease scheduler recovery `e5909f9386404880` RUNNING, parent original INTERRUPTED `9712edf966b54027`, failed retry `6f4ee441c0d34b3f`. Remote legacy workdir inspection delegated to this programming job, not independently completed.
+- R11-B audit ledger `b4811053fb6e4b47` QUEUED.
+- R11-C schema migration planner `112f0aee8cf5417e` QUEUED.
+- R10-A `12db285ecfd6441c` FAILED_CODEBUDDY_ERROR 0 valid output; R10-B `a299ef8305ae427c` FAILED_PRE_EXECUTION status=None; R10-C `bfb29f3cfc984fef` FAILED_CODEBUDDY_ERROR 0 output. Their Git directories contain TASK/AUDIT only, corrected AUDIT files in place, no independent source/test pass.
+- Git management: R11 A/B/C TASK/AUDIT 6 files committed; R11 ROUND_REPORT commit `3d2030785092ad755c3335bda0cbd39b1c1a61f7`; INDEX updated here; source/tests/README/REPORT/TEST_RESULTS/MANIFEST pending; independent audit N/A; audit_job_id=NONE. Report: `results/factory24-20261030/rounds/20261030-1132-R11/ROUND_REPORT.md`. Full Git readback verification will be appended after checking actual files.
+
+| Slot | Task | job_id | Last observed | Git code/tests | Independent audit |
+|---|---|---|---|---|---|
+| 20261030-1132-R11 | A lease scheduler recovery | `e5909f9386404880` | RUNNING | GIT_PENDING | PENDING/N/A |
+| 20261030-1132-R11 | B tamper-evident ledger | `b4811053fb6e4b47` | QUEUED | GIT_PENDING | PENDING/N/A |
+| 20261030-1132-R11 | C schema migration | `112f0aee8cf5417e` | QUEUED | GIT_PENDING | PENDING/N/A |
