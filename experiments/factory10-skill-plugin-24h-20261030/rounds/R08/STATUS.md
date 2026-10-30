@@ -10,3 +10,11 @@
 - Git提交与回读：本STATUS、ADAPTATION、ITERATION_LEDGER分别写后独立回读，成功与否以实际Git结果为准，不把提交回执等同回读。前述FEEDBACK已确认PASS。
 - 下一轮R09/F9 AIoT智能硬件：先追R08 Job，完整报告到手后才独立评分；R07完整正文未取回时保持NOT_EVALUABLE。继承最多三项经核实的研究方法，突出设备协议、固件、隐私、网络隔离、断网恢复及成本。
 - 边界：未安装插件、未切换模型、未授权付费、未控制实体机器人、未改其他分支/实验/自动化任务、未创建新任务。
+## R08同轮晚间复查（Phoenix 2026-10-29 17:56，约北京时间2026-10-30 08:56）
+- 本次再次真实读取实验README.md并核对R08 STATUS/FEEDBACK/ADAPTATION/REPORT/AUDIT和R09 STATUS：R08唯一派单已存在，R09计划时段尚未开始，不新增R08或R09派单。
+- WorkBuddy MCP bridge_health：HTTP 200，版本v3.3，active_jobs=5，max_concurrent_jobs=1；这证明桥接在线，但不证明任务已实际执行。
+- list_workbuddy_jobs(limit=30)：R08唯一Job `fc588db4b904442c` 显示 **QUEUED**、约3220秒、0字；共享队列另有复杂编程实验任务正在RUNNING。随后get_workbuddy_result(job_id,wait_seconds=0)返回通用 `[running]`、已3230秒、0字。两种接口状态文字不完全一致；以“**未返回正文、仍未完成/队列受阻**”作为可靠共同结论，不擅称已开始计算或已完成。
+- 本轮WORKBUDDY_REPORT.md和CHATGPT_AUDIT.md经Git fetch_file均404；故R08 **PENDING / NOT_EVALUABLE**，五维评分、同厂Δ均不可计算。保留原Job ID，后续只追单不重复submit；不创建伪研究报告。
+- R07 Job `1941bb3a79e84c7f` 仍是DONE_SUMMARY_ONLY，Git原报告与审计404；没有完整正文可供评分。R04–R06此前429失败，不将桥接done误认为研究完成。
+- 继承到R09的方法要求（尚未派单）：M1官方证据+完整可复核工件，M2模拟/真机与安全权限分层，M3五案例负例/费用/回滚和RUN/BLOCKED标签；R09须按预定时段且先查Git防重。没有改RRULE、模型、插件授权或其他实验。
+- 本段为本轮真实状态增量；写入和回读SHA在本次Git工具调用回执及随后独立fetch_file中验证，不预先宣称成功。
