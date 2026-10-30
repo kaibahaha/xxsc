@@ -11,7 +11,9 @@
 
 | R05 | F5 视频与音频内容 | `6f4057fc78094c63` | **FAILED_RATE_LIMIT_429** / Job done仅为错误响应 / STATUS已回读 | NOT_EVALUABLE | — | 首圈基线 | 原派单有反馈，后续追单返回429，未形成研究正文 | M1官方证据、M2商用许可、M3案例正反测试 | 无正文，无法检验 |
 | R06 | F6 研究与报告 | `52441e82f15942ab` | **FAILED_RATE_LIMIT_429** / Job done仅为错误响应 / STATUS已回读 | NOT_EVALUABLE | — | 首圈基线 | 原派单有反馈，后续追单返回429，未形成研究正文 | M1原始来源/工件、M2学术证据/许可、M3案例复现 | 无正文，无法检验 |
-| R07 | F7 AI for Science科学研究 | `1941bb3a79e84c7f` | RUNNING / 已派单 / STATUS回读 | NOT_EVALUABLE | — | 首圈基线 | R03缺完整源码与stdout，科学模拟校准与SHA证据边界；R04–R06为429失败 | M1原始科研证据+工件、M2科学有效性/伦理、M3五例正反测试 | 等待正文；已传递方法，效果未验证 |
+| R07 | F7 AI for Science科学研究 | `1941bb3a79e84c7f` | DONE_SUMMARY_ONLY / 完整报告未取得 / NOT_EVALUABLE | NOT_EVALUABLE | — | 首圈基线 | MCP仅返回约1309字摘要及私有报告路径/12工件自述，Git无原始正文或审计 | M1来源+实跑工件、M2科学有效性、M3五案例负例 | 有方法回应摘要，未见原文，暂不可评分 |
+
+| R08 | F8 机器人感知与动作 | `fc588db4b904442c` | PENDING/RUNNING / 已唯一派单 | NOT_EVALUABLE | — | 首圈基线 | R03缺完整源码/stdout、物理安全与SHA边界；R07只有摘要 | M1官方证据+原始工件、M2仿真/真机安全、M3五例正反测试及停机 | 等待正文，不推断质量提升 |
 
 ## 交付目录和防重
 - R01：`rounds/R01/` 三文件完整、已回读，禁止重复派单。
@@ -27,3 +29,4 @@
 - R06追单回收R03：WorkBuddy R03 DONE、原文及83/100审计均已Git回读，R03状态和自适应记录已补交；R04/R05仍QUEUED/0字，R06唯一Job `52441e82f15942ab` QUEUED/0字。R06反馈/ADAPTATION/STATUS已真实提交并回读；禁止重复submit R03–R06。R07须先追R04/R05/R06，再开展F7。
 
 - R07追单修正：通过真实WorkBuddy get_result分别回读R04/R05/R06，均为429使用频率限制，提示北京时间2026-10-30 23:00重置；三轮STATUS已更新并独立Git回读，研究正文不存在。桥接器显示done/143字只是错误返回，不能计为研究成功；禁止重复派单。R07 F7唯一Job `1941bb3a79e84c7f` 已实际submit，最后查询RUNNING/0字；R07 FEEDBACK、ADAPTATION、STATUS已写并回读。后续先追R07并按实际结果更新总账，不虚构审计分数。
+- R08 F8首圈唯一Job `fc588db4b904442c`；FEEDBACK已先Git写入回读且完整嵌入真实MCP prompt，STATUS/ADAPTATION写入回读；首查[running]/0字，NOT_EVALUABLE。R07 Job已DONE但仅返回摘要和私有文件路径，Git未有完整原文，不得将摘要当审计报告或重复派单。R09先追R08，按实际结果更新。
