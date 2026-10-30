@@ -265,3 +265,13 @@
 | 20261030-1132-R11 | A lease scheduler | `e5909f9386404880` | FAILED_TIMEOUT | GIT_MISSING_AT_CHECK | PENDING_EVIDENCE/N/A |
 | 20261030-1132-R11 | B audit ledger | `b4811053fb6e4b47` | RUNNING | GIT_PENDING | PENDING/N/A |
 | 20261030-1132-R11 | C schema migration | `112f0aee8cf5417e` | QUEUED (result endpoint conflict) | GIT_PENDING | PENDING/N/A |
+
+
+## 20261030-1332-R13 — R13 one coding job accepted; R11-B self-test result, independent audit queued
+- Planned Beijing 2026-10-30 13:32; actual check ~13:36–13:38. Bridge HTTP200 v3.3, max_concurrent_jobs=1, active_jobs 6 before/8 after; list 126 historical jobs before (50 displayed, truncated).
+- Q_before=5 (programming=2, research=3, other=0), adaptive target **1** coding task. Actual accepted R13-A fault-injection/replay engine `b94e44fc583749de`, QUEUED, source/test Git PENDING, independent score N/A.
+- Additional read-only independent audit for R11-B `d1a4cb908a974675` accepted, QUEUED, counts in shared queue but not coding quota. Q_after_audit=6, Q_after_coding=7, Q_peak=7, Q_high_watermark=7; QUEUE_MAX_NOT_REACHED, no new 429 or queue refusal. End queued=7, running=1.
+- R12-A `38e73a78f9e64bf8` and R12-B `6ff39f4b76a54cc6` list QUEUED ~1h (get_result inconsistent [running]), no code/test Git; PENDING. R11-C `112f0aee8cf5417e` RUNNING 0 output; R11-A `e5909f9386404880` FAILED 3602s.
+- **R11-B `b4811053fb6e4b47` DONE**: author reports 10 modules, 69 passing tests, 13 adversarial cases, author EXIT_CODE=0; only **SELF_TEST_UNVERIFIED**. Git R11-B directory independently contains TASK/AUDIT only; author reports no git binary, program source **GIT_BLOCKED**; independent audit `d1a4cb908a974675` pending. Independent score N/A.
+- Historical original `9712edf966b54027`, `a154efd28abc4eb5`, `fb21843915d24025` remain INTERRUPTED; old Git dirs TASK/AUDIT only, remote disk unverified. No duplicate dispatch, model switch, cancel, restart or other-factory changes.
+- R13 report: `results/factory24-20261030/rounds/20261030-1332-R13/ROUND_REPORT.md`. Management Git metadata committed, independent readback to be recorded; source/tests not yet delivered, tests not run by ChatGPT, audit PENDING/N/A.
