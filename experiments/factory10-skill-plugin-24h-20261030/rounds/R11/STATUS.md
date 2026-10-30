@@ -21,3 +21,8 @@
 ## 本轮末最新桥接健康变化（已真实核查）
 - `bridge_health` HTTP200、v3.3、`active_jobs=5`、`max_concurrent_jobs=1`，但**`codebuddy_reachable=false`**。这表明HTTP服务存活≠CodeBuddy后端可达；不能宣称已进入模型研究。
 - `list_workbuddy_jobs`：R11 `6f33514e027a48ab` queued/0字，R12 `00401c5228a34073` queued/0字；另有1个复杂编程Job running和2个queued。后续应先核后端恢复，再按现有Job ID追单；禁止重复提交。
+
+
+## R15时段最终状态复核
+- 真实MCP `get_workbuddy_result(job_id=6f33514e027a48ab,wait_seconds=0)` 返回`[task failed] codebuddy 以 status=error 结束且未产出任何文本`；list_jobs亦显示failed/0字。原PENDING状态现更正为**FAILED_REMOTE_ERROR / NOT_EVALUABLE**。
+- 不创建伪原始研究报告/评分，不重复提交R11；同厂R01 70分仍是唯一有效F1基线，R11纵向Δ不可计算。原反馈包与实际Job ID保留供审计。
