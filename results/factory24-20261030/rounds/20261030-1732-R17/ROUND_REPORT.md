@@ -44,3 +44,9 @@
 
 ## Next-round mandatory follow-up
 Poll A/B/C original job_ids and audit `7a82c98b70834941`; independently inspect real source/test files and Git commits if available; classify failure vs genuine output, test results and code defects; update AUDIT and ledger without overwriting historical records. No retries of already accepted submissions.
+
+## Final same-run confirmation
+- A later real `bridge_health` confirmed **active_jobs=10, running_jobs=1, queued_jobs=9, pending_queue_depth=9**, HTTP200, v3.4-candidate. This corroborates the 9 queued breakdown above. `max_concurrent_jobs` remained beyond the truncated connector text; configured running limit was not directly returned.
+- `get_workbuddy_result(7a82c98b70834941, wait_seconds=0)`: **RUNNING at ~131 seconds with 0 text**, not a passed independent audit. Do not duplicate-submit.
+- Git initial ROUND_REPORT commit: `ca657507e09f6de33f9b8f2e04f11be23dd46f3e`; Git ledger INDEX update commit: `8059c7861debb12bf664190bd9b6ef88e82002ee`. GitHub connector independently fetched both and confirmed all four job IDs. The six R17 TASK/AUDIT metadata files were independently fetched earlier: **8/8 management files verified**. Source/tests still not obtained; program commit SHA=NONE, `GIT_BLOCKED_SOURCE`.
+- Final report addendum commit is intentionally not self-embedded; verify it by a separate GitHub fetch.
