@@ -1,7 +1,6 @@
-# FACTORY24-20261030 20261030-1132-R11 B — Independent audit
-
-- Source job_id: `b4811053fb6e4b47`.
-- Last observed: QUEUED (not DONE).
-- Git source/tests: GIT_PENDING; independent tests NOT_RUN, exit code N/A; score N/A; audit_job_id=NONE.
-- WorkBuddy self-tests, if later provided, are only SELF_TEST, not independent verification.
-- After code appears: inspect source/test files and SHA256 against MANIFEST, run `python3 -m unittest discover -s tests -v` in isolated environment, add >=10 independent adversarial counterexamples, inspect recovery/idempotence/clock/failure semantics; report file:line evidence, P0-P3 severity, score /100, actual exit code, commit SHA. If remote disk only, mark UNVERIFIED until independently accessible.
+# FACTORY24-20261030 20261030-1132-R11 B — Independent audit (updated R13)
+- Source job_id: `b4811053fb6e4b47`, **DONE** as confirmed by actual get_workbuddy_result; WorkBuddy completion summary reports 10 modules, 69 unittest PASS, 13 adversarial cases, author EXIT_CODE=0, and local src/tests/README/REPORT/TEST_RESULTS/MANIFEST.
+- These are **author self-test claims**, not independently verified. ChatGPT has NOT accessed source bytes or rerun tests. Independent exit code: N/A; independent score: N/A. Do not mark PASS.
+- GitHub connector independently listed R11-B directory: only `TASK.md` and `AUDIT.md`, no actual source/tests. **GIT_BLOCKED_SOURCE**. Author reports git binary absent on WorkBuddy host; no commit SHA exists for the claimed program.
+- Read-only independent audit submitted in R13: `audit_job_id=d1a4cb908a974675`, status QUEUED at observation. Audit must verify real files/SHA256, rerun `python3 -m unittest discover -s tests -v`, >=10 independently created counterexamples, idempotence/recovery/tenant isolation, file:line P0-P3 evidence and score /100. No write to source directory.
+- If audit returns actual source text, ChatGPT may upload only those exact verified bytes via GitHub connector; never reconstruct from summary. Pending until real code is independently retrievable and Git readback confirms it.
