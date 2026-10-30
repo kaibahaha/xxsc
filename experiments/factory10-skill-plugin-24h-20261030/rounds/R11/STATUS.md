@@ -17,3 +17,7 @@
 - 最新真实list_workbuddy_jobs显示**QUEUED/0字**，get_workbuddy_result(wait_seconds=0)仅返回通用[running]/0字，不代表已开始模型研究。桥接器单槽共享、另有复杂编程任务running；**R11 PENDING / NOT_EVALUABLE**。
 - 防重：后续仅追 `6f33514e027a48ab`，不得再次submit R11；在R11正文真正到达前不生成伪WORKBUDDY_REPORT/CHATGPT_AUDIT。前次内部错误是否在服务端产生孤立任务无法绝对证明，但恢复后最近队列仅发现上述一个R11 Job。
 - R12也已派单，Job `00401c5228a34073`，队列中等待；不可互相代替轮次或重复派单。
+
+## 本轮末最新桥接健康变化（已真实核查）
+- `bridge_health` HTTP200、v3.3、`active_jobs=5`、`max_concurrent_jobs=1`，但**`codebuddy_reachable=false`**。这表明HTTP服务存活≠CodeBuddy后端可达；不能宣称已进入模型研究。
+- `list_workbuddy_jobs`：R11 `6f33514e027a48ab` queued/0字，R12 `00401c5228a34073` queued/0字；另有1个复杂编程Job running和2个queued。后续应先核后端恢复，再按现有Job ID追单；禁止重复提交。
