@@ -322,3 +322,7 @@
 | Slot | Task | job_id | Semantic status | Program Git | Audit |
 |---|---|---|---|---|---|
 | 20261030-1632-R16 | A incremental relational query engine | `eaebe2e61cb644ca` | **UPSTREAM_OOM / NOT_DELIVERED** | GIT_BLOCKED_SOURCE | NOT_RUN / N/A |
+
+## R16 independent GitHub connector readback — VERIFIED
+- Seven management files fetched independently from target branch after writes: R16 A TASK/AUDIT, R16 ROUND_REPORT, ledger INDEX, R15 A/B/C AUDIT corrections. **7/7 fetched and content matched real job IDs/states**. This verifies management metadata only, **GIT_VERIFIED_METADATA_ONLY**; actual program source/tests remain **GIT_BLOCKED_SOURCE**.
+- Initial R16 report commit `e0784a8715e78febc1384495aa4d8a75e8dabace`; initial R16 ledger append commit `f015a9a66d2ffc9c4c5a165bb14e7506baff8ad9`. Final follow-up update commit is not self-embedded.
