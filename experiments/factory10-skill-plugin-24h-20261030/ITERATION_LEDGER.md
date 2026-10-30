@@ -18,10 +18,13 @@
 
 | R10 | F10 小说与叙事创作 | `09ede5860fdb4aaf` | **DONE / AUDITED / Git回读** | **18/19/15/15/9** | **76** | 首圈BASELINE，Δ N/A | P0：NO FAKES Act法案误当现行法；RUN源码/日志指向其他实验不可独立复现；P1官方来源数误算 | M1全文+工件、M2法律/权限、M3案例负例/回滚 | 全文交付有效，源码复现/法律核查部分有效 |
 
-| R11 | F1 API与模型服务 | `6f33514e027a48ab` | **PENDING / QUEUED** / FEEDBACK、ADAPTATION、STATUS Git回读 | NOT_EVALUABLE | — | R01 **70**(21/16/12/12/9) / Δ待评 | P0原生调度误判、Agent/LLM网关混淆、models.json硬预算错误；P1密钥/CLI/费用 | M1官方现行证据、M2源码+原始日志、M3权限/负例 | 反馈全文实际注入；未有报告，效果不可评估 |
-| R12 | F2 软件与开源程序 | `00401c5228a34073` | **PENDING / RUNNING / 0字** / FEEDBACK、ADAPTATION、STATUS Git回读 | NOT_EVALUABLE | — | R02 **81**(22/18/16/15/10) / Δ待评 | P0 worktree非OS沙箱、headless授权过宽；P1许可证/依赖/扫描器证据 | M1官方现行证据、M2源码+原始日志、M3系统权限负例 | 反馈全文实际注入；未有报告，效果不可评估 |
+| R11 | F1 API与模型服务 | `6f33514e027a48ab` | **FAILED_REMOTE_ERROR** / 0字 / STATUS回读 | NOT_EVALUABLE | — | R01 70 / Δ不可评 | 远端status=error无正文；原反馈保留 | M1官方证据、M2源码日志、M3权限负例 | 无报告，未验证 |
+| R12 | F2 软件与开源程序 | `00401c5228a34073` | **DONE / AUDITED / Git原文+审计回读PASS** | **21/19/17/16/10** | **83** | R02 81 / **Δ+2**（-1/+1/+1/+1/0） | P0 Sim-E回读失败仍done；headless -y/dontAsk未核；五维历史错映射 | M1来源、M2模拟源码、M3权限负例 | 部分有效；独立远端复跑缺失，非因果提升 |
 
-| R13 | F3 游戏与互动体验 | `24a8fbd31257441a` | **PENDING / QUEUED** / FEEDBACK、ADAPTATION、STATUS Git回读 | NOT_EVALUABLE | — | R03 **83**(20/19/16/16/12) / Δ待评 | P0源码与原始日志缺失、普通SHA误作防篡改；P1物理校准/单HTML与多JS/授权发布 | M1完整可复制源码+日志、M2官方证据/权限分层、M3信任边界负例与五案例回滚 | 完整反馈4242字已注入MCP；正文未回，效果不可评估 |
+| R13 | F3 游戏与互动体验 | `24a8fbd31257441a` | **FAILED_NOT_SUBMITTED** / 0字 / STATUS回读 | NOT_EVALUABLE | — | R03 83 / Δ不可评 | MCP确认未提交CodeBuddy；原反馈保留 | M1源码日志、M2来源权限、M3信任负例 | 无报告，未验证 |
+
+| R14 | F4 图像与视觉创作 | `e14a5a97707c4bbe` | **PENDING / QUEUED** / FEEDBACK、ADAPTATION、STATUS回读 | NOT_EVALUABLE | — | R04 429无报告 / MISSING_BASELINE | R04原Job失败，R14缺轮补派仅一次 | M1官方证据/安装状态、M2资产manifest、M3版权负例 | 待正文，未验证 |
+| R15 | F5 视频与音频内容 | `29fae48b6c084d44` | **PENDING / QUEUED** / FEEDBACK、ADAPTATION、STATUS回读 | NOT_EVALUABLE | — | R05 429无报告 / MISSING_BASELINE | R05失败无同厂评分，R15派单一次 | M1官方/费用/授权、M2五例复现、M3版权/人工审批 | 待正文，未验证 |
 
 ## 交付目录和防重
 - R01：`rounds/R01/` 三文件完整、已回读，禁止重复派单。
@@ -53,3 +56,11 @@
 - R13/F3：同厂R03 83分基线原文/审计/状态/适应记录均回读；反馈4242字符先Git创建并回读，全文实际注入WorkBuddy MCP prompt（5216字符），唯一Job `24a8fbd31257441a`；list_jobs QUEUED/0字，R11/R12仍QUEUED，暂NOT_EVALUABLE。R13 FEEDBACK/ADAPTATION/STATUS写入回读，下一轮R14优先追R11–R13，禁止重复submit。
 
 - R13时段末追单复核：R12已从QUEUED进入RUNNING（唯一Job `00401c5228a34073`，约495秒/0字）；R11 `6f33514e027a48ab` 与R13 `24a8fbd31257441a` 仍QUEUED/0字，均无新报告；bridge_health HTTP200，CodeBuddy可达、单并发、active_jobs=7。本次没有新派单、没有新增评分，R13仍NOT_EVALUABLE。R12/R13 STATUS已更新并Git回读PASS。R14未到预定时段，禁止提前派单。
+
+
+## R15时段实测回填（计划北京时间2026-10-30 15:00）
+- README契约先读；本轮R15/F5，发现R14/F4原目录三文件均404且最近任务无R14，于R15时段按缺轮优先补派R14唯一Job `e14a5a97707c4bbe`；随后派R15唯一Job `29fae48b6c084d44`。两轮各仅一次submit，Git反馈与方法包均在提交前创建且独立回读。两个Job最新list_jobs均queued/0字，不是done。
+- R04与R05同厂历史均429失败，无正文和审计；R14、R15标MISSING_BASELINE，禁止虚构同厂Δ或复发率。
+- R12 Job `00401c5228a34073` DONE，29204字符原文经Git `R12/WORKBUDDY_REPORT.md` commit `f420bb7799a44b95026cf6be3ffd1506dcbe4d76` 回读PASS；独立审计 `R12/CHATGPT_AUDIT.md` commit `c54c83de425465c18c9803a7c320cd6dbd038e05` 回读PASS，**83/100（21/19/17/16/10）**，R02 81分，Δ+2但未证明因果。P0 Sim-E错误将Git回读失败标done；权限组合仍需实测。
+- R11 Job `6f33514e027a48ab` failed/status=error/0字；R13 Job `24a8fbd31257441a` failed/未提交CodeBuddy/0字。已更新各STATUS并独立回读，未重派。
+- 桥接器HTTP200/v3.3，单并发，active_jobs=3；另有运行中桥接器生产部署任务，是否完成/重启未知，不干预。下一轮R16/F6先追R14/R15并读R06同厂失败基线，继续固定25/20/20/20/15评分；不安装、不授权、不切模型、不改其他实验。
