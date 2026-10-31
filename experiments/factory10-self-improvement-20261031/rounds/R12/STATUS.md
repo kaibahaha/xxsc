@@ -10,3 +10,6 @@
 - 本轮ChatGPT侧独立完成官方F2机会初筛，所有项目用户资格未知，申请/领取/使用均0；机会文档不替代Buddy完整报告。
 - 本轮写入文件均须Git远端回读核验；若任何文件回读失败，单独标GIT_BLOCKED，不把提交当回读。
 - 下一步：按Job ID取回R11及R12（不重复提交）；R12完整正文到达后抽查≥5事实、重放MVE/工件SHA、五案例、≥5负例，计算同厂五维Δ和三项缺陷修复状态。
+## 队列风险补充核验
+- 实际再次调用bridge_health/list_workbuddy_jobs/get_workbuddy_result：running=1、queued=3、unresolved_orphan_count=1、possible_remote_overlap=true、max_queue_wait_s=3600；R11 job13434ad175b04267仍被列QUEUED且累计等待约3692秒（已超过公开配置的3600秒），R12 job9d502bcdaf6e40bc QUEUED约130秒。尚不清楚TTL是在队首出队时才检查还是即时淘汰，**不能凭超时直接断言桥接器故障或任务已失败**；但应列为P1调度观测缺口，后轮检查是否SKIPPED_STALE/FAILED或开始执行。
+- 资源雷达T03 job e0f1ba8f049b4f44 正在运行；R11/R12均不重复派单、不取消其他任务、不更改队列或模型。R11报告仍无正文，R12研究质量仍NOT_EVALUABLE。跨厂采用R10 DELAYED_BASELINE。
