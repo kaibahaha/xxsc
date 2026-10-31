@@ -77,3 +77,11 @@
 ## R06 F6 initial dispatch, 2026-10-31 15:25 CST
 | R06 | F6 | e8d1a46374fc4607 | **PENDING** | NOT_EVALUABLE | old experiment R06 HISTORICAL_REFERENCE_ONLY (429 failed, no report) | 0 old content defects; 5 historical evidence/delivery gaps | PENDING | NOT_COMPARABLE | NOT_COMPARABLE | V1/V2 INJECTED; PENDING_TEST |
 - Actual WorkBuddy submit once with 4686-char prompt including full Git-verified feedback; Git feedback blob 064a435fd7462e3c975c9917c88d6cacaddd3295; no duplicate submission. Await get_workbuddy_result; old R06 job 52441e82f15942ab failed 429, not a baseline. Earlier rounds untouched.
+
+## R06 F6 final audit, 2026-10-31 (supersedes initial PENDING; immutable event history)
+| R06 | F6 | e8d1a46374fc4607 | **DONE / REPORT_AND_AUDIT_GIT_VERIFIED** | **65/100 (17/17/12/11/8)** | old experiment R06 HISTORICAL_REFERENCE_ONLY, 429 failed/no report | 0 old content defects; 5 historical delivery/evidence gaps | 1 delivery resolved, 4 partial | NOT_COMPARABLE | NOT_COMPARABLE | V1 PARTIAL_IMPLEMENTED/FAILED_FACT_ACCURACY; V2 PARTIAL_EFFECTIVE/FIELD_NOT_VERIFIED |
+- WorkBuddy list_jobs DONE 668秒，MCP 9622字符完整正文，唯一Job e8d1a46374fc4607；Git报告commit 9fa733bd47f94173a0982fe421283ba74a993399 / blob 71e40f821e30c9ec732d8bf6c604e05710382514 readback PASS。
+- 独立审计65/100，commit 472dc738dfdbb8a2ea3cf571065a47302238928e / blob 498076ed41b44fe0bbaaa119128b0661c10a324d readback PASS；ADAPTATION final commit 3eb9ddf48aaaae66d19d252e4b68d06bab440493 / blob 5c338b48bce37f49661c554ee6f929731ec0fa63 readback PASS；STATUS final commit 15c2d04dc6c4a7c7b63e2320dc5798e42609c88d / blob 5d3d6ec979d536ef2cb0aab15e09f41d738986e5 readback PASS。
+- R06主要独立发现：Crossref API 429与旧WorkBuddy模型额度429误认同源；Runway官方API $0.01/credit×12credits/s×60=$7.20/min，却把Web订阅隐含均摊成本$13.8462/min当API价；Suno 2500credits/20downloads比值不等于单次扣费；Nature原论文发表日应2014-01-29；直接检索13次违反≤12；8个临时文件SHA未附原始字节。
+- R06同厂新实验首轮基线65/100，R16再与本轮比较；旧F6内容缺失，不能计算旧评分Δ、旧关键错误复发率或旧内容修复率。跨厂R05 F5 73分不可作质量因果比较。
+- R07跨厂方法移交（最多2项）：W1按服务边界/响应头归因429与403；W2数值的计费场景语义与完整可独立重放工件双验收。前轮PENDING记录保留为事件，不作为最新状态。
