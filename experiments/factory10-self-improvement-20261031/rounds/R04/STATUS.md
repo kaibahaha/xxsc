@@ -12,3 +12,14 @@
 - same_factory: 4 old-plan evidence gaps (not report defects); formal old defects_count=0, old score unknown, Δ NOT_COMPARABLE.
 - safety: no installs, credentials, model switch, production changes or other Git branch writes.
 - next: get_workbuddy_result(7532c2af0ef64c5d), save only actual text, independently audit, update files and ledger, readback verify.
+
+## R04最终状态（本节取代初始PENDING；保留历史供审计）
+- WorkBuddy unique job **7532c2af0ef64c5d DONE**, elapsed **234s**, MCP returned **15728 characters** with BEGIN_FULL_REPORT/END_FULL_REPORT. No duplicate submission.
+- WORKBUDDY_REPORT.md actual full content, commit **e5ef293f24e38781c1a9670fd21ac4d17a26b73e**, blob **58f7f69986239604f18a8c7d634504bc2f401f45**, independent Git exact readback PASS.
+- CHATGPT_AUDIT.md independent audit **77/100 (21/17/15/14/10)**, commit **b593ad8394351e047812a7b8326f5ab0ee021bf6**, blob **010e36a1685fdfa53a31916b37c73be93326c0cd**, readback PASS.
+- Independent PNG reproduction: 64×48 RGB8, 8494 bytes, SHA256 **68032d0248fda5398a0d7a11611b03d21e5e2028afce38d52f40b1e3c1ae1a7d** matches original. Not AI image generation, not commercial visual QA.
+- CROSS_FACTORY_TRANSFER: T1 EFFECTIVE_FOR_DETERMINISTIC_PROBE; T2 PARTIAL_EFFECTIVE (price model confusion and evidence overstatement remain).
+- SAME_FACTORY_REMEDIATION: old F4 experiment failed 429 with no report/score, formal old content defects=0; historical gaps 4 (delivery resolved this run, three partial); new R04 F4 baseline 77 for R14, delta NOT_COMPARABLE.
+- Final bridge health HTTP200, version 3.4-candidate, running=0, queued=0, unresolved_orphan_count=0, no possible overlap.
+- final_state DONE / FULL_REPORT_GIT_VERIFIED / AUDIT_VERIFIED / CONDITIONAL_ACCEPT_FOR_RESEARCH. No production changes, installs, paid calls, publishing or model switches.
+- Next R05 F5: U1 structural probe vs content QA; U2 pricing/licensing by exact product and model, see ADAPTATION.md.
