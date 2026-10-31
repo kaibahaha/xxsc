@@ -13,3 +13,10 @@
 - 低质/不收录：无官方报名页、需要多账号或规避地区、收费抽奖、无法证明开放、纯宣传最高奖金。宁可少量可信机会，不凑数。
 - 预核验机会2项，官方核验2，开放/长期可用2，用户资格确认0，A=1/B=1/C=0/REJECT=0，P0=0/P1=1/P2=1；actionable_count=0（身份及授权未最终确认），registration_attempted=0，registration_completed=0，resource_claimed=0，action_not_executed_count=2，ip_or_payment_risk_count=1。
 - Buddy报告返回后核查新增机会、去重、纠错；不能把预核验等同于已获得资源。
+
+
+## AFTER_BUDDY_RESULT｜候选过滤与事实纠错
+- WorkBuddy本轮报告§⑦列AWS/GCP/Azure科研额度、NVIDIA Academic、Hugging Face Grants、Kaggle、GitHub Education、Materials Project、NeurIPS/ICML等10项，**外部检索0次**，缺具体当期官方项目条款/资格/截止，统一标UNVERIFIED/OBSERVE，不能列入ACTION_CHECKLIST或计可行动。它没有覆盖ChatGPT已官方核验的IEEE 2027重要竞赛，说明“候选数量多”不代表机会发现质量高。
+- ChatGPT实际独立核验两项仍为IEEE IES GenAI Challenge 2027（官网2026-12-31报名截止、免费报名、作者会议注册费不在旅费资助内，用户资格待确认）与OpenAlex免费API（邮箱验证后$1/day预算，非现金，不绑定支付，未领取）。不新增重复机会ID；全部ACTION_NOT_EXECUTED。
+- 纠错：Buddy §③误称OpenAlex“不托管fulltext”；官方 https://help.openalex.org/access/fulltext/ 明确缓存50M+开放获取PDF及TEI，可按API/CLI获取，使用额度与每篇许可另核；不得据CC0元数据推断所有PDF/派生输出CC0。Crossref许可也应按书目事实/自生成数据/摘要分层。
+- 机会指标：Buddy候选10项仅观察；ChatGPT独立官方核验2项；目前可直接行动0（真实用户资格/授权待确认），注册0、资源到账0、付费0。机会质量门禁不计入原100分。
