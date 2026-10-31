@@ -15,3 +15,13 @@
 - same_factory: historical defect register F2-P0-01..P2-06 sent, no resolved claim.
 - git_state: STATUS写入后需回读；commit和blob见GitHub工具回执；不将写入等同验证。
 - next: 等待完成，检查报告全文完整性与5案例，然后独立审计和更新总账。
+
+## R02完成后回填
+- WorkBuddy job 762c8f0887fc4188: **DONE**, 463s, MCP returned 15843 chars with BEGIN_FULL_REPORT/END_FULL_REPORT.
+- WorkBuddy full report: WORKBUDDY_REPORT.md, commit 55ee23289ea9d6905846548801277e5bfa2475ae, blob f77061fc03d218c782960342e78adde3a0c9fd28, **Git full-text readback VERIFIED**.
+- ChatGPT independent audit: 76/100 (Evidence21, Strategy18, Skills14, Cases14, Risk9), CONDITIONAL_ACCEPT_FOR_RESEARCH; audit commit ea6c8ba83df83a1f1ad9dd6e3887aae1686e5216, blob 81d6a47345b43dce5dc6368aaada9504860e3b4a, verified.
+- Cross-hour: M1 full-text delivery EFFECTIVE; M2 5/5 case fields PARTIAL_EFFECTIVE but technical accuracy NOT_PROVEN.
+- Same-factory historical six defects: 2 RESOLVED conceptual/reporting, 4 PARTIAL, 0 directly repeated historical assertions; new issues=4 groups.
+- Final state: DONE / GIT_FULL_REPORT_VERIFIED / AUDIT_VERIFIED; R02 baseline score76, R12 for same-factory comparison.
+- Bridge after job: codebuddy_reachable=true, active_jobs=0, queued=0, unresolved_orphan_count=0, possible_remote_overlap=false.
+- R01 F1 full remote report still pending recovery; do not mistake R02's success for R01's full-text repair.
