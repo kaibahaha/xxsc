@@ -1,0 +1,12 @@
+# R12 F2｜EXECUTIVE_QUALITY_GATE（PENDING）
+- 研究目标：F2零安装安全任务合同/执行策略门禁的可复现MVE；正式同厂R02 76/100三缺陷整改；R10延迟基线两项跨厂方法；全球F2高价值机会线。
+- WORKBUDDY_SELF_REPORT: NOT_YET_RETURNED；job_id=9d502bcdaf6e40bc，QUEUED，未运行完。
+- CHATGPT_INDEPENDENT_AUDIT: 已读R02真实报告与审计、R11缺口、R10真实错误；4531字反馈Git独立回读并全文注入4953字MCP prompt；独立官方机会初筛；没有Buddy报告可抽样或MVE可复放。
+- FACT_GATE: NOT_VERIFIED；fact_check_sample_count=0；material_fact_error_count=NOT_EVALUABLE。
+- 五案例：A/B/C/D/E均NOT_EVALUABLE，不能提前分配DOCUMENTED/EXECUTED等级。
+- CORE_MVE: PENDING；INDEPENDENT_REPLAY: NOT_VERIFIED；ARTIFACT_REPRODUCIBILITY: NOT_VERIFIED；RED_TEAM: NOT_TESTED。
+- SAME_FACTORY: R02=76/100(21/18/14/14/9)，R12 score/Δ/defect resolution=NOT_EVALUABLE。
+- CROSS_HOUR: R11未完成；R10延迟基线T1 schema fail-closed、T2 SHA/现行官方事实已实际注入，效果NOT_VERIFIED。
+- OPPORTUNITY: GitHub/JetBrains等官方规则研究候选，个人/组织资格未确认，注册/领取/使用=0；不能计为已获资源。
+- FINAL_ACCEPTANCE: PENDING / NOT_EVALUABLE；PRODUCTION_READINESS=NOT_ASSESSED；禁止生产部署结论。
+- 下一步：get_workbuddy_result(job_id=9d502bcdaf6e40bc)；真实正文后独立复算和回读；R11按原Job追单，严禁重复派单。
