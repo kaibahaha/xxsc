@@ -1,0 +1,11 @@
+# R05 F5 视频音频｜预备状态（未派单）
+- planned_at: 2026-10-31 14:25 Asia/Shanghai；本实验轮次R05、工厂F5；此预备文件在计划时刻前建立，**不代表已启动研究**。
+- bridge_health_precheck: HTTP200; version 3.4-candidate; codebuddy_reachable=true; running_jobs=0; queued_jobs=0; unresolved_orphan_count=0；截至预备查询，无前轮待处理Job。
+- previous_round: R04 F4 Job 7532c2af0ef64c5d DONE 234s，Git报告/审计回读通过，77/100（21/17/15/14/10），U1/U2具体见R04/ADAPTATION.md。
+- old_F5_historical: 旧实验R05 Job 6f4057fc78094c63 FAILED_RATE_LIMIT_429，旧研究报告不存在；旧五案例为未执行计划，不能当作已审内容错误。
+- current_R05_precheck: Git STATUS.md initially absent; WorkBuddy jobs list未发现本实验R05唯一Job。计划时刻到达前**不调用submit**，避免提前运行。若再次检查发现已有Job，先追单，禁止重复提交。
+- pre-dispatch feedback: FEEDBACK_TO_BUDDY.md Git commit 9ae2d805244a0870953633d48bdab1bf9b6bbf83，blob d288c89ade89f492c4eea20c79fd3064c4882e8c，exact Git readback PASS；包含跨厂U1/U2及旧F5四项真实历史证据缺口、五案例逐项要求。
+- pre-dispatch adaptation: ADAPTATION.md Git commit fb2f72e02bebb79c802400597fd47ac90508be35，blob a1ac4613bd4887de6e00c8f072ac6eb08b46ebbd，exact Git readback PASS。
+- job_id: NOT_SUBMITTED; job_state: PREPARED; report: NOT_EVALUABLE; audit: NOT_EVALUABLE; same_factory_score_delta: NOT_COMPARABLE。
+- safety: 不安装插件、不授权/发布、不改生产/模型/其他分支、不新建定时任务。
+- next: 14:25或之后先核查Git与Job列表防重，实际派单全文反馈，记录Job ID；若返回报告，独立审计并Git回读。
