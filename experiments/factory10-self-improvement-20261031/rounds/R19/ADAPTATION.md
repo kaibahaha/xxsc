@@ -15,3 +15,7 @@
 - 同厂R09基线65(16/18/13/11/7)，same_factory_defects_count=3，resolved_count=PENDING，recurred_count=PENDING，same_factory_score_delta=NOT_EVALUABLE；五案例A-E逐案要求见FEEDBACK §C。
 ## 上一小时通用改进：计划→实际注入→实际效果→下轮调整
 - 计划T1/T2详见FEEDBACK；Git写入已验证，尚未实际submit；实际效果NOT_VERIFIED；下轮R20先追R19唯一job并独立核验，若未返回保持PENDING，不把方法预注册当实施。
+
+## R19 actual MCP injection evidence
+- Git FEEDBACK_TO_BUDDY.md 4620 chars/blob 0aceedcbd77a2cd2d582ce7f8d93b345b4d20933, readback exact; actual WorkBuddy submit prompt 4908 chars contains complete feedback verbatim; unique job **e01700a27b7b44f4**. Both cross-hour T1/T2 and same-factory D1/D2/D3 were actually injected; observed quality=PENDING, not yet effective.
+- CROSS_FACTORY_TRANSFER verdict for T1/T2 updated from PRE_REGISTERED_NOT_YET_INJECTED to INJECTED_PENDING_TEST; same-factory remediation D1/D2/D3 remains NOT_VERIFIABLE until real report + independent audit.
