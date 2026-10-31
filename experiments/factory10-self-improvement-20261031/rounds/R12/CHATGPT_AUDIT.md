@@ -24,3 +24,11 @@ NOT_YET_RETURNED。唯一job_id=9d502bcdaf6e40bc，MCP真实submit已接受，li
 fact_check_sample_count=0 (Buddy报告待返回); material_fact_error_count=NOT_EVALUABLE; fact_gate_verdict=NOT_VERIFIED; case_status_counts=NOT_EVALUABLE; core_mve_status=PENDING; core_mve_independent_replay=NOT_VERIFIED; artifact_reproducibility_verdict=NOT_VERIFIED; red_team_test_count=0; red_team_pass_count=0; red_team_blocked_count=0; p0_open_count=NOT_EVALUABLE; p1_open_count=NOT_EVALUABLE; p2_open_count=NOT_EVALUABLE; claims_overstated_count=NOT_EVALUABLE; production_readiness=NOT_ASSESSED。
 ## C. FINAL_ACCEPTANCE
 PENDING / NOT_EVALUABLE；工具提交成功不等于研究质量通过，机会规则核验不等于申请领取。等待完整原文后至少5项Buddy高影响事实独立抽核、MVE源码与冻结输入SHA复算、normal/-O安全负例、五案例状态和三缺陷复测。
+## 独立官方预检：R02关键缺陷与现行文档
+2026-10-31由ChatGPT实际访问CodeBuddy官方具体文档，以下5项为**前置独立事实核验**，不是尚未返回的R12 Buddy报告抽样；因此V4 Buddy fact_check_sample_count仍为0。
+1. `-y` / `--dangerously-skip-permissions` 等价`bypassPermissions`，不是`dontAsk`。官方 https://www.codebuddy.cn/docs/cli/permission-modes （启动参数/非交互章节），PASS。
+2. 官方同页展示 `codebuddy -p --permission-mode dontAsk`，同时Headless页 https://www.codebuddy.cn/docs/cli/headless 明确在`-p`执行需要授权的文件/命令/网络操作时须`-y`；这属于**需区分动作是否预授权及实际CLI版本的文档语境差异**，不能凭两页静态文字断言某个命令组合必定安全可运行。实际CLI命令仍NOT_TESTED。
+3. `dontAsk` 对未预批准的Edit/Bash/其他操作直接拒绝；`bypassPermissions`跳过大部分审批但前置deny/ask仍可能生效。官方 https://www.codebuddy.cn/docs/cli/permission-modes ，PASS。
+4. `--add-dir`把额外目录加入信任范围，不是限制读取的OS安全沙箱。官方 https://www.codebuddy.cn/docs/cli/permissions ，PASS。
+5. Worktree官方 https://www.codebuddy.cn/docs/cli/worktree 描述多个工作目录/共享Git对象、修改隔离；未证明独立进程身份/网络/内核访问控制。结论“不能据此宣称防作弊OS隔离”是证据边界判断，PASS；但实际跨目录访问阻断仍NOT_TESTED。
+这5项不替代R12 Buddy原始报告的≥5项战略事实抽核，也不证明MVE、权限拒绝或生产安全已通过。
