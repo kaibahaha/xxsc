@@ -1,0 +1,162 @@
+{
+  "trusted_root": "/mnt/data/factory10_r22_independent/testroot",
+  "cases": {
+    "valid": {
+      "version": "1",
+      "rules": [
+        {
+          "id": "r1",
+          "action": "read",
+          "path": "/mnt/data/factory10_r22_independent/testroot/safe.txt"
+        }
+      ],
+      "budget_tokens": 100,
+      "mode": "dontAsk"
+    },
+    "relative_path": {
+      "version": "1",
+      "rules": [
+        {
+          "id": "r1",
+          "action": "read",
+          "path": "sensitive_file"
+        }
+      ],
+      "budget_tokens": 100,
+      "mode": "dontAsk"
+    },
+    "unknown_mode": {
+      "version": "1",
+      "rules": [
+        {
+          "id": "r1",
+          "action": "read",
+          "path": "/mnt/data/factory10_r22_independent/testroot/safe.txt"
+        }
+      ],
+      "budget_tokens": 100,
+      "mode": "anything"
+    },
+    "negative_budget": {
+      "version": "1",
+      "rules": [
+        {
+          "id": "r1",
+          "action": "read",
+          "path": "/mnt/data/factory10_r22_independent/testroot/safe.txt"
+        }
+      ],
+      "budget_tokens": -999,
+      "mode": "dontAsk"
+    },
+    "sandbox_string_true": {
+      "version": "1",
+      "rules": [
+        {
+          "id": "r1",
+          "action": "read",
+          "path": "/mnt/data/factory10_r22_independent/testroot/safe.txt"
+        }
+      ],
+      "budget_tokens": 100,
+      "mode": "dontAsk",
+      "sandbox": "false"
+    },
+    "empty_rules": {
+      "version": "1",
+      "rules": [],
+      "budget_tokens": 100,
+      "mode": "dontAsk"
+    },
+    "symlink_escape": {
+      "version": "1",
+      "rules": [
+        {
+          "id": "r1",
+          "action": "read",
+          "path": "/mnt/data/factory10_r22_independent/testroot/link/secret"
+        }
+      ],
+      "budget_tokens": 100,
+      "mode": "dontAsk"
+    },
+    "prefix_collision": {
+      "version": "1",
+      "rules": [
+        {
+          "id": "r1",
+          "action": "read",
+          "path": "/mnt/data/factory10_r22_independent/testroot-evil/secret"
+        }
+      ],
+      "budget_tokens": 100,
+      "mode": "dontAsk"
+    },
+    "duplicate_id": {
+      "version": "1",
+      "rules": [
+        {
+          "id": "r1",
+          "action": "read",
+          "path": "/mnt/data/factory10_r22_independent/testroot/safe.txt"
+        },
+        {
+          "id": "r1",
+          "action": "read",
+          "path": "/mnt/data/factory10_r22_independent/testroot/safe.txt"
+        }
+      ],
+      "budget_tokens": 100,
+      "mode": "dontAsk"
+    },
+    "budget_bool": {
+      "version": "1",
+      "rules": [
+        {
+          "id": "r1",
+          "action": "read",
+          "path": "/mnt/data/factory10_r22_independent/testroot/safe.txt"
+        }
+      ],
+      "budget_tokens": true,
+      "mode": "dontAsk"
+    },
+    "wildcard_cleanup": {
+      "version": "1",
+      "rules": [
+        {
+          "id": "r1",
+          "action": "cleanup",
+          "path": "/mnt/data/factory10_r22_independent/testroot/*"
+        }
+      ],
+      "budget_tokens": 100,
+      "mode": "dontAsk"
+    },
+    "bypass_mode": {
+      "version": "1",
+      "rules": [
+        {
+          "id": "r1",
+          "action": "read",
+          "path": "/mnt/data/factory10_r22_independent/testroot/safe.txt"
+        }
+      ],
+      "budget_tokens": 100,
+      "mode": "bypassPermissions"
+    },
+    "unknown_action": {
+      "version": "1",
+      "rules": [
+        {
+          "id": "r1",
+          "action": "deleteAll",
+          "path": "/mnt/data/factory10_r22_independent/testroot/safe.txt"
+        }
+      ],
+      "budget_tokens": 100,
+      "mode": "dontAsk"
+    },
+    "empty_input": {}
+  }
+}
