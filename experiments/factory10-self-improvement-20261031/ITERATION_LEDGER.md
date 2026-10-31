@@ -43,3 +43,10 @@
 - same_factory_baseline_round: old experiment R03 HISTORICAL_REFERENCE (83/100) only; new experiment same factory MISSING_BASELINE; historical defects_count=6; resolved_count=PENDING; recurred_count=PENDING; same_factory_score_delta=NOT_COMPARABLE.
 - cross_hour_transfer_verdict: M1 evidence tiers and M2 real negative tests PENDING_TEST; detailed pre-dispatch feedback at rounds/R03/FEEDBACK_TO_BUDDY.md; status/adaptation Git readback verified.
 - Unique job only; next step retrieve via get_workbuddy_result, no duplicate submission.
+
+## R03 final audit 2026-10-31
+- R03 F3 Job **491e5363958242bd DONE**, MCP full text16357 chars; Git report commit 4bc5fa513f80a4cf0bbb7faed2cfd779534f7da1, blob 208cc9a522974cdf50e7bb29a1671b2b3961ba8d, readback VERIFIED.
+- ChatGPT independent score **80/100 (Evidence22, Strategy18, Skills15, Cases14, Risk11)**, audit commit 07db2b3101f156beabeb11406f017d403df46e15, blob db2e0ba88e05a23cfcc52393a9a36b0201714963, readback VERIFIED.
+- same_factory_baseline_round: old experiment F3 R03 historical only (83/100); same_factory_defects_count=6, resolved_count=3, partial_count=3, recurred_count=1 (Node no JS/test but EXECUTED claim); same_factory_score_delta=NOT_COMPARABLE. This new R03 80/100 is R13 baseline.
+- cross_hour_transfer_verdict: M1 evidence tiers PARTIAL_EFFECTIVE, M2 genuine negative tests PARTIAL_EFFECTIVE; independent Python SHA256 reproduction verified, but remaining four cases not executed.
+- R04 handoff T1 reproducible artifacts and T2 no ENV_PRESENT→EXECUTED overclaim; see rounds/R03/ADAPTATION.md. The earlier PENDING line is historical and superseded by this final block.
