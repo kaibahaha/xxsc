@@ -17,3 +17,16 @@
 - job_state: **PENDING**（此时仅确认受理，尚无完成报告）；report_state: PENDING；audit: NOT_EVALUABLE；正式五维评分待真实报告。
 - U1/U2已实际注入；效果仍PENDING_TEST。旧F5无报告，formal_same_factory_defects_count=0，historical_gaps=4，score_delta=NOT_COMPARABLE。
 - 下一步只追get_workbuddy_result(09ea81a5a538420a)，**不得重复派单**；如任务仍运行则保持PENDING并后轮追单。
+
+## R05最终验收（覆盖早期PENDING，保留完整历史）
+- job_id **09ea81a5a538420a**；WorkBuddy MCP list_workbuddy_jobs确认**DONE / 460s / 13721字符**，BEGIN_FULL_REPORT/END_FULL_REPORT完整。未重复派单。
+- WORKBUDDY_REPORT.md为真实MCP全文，Git commit **b0e357429f121b09e2529331542935690f9609d8**，blob **2758bf8630378dd70ce0ebbdc7e6532dbb467577**，逐字回读PASS；含原始MCP前言，未改写WorkBuddy正文。
+- CHATGPT_AUDIT.md独立评分 **73/100（18/17/15/14/9）**，commit **72e551772cdeb2b2e333e24d29c69cf12c52419b**，blob **a0f78bf15afa53be67d3a9061de0be6d7e7d0b9d**，逐字回读PASS。
+- ADAPTATION.md最终双轨结果 commit **f9531371d5a4cd1b6c459b6c14369b6a6ac836aa**，blob **9c90ce9bb6072f8fc10e6ff3908504658e8a60ed**，逐字回读PASS。
+- Independent WAV reproduction: **16044 bytes**，SHA256 **5fc01c0f096e4def771d173852278fe14fbd9240326d4461394af901e9be4a65**，wave read 8000 frames，字节与远端自述一致。仅确定性格式探针，不是试听/商用产线。
+- CROSS_FACTORY_TRANSFER: U1 **EFFECTIVE_FOR_DETERMINISTIC_PROBE**；U2 **FAILED_FACT_ACCURACY**（Opus年付/月付、Runway单分钟算术、Suno版权/下载额度）。
+- SAME_FACTORY_REMEDIATION: 旧实验F5 429无报告/无评分；formal_old_defects=0、historical_gaps=4、delivery_gap_resolved=1、partial=3、same_factory_score_delta=NOT_COMPARABLE；本轮新F5正式基线73，R15比较。
+- Final bridge_health HTTP200, version=3.4-candidate, codebuddy_reachable=true, running=0, queued=0, unresolved_orphan_count=0, possible_remote_overlap=false。
+- final_state: **DONE / FULL_REPORT_GIT_VERIFIED / INDEPENDENT_AUDIT_GIT_VERIFIED / CONDITIONAL_ACCEPT_FOR_RESEARCH**；五商业案例NOT_TESTED，产品发布NOT_READY。
+- Next R06 F6: 数值/报价算术复核 V1 + DOI/元数据与科学语义/版权三层分离 V2，实际注入下一轮任务。
+- 未安装插件、未修改生产/其他分支/模型、未登录/付费/发布/写凭据、未创建其他定时任务。
