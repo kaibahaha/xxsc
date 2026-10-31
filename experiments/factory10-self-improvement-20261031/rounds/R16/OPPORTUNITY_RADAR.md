@@ -16,3 +16,10 @@
 - 官方 https://ai.ieee-ies.org/registration/index.html 和 https://ai.ieee-ies.org/timeline/index.html 明确报名窗口2026-10-20至2026-12-31（页面未明确截止时区，标TIMEZONE_UNKNOWN，不猜）；报名提交1–2段创意摘要和团队资料；2027年1–5月需投入里程碑开发。
 - 资助按官网 https://ai.ieee-ies.org/ ：前三团队每队USD2000、后三每队USD1000，至少6项旅费资助，不是参加即得。官方规则未显示报名费，记FEE_NOT_STATED，不推断完全免费。
 - 当前评级A/P1（真实开放且头部主办方，资格仍需确认），动作PREPARE_ONLY，不提交报名。建议以FactoryOS证据安全门禁/工业AIoT异常报告可复现原型为候选，先核实参赛团队及原创IP。
+
+## R16_FINAL_LICENSE_CORRECTION｜R16独立审计后的官方许可纠错
+- WorkBuddy报告§⑥将OpenAlex数据许可写CC-BY，但官方 https://help.openalex.org/access/pricing/ 与 https://help.openalex.org/api/ 明确**OpenAlex元数据CC0**；被索引的原始论文PDF/全文须逐篇查看许可，不能把CC0元数据权利传递到全文。
+- WorkBuddy报告§⑥称Crossref免费DOI元数据reuse需署名，官方 https://www.crossref.org/documentation/retrieve-metadata/ 明确书目事实一般不受版权限制，Crossref生成数据CC0；部分摘要仍可能受出版者/作者版权约束。此两项均为实质许可误报，已计入R16 FACT_GATE_FAIL。
+- Google Research Scholar Program 2026/27 Dec1截止未找到当前官方开放入口；https://research.google/programs-and-events/past-programs/ 将其列为过去项目，标UNVERIFIED/EXCLUDE_ACTION，禁止作为可申请赠金。
+- 独立最优机会仍为IEEE IES GenAI Challenge 2027，官方 https://ai.ieee-ies.org/registration/index.html 报名2026-10-20至12-31；年满18岁、1–5人、原创工业/IoT生成式AI，资格未确认，未报名。
+- 资源到账0，用户注册/正式提交0。
