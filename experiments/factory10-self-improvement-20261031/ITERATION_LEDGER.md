@@ -37,3 +37,9 @@
 - Original R01 job aab758d7c33d4631 DONE 696s; read-only recovery job 93de654703984b20 DONE, full 382 lines recovered and Git-verified. R01 full report blob c6d0137ad338f031399c065190621be0d9e65d43; original summary preserved separately.
 - R01 **final baseline 79/100 (22/18/14/14/11)**, supersedes initial NOT_EVALUABLE after delayed full text. historical old F1 70/100 not comparable; 3 conceptual RESOLVED, 3 PARTIAL, 0 old P0 recurrences. Audit blob beb95d74f58af7e76131ac5a7a28c9636daabad5.
 - R02 final baseline 76/100 (21/18/14/14/9), M1 full-text delivery EFFECTIVE; cross-factory score comparison invalid. R11 and R12 use their own same-factory baselines 79 and 76.
+
+## R03 initial dispatch 2026-10-31 12:25 CST
+- R03 F3 Job **491e5363958242bd**, submitted via WorkBuddy MCP Stable after Git pre-feedback readback. State **PENDING**, score **NOT_EVALUABLE** until complete report.
+- same_factory_baseline_round: old experiment R03 HISTORICAL_REFERENCE (83/100) only; new experiment same factory MISSING_BASELINE; historical defects_count=6; resolved_count=PENDING; recurred_count=PENDING; same_factory_score_delta=NOT_COMPARABLE.
+- cross_hour_transfer_verdict: M1 evidence tiers and M2 real negative tests PENDING_TEST; detailed pre-dispatch feedback at rounds/R03/FEEDBACK_TO_BUDDY.md; status/adaptation Git readback verified.
+- Unique job only; next step retrieve via get_workbuddy_result, no duplicate submission.
