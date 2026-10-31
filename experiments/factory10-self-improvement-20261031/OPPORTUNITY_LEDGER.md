@@ -45,3 +45,11 @@
 |R14-CANVA-FREE|https://www.canva.com/pricing/|P2|B|Free tier advertised, regional terms unknown|2026-10-31|UNKNOWN|Observe/compare actual free plan|0|
 |R14-ADOBE-EXPRESS-FREE|https://www.adobe.com/creativecloud.html|P2|C|Free membership advertised, paid trial risk|2026-10-31|UNKNOWN|Observe; do not auto-renew trial|0|
 - Dedup note: URLs may have prior records under other IDs; preserve old records, treat this section as R14 verification observations, not separate claimed resources. No registration, payout, credits, public submission or legal terms accepted.
+
+## R15 F5 2026-11-01 global audio/video opportunity observations (all ACTION_NOT_EXECUTED)
+|ID|factory|official_url|first_seen|last_verified|tier|status|eligibility|reward|expiry|next_action|
+|---|---|---|---|---|---|---|---|---|---|---|
+|R15-EL-GRANTS|F5,F1|https://elevenlabs.io/startup-grants|2026-11-01|2026-11-01|B|OPEN_ROLLING / ELIGIBILITY_UNKNOWN|UNKNOWN|33M characters/12mo if approved|not fixed|verify eligibility, no submission|
+|R15-RUNWAY-CPP|F5,F4|https://runwayml.com/creative-partners-program/|2026-11-01|2026-11-01|B|OPEN_APPLICATION / SELECTION_UNKNOWN|UNKNOWN|complimentary Max plan if selected|not fixed|verify eligibility, no submission|
+|R15-DESCRIPT-AFF|F5,F2|https://www.descript.com/affiliate|2026-11-01|2026-11-01|B|OPEN_APPLICATION / PAYOUT_ELIGIBILITY_UNKNOWN|UNKNOWN|$25/new subscriber if approved|not fixed|verify eligibility, no submission|
+|R15-ADOBE-FILM-FUND|F5,F4|https://blog.adobe.com/en/publish/2026/01/20/expanding-access-storytelling-adobe-film-tv-fund-direct-creators-contributions-product-donations|2026-11-01|2026-11-01|C|MONITOR_RULES_UNKNOWN|UNKNOWN|2026 total ~$10m not per-person|not fixed|verify eligibility, no submission|
