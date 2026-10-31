@@ -1,0 +1,17 @@
+# R02 F2 软件与开源程序工厂｜真实执行状态
+- experiment: FACTORY10-SELF-IMPROVEMENT-20261031
+- planned_at: 2026-10-31 11:25 Asia/Shanghai
+- factory: F2 软件与开源程序
+- bridge_precheck: HTTP 200, codebuddy_reachable=true, running=0, queued=0, unresolved_orphan_count=0
+- previous_R01: job aab758d7c33d4631 DONE, MCP仅1517字摘要，远端382行全文未回传；R01质量NOT_EVALUABLE，M1全文回传与M2版本+负例为本轮通用改进。
+- same_factory_history: 旧实验R02 job f77da8aaab28496d, 81/100 (22/18/16/15/10), 六项P0/P1/P2整改与五案例逐项复盘；HISTORICAL_REFERENCE, not this experiment R-10.
+- feedback_file: rounds/R02/FEEDBACK_TO_BUDDY.md，commit 1c79dac723aedbcbc6e250baa04f0d14702f8a14，blob 3413d93f3d22826ae138a47eb2bf3ae68b45864e，已独立回读。
+- actual_submission: 通过WorkBuddy MCP Stable submit_workbuddy_task实际提交，prompt完整包含上述反馈全文；无重复派单。
+- job_id: 762c8f0887fc4188
+- job_state: PENDING，等待远端结果，不冒充DONE。
+- report_state: PENDING，未返回前不创建虚构WORKBUDDY_REPORT.md。
+- audit_state: NOT_EVALUABLE，待完整正文后独立核查。
+- cross_hour: M1 full text MCP return; M2 official version/negative tests/rollback; pending validation.
+- same_factory: historical defect register F2-P0-01..P2-06 sent, no resolved claim.
+- git_state: STATUS写入后需回读；commit和blob见GitHub工具回执；不将写入等同验证。
+- next: 等待完成，检查报告全文完整性与5案例，然后独立审计和更新总账。
