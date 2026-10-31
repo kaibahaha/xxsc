@@ -65,3 +65,11 @@
 ## R05 F5 unique dispatch, 2026-10-31 14:25 CST
 | R05 | F5 | 09ea81a5a538420a | PENDING | NOT_EVALUABLE | old experiment R05 HISTORICAL_REFERENCE only (no report) | 0 confirmed old report defects; 4 historical gaps | NOT_EVALUABLE | NOT_COMPARABLE | NOT_COMPARABLE | U1/U2 INJECTED; PENDING_TEST |
 - FEEDBACK_TO_BUDDY.md blob d288c89ade89f492c4eea20c79fd3064c4882e8c exact readback; WorkBuddy prompt4174 chars contains full feedback; STATUS updated Git-verified. Do not resubmit R05. Await actual report and independent audit.
+
+## R05 F5 final, 2026-10-31 (supersedes initial PENDING, immutable audit history)
+| R05 | F5 | 09ea81a5a538420a | **DONE / REPORT_AND_AUDIT_GIT_VERIFIED** | **73/100 (18/17/15/14/9)** | old experiment R05 HISTORICAL_REFERENCE_ONLY, no report | 0 old content defects, 4 historical gaps | 1 delivery gap resolved; 3 partial gaps | NOT_COMPARABLE | NOT_COMPARABLE | U1 EFFECTIVE_FOR_DETERMINISTIC_PROBE; U2 FAILED_FACT_ACCURACY |
+- WorkBuddy DONE 460s, MCP full report 13721 chars; WORKBUDDY_REPORT.md commit b0e357429f121b09e2529331542935690f9609d8 / blob 2758bf8630378dd70ce0ebbdc7e6532dbb467577 exact readback PASS.
+- CHATGPT_AUDIT.md commit 72e551772cdeb2b2e333e24d29c69cf12c52419b / blob a0f78bf15afa53be67d3a9061de0be6d7e7d0b9d exact readback PASS. ADAPTATION.md commit f9531371d5a4cd1b6c459b6c14369b6a6ac836aa / blob 9c90ce9bb6072f8fc10e6ff3908504658e8a60ed PASS. STATUS.md commit 01797fda6f48f88dfef0ce66af3c1ba3df43e99b / blob d121c3e02a7c4e76cd5e1230f48ecabf739524f4 PASS.
+- Independent WAV 16044 bytes, SHA256 5fc01c0f096e4def771d173852278fe14fbd9240326d4461394af901e9be4a65, 8000 PCM frames, L1 independently reproducible, L2 auditory quality and L3 rights NOT_TESTED.
+- New R05 issues: Opus Pro $14.5/month annual billed $174, not $14.5/year; Runway Gen4.5 $7.20/min basic API rate rather than $15/min; Suno song downloads/rights extrapolation; platform policy/rights missing; ffmpeg scale aspect ratio issue. R15 same-factory baseline 73.
+- R06 cross-factory transfer (max 2): V1 official-source pricing/numerical arithmetic check; V2 metadata/DOI structure vs scientific semantic evidence/rights. Must actually inject into R06 WorkBuddy prompt and verify outcome.
