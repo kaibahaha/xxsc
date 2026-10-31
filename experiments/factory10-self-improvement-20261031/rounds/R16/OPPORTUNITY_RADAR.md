@@ -11,3 +11,8 @@
 - HRI 2027部分Videos/Demos与学生设计竞赛截止2026-11-20 AoE，属于机器人/研究跨厂机会，F6可观察但需官方子项规则、投稿费/资格/知识产权核验；官方 https://humanrobotinteraction.org/2027/ 。
 ## 风险与分层
 全球覆盖北美、欧洲及全球IEEE国际项目；本轮暂无资格确认的“立即领取”资源。已筛除过期论文投稿与宣传页夸大。官方核验4项长期/开放机会，registration_attempted=0, registration_completed=0, resource_claimed=0, eligibility_confirmed=0。正式P0/P1/P2机会数量和价值分待本轮完整研究复核。
+## 追加独立核验：IEEE 2027 正式规则与报名期限
+- 官方 https://ai.ieee-ies.org/rules-and-guidelines/index.html 明确年满18岁、团队1–5人、项目原创、工业或IoT生成式AI主题；作品IP仍归团队/个人，但论文录用须授予IEEE IES发表权；导师如实质贡献须符合IEEE署名伦理。无国籍/居住地限制条文，但具体制裁/出口/身份仍待用户核验。
+- 官方 https://ai.ieee-ies.org/registration/index.html 和 https://ai.ieee-ies.org/timeline/index.html 明确报名窗口2026-10-20至2026-12-31（页面未明确截止时区，标TIMEZONE_UNKNOWN，不猜）；报名提交1–2段创意摘要和团队资料；2027年1–5月需投入里程碑开发。
+- 资助按官网 https://ai.ieee-ies.org/ ：前三团队每队USD2000、后三每队USD1000，至少6项旅费资助，不是参加即得。官方规则未显示报名费，记FEE_NOT_STATED，不推断完全免费。
+- 当前评级A/P1（真实开放且头部主办方，资格仍需确认），动作PREPARE_ONLY，不提交报名。建议以FactoryOS证据安全门禁/工业AIoT异常报告可复现原型为候选，先核实参赛团队及原创IP。
