@@ -66,3 +66,8 @@
 - F6-O-CROSSREF bibliographic metadata generally copyright-free, Crossref-generated data CC0; abstracts may retain publisher/author copyright; official https://www.crossref.org/documentation/retrieve-metadata/ . No blanket attribution requirement.
 - Google Research Scholar Program 2026/27 Dec1 call NOT_OFFICIALLY_VERIFIED; Google lists Research Scholar Program in past programs, do not count as actionable.
 - IEEE 2027 2026-12-31 registration open but actual eligibility/IP/effort must be confirmed; 0 applications/claims.
+
+## R17_REVERIFY_2026-11-01｜F7跨工厂去重与新成本限制
+- Existing F6-O-IEEE2027 reused; official https://ai.ieee-ies.org/qa/ explicitly states **free registration**, teams 1–5, 2026-12-31 registration end, and **author conference registration fee NOT covered by travel grant**; travel-grant recipients need ≥1 IEEE member. Previous reward estimates are not guaranteed. Status OPEN / ELIGIBILITY_UNKNOWN / ACTION_NOT_EXECUTED; no duplicate opportunity ID, no registration.
+- Existing F6-O-OPENALEX reused; official https://help.openalex.org/access/pricing/ and https://help.openalex.org/api/authentication/ specify verified-email free API key with USD1/day API usage budget, no payment method; keyless USD0.10/day budget; UTC midnight reset. Data metadata CC0 does not grant underlying fulltext rights. Status FREE_TIER_NOT_CLAIMED, no key requested, no account created.
+- No actual free resource claimed or prize application. R17 detailed official verification and safe steps: rounds/R17/OPPORTUNITY_RADAR.md, rounds/R17/ACTION_CHECKLIST.md. R17 WorkBuddy report pending; new candidates only after official verification.
