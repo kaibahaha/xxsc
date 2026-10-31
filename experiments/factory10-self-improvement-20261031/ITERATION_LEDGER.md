@@ -102,3 +102,9 @@
 | R08 | F8 | b76c0601c10f4d60 | **PENDING** | NOT_EVALUABLE | old experiment R08 HISTORICAL_REFERENCE_ONLY (failed/0字，无正文) | formal old content defects=0; historical delivery/evidence gaps=5 | PENDING | NOT_COMPARABLE | NOT_COMPARABLE | Q1/Q2 INJECTED; PENDING_TEST |
 - same_factory_baseline_round=old experiment R08 HISTORICAL_REFERENCE_ONLY；same_factory_defects_count=0（旧正文缺失），historical_gaps_count=5，resolved_count=PENDING，recurred_count=NOT_COMPARABLE，same_factory_score_delta=NOT_COMPARABLE，cross_hour_transfer_verdict=INJECTED/PENDING_TEST。
 - WorkBuddy submit一次，4354字符prompt含完整3945字符Git回读反馈，Job b76c0601c10f4d60；FEEDBACK blob f4ca36d529a7461e5cb95c559d211a6034ec42b6。未收到报告，绝不评分；R07 F7 68/100仅为跨厂Q1/Q2方法证据来源。
+
+## R08 F8 final audit, 2026-10-31 (supersedes initial PENDING; preserves history)
+| R08 | F8 | b76c0601c10f4d60 | **DONE / REPORT_AND_AUDIT_GIT_VERIFIED** | **73/100 (19/18/15/13/8)** | old experiment R08 HISTORICAL_REFERENCE_ONLY (failed/0字/no report) | same_factory_defects_count=0 confirmed old content; historical gaps=5 | resolved_count=1 delivery only; partial_count=4 | recurred_count=NOT_COMPARABLE | same_factory_score_delta=NOT_COMPARABLE | cross_hour_transfer_verdict=Q1 EFFECTIVE_FOR_DETERMINISTIC_REPRODUCTION; Q2 PARTIAL_EFFECTIVE/SAFETY_AND_VERSION_FACT_ERRORS_RECUR |
+- WorkBuddy unique Job b76c0601c10f4d60 DONE 489秒、14517字符MCP完整正文；WORKBUDDY_REPORT.md commit af138af32037bec1c145236137c8cd939906234e / blob 853cbb7dc1c574d0653f8318969c3e64bdeb0d56 exact Git readback PASS；CHATGPT_AUDIT.md commit 54471709deaf5141b14e9b8b3363f58cc61da226 / blob e38e48bb3a3f1f452c3ce84103d8bb19ee143592 exact readback PASS。
+- 独立Python3.13.5重放：源码SHA2/2与stdout SHA1/1全一致；普通解释器五负例5/5非零，**python -O estop断言被绕过exit0**；ROS2消息误引ROS1 Fuerte文档，TurtleBot4标准相机应OAK-D-Pro，RealSense D435官方$314而非$179。五案例均PLAN_ONLY/NOT_TESTED，不可宣称实体机器人安全认证。
+- 旧F8仅历史交付缺口无正文，不计算同厂旧评分差/复发率；新F8基线73供R18。R09跨厂最多两项方法：S1源码/输出字节级复放与双模式真实安全拒绝，S2官方型号/版本/现价精确核验。早期PENDING行保留为事件，最终DONE为当前状态。
