@@ -61,3 +61,7 @@
 - same_factory_baseline_round: old experiment F4 R04 429 FAILED_RATE_LIMIT without report (historical reference only); same_factory_defects_count=0 (unavailable content), historical_gaps_count=4, resolved_delivery_gaps=1, partial_gaps=3, recurred_count=NOT_COMPARABLE, same_factory_score_delta=NOT_COMPARABLE; **new F4 baseline 77/100 for R14**.
 - cross_hour_transfer_verdict: T1 EFFECTIVE_FOR_DETERMINISTIC_PROBE (independent PNG 8494 bytes SHA verified); T2 PARTIAL_EFFECTIVE (evidence labels improved but model pricing mixed). New defects: mixed image pricing, same-script “independent” claim, RGB/CRC extrapolated to alpha/OCR/visual quality, unquantified ROI.
 - R05 handoff: U1 structure/codec/actual media quality evidence tiers; U2 model-specific current prices and licensing. Earlier R04 PENDING line is historical, superseded by this final audit.
+
+## R05 F5 unique dispatch, 2026-10-31 14:25 CST
+| R05 | F5 | 09ea81a5a538420a | PENDING | NOT_EVALUABLE | old experiment R05 HISTORICAL_REFERENCE only (no report) | 0 confirmed old report defects; 4 historical gaps | NOT_EVALUABLE | NOT_COMPARABLE | NOT_COMPARABLE | U1/U2 INJECTED; PENDING_TEST |
+- FEEDBACK_TO_BUDDY.md blob d288c89ade89f492c4eea20c79fd3064c4882e8c exact readback; WorkBuddy prompt4174 chars contains full feedback; STATUS updated Git-verified. Do not resubmit R05. Await actual report and independent audit.
