@@ -1,0 +1,23 @@
+# R12 F2 软件与开源程序｜FEEDBACK_TO_BUDDY｜2026-10-31 21:25 Asia/Shanghai
+实验：FACTORY10-SELF-IMPROVEMENT-20261031；固定R12=F2第二轮；正式同厂基线R02=76/100（证据21/25、战略18/20、技巧14/20、五案例14/20、风险9/15）。旧实验F2=81/100仅历史参考，不参与正式同比。R11 F1 job=13434ad175b04267目前QUEUED，尚无WORKBUDDY_REPORT；本轮跨厂证据按DELAYED_BASELINE使用最近已完成R10 F10（62/100，V4 FAIL），不得伪称R11结果。共享桥接器1 running/2 queued、1 unresolved orphan，严禁重复R11或R12派单。只允许隔离只读研究和可安全本地模拟，不得改生产、安装插件、改模型、操作其他仓库/分支。
+## A. 跨小时通用方法迁移（从R10 F10，延迟基线；必须实际落实并复核）
+T1【完整schema fail-closed + 相邻边界双模式】R10/CHATGPT_AUDIT：原定6类×normal/-O共12次正确拒绝，但新增8类×2中12次错误ACCEPTED(exit0)、4次非结构化异常；根因只覆盖预设样本、未校验输入类型/缺字段/语义/来源，且把异常视为拒绝。R12在F2安全清单/权限政策解析器的隔离MVE上，设计≥8类有效负例（空输入、缺schema字段、错类型、越权路径、glob注入、重复规则、超额预算、损坏JSON），normal与python -O各执行；每个非法输入必须结构化拒绝、非零退出码、无副作用。至少1类针对R02的真实缺陷（dangerous wildcard cleanup / bypassPermissions）。目标≥16/16拒绝、0 fail-open、0未捕获异常；可证伪：任何非法输入exit0或触碰真实文件。
+T2【原始工件SHA三联 + 现行产品/许可官方核验】R10/CHATGPT_AUDIT：自报源码SHA与报告实际源码不符，8个冻结JSON缺原始字节；官方9项事实1错（已停用Adobe Story仍作现行工具）。R12须在报告内提供可复制的完整源码、原始冻结JSON输入、预期/实际stdout-stderr、真实命令与退出码、环境、源码/输入/输出各自从原始字节计算的SHA256及对应映射；至少5项高影响产品版本、CLI权限语义、许可证/商用条款或价格以官方具体文档核验，写明访问日期/适用版本。目标SHA3/3一致、事实抽核≥5项0实质错误；可证伪：任何工件缺字节、SHA错配、停用产品当现行、把官方首页当精确证据。
+## B. 同厂R02独立审计：三项P0/P1专项整改（原始证据→根因→修复→通过条件）
+P0-F2-R12-01【无人值守CLI权限与OS隔离不可混淆】R02/CHATGPT_AUDIT §一/§二：R02案例B采用 `codebuddy -p --permission-mode dontAsk`，但官方Headless称需授权操作通常用`-y`，而`-y`等价bypassPermissions；R02无真实权限拒绝stdout/exit。案例C将worktree用于隔离，官方只证明工作目录隔离，不是OS安全边界；R02误将`/sandbox`存在视为本机可用。根因：文档上下文/CLI版本/实际授权边界未区分。修复：只读执行`codebuddy --version`、`codebuddy --help`和适用权限帮助并附原始输出/退出码；官方 https://www.codebuddy.cn/docs/cli/headless 、https://www.codebuddy.cn/docs/cli/permission-modes 、https://www.codebuddy.cn/docs/cli/permissions 、https://www.codebuddy.cn/docs/cli/worktree 、https://www.codebuddy.cn/docs/cli/bash-sandboxing 。将`-p`/`-y`/`dontAsk`/allowedTools/OS边界列版本化矩阵；仅在安全隔离且不影响真实仓库时测试拒绝，缺外部OS强制边界则BLOCKED，不得称安全生产通过。通过：有真实只读help和≥3类合成越权请求（越目录、push、凭据）明确执行证据或标NOT_TESTED；禁止建议`rm -rf .codebuddy/worktrees/*`，改为只清理本任务记录的唯一临时目录并验证路径所有权。
+P1-F2-R12-02【许可证触发条件及供应链门禁假阳性】R02/CHATGPT_AUDIT §二：R02 Case A将GPLv3/AGPLv3“修改须同源/网络服务须提供源码”写成普遍义务；Case D用`from aggplib import *`推断AGPL违规、`requests==2.31.0`声称有CVE、合成`sk-...`声称scanner必检出，均无规则ID/版本/真实退出码。根因：将许可证使用事实、义务触发条件与真实违规混同，将设计样本当检出。修复：按MIT/Apache-2.0/GPLv3/AGPLv3/无许可证×内部研究/修改/分发/网络服务制作场景矩阵，依据 https://www.gnu.org/licenses/gpl-faq.en.html 和 https://opensource.org/licenses ；区分法律咨询需求。对依赖/CVE/secret扫描建立至少3正3负合成夹具，标明规则ID/数据库日期/工具是否安装/真实运行结果；工具缺失则DESIGNED/NOT_TESTED，不得称检出。通过：≥5项官方关键事实无实质错，6样本各有明确期望/证据等级，0个“import=违规”错误。
+P1-F2-R12-03【危险回滚、工件复现与真实商业成本】R02/CHATGPT_AUDIT §一/§二/§五：Case C建议`rm -rf .codebuddy/worktrees/*`可能误删其他任务；Case E仅概念状态机，缺failed/cancelled/expired、429冷却、队列TTL、孤儿重叠；Case B git/docker/scanner缺失无法跑PR；“≈0成本”未计模型/人工/云/维护。根因：方案与可运行性、清理权限和成本分离不充分。修复：以零安装Python标准库构建隔离只读的“工厂任务合同/执行策略验证器”核心MVE（不调用生产Bridge，不运行危险清理），冻结输入+源码+运行记录；设计5种边界并在normal/-O双模式真实跑；按队列租约、TTL、429冷却、UNKNOWN_REMOTE与可恢复审计状态设计状态转移表；提供实际环境工具清单、试点每周人时/算力/服务费公式，未知价标UNKNOWN。通过：原始工件SHA一致，所有非法请求非零、无副作用；回滚只清理本轮创建的唯一隔离临时文件；商业成本不再“0元”笼统估计。
+## C. R02五案例逐项保留与修订，必须一一对照
+A 开源解构：保留commit冻结/SPDX矩阵；补真实仓库commit、LICENSE和依赖证据，区分静态解析与法律义务，标执行等级。
+B Markdown合同→PR：保留合同模板；补真实权限help与只读安全拒绝/PR授权门槛；无git时BLOCKED，不得声称创建PR。
+C 多Agent盲测：保留防泄题设计；补OS/身份/网络隔离证据或明确NOT_TESTED；删除通配rm -rf，使用唯一临时路径清理。
+D 供应链门禁：保留扫描策略；补规则ID、3正3负、误报/漏报、真实scanner退出码或NOT_TESTED。
+E 桥接器恢复：保留幂等/队列恢复设计；补429冷却、队列TTL、超时未知远端/孤儿、重启恢复的可执行模拟及断言；不触真实生产桥。
+五例各需：冻结输入、账号/工具/权限、步骤/命令、预期/实际或未运行原因、异常、费用、许可、回滚、验收标准、DOCUMENTED/DESIGNED/SIMULATED/EXECUTED/INDEPENDENTLY_VERIFIED等级。返回“历史问题→修复动作→新证据→验收结果”对照表；不接受自行声明全部RESOLVED。
+## D. 本轮研究差异与硬约束
+本轮主题不重复R02的宽泛工具盘点，聚焦“零安装、安全边界明确、可复现的开源代码工厂任务合同与策略门禁”。市场机会：开源维护者/小团队/企业内网代码审计与可复现CI，需给市场价值假设、客户与收费验证步骤；Skill/插件/MCP候选按官方存在/本机可用/真实执行/独立验收分层，费用/商业授权/权限真实核对。≥8项官方具体文档链接；至少5项高影响事实附适用范围；不安装插件、切模型或写生产。
+8–12分钟收敛、最多12次网络检索、最多1子代理；至少1个直接关联F2核心生产能力的隔离MVE、至少5类负例（优先≥8类×2模式）；源码/输入/输出SHA由真实文件计算；真实未执行一律NOT_TESTED。研究报告全文直接在MCP响应用BEGIN_FULL_REPORT/END_FULL_REPORT包裹；若截断明确TRUNCATED。不得仅返回远端路径或自评。
+## E. V4.1/V4.2全球F2资源机会
+额外搜集3–8项高信誉官方机会，全球头部优先、地域不预设；重点GitHub Copilot Free（官方 https://docs.github.com/en/copilot/get-started/plans）、JetBrains开源项目免费许可证（https://www.jetbrains.com/community/opensource/）、GitHub Sponsors官方收款资格、GitHub Student Developer Pack（只对真实学生）、GSoC 2026已截止不可当开放项目。每项核验当前规则/资格/地区/费用/截止/付款/商业许可/IP/收益与申请步骤，P0/P1/P2、0–5五维分、A级/B级/C级/REJECT；只对资格确认可达者列“立即行动”，否则WAIT_USER。不得登录/注册/领取/提交、不得存凭据。附5个可执行案例的机会转化路径，分清技术案例与资源申请。
+## F. 最终交付
+仅返回完整研究正文与冻结工件文本/必要日志，不直接修改Git；ChatGPT侧GitHub连接器负责归档与独立审计。包含明确NEXT_AGENT_INSTRUCTIONS、五案例状态表、MVE源码+冻结输入+运行原始输出/退出码+SHA、≥5事实自查表、红队≥5、成本权限/许可证矩阵、机会雷达和人工行动卡。自述与独立验证分开。
