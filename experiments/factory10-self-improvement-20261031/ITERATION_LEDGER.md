@@ -50,3 +50,8 @@
 - same_factory_baseline_round: old experiment F3 R03 historical only (83/100); same_factory_defects_count=6, resolved_count=3, partial_count=3, recurred_count=1 (Node no JS/test but EXECUTED claim); same_factory_score_delta=NOT_COMPARABLE. This new R03 80/100 is R13 baseline.
 - cross_hour_transfer_verdict: M1 evidence tiers PARTIAL_EFFECTIVE, M2 genuine negative tests PARTIAL_EFFECTIVE; independent Python SHA256 reproduction verified, but remaining four cases not executed.
 - R04 handoff T1 reproducible artifacts and T2 no ENV_PRESENT→EXECUTED overclaim; see rounds/R03/ADAPTATION.md. The earlier PENDING line is historical and superseded by this final block.
+
+## R04 initial dispatch 2026-10-31 13:25 CST
+- R04 F4 job **7532c2af0ef64c5d** submitted once via WorkBuddy MCP Stable; state PENDING, score NOT_EVALUABLE until full report. Git feedback/adaptation/status pre-dispatch and post-submit readback verified.
+- same_factory_baseline_round: old F4 R04 FAILED_RATE_LIMIT_429 without report/score; formal same_factory_defects_count=0 (historical gaps=4), resolved_count=NOT_EVALUABLE, recurred_count=NOT_EVALUABLE, same_factory_score_delta=NOT_COMPARABLE; new experiment R04 is first F4 baseline.
+- cross_hour_transfer_verdict: R03→R04 T1 reproducible image artifact and T2 evidence-level discipline INJECTED/PENDING_TEST. Do not duplicate job; get_workbuddy_result(7532c2af0ef64c5d).
