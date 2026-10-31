@@ -10,3 +10,12 @@
 - OPPORTUNITY: GitHub/JetBrains等官方规则研究候选，个人/组织资格未确认，注册/领取/使用=0；不能计为已获资源。
 - FINAL_ACCEPTANCE: PENDING / NOT_EVALUABLE；PRODUCTION_READINESS=NOT_ASSESSED；禁止生产部署结论。
 - 下一步：get_workbuddy_result(job_id=9d502bcdaf6e40bc)；真实正文后独立复算和回读；R11按原Job追单，严禁重复派单。
+## FINAL（取代上方PENDING预审，保留历史）
+- WORKBUDDY_SELF_REPORT: job=9d502bcdaf6e40bc DONE/905秒，MCP完整17388字符，Git报告commit 4f011748557a242c87094f70d295cb0d09ca9180/blob 218ae196b108033f37539e92455f02f211d4131a，独立回读PASS；Buddy自称两MVE各22/22。
+- CHATGPT_INDEPENDENT_AUDIT: 从报告内联MVE1源码重建validate，在Python 3.13普通与optimize=2下新增5种相邻非法输入（相对路径未限根、未知mode、负预算、sandbox="false"真值绕过、空rules），10/10错误ACCEPTED；合法与绝对越权两控制各2次符合预期。非远端CLI重放，源码原始文件SHA未独立复算。
+- FACT_GATE: 7项高影响官方事实抽核6 PASS/1 NOT_VERIFIABLE（Copilot Free个人商用强制付费无具体官方支持）；不冒充0错全PASS。
+- 五案例：A DESIGNED、B DESIGNED/BLOCKED、C NOT_TESTED/BLOCKED、D NOT_TESTED、E SIMULATED；MVE状态SIMULATED_WITH_P0_FAIL_OPEN，工件复现PARTIAL。
+- 红队：14次独立函数调用，10非法错误接受；报告列7红队点但部分为文档/威胁分析而非执行。
+- 未解决P0=1、P1=2；同厂R02三整改0 RESOLVED/3 PARTIAL/1同类复发；R12独立65/100(19/18/11/12/5)，R02 76/100，Δ=-11（难度与审计口径限制）。
+- FINAL_ACCEPTANCE: **FAIL**；production_readiness=**NOT_READY**。禁止部署为生产安全门禁；R22必须修复并测试信任边界与相邻非预设负例。
+- R13已在P0后置发现前提交，不能伪称R13 prompt包含新P0；下一轮按真实证据迁移。
