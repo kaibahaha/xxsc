@@ -22,3 +22,16 @@
 |F2-O-006|F2,F6|https://education.github.com/pack/join|2026-10-31|2026-10-31|C observe|OFFICIAL_VERIFIED_RULES / ELIGIBILITY_UNKNOWN|real verified student age 13+ only|partner software/tool offers, changing terms|ongoing|student must use own genuine eligibility; do not impersonate|
 - Excluded as currently open: GSoC 2026 https://opensource.googleblog.com/2026/03/open-source-open-doors-apply-now-for-google-summer-of-code.html application deadline 2026-03-31 18:00 UTC, already expired.
 - F2 actual registrations=0; approved=0; claimed=0; activated=0; used=0; estimated realized value=UNKNOWN/0 confirmed; no accounts accessed.
+
+
+## R13 F3 全球游戏机会增量（2026-10-31；用户资格均UNKNOWN，非领取）
+|id|factories|official_url|first_seen|last_verified|tier|status|eligibility|resource/award|deadline|next_action|
+|---|---|---|---|---|---|---|---|---|---|---|
+|F3-UNITY-JAM-2026|F3,F4,F5|https://itch.io/jam/official-unity-game-jam-2026|2026-10-31|2026-10-31|B conditional|PREPARE / WAIT_USER|Unity作品+WebGL+AI披露，正式地区奖项规则待审|Unity Pro最多5个一年许可、Academy等|2026-11-14 12:00 UTC|先核正式Contest Rules及真实资格，未注册|
+|F3-GGJ-2027|F3,F6,F10|https://globalgamejam.org/calendar|2026-10-31|2026-10-31|B observe|WAIT_OPEN|普通Jammer注册12月1日开始，场地规则未知|全球社区/展示，奖金不保证|2027-01-25至31日活动|11月1日场地注册不等于普通报名|
+|F3-BOUND-2026|F3|https://itch.io/jam/bound-jam-2026|2026-10-31|2026-10-31|C|OPEN / OBSERVE|需作品于规定活动期间制作、AI披露|€175奖金池（不保证）|2026-11-01 18:00 CET|时间/收益不合算，不建议新开工|
+|F3-ITCH-DIST|F3,F10|https://itch.io/docs/creators/payments|2026-10-31|2026-10-31|B conditional|OFFICIAL_VERIFIED_RULES / NOT_CLAIMED|账号、税务、支付与商用素材需核|创作者收益分享设置0–100%，另有支付手续费|ONGOING|仅准备成本模型，不发布|
+|F3-GODOT|F3,F4|https://godotengine.org/license/|2026-10-31|2026-10-31|B technical_resource|OFFICIAL_VERIFIED_RULES / NOT_INSTALLED|引擎MIT可商用；第三方素材另审|免费引擎、无引擎分成|ONGOING|只读评估，不安装|
+|F3-UNITY-ODIN|F3,F2|https://itch.io/jam/official-unity-game-jam-2026|2026-10-31|2026-10-31|C UNVERIFIED|OBSERVE / NOT_CLAIMED|兑换条件、到期与支付未知|1个月Odin Inspector+Validator Jam许可|UNKNOWN|核官方领取条款再决定|
+|F3-IMAGINARY-MINI|F3,F4,F5|https://itch.io/jam/imaginary-game-mini-jam-november-2026|2026-10-31|2026-10-31|C observe|WAIT_OPEN|团队/素材贡献规则需核|无本轮现金奖、社区展示|2026-11-13至16日|低优先观察|
+- F3新增7项均为官方主办方/项目页面规则线索，**用户个人资格0项已确认**，实际报名/批准/领取/使用均0；不把免费软件资源等同现金到账。
