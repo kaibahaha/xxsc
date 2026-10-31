@@ -1,0 +1,12 @@
+# R16 F6 EXECUTIVE_QUALITY_GATE｜独立最终门禁（2026-11-01）
+- 本轮研究：研究报告工厂第二轮整改；Job **135fcff83e044e3b** DONE，MCP全文30439字符；Git WORKBUDDY_REPORT.md commit ec813ddb7c690dec15393f9d739dd85a4f738b76，独立回读PASS。
+- 三方分离：Buddy自述8检索、15/15自选测试PASS、5事实零错；ChatGPT独立审计抽8项高影响事实2项许可错误，独立复刻源码门禁并对9项新边界输入发现9项错误ADMIT；FINAL_ACCEPTANCE=**FAIL**。
+- 五维评分 **67/100 (17/18/15/12/5)** vs R06 **65/100 (17/17/12/11/8)**，Δ+2，因研究内容不同不构成改进因果证据。
+- 事实门禁：8抽2实质错误（OpenAlex元数据CC0误写CC-BY、Crossref元数据一般不受限制误写必须署名），1项Google Scholar当前开放状态不可核；**FACT_GATE_FAIL**。
+- 工件：真实源码14375字符+JSONL3801字符Git交付/回读；SHA256独立复算匹配 313071e5... 与 fcc03db3...；原Python脚本normal/-O未由ChatGPT直接执行，标ORIGINAL_RUNTIME_NOT_REPLAYED。
+- 安全门禁：Buddy自报14负例拒绝；ChatGPT忠实逻辑复刻新增9项恶意/非法边界均被ADMIT，涉及URL域名子串欺骗、javascript URL、自报版权/授权、空声明/版本、撤稿论文虚假主张；**P0_SECURITY_FAIL**，禁止生产部署/自动发布。
+- 五案例：A部分执行，B/C/D NOT_TESTED，E自报执行但安全FAIL；真实商业端到端0/5，独立生产验证0/5。
+- 同厂R06整改：D2 API/Web计价修正、D4预算自报符合；D1 429原始头未核、D3撤稿关系API原始正文缺、D5源码移交但安全门禁失败。严格解决2/5（D4证据为自报），新增P0≥2。
+- 机会：IEEE IES GenAI Challenge 2027 2026-12-31截止、18岁以上/1–5人/原创工业AI/IoT，最低6项旅费资助；OpenAlex每日USD1免费key额度、Crossref免费API；未注册/领取/报名，全部ACTION_NOT_EXECUTED。
+- 下轮R17：①URL/权利/审批可信锚与撤稿语义的强制红队；②学术元数据CC0与单篇全文版权、抽象许可的官方分层核查；不得只因自选测试PASS而放行。
+- FINAL_ACCEPTANCE=FAIL_FACT_AND_SECURITY_GATES; RESEARCH_PARTIAL; PRODUCTION_READINESS=NOT_READY; no plugin install/payment/model switch/production writes.
