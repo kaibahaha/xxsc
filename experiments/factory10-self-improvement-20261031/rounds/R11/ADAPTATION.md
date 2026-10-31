@@ -15,3 +15,9 @@
 |P0-F1-02|R01案例C仅设计，预算DB故障未测|安全模拟fail-closed与幂等|PENDING|
 |P1-F1-03|R01案例E cosign --key oidc ...占位|官方keyless信任域与负例|PENDING|
 - 可证伪：任一非法请求被接受、任一源码/输入/输出SHA错配、任何CLI/产品现行事实无官方证据即对应方法未通过。仅改研究方法，不动生产。
+
+## R11实际注入确认（派单后）
+- MCP submit真实返回唯一job=13434ad175b04267；prompt共6051字符，完整嵌入Git已回读的FEEDBACK_TO_BUDDY.md原文5000字符。跨厂T1/T2与同厂三缺陷均已实际注入；研究代理仍QUEUED，故实际效果NOT_VERIFIED。
+- R11机会官方初筛由ChatGPT独立完成：4项B级条件候选+1项低价值观察，写入OPPORTUNITY_RADAR.md、ACTION_CHECKLIST.md、根OPPORTUNITY_LEDGER.md且回读PASS。不能替代WorkBuddy完整报告。
+- 下一轮R12 F2只检查本job，不重复派单；若仍排队按DELAYED_BASELINE从R10已完成报告提炼最多2项通用方法；若R11完成则以R11真实审计为跨厂方法来源。
+
