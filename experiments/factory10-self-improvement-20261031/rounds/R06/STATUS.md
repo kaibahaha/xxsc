@@ -8,3 +8,10 @@
 - pre-dispatch ADAPTATION.md Git commit 61e346a2bd2ff1da1d019fa5da71cbb992c88b16，blob f3d1bc4a129778dedb94e27ad22d9393f0bd63ca，逐字回读PASS。
 - job_id: NOT_SUBMITTED；state: PREPARED；report: NOT_EVALUABLE；score: NOT_EVALUABLE；same_factory_delta: NOT_COMPARABLE；cross_hour_effect: PENDING_TEST。
 - safety: 未改生产/模型/其他分支，未安装/授权/付费/发布，未创建定时任务。
+
+## R06实际派单（2026-10-31 15:25 CST）
+- pre-submit bridge_health HTTP200，running=0，queued=0，unresolved_orphan_count=0；WorkBuddy list recent 30无本实验R06既有Job，防重通过。
+- Git FEEDBACK_TO_BUDDY.md 4210字符/ blob 064a435fd7462e3c975c9917c88d6cacaddd3295 在派单前再次读取并校验；完整反馈实际注入WorkBuddy prompt 4686字符，含V1/V2和HIST-F6-01~05及五案例A-E，不仅是链接。
+- job_id: **e8d1a46374fc4607**；conversation_id: FACTORY10-SELF-IMPROVEMENT-20261031-R06-F6；submit_workbuddy_task真实返回“已提交”。
+- job_state: **PENDING**（只代表已受理）；report: PENDING；audit: NOT_EVALUABLE；score: NOT_EVALUABLE；same_factory_delta: NOT_COMPARABLE；cross_hour V1/V2: INJECTED/PENDING_TEST。
+- 下一步只查询get_workbuddy_result(e8d1a46374fc4607)，不得重复派单。若尚未完成，后轮追取。
