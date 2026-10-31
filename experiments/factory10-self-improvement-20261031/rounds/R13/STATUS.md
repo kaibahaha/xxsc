@@ -14,3 +14,8 @@
 - list_workbuddy_jobs显示R13 job 1192f68c0b0d449a QUEUED约329秒/0字，前面另一云端重型任务4a9dddb8f42646ee RUNNING约348秒；get_workbuddy_result返回泛[running]但无真实正文，故以list QUEUED为准，绝不伪称R13已开始或已完成。
 - 旧实验README正确路径 experiments/factory10-skill-plugin-24h-20261030/README.md 已Git读取，blob=7c8e2a7ed21b22193d70db3cd0b14765dd9a86e6；旧F3审计blob=a8727b6a48a3b15661260f56e09b3c0d038a692a，均仅历史参考。
 - R12后置独立审计发现P0安全fail-open，最终65/100，R12 Git审计/质量门禁/台账已回读；R13派单发生在发现P0之前，不能称该新增缺陷已注入本轮prompt。后轮须专门复测。
+
+## R14追单补交（2026-10-31 23:xx Asia/Shanghai）
+- R13 job 1192f68c0b0d449a list_workbuddy_jobs = DONE, elapsed 632s, 14731字；get_workbuddy_result全文14731字符、BEGIN_FULL_REPORT/END_FULL_REPORT完整。
+- R13/WORKBUDDY_REPORT.md已真实补存Git，commit beaebbb50a2a64e5aadad7374899c6a891fb8156，blob 88127942ac4c528e326878bc3b1a222941b4e1c4，独立回读全文一致。
+- 这只证明远端正文回收与Git归档；未证明16个Node测试、28次负例、单HTML网页和三进程日志均可独立复现。最终审计仍PENDING，不得把原STATUS的QUEUED视为当前状态。
