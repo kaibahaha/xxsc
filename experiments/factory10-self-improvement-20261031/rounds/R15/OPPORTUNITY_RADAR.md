@@ -17,3 +17,10 @@
 opportunities_found=5; officially_verified_count=5（公开规则/状态，非完整资格）; currently_open_count=3（ElevenLabs/Runway/Descript公开申请）; eligibility_confirmed_count=0; P0/P1/P2=0/0/4; actionable_count=0; registration_attempted=0; registration_completed=0; user_confirmation_required=3; resource_claimed=0; expired_or_invalid_count=1; ip_or_payment_risk_count=3; action_not_executed_count=5.
 ## 下次复核
 下轮核实ElevenLabs公司资格与地域、Runway作品集授权/选择标准、Descript佣金支付与披露；不能凭IP判断居住地或企业主体。
+## 2026-11-01 独立新增：迪拜1 Billion Followers Summit AI Film Award 2027（P1 WATCH_ONLY）
+- **主办方是New Media Academy LLC / 1 Billion Followers Summit，而不是Segmind**。Segmind只是宣传及Seedance服务提供商，明确自称非主办方。正式规则：https://www.1billionsummit.com/ai-award-2027/terms-and-conditions ；营销摘要：https://www.segmind.com/1-billion-ai-film-award-2027 。
+- 官方规则更新2026-10-12，报名2026-09-30至**2026-11-20（迪拜时区）**；唯一大奖**USD 1,000,000**，非人人可得。18+、个人实名、法律及制裁资格持续满足；5–7分钟、16:9、1080p、MOV/MP4、英语字幕、AI/Seedance比例与模型披露证据；**官方正式条款§5.2允许一人提交多部各自合规作品，Segmind摘要写1人1部，存在版本冲突，以正式条款和最新主办方通知为准**。
+- 费用：报名免费，但全部生成/素材/计算/字幕/税务/制作成本自负；版权：主办方获得全球、免版税、永久、可再许可的广泛展示与宣传授权；未获选前有作品公开发布限制，须保留创作过程工件24个月；奖项须KYC/税务/银行核验。不得在未明确用户确认知识产权条款前提交。
+- 价值评级：主办方5、奖金5、资格2、投入产出1、战略复用4，**B/P1，仅观察并核验资格/成本**；制作5–7分钟高质量Seedance短片的资源投入明显高于一般免费比赛，不建议以100万美元奖金宣传直接启动高成本制作。
+- 状态：OFFICIAL_RULES_VERIFIED / USER_ELIGIBILITY_UNKNOWN / ACTION_NOT_EXECUTED。官方细则涉及地区/国籍、第三方许可、合规义务，未完成个人资格审查。
+- 更新本轮机会统计：opportunities_found=6; officially_verified_count=6; currently_open_count=4; eligibility_confirmed_count=0; P0/P1/P2=0/1/4; actionable_count=0; registration_attempted=0; registration_completed=0; resource_claimed=0; expired_or_invalid_count=1; action_not_executed_count=6。前文5项为初筛时快照，此处为本轮最终覆盖口径。
