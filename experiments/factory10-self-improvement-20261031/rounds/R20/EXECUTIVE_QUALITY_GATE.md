@@ -1,0 +1,13 @@
+# R20 F10｜EXECUTIVE_QUALITY_GATE（V4.2）
+- 研究目标：可商用原创小说的可信权利链、世界观一致性硬门禁、章节与互动分支；对R10三个真实缺陷整改，并独立扫描全球高价值写作机会。
+- WORKBUDDY_SELF_REPORT：**无**。唯一job 64dbae92e31d4b05 已提交，但远端CodeBuddy OOM主动暂停，list_jobs=failed/285s；原始错误见WORKBUDDY_FAILURE_RAW.md；WORKBUDDY_REPORT.md不应伪造。
+- CHATGPT_INDEPENDENT_AUDIT：Git旧实验/R10/R19资料真实读取；5508字符反馈Git回读并逐字注入5759字符MCP prompt；Git已保存独立机会预筛与失败证据；无Buddy报告可评估。另独立核7条官方背景事实，不能算对Buddy报告的5项事实抽样。
+- FACT_GATE：NOT_EVALUABLE（Buddy事实样本0，material errors UNKNOWN）。固定五维100分：NOT_EVALUABLE，R10同厂基线62分，Δ=NOT_EVALUABLE。
+- 五案例状态分布：NOT_EVALUABLE（五案例未返回）；不是0个案例成功的质量结论。
+- 核心MVE：NOT_EXECUTED_JOB_FAILED；源码/输入/原始输出缺，独立重放NOT_POSSIBLE；artifact_reproducibility=NOT_EVALUABLE。
+- 红队：独立0执行、0通过、0拒绝（无新代码）；旧R10 30测14符合/16失败不能冒充R20。
+- SAME_FACTORY：D1可信版权P0、D2工件SHA P1、D3schema/语义fail-open P1三项已实际委派，修复状态均NOT_VERIFIABLE；历史P0至少1保持开放，不可生产。
+- CROSS_FACTORY：R19→R20 U1原始工件交付、U2最新官方规则已实际注入，但OOM无研究效果，均INJECTED_NOT_VERIFIED。
+- 全球机会：独立官方初筛Reedsy/Unity/WinterVN/CRAFT/1B film（其中Unity和电影奖与既有总账去重）；最重要发现是Reedsy明确禁止AI生成书稿、IFComp 2026玩家可见内容也须人类创作；真实资格确认0、申请0、资源到账0，ACTION_NOT_EXECUTED。详见OPPORTUNITY_RADAR/ACTION_CHECKLIST。
+- FINAL_ACCEPTANCE：**FAIL_DELIVERY**；research_quality=NOT_EVALUABLE；production_readiness=NOT_ASSESSED；不能因MCP submit/Git写入成功宣称生产就绪。
+- 下一轮R21：先核远端daemon OOM是否恢复，不能重启/切模型/重派R20；再按F1固定顺序对R01/R11做第三轮缺陷演化整改。保持原24轮计划和仓库权限。
