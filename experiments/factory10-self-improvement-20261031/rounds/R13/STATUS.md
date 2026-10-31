@@ -8,3 +8,9 @@
 - FEEDBACK_TO_BUDDY.md: Git先写commit 1a9db7ee944b7d17158eed8bb46eb0e19798ba3b，blob a25ea043f6eb2d9aedb4a2c74f76641229660a49，写后全文回读一致；4163字全文实际注入4472字MCP prompt。
 - WORKBUDDY_REPORT.md: NOT_YET_RETURNED，不创建虚假报告；CHATGPT_AUDIT评分=NOT_EVALUABLE；FINAL_ACCEPTANCE=PENDING；production_readiness=NOT_ASSESSED。
 - 下一步按job_id取结果，确认真实报告后核≥5官方事实、真实MVE、5案例状态、≥5红队，独立审计并更新总账；R14 F4按R04与R13实际结果双轨反馈。
+
+## 后续实时队列核验（本轮）
+- bridge_health再次HTTP200/ok，active_jobs=2、running_jobs=1、queued_jobs=1、pending_queue_depth=1、unresolved_orphan_count=2、possible_remote_overlap=true。
+- list_workbuddy_jobs显示R13 job 1192f68c0b0d449a QUEUED约329秒/0字，前面另一云端重型任务4a9dddb8f42646ee RUNNING约348秒；get_workbuddy_result返回泛[running]但无真实正文，故以list QUEUED为准，绝不伪称R13已开始或已完成。
+- 旧实验README正确路径 experiments/factory10-skill-plugin-24h-20261030/README.md 已Git读取，blob=7c8e2a7ed21b22193d70db3cd0b14765dd9a86e6；旧F3审计blob=a8727b6a48a3b15661260f56e09b3c0d038a692a，均仅历史参考。
+- R12后置独立审计发现P0安全fail-open，最终65/100，R12 Git审计/质量门禁/台账已回读；R13派单发生在发现P0之前，不能称该新增缺陷已注入本轮prompt。后轮须专门复测。
