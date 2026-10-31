@@ -55,3 +55,9 @@
 - R04 F4 job **7532c2af0ef64c5d** submitted once via WorkBuddy MCP Stable; state PENDING, score NOT_EVALUABLE until full report. Git feedback/adaptation/status pre-dispatch and post-submit readback verified.
 - same_factory_baseline_round: old F4 R04 FAILED_RATE_LIMIT_429 without report/score; formal same_factory_defects_count=0 (historical gaps=4), resolved_count=NOT_EVALUABLE, recurred_count=NOT_EVALUABLE, same_factory_score_delta=NOT_COMPARABLE; new experiment R04 is first F4 baseline.
 - cross_hour_transfer_verdict: R03→R04 T1 reproducible image artifact and T2 evidence-level discipline INJECTED/PENDING_TEST. Do not duplicate job; get_workbuddy_result(7532c2af0ef64c5d).
+
+## R04 final audit 2026-10-31
+- R04 F4 job **7532c2af0ef64c5d DONE**, 234s, MCP complete15728 chars; report Git blob **58f7f69986239604f18a8c7d634504bc2f401f45** readback VERIFIED; independent audit **77/100 (Evidence21, Strategy17, Skills15, Cases14, Risk10)**, audit blob **010e36a1685fdfa53a31916b37c73be93326c0cd** readback VERIFIED.
+- same_factory_baseline_round: old experiment F4 R04 429 FAILED_RATE_LIMIT without report (historical reference only); same_factory_defects_count=0 (unavailable content), historical_gaps_count=4, resolved_delivery_gaps=1, partial_gaps=3, recurred_count=NOT_COMPARABLE, same_factory_score_delta=NOT_COMPARABLE; **new F4 baseline 77/100 for R14**.
+- cross_hour_transfer_verdict: T1 EFFECTIVE_FOR_DETERMINISTIC_PROBE (independent PNG 8494 bytes SHA verified); T2 PARTIAL_EFFECTIVE (evidence labels improved but model pricing mixed). New defects: mixed image pricing, same-script “independent” claim, RGB/CRC extrapolated to alpha/OCR/visual quality, unquantified ROI.
+- R05 handoff: U1 structure/codec/actual media quality evidence tiers; U2 model-specific current prices and licensing. Earlier R04 PENDING line is historical, superseded by this final audit.
