@@ -17,3 +17,7 @@ R11 F1 job=13434ad175b04267未返回、Git无WORKBUDDY_REPORT；状态DELAYED_BA
 - H2：源码+输入+输出原始SHA与官方版本核对可减少“报告声称已验证但无法复放”；任一SHA不一致、官方过期候选即证伪。
 - 研究报告未返回前observed_metric=PENDING；不以跨厂总分或报告长度作因果证据。
 - NEXT: R13 F3先追R12真实Job，再从最新完成的1–3轮选最多2项通用方法；R22 F2再同时对比R02/R12。
+
+## R12最终实测反馈（后置审计，不改已发R13委托）
+R12 WorkBuddy报告17388字符Git回读PASS，完成两份隔离源码但安全核心MVE被ChatGPT独立新负例击穿：relative_path_outside/unknown_mode/negative_budget/sandbox_string_true/empty_rules五类×normal/-O共10次非法ACCEPTED，P0未关闭。R10→R12 T1原目标“≥16/16预设负例”在Buddy自选集自述通过，但**相邻未见负例失败**，跨厂T1 verdict=INEFFECTIVE_UNDER_ADVERSARIAL_EXTENSION；不能以22/22自述当作有效。T2报告正文含源码/哈希但远端原始字节未能独立复算，verdict=PARTIAL_EVIDENCE。R02→R12同厂三重点均PARTIAL，0完全解决，正式评分65/100 vs R02 76，Δ=-11（难度/审计差异限制）。
+R13 F3 prompt在此后置P0发现前已经实际派单，不能伪称“已注入R12新增P0”。R14 F4跨小时若R13尚PENDING则采用R12作为DELAYED_BASELINE，必须加入【非预设相邻负例+信任边界不能由输入自证】；R22 F2第三轮整改P0必须覆盖相对路径绝对化+realpath/symlink、sandbox严格bool且OS强制验证、mode枚举、预算下限、空规则默认拒绝、MVE-2 simulate/cleanup信任边界。
