@@ -21,3 +21,10 @@
 ## R02 initial dispatch 2026-10-31 11:25 CST
 | R02 | F2 | 762c8f0887fc4188 | PENDING | NOT_EVALUABLE | old experiment R02 (historical only) | 6 historical defects | PENDING | PENDING | NOT_COMPARABLE | M1/M2 PENDING_TEST |
 - Feedback Git-verified, WorkBuddy MCP submit accepted; no result yet. Cross-hour M1/M2 injected; same-factory old 81/100 historical reference only.
+
+## R02 final audit 2026-10-31
+- R02 F2 job 762c8f0887fc4188 DONE 463s, full MCP text 15843 chars, Git report verified, audit verified; **76/100 (21/18/14/14/9)**. Historical old F2 81/100 NOT_COMPARABLE as different experiment/time/coverage.
+- same_factory_baseline_round: old experiment R02 historical only; defects_count=6, resolved_count=2, partial_count=4, recurred_count=0 (narrow old assertion recurrence), same_factory_score_delta=NOT_COMPARABLE.
+- cross_hour_transfer_verdict: M1 EFFECTIVE_DELIVERY; M2 PARTIAL_EFFECTIVE, accuracy NOT_PROVEN. New audit defects: headless permission command ambiguity, license/scanner fixture oversimplification, sandbox runtime unverified, destructive worktree cleanup.
+- R03 handoff: ① evidence status tiers (official/environment/executed/independently verified), ② 5 cases with genuine negative test + rollback and at least one deterministic reproducible probe.
+- Prior ledger initial row remains immutable audit trail; this final block supersedes its PENDING state.
