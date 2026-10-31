@@ -85,3 +85,7 @@
 - R06主要独立发现：Crossref API 429与旧WorkBuddy模型额度429误认同源；Runway官方API $0.01/credit×12credits/s×60=$7.20/min，却把Web订阅隐含均摊成本$13.8462/min当API价；Suno 2500credits/20downloads比值不等于单次扣费；Nature原论文发表日应2014-01-29；直接检索13次违反≤12；8个临时文件SHA未附原始字节。
 - R06同厂新实验首轮基线65/100，R16再与本轮比较；旧F6内容缺失，不能计算旧评分Δ、旧关键错误复发率或旧内容修复率。跨厂R05 F5 73分不可作质量因果比较。
 - R07跨厂方法移交（最多2项）：W1按服务边界/响应头归因429与403；W2数值的计费场景语义与完整可独立重放工件双验收。前轮PENDING记录保留为事件，不作为最新状态。
+
+## R07 F7 unique dispatch, 2026-10-31 16:25 CST
+| R07 | F7 | c20368ab43794a78 | **PENDING** | NOT_EVALUABLE | old experiment R07 HISTORICAL_REFERENCE_ONLY (summary only) | 0 confirmed old content defects; 5 historical delivery/evidence gaps | PENDING | NOT_COMPARABLE | NOT_COMPARABLE | W1/W2 INJECTED; PENDING_TEST |
+- Git FEEDBACK 4210字符、blob 2790f631d6e6b89fc2924fbab8c4c748b4bbe0a3，完整注入4695字符MCP prompt；唯一submit返回job_id。R06上一小时真实DONE/65分、两项通用改进W1/W2已逐字注入。旧F7正文和评分不可得，SAME_FACTORY_BASELINE_MISSING；R07正式评分待全文审计。仅追同一job，不重派。
