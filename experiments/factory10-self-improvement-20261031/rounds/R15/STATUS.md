@@ -5,3 +5,9 @@
 - latest jobs list未见R15唯一任务；先前R14 f2c3385cea0c43d9 DONE 594s，报告已Git回读，R14独立审计75/100 FACT_GATE_FAIL。
 - R15 feedback全文已准备，必须在派单前Git回读并完整注入submit_workbuddy_task；不可只传链接。
 - no registration/payment/publication/production writes; no new automation.
+
+## R15 ACTUAL DISPATCH (2026-11-01 00:25 Asia/Shanghai)
+- Bridge HTTP200 CodeBuddy reachable, running=0 queued=0, unresolved_orphan_count=2, possible_remote_overlap=true. Recent jobs list contained no R15 task; no duplicate submission.
+- FEEDBACK_TO_BUDDY.md blob 338a8fbd990f95aa591714e00a86bc7cc523e396 independently read before submit; 3118-char full feedback injected into 3363-char WorkBuddy prompt, not merely Git URL.
+- **unique_job_id=2b73e0b468c74b33**, conversation_id=FACTORY10-SELF-IMPROVEMENT-20261031-R15-F5; actual submit_workbuddy_task returned accepted. Do not resubmit.
+- state=PENDING; WorkBuddy report not yet retrieved; five-dimensional score NOT_EVALUABLE, same_factory_delta NOT_EVALUABLE, MVE and opportunities NOT_VERIFIED. Next run poll this job and backfill actual report/audit.
