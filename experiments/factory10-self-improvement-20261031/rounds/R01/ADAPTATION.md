@@ -14,3 +14,16 @@
 - Source: old experiment R01 (historical reference, not new R01 baseline).
 - Defect register: SF01-SF06, details in FEEDBACK_TO_BUDDY.md.
 - Result: PENDING; do not invent resolved/recurred counts.
+
+
+## R01实际结果与R02可验证改进
+- WorkBuddy已DONE，报告声称382行；MCP仅返回1517字摘要。**实际新发现P0-DELIVERY-01：远端正文没有进入Git或ChatGPT审计视野**；不能评分。
+- H1: SF01/SF02/SF03的官方事实纠偏已经ChatGPT核对，但报告全文缺失导致“关键主张证据覆盖≥90%”无法统计，verdict=EVIDENCE_INSUFFICIENT。
+- H2: 摘要自称五案例含失败注入，但没有具体案例正文，verdict=EVIDENCE_INSUFFICIENT。
+- R02必须将以下两项具体方法改进完整注入WorkBuddy prompt：M1交付完整研究正文到MCP/Git（避免只有远端路径与摘要），M2版本差异审计与5/5案例负例+回滚。
+- 版本冲突提示：CodeBuddy v2.168.3发布说明提及默认30天，通用scheduled-tasks文档称循环任务3天；应按任务类型与版本拆分，不可泛化。
+## CROSS_FACTORY_TRANSFER — 已观察
+| source_round | source_factory | target_round | target_factory | method_change | baseline_metric | target_metric | observed_metric | verdict | evidence_path |
+|---|---|---|---|---|---|---|---|---|
+| R01 | F1 | R02 | F2 | M1全文可审计交付 | 本轮仅摘要，全文缺失 | 100%正文可回读；关键主张≥90%有官方依据 | 待R02 | PENDING_TEST | rounds/R01/CHATGPT_AUDIT.md |
+| R01 | F1 | R02 | F2 | M2版本冲突+负例回滚 | R01案例正文不可读 | 版本明确、5/5案例有负例与回滚 | 待R02 | PENDING_TEST | rounds/R01/CHATGPT_AUDIT.md |
