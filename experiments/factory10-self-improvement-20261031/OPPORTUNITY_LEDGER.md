@@ -60,3 +60,9 @@
 |F6-O-IEEE2027|F6,F7,F8,F9|https://ai.ieee-ies.org/|2026-11-01|2026-11-01|A/P1|OPEN_REGISTRATION / PREPARE_ONLY|UNKNOWN; age≥18, 1–5 people, original industrial/IoT generative AI|at least 6 travel grants: 3×USD2000 + 3×USD1000 per team (competitive)|2026-12-31 timezone UNKNOWN|check original IP, team, 2027 Jan–May workload; no submission|
 |F6-O-OPENALEX|F6,F7|https://help.openalex.org/access/pricing/|2026-11-01|2026-11-01|A/P2|OFFICIAL_FREE_TIER / NOT_CLAIMED|email verification required|USD1/day API usage budget free, resets UTC midnight; not cash|ongoing|check existing account; no registration without authorization|
 |F6-O-CROSSREF|F6,F7|https://www.crossref.org/documentation/retrieve-metadata/rest-api/access-and-authentication|2026-11-01|2026-11-01|A/P2|OFFICIAL_PUBLIC_API / NOT_CLAIMED|public API no signup|free public/polite REST metadata; limits apply|ongoing|use low-rate GET; don't conflate 429 with model quota|
+
+## R16_FINAL_LICENSE_CORRECTION｜2026-11-01独立审计纠错
+- F6-O-OPENALEX metadata license **CC0**, not CC-BY; underlying paper fulltexts separate; official https://help.openalex.org/access/pricing/ . No registration/claim.
+- F6-O-CROSSREF bibliographic metadata generally copyright-free, Crossref-generated data CC0; abstracts may retain publisher/author copyright; official https://www.crossref.org/documentation/retrieve-metadata/ . No blanket attribution requirement.
+- Google Research Scholar Program 2026/27 Dec1 call NOT_OFFICIALLY_VERIFIED; Google lists Research Scholar Program in past programs, do not count as actionable.
+- IEEE 2027 2026-12-31 registration open but actual eligibility/IP/effort must be confirmed; 0 applications/claims.
