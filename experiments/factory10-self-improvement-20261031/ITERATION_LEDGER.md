@@ -97,3 +97,8 @@
 - 独立Python数值复放成功(p=0.035650,mean=8.0240)，但Git代码SHA6ece596a93d4df7c717d9ef5748e6e6d819835a9886742b8cfe59a044ebf43ab不等于Buddy自报64fab3a0122aba1239f7fcae9d3a991a26b53d3afd00ae84b8c07cd892298dbb；stdout一行不符，单位/seed负例仅print未真正阻断。
 - 官方PubMed/USGS核查Wolfe-Simon原论文DOI正确10.1126/science.1197258，Buddy误写10.1126/science.332.1163；OpenAlex配额/RDKit安装命令/K-Dense技能数量亦需版本核验。旧F7仅摘要，不能计算同厂旧分差或复发率；本轮68分为R17正式基线。
 - R08 F8迁移：Q1源码SHA与stdout逐字一致，Q2官方型号/API/DOI标识与真实负例断言；只改下一轮研究方法与prompt，不动调度或生产。
+
+## R08 F8 unique dispatch, 2026-10-31 17:25 CST
+| R08 | F8 | b76c0601c10f4d60 | **PENDING** | NOT_EVALUABLE | old experiment R08 HISTORICAL_REFERENCE_ONLY (failed/0字，无正文) | formal old content defects=0; historical delivery/evidence gaps=5 | PENDING | NOT_COMPARABLE | NOT_COMPARABLE | Q1/Q2 INJECTED; PENDING_TEST |
+- same_factory_baseline_round=old experiment R08 HISTORICAL_REFERENCE_ONLY；same_factory_defects_count=0（旧正文缺失），historical_gaps_count=5，resolved_count=PENDING，recurred_count=NOT_COMPARABLE，same_factory_score_delta=NOT_COMPARABLE，cross_hour_transfer_verdict=INJECTED/PENDING_TEST。
+- WorkBuddy submit一次，4354字符prompt含完整3945字符Git回读反馈，Job b76c0601c10f4d60；FEEDBACK blob f4ca36d529a7461e5cb95c559d211a6034ec42b6。未收到报告，绝不评分；R07 F7 68/100仅为跨厂Q1/Q2方法证据来源。
