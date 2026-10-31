@@ -9,3 +9,11 @@
 - job_id: NOT_SUBMITTED; job_state: PREPARED; report: NOT_EVALUABLE; audit: NOT_EVALUABLE; same_factory_score_delta: NOT_COMPARABLE。
 - safety: 不安装插件、不授权/发布、不改生产/模型/其他分支、不新建定时任务。
 - next: 14:25或之后先核查Git与Job列表防重，实际派单全文反馈，记录Job ID；若返回报告，独立审计并Git回读。
+
+## R05实际派单（2026-10-31 14:25 CST之后）
+- pre-dispatch Git FEEDBACK blob d288c89ade89f492c4eea20c79fd3064c4882e8c，逐字回读PASS；完整3610字符反馈及实际prompt总4174字符已实际注入submit_workbuddy_task，不只是链接。
+- bridge_health再检HTTP200，running=0，queued=0，unresolved_orphan_count=0；jobs列表无本实验R05旧任务，故唯一派单。
+- actual_job_id: **09ea81a5a538420a**；conversation_id: FACTORY10-SELF-IMPROVEMENT-20261031-R05-F5；submit返回“已提交”。
+- job_state: **PENDING**（此时仅确认受理，尚无完成报告）；report_state: PENDING；audit: NOT_EVALUABLE；正式五维评分待真实报告。
+- U1/U2已实际注入；效果仍PENDING_TEST。旧F5无报告，formal_same_factory_defects_count=0，historical_gaps=4，score_delta=NOT_COMPARABLE。
+- 下一步只追get_workbuddy_result(09ea81a5a538420a)，**不得重复派单**；如任务仍运行则保持PENDING并后轮追单。
