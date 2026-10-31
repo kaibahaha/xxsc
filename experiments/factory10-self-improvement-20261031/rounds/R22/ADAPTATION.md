@@ -18,3 +18,14 @@ R21 Git与job均未找到，PREVIOUS_HOUR_MISSING；R20 F10 OOM无报告；采�
 - 实际注入：Git反馈回读exact，MCP submit prompt包含全文，job=1b6feeaf3f514af1 running。
 - 实际效果：PENDING / NOT_VERIFIED；等待正文、5事实抽查、MVE重放与五案例审计。
 - 下轮R23 F3先追R22；只迁移经实测的通用方法，不把F2安全结论机械套用游戏领域。
+
+## R22 FINAL｜两条反馈链的真实效果
+- R21紧邻上一小时Git 404且最近MCP任务未见R21，R20 OOM；R19为最近可审计跨厂延迟基线。T1/T2实际全文注入Git回读的4590字符反馈和4910字符MCP prompt，唯一job=1b6feeaf3f514af1，但模型OOM失败，**T1/T2对Buddy研究的效果=INJECTED_NOT_VERIFIED**，不得声称改善。独立ChatGPT原型四份工件落Git并回读，是另一路自主执行证据，不可用来冒充Buddy落实T1。
+- D1 P0 R12解析器五类fail-open：ChatGPT独立新原型14输入×2模式=28/28通过（其中26非法拒绝），**PARTIAL_PROTOTYPE_ONLY**；真实Buddy/OS边界未验证，P0仍开放。D2 P0可信清理归属未实现=NOT_VERIFIABLE；D3 P1许可证/真实scanner/成本未验证=NOT_VERIFIABLE；严格resolved=0/3，正式recurred_count=NOT_EVALUABLE（无Buddy新报告）。
+- R22正式五维/同厂Δ=NOT_EVALUABLE，不能拿R12 65或独立原型28/28代替研究评分。机会筛选3个官方具体页核查、资格确认0、领取0，独立于质量评分。
+- 下一轮R23 F3先只读核桥接daemon是否仍OOM；若健康HTTP200但任务推理失败，按唯一Job记录失败而不无限重复。跨厂可迁移方法仍是完整工件+官方现行条款，**本轮未通过Buddy效果验证**；游戏工厂另需独立读取R03/R13真实缺陷，不能用F2原型直接代替。
+## CROSS_FACTORY_TRANSFER FINAL
+|source_round|source_factory|target_round|target_factory|method_change|baseline_metric|target_metric|observed_metric|verdict|evidence_path|
+|---|---|---|---|---|---|---|---|---|
+|R19|F9|R22|F2|T1原始源码/输入/runner/日志/SHA可重放|R19 0/5核心工件可复算|Buddy MVE 1/1可重放|Buddy无报告，ChatGPT独立原型另行28/28通过|INJECTED_NOT_VERIFIED|R22/FEEDBACK_TO_BUDDY.md;R22/WORKBUDDY_FAILURE_RAW.md;R22/INDEPENDENT_SECURITY_PROBES.md|
+|R19|F9|R22|F2|T2现行官方版本/价格/许可精确核验|R19 6抽2错|Buddy ≥5项0实错|Buddy 0项可抽；ChatGPT背景官方核验不计Buddy抽样|INJECTED_NOT_VERIFIED|R22/FEEDBACK_TO_BUDDY.md;R22/CHATGPT_AUDIT.md|
