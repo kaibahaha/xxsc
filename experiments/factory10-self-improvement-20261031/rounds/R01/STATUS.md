@@ -16,3 +16,11 @@
 - Git: STATUS/FEEDBACK/ADAPTATION/LEDGER 按文件逐一回读；本STATUS写入与回读SHA由后续检查确认。
 - Next: R02 F2应先追取本Job，完成独立审计，提取跨工厂可验证方法后再派单。
 - Safety: 未修改桥接器/模型/生产、未安装插件、未创建其他自动化。
+
+
+## 完成后补记（真实状态）
+- WorkBuddy job aab758d7c33d4631: **DONE**；返回 RESULT_STATUS: COMPLETE；声称远端382行完整报告。
+- MCP可取得文本：1517字**摘要**，非382行正文；WORKBUDDY_REPORT.md存实际返回摘要，commit b1c47fd0ff1400f6ede81e4abdcf80c7224926f7，blob 39229a8f2bc368973cbadf897749398c355f6604，Git回读验证通过。
+- ChatGPT独立审计：核心SF01/SF02/SF03事实纠偏已对照官方文档核查；全文未到，正式评分NOT_EVALUABLE；CHATGPT_AUDIT.md commit 33a600790aee6e57d30c9e1ea5bd93fbe8837cb9，blob 455b1a5ee9e08eaa2fba55d421b202f9693b6a67，回读验证通过。
+- R01最终状态：DONE_SUMMARY_ONLY / AUDIT_PARTIAL / FULL_REPORT_PENDING / GIT_SUMMARY_VERIFIED。下一轮先补完整正文，不重复研究派单。
+- R02跨小时迁移：M1 完整正文返回与证据覆盖；M2 官方版本差异检查+五案例负例回滚。
