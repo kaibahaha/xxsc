@@ -115,3 +115,11 @@
 | R09 | F9 | 75e17092ec644e6c | **PENDING** | NOT_EVALUABLE | old experiment R09 HISTORICAL_REFERENCE_ONLY, failed/0字; new F9 MISSING_BASELINE | 0 confirmed old content defects; 5 historical evidence gaps | NOT_EVALUABLE | NOT_COMPARABLE | NOT_COMPARABLE | S1/S2 INJECTED; PENDING_TEST |
 - FEEDBACK blob 04c5c4e50e4063353830da8af673b69ae69759b8 readback PASS; complete 3787 chars injected into 3981-char MCP prompt; STATUS/ADAPTATION Git readback PASS. R08 F8 job b76c0601c10f4d60 DONE/73 baseline only for R18; R09 must not compare cross-factory scores causally.
 - R09 only job 75e17092ec644e6c. Retrieve by get_workbuddy_result; no duplicate submission. Final audit only after full MCP report and independent verification.
+
+## R09 F9 final independent audit (supersedes prior PENDING; 2026-10-31)
+| round | factory | job_id | state | score / five dimensions | same_factory_baseline_round | same_factory_defects_count | resolved_count | recurred_count | same_factory_score_delta | cross_hour_transfer_verdict |
+|---|---|---|---|---|---|---|---|---|---|---|
+| R09 | F9 | **75e17092ec644e6c** | **DONE / FULL_REPORT_AND_AUDIT_GIT_VERIFIED** | **65/100 (16/18/13/11/7)** | old experiment R09 failed/0字 HISTORICAL_REFERENCE_ONLY; new F9 baseline=R09 | 0 observable old content defects; 5 historical evidence gaps | 1 delivery gap RESOLVED, 4 PARTIAL | old content NOT_COMPARABLE; new factual errors ≥3 | NOT_COMPARABLE | **S1 PARTIAL_EFFECTIVE / NEW_P0_FAIL_OPEN; S2 FAILED_FACT_ACCURACY** |
+- WorkBuddy DONE 231秒、返回17221字文本；真实报告正文16964字。Report commit 9e5255815b0bdfbcd916c27d6eeed571a8214e2c / blob ada19a28cda58e5b90ae1b13375a4d94b131015d，Git回读PASS；Audit commit 06d180db6a41282f5b8744a58059c39965566d80 / blob 6b6d1f70016f5fd84da8f7ff6c99481d9917889e，Git回读PASS；STATUS commit 0367a869299792f134da544499fa116307c85078，ADAPTATION commit 33eebaa24d3b4f6bff89e0eaa67a4a4000e0a68b，均Git回读PASS。
+- 独立代码复放：S1源码SHA1/1匹配，5故障×普通/-O 10/10真实非零；但缺设备ID、缺ts、空命令三类两模式均错误ACCEPTED（P0）。官方抽核5项3错：RPi5 4GB官方$110非$70，Mosquitto当前2.1.2非2.0.20，ESP-IDF stable v6.1非v6.0.2；Zephyr4.5与D435$314正确。Case B缺完整源码/冻结JSONL，RUN不能独立证实。
+- R10 F10强制迁移T1缺字段/空输入真实拒绝、T2当前官方许可/价格/版本与完整可复放工件双门禁；仅研究方法，不改其他任务、分支、生产或模型。
