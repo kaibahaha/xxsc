@@ -16,3 +16,7 @@
 - CHATGPT_AUDIT.md final commit **5cad14767f467e54797646cad0478a125b70cfb7** / blob **097527791272fa469927780c33507a3a2b5d1920**，独立回读PASS；五维 **71/100 (18/18/16/15/4)** vs R08 **73/100**，Δ=-2，事实7抽2错、源码2/2哈希匹配但stdout不符、独立新增9逻辑安全探针8 ADMITTED。
 - OPPORTUNITY_RADAR.md commit 60b1c17ef575fce164cb70a778efb2f79dadd11a、ACTION_CHECKLIST.md commit 1b3552b5dc9ee4dcb332ff4008e2e477242e790f，均回读PASS；全局OPPORTUNITY_LEDGER.md commit 0b04205605b3d17bdf1074210e7f24422340e6bb，去重新增4项、注册领取0。
 - final_state=DONE_JOB / FULL_REPORT_GIT_VERIFIED / INDEPENDENT_AUDIT_GIT_VERIFIED / **FINAL_ACCEPTANCE_FAIL** / PRODUCTION_NOT_READY。研究报告已交付不代表研究质量通过；R19验证可信签名与nonce、版本/型号及日志原始SHA。无模型切换、生产写入、插件安装、付费/报名或新定时任务。
+
+## R18 postflight independent WorkBuddy job check
+- list_workbuddy_jobs(limit=8) confirms unique e06ced6b21e84758 **DONE / 298 seconds / 35661 chars**; bridge_health HTTP200 CodeBuddy reachable, running=0 queued=0 pending_queue_depth=0; unresolved_orphan_count=2 / possible_remote_overlap=true remain old risk, not current queue blockage. No duplicate R18 job.
+- ITERATION_LEDGER.md final commit a60822198b9ce5aa34cda87d06e2a88d459df110, blob ec3e7a5e012ffc13d94f3d832941c5f1f1590cb5, independent exact readback PASS. All required R18 round files and opportunity global ledger Git readback PASS; audit FAIL remains unchanged.
