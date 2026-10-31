@@ -1,0 +1,17 @@
+# R03 F3 游戏互动工厂｜真实执行状态
+- experiment: FACTORY10-SELF-IMPROVEMENT-20261031
+- planned_at: 2026-10-31 12:25 Asia/Shanghai；actual_started: 2026-10-31 12:28 Asia/Shanghai（约，迟启动不重排）
+- factory: F3 游戏互动
+- bridge_precheck: HTTP200; version=3.4-candidate; codebuddy_reachable=true; active_jobs=0; queued_jobs=0; unresolved_orphan_count=0
+- previous_R02: Job 762c8f0887fc4188 DONE, 463s, Git全文/审计回读PASS，76/100；M1全文交付EFFECTIVE，M2官方准确性/真实负例PARTIAL。
+- same_factory_history: old experiment R03 Job 5b8ee940847e42f2 DONE, old audit83/100（20/19/16/16/12）, HISTORICAL_REFERENCE; 本实验R03是BASELINE，R13才可计算同厂Δ。
+- feedback: rounds/R03/FEEDBACK_TO_BUDDY.md，commit 07cabb4a5a08707ada9fe353f568e919962025b0，blob bdc5d77e03af9a2adc39c06c62e2ad9df5837598，已Git独立回读一致。
+- actual_submit: WorkBuddy MCP Stable submit_workbuddy_task；prompt包含FEEDBACK_TO_BUDDY.md完整正文（含跨厂M1/M2与六项同厂历史缺陷及五案例），conversation_id FACTORY10-SELF-IMPROVEMENT-20261031-R03-F3。
+- job_id: 491e5363958242bd
+- job_state: PENDING（已真实提交，尚未取得完整研究报告）；禁止重复派单。
+- report_state: PENDING；未取得正文不得创建伪WORKBUDDY_REPORT.md。
+- audit_state: NOT_EVALUABLE；评分与效果待报告。
+- cross_factory_transfer: M1证据四级/版本核查、M2真实负例与可复现工件；实际注入，效果PENDING。
+- same_factory_remediation: 历史六项缺陷已逐项派单，效果PENDING。
+- safety: 不安装插件、不授权、不切模型、不修改生产或其他Git分支、不读取凭据。
+- next: 用get_workbuddy_result(491e5363958242bd)追取；取得正文后独立评分、回填状态与迭代总账。
