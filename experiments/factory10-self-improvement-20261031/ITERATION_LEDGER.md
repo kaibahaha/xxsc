@@ -32,3 +32,8 @@
 ## R01 delayed full-report recovery started during R02
 - Original R01 research job aab758d7c33d4631 DONE; MCP only returned summary.
 - Read-only file retrieval recovery job **93de654703984b20** submitted after R02 F2 completed; this is not a new R01 research task. If PENDING at next run, retrieve with get_workbuddy_result(job_id=93de654703984b20); no duplicate submission. Original remote path /tmp/factory10-self-improvement-20261031/R01/WORKBUDDY_REPORT.md.
+
+## R01 full report recovery final
+- Original R01 job aab758d7c33d4631 DONE 696s; read-only recovery job 93de654703984b20 DONE, full 382 lines recovered and Git-verified. R01 full report blob c6d0137ad338f031399c065190621be0d9e65d43; original summary preserved separately.
+- R01 **final baseline 79/100 (22/18/14/14/11)**, supersedes initial NOT_EVALUABLE after delayed full text. historical old F1 70/100 not comparable; 3 conceptual RESOLVED, 3 PARTIAL, 0 old P0 recurrences. Audit blob beb95d74f58af7e76131ac5a7a28c9636daabad5.
+- R02 final baseline 76/100 (21/18/14/14/9), M1 full-text delivery EFFECTIVE; cross-factory score comparison invalid. R11 and R12 use their own same-factory baselines 79 and 76.
