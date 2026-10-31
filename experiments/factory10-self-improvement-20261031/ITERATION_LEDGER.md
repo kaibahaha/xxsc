@@ -89,3 +89,11 @@
 ## R07 F7 unique dispatch, 2026-10-31 16:25 CST
 | R07 | F7 | c20368ab43794a78 | **PENDING** | NOT_EVALUABLE | old experiment R07 HISTORICAL_REFERENCE_ONLY (summary only) | 0 confirmed old content defects; 5 historical delivery/evidence gaps | PENDING | NOT_COMPARABLE | NOT_COMPARABLE | W1/W2 INJECTED; PENDING_TEST |
 - Git FEEDBACK 4210字符、blob 2790f631d6e6b89fc2924fbab8c4c748b4bbe0a3，完整注入4695字符MCP prompt；唯一submit返回job_id。R06上一小时真实DONE/65分、两项通用改进W1/W2已逐字注入。旧F7正文和评分不可得，SAME_FACTORY_BASELINE_MISSING；R07正式评分待全文审计。仅追同一job，不重派。
+
+## R07 F7 final audit, 2026-10-31 (supersedes PENDING, preserves immutable event history)
+| R07 | F7 | c20368ab43794a78 | **DONE / REPORT_AND_AUDIT_GIT_VERIFIED** | **68/100 (17/17/13/13/8)** | old experiment R07 HISTORICAL_REFERENCE_ONLY (summary only) | 0 old content defects; 5 historical evidence/delivery gaps | 1 delivery gap resolved, 4 partial | NOT_COMPARABLE | NOT_COMPARABLE | W1 PARTIAL_IMPLEMENTED/REAL_ERROR_HANDLING_NOT_VERIFIED; W2 PARTIAL_EFFECTIVE/FAILED_ARTIFACT_INTEGRITY_AND_FACT_ACCURACY |
+- Unique WorkBuddy job DONE 372秒，19114字符完整MCP报告，Git report commit 0f688def9113b3f884a26431fc2362be2918eb88 / blob 4763ad29eeb654d3ed247c25dca095ce94072e08 readback PASS。
+- ChatGPT独立审计68/100，audit commit 070a6f6ee22a20673b69c07cc795f0d6e0cf7caf / blob dedbe365cf57cc77380a4fb504340282266d2ec3 readback PASS；ADAPTATION final commit ff0a1b4db50f49380c6fba7523e782a6e2aa33ef / blob a4f12a52b18447adbb2e07d45c5f50f33379f343 PASS；STATUS final commit **e12a708106c0fc6ffbc314f2ad653d3d017b4d67** / blob **5dd4ed874417b913ecfa3cf73d1d8e6bb1144ff9** readback PASS。
+- 独立Python数值复放成功(p=0.035650,mean=8.0240)，但Git代码SHA6ece596a93d4df7c717d9ef5748e6e6d819835a9886742b8cfe59a044ebf43ab不等于Buddy自报64fab3a0122aba1239f7fcae9d3a991a26b53d3afd00ae84b8c07cd892298dbb；stdout一行不符，单位/seed负例仅print未真正阻断。
+- 官方PubMed/USGS核查Wolfe-Simon原论文DOI正确10.1126/science.1197258，Buddy误写10.1126/science.332.1163；OpenAlex配额/RDKit安装命令/K-Dense技能数量亦需版本核验。旧F7仅摘要，不能计算同厂旧分差或复发率；本轮68分为R17正式基线。
+- R08 F8迁移：Q1源码SHA与stdout逐字一致，Q2官方型号/API/DOI标识与真实负例断言；只改下一轮研究方法与prompt，不动调度或生产。
