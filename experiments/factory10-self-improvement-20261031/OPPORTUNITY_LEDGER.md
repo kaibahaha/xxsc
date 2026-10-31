@@ -35,3 +35,13 @@
 |F3-UNITY-ODIN|F3,F2|https://itch.io/jam/official-unity-game-jam-2026|2026-10-31|2026-10-31|C UNVERIFIED|OBSERVE / NOT_CLAIMED|兑换条件、到期与支付未知|1个月Odin Inspector+Validator Jam许可|UNKNOWN|核官方领取条款再决定|
 |F3-IMAGINARY-MINI|F3,F4,F5|https://itch.io/jam/imaginary-game-mini-jam-november-2026|2026-10-31|2026-10-31|C observe|WAIT_OPEN|团队/素材贡献规则需核|无本轮现金奖、社区展示|2026-11-13至16日|低优先观察|
 - F3新增7项均为官方主办方/项目页面规则线索，**用户个人资格0项已确认**，实际报名/批准/领取/使用均0；不把免费软件资源等同现金到账。
+
+
+## R14 F4 new official-source check (2026-10-31)
+|ID|URL|Priority|Grade|Status|Last verified|Eligibility|Next action|Realized|
+|---|---|---|---|---|---|---|---|---|
+|R14-YOUCAM-VTO-2026|https://youcam-api-skin-ai-ecommerce.devpost.com/rules|P0|C|OPEN until Nov 2 11:45 EST; China residents excluded|2026-10-31|UNKNOWN, China resident excluded|WATCH_ONLY, verify true residence/IP, no submission|0|
+|R14-CANVA-PREMIUM-APPS|https://www.canva.com/developers/premium-apps-program/|P2|B|Ongoing developer application|2026-10-31|Requires published Apps SDK app, 18+, program rules; user UNKNOWN|PREPARE isolated MVP, no application|0|
+|R14-CANVA-FREE|https://www.canva.com/pricing/|P2|B|Free tier advertised, regional terms unknown|2026-10-31|UNKNOWN|Observe/compare actual free plan|0|
+|R14-ADOBE-EXPRESS-FREE|https://www.adobe.com/creativecloud.html|P2|C|Free membership advertised, paid trial risk|2026-10-31|UNKNOWN|Observe; do not auto-renew trial|0|
+- Dedup note: URLs may have prior records under other IDs; preserve old records, treat this section as R14 verification observations, not separate claimed resources. No registration, payout, credits, public submission or legal terms accepted.
