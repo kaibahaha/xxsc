@@ -73,3 +73,7 @@
 - Independent WAV 16044 bytes, SHA256 5fc01c0f096e4def771d173852278fe14fbd9240326d4461394af901e9be4a65, 8000 PCM frames, L1 independently reproducible, L2 auditory quality and L3 rights NOT_TESTED.
 - New R05 issues: Opus Pro $14.5/month annual billed $174, not $14.5/year; Runway Gen4.5 $7.20/min basic API rate rather than $15/min; Suno song downloads/rights extrapolation; platform policy/rights missing; ffmpeg scale aspect ratio issue. R15 same-factory baseline 73.
 - R06 cross-factory transfer (max 2): V1 official-source pricing/numerical arithmetic check; V2 metadata/DOI structure vs scientific semantic evidence/rights. Must actually inject into R06 WorkBuddy prompt and verify outcome.
+
+## R06 F6 initial dispatch, 2026-10-31 15:25 CST
+| R06 | F6 | e8d1a46374fc4607 | **PENDING** | NOT_EVALUABLE | old experiment R06 HISTORICAL_REFERENCE_ONLY (429 failed, no report) | 0 old content defects; 5 historical evidence/delivery gaps | PENDING | NOT_COMPARABLE | NOT_COMPARABLE | V1/V2 INJECTED; PENDING_TEST |
+- Actual WorkBuddy submit once with 4686-char prompt including full Git-verified feedback; Git feedback blob 064a435fd7462e3c975c9917c88d6cacaddd3295; no duplicate submission. Await get_workbuddy_result; old R06 job 52441e82f15942ab failed 429, not a baseline. Earlier rounds untouched.
