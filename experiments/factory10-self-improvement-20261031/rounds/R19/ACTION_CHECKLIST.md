@@ -1,0 +1,6 @@
+# R19 F9｜机会行动清单（安全准备阶段）
+截至2026-11-01 04:22 Asia/Shanghai：**无已确认资格且可直接行动的A/B级项目**，P0=0、P1=0；不为了数量凑活动。候选见OPPORTUNITY_RADAR.md，均为观察/资格复核，不注册、不付款、不接受条款、不公开提交。
+优先研究（非实际申请）Arm Flexible Access：访问 https://www.arm.com/resources/program-reg/flexible-access-startup ，核对是否确实自研SoC、私营主体、融资与年收入条件；若不做芯片设计则放弃；若满足条件，准备公开公司网站与产品简介，停在申请表提交前，记录非敏感页面状态，法律/IP/版税条款由用户确认。预计规则审查20–40分钟，报名尚未执行。
+其次研究Edge Impulse Developer：访问 https://www.edgeimpulse.com/pricing ，核对Developer的内部R&D许可、免费计算资源与商业部署限制，先设计合成传感器数据试验而非量产，任何账户注册/条款接受前停止，记录截图或公开URL。预计15–30分钟；无真实注册。
+AWS Activate与NVIDIA Inception为既有全局台账重复机会；Google Start按https://cloud.google.com/startup/pre-funded检查是否符合成立24个月、MVP、未领过云额度及网站/域名/账单资格，**不操作用户云账号、不绑定支付**。若未核实资格，一律观察，不标“已拿到”。
+所有浏览器/Agent任务停止条件：出现登录/OTP/CAPTCHA/身份证明/信用卡/自动续费/支付/签约/授权条款/公开提交/跨境敏感信息即停；只返回页面URL、日期、非敏感状态与必要截图，禁止写入凭据。ACTION_NOT_EXECUTED。
