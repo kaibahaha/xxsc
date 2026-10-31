@@ -24,3 +24,10 @@
 - ChatGPT独立审计：核心SF01/SF02/SF03事实纠偏已对照官方文档核查；全文未到，正式评分NOT_EVALUABLE；CHATGPT_AUDIT.md commit 33a600790aee6e57d30c9e1ea5bd93fbe8837cb9，blob 455b1a5ee9e08eaa2fba55d421b202f9693b6a67，回读验证通过。
 - R01最终状态：DONE_SUMMARY_ONLY / AUDIT_PARTIAL / FULL_REPORT_PENDING / GIT_SUMMARY_VERIFIED。下一轮先补完整正文，不重复研究派单。
 - R02跨小时迁移：M1 完整正文返回与证据覆盖；M2 官方版本差异检查+五案例负例回滚。
+
+## R01迟到全文补交｜R02执行期间完成
+- Read-only recovery job 93de654703984b20 DONE；原始R01 F1报告382行、21275字符完整回传；不是重跑研究。
+- 原摘要保留 WORKBUDDY_SUMMARY_ORIGINAL.md（Git回读验证）；WORKBUDDY_REPORT.md替换为原始完整正文，commit caa912f35febeaf4aec6cb3d0f8bf1abb7b72f6d, blob c6d0137ad338f031399c065190621be0d9e65d43, verified.
+- ChatGPT完整审计已追加CHATGPT_AUDIT.md，commit 4096ed54ed7ea3879b595fe24bbf77e63d577ab1，blob beb95d74f58af7e76131ac5a7a28c9636daabad5，verified；**正式评分79/100 (22/18/14/14/11)**，取代早期NOT_EVALUABLE最终状态。
+- Same-factory old historical six defects: 3 RESOLVED conceptual, 3 PARTIAL; new experiment F1 baseline=79; R11比较。
+- 原先R02派单前的“全文缺失”事实仍成立，追回发生于R02研究完成后，不可倒填。
