@@ -28,3 +28,7 @@
 - cross_hour_transfer_verdict: M1 EFFECTIVE_DELIVERY; M2 PARTIAL_EFFECTIVE, accuracy NOT_PROVEN. New audit defects: headless permission command ambiguity, license/scanner fixture oversimplification, sandbox runtime unverified, destructive worktree cleanup.
 - R03 handoff: ① evidence status tiers (official/environment/executed/independently verified), ② 5 cases with genuine negative test + rollback and at least one deterministic reproducible probe.
 - Prior ledger initial row remains immutable audit trail; this final block supersedes its PENDING state.
+
+## R01 delayed full-report recovery started during R02
+- Original R01 research job aab758d7c33d4631 DONE; MCP only returned summary.
+- Read-only file retrieval recovery job **93de654703984b20** submitted after R02 F2 completed; this is not a new R01 research task. If PENDING at next run, retrieve with get_workbuddy_result(job_id=93de654703984b20); no duplicate submission. Original remote path /tmp/factory10-self-improvement-20261031/R01/WORKBUDDY_REPORT.md.
