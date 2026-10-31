@@ -6,3 +6,9 @@
 - Semantic Scholar：https://webflow.semanticscholar.org/product/api 。先核查API条款和免费额度，未申请密钥。
 - 过期投稿：ICLR 2027、SIAI 2026不列可行动；HRI 2027 11月20日相关子项目仅观察，等待正式规则复核。
 - 下一步：R16 WorkBuddy只读补全官方细则、时间、时区、资格、成本、奖金、知识产权和高价值筛选；ChatGPT再独立核验并更新OPPORTUNITY_LEDGER，禁止把候选当已到账。
+## IEEE 2027 可执行准备卡（独立核验补充）
+- 截止：2026-12-31，官方页面未标时区，按提前至少48小时提交材料规划，不能假定北京时间23:59。
+- 资格：年满18周岁，1–5人团队；需原创工业/IoT生成式AI方案，用户本人资格/团队组成待确认。
+- 资料：团队名称、成员信息、既往研究经验（不强制）、1–2段创意摘要；报名页 https://ai.ieee-ies.org/registration/index.html 。
+- 研究工期：2027年1–5月里程碑，预计投入较大，须先做机会成本评估。IP归团队但录用论文须授权发表；导师实质贡献须合规署名。
+- 当前仅PREPARE_ONLY，注册/提交ACTION_NOT_EXECUTED；待用户明确确认后才可正式提交。
