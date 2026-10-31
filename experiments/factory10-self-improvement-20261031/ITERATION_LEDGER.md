@@ -142,3 +142,14 @@
 - opportunities_found=5; officially_verified_count=5(public rules only); currently_open_count=4(ongoing application entrance); eligibility_confirmed_count=0; P0/P1/P2=0/0/4; actionable_count=0; registration_attempted_count=0; registration_completed_count=0; user_confirmation_required_count=4; resource_claimed_count=0; expired_or_invalid_count=0; ip_or_payment_risk_count=4; action_not_executed_count=4.
 - R11 FEEDBACK/STATUS/ADAPTATION/OPPORTUNITY_RADAR/ACTION_CHECKLIST/CHATGPT_AUDIT/EXECUTIVE_QUALITY_GATE and root OPPORTUNITY_LEDGER created/updated and independently Git-readback verified. WORKBUDDY_REPORT.md awaits real MCP result. No duplicate submission.
 
+
+
+## R12 F2 initial dispatch 2026-10-31 21:25 Asia/Shanghai
+|round|factory|job_id|state|score/five dimensions|same_factory_baseline_round|same_factory_defects_count|resolved_count|recurred_count|same_factory_score_delta|cross_hour_transfer_verdict|
+|---|---|---|---|---|---|---|---|---|---|---|
+|R12|F2|9d502bcdaf6e40bc|QUEUED / PENDING / GIT_PRELIMINARY_VERIFIED|NOT_EVALUABLE|R02 76/100 (21/18/14/14/9)|3重点整改（CLI/OS权限、许可证与扫描样本、危险回滚/恢复/成本）|NOT_EVALUABLE|NOT_EVALUABLE|NOT_EVALUABLE|R11未完成；R10 DELAYED_BASELINE T1/T2 ACTUALLY_INJECTED / NOT_VERIFIED|
+- FEEDBACK_TO_BUDDY.md 4531字符Git blob 68197c557506b154220d2ad253b0512a34a78e17 / commit cada083e8b989f9714a531044571f4bff516df9f，已独立回读，全文实际注入4953字符MCP prompt。R12唯一submit成功，list显示QUEUED；不得重复派单。R11 job13434ad175b04267仍QUEUED，WORKBUDDY_REPORT.md缺失。
+- R12初步交付：STATUS/ADAPTATION/CHATGPT_AUDIT/EXECUTIVE_QUALITY_GATE/OPPORTUNITY_RADAR/ACTION_CHECKLIST和FEEDBACK均由GitHub连接器写入并逐字回读。真实WORKBUDDY_REPORT.md尚不存在，正式研究评分及同厂Δ不得计算。
+- V4 dashboard: fact_check_sample_count=0(Buddy pending); material_fact_error_count=NOT_EVALUABLE; fact_gate_verdict=NOT_VERIFIED; case_status_counts=NOT_EVALUABLE; core_mve_status=PENDING; core_mve_independent_replay=NOT_VERIFIED; artifact_reproducibility_verdict=NOT_VERIFIED; red_team_test_count=0; red_team_pass_count=0; red_team_blocked_count=0; p0_open_count=NOT_EVALUABLE; p1_open_count=NOT_EVALUABLE; p2_open_count=NOT_EVALUABLE; claims_overstated_count=NOT_EVALUABLE; production_readiness=NOT_ASSESSED。
+- Opportunity metrics: opportunities_found=6; officially_verified_count=6(public rules); currently_open_count=4(ongoing official entry; user eligibility unknown); eligibility_confirmed_count=0; P0/P1/P2=0/0/4 B candidates; actionable_count=0; registration_attempted=0; registration_completed=0; user_confirmation_required=4; resource_claimed=0; expired_or_invalid_count=1(GSoC2026 excluded); ip_or_payment_risk_count=3; action_not_executed_count=4。
+- 队列健康：3.4-candidate HTTP200 codebuddy_reachable=true；提交前1running/2queued、提交后1running/3queued；unresolved_orphan_count=1、possible_remote_overlap=true，已记录共享队列风险，不无限等待。
