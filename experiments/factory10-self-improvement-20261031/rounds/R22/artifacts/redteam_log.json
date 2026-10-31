@@ -1,0 +1,254 @@
+[
+  {
+    "case": "valid",
+    "mode": "normal",
+    "expected_exit": 0,
+    "actual_exit": 0,
+    "stdout": "{\"code\": \"OK\", \"status\": \"ACCEPTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "relative_path",
+    "mode": "normal",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"PATH_ABSOLUTE\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "unknown_mode",
+    "mode": "normal",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"MODE\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "negative_budget",
+    "mode": "normal",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"BUDGET\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "sandbox_string_true",
+    "mode": "normal",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"SCHEMA_KEYS\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "empty_rules",
+    "mode": "normal",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"RULES\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "symlink_escape",
+    "mode": "normal",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"PATH_ESCAPE\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "prefix_collision",
+    "mode": "normal",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"PATH_ESCAPE\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "duplicate_id",
+    "mode": "normal",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"RULE_ID\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "budget_bool",
+    "mode": "normal",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"BUDGET\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "wildcard_cleanup",
+    "mode": "normal",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"PATH_META\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "bypass_mode",
+    "mode": "normal",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"MODE\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "unknown_action",
+    "mode": "normal",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"ACTION\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "empty_input",
+    "mode": "normal",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"EMPTY_OR_TYPE\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "valid",
+    "mode": "-O",
+    "expected_exit": 0,
+    "actual_exit": 0,
+    "stdout": "{\"code\": \"OK\", \"status\": \"ACCEPTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "relative_path",
+    "mode": "-O",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"PATH_ABSOLUTE\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "unknown_mode",
+    "mode": "-O",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"MODE\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "negative_budget",
+    "mode": "-O",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"BUDGET\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "sandbox_string_true",
+    "mode": "-O",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"SCHEMA_KEYS\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "empty_rules",
+    "mode": "-O",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"RULES\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "symlink_escape",
+    "mode": "-O",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"PATH_ESCAPE\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "prefix_collision",
+    "mode": "-O",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"PATH_ESCAPE\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "duplicate_id",
+    "mode": "-O",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"RULE_ID\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "budget_bool",
+    "mode": "-O",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"BUDGET\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "wildcard_cleanup",
+    "mode": "-O",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"PATH_META\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "bypass_mode",
+    "mode": "-O",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"MODE\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "unknown_action",
+    "mode": "-O",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"ACTION\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "empty_input",
+    "mode": "-O",
+    "expected_exit": 2,
+    "actual_exit": 2,
+    "stdout": "{\"code\": \"EMPTY_OR_TYPE\", \"status\": \"REJECTED\"}",
+    "stderr": "",
+    "pass": true
+  }
+]
