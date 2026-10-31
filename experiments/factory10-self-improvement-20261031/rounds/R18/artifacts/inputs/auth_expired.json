@@ -1,0 +1,7 @@
+{
+  "authorized": true,
+  "source": "operator_console",
+  "expires_at": "2026-10-31T00:00:00+00:00",
+  "approver": "supervisor-07",
+  "device_id": "tb4-pilot-001"
+}
