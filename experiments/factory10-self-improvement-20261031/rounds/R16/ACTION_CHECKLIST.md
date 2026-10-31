@@ -12,3 +12,9 @@
 - 资料：团队名称、成员信息、既往研究经验（不强制）、1–2段创意摘要；报名页 https://ai.ieee-ies.org/registration/index.html 。
 - 研究工期：2027年1–5月里程碑，预计投入较大，须先做机会成本评估。IP归团队但录用论文须授权发表；导师实质贡献须合规署名。
 - 当前仅PREPARE_ONLY，注册/提交ACTION_NOT_EXECUTED；待用户明确确认后才可正式提交。
+
+## R16_FINAL_LICENSE_CORRECTION｜风险修正
+- OpenAlex免费API元数据CC0，文章全文/摘要许可另核；不要依Buddy的CC-BY结论决策。免费key每日USD1预算、需验证邮箱，未授权不注册。
+- Crossref多数元数据无版权限制，摘要可能受权利限制；不要默认全部须署名或全部可商用全文。
+- Google Research Scholar 2026/27开放与截止未获官方核实，从行动清单排除。
+- IEEE IES 2027可准备但不能代用户报名，知识产权与署名、团队资格和2027年1–5月投入须用户确认。
