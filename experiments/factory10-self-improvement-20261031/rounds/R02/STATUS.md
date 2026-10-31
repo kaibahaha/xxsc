@@ -25,3 +25,7 @@
 - Final state: DONE / GIT_FULL_REPORT_VERIFIED / AUDIT_VERIFIED; R02 baseline score76, R12 for same-factory comparison.
 - Bridge after job: codebuddy_reachable=true, active_jobs=0, queued=0, unresolved_orphan_count=0, possible_remote_overlap=false.
 - R01 F1 full remote report still pending recovery; do not mistake R02's success for R01's full-text repair.
+
+## R01补交状态更新（R02研究完成之后）
+- R01只读追回job 93de654703984b20 DONE；382行原文已写Git并回读，R01正式评分79/100 (22/18/14/14/11)，不再是NOT_EVALUABLE。
+- 此恢复晚于R02任务实际派发，R02 M1仍以当时“R01仅摘要”作为真实基线；R02研究质量76/100不能与R01 79/100做跨厂因果分差。
