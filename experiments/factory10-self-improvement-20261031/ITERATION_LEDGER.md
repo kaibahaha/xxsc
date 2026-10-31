@@ -108,3 +108,10 @@
 - WorkBuddy unique Job b76c0601c10f4d60 DONE 489秒、14517字符MCP完整正文；WORKBUDDY_REPORT.md commit af138af32037bec1c145236137c8cd939906234e / blob 853cbb7dc1c574d0653f8318969c3e64bdeb0d56 exact Git readback PASS；CHATGPT_AUDIT.md commit 54471709deaf5141b14e9b8b3363f58cc61da226 / blob e38e48bb3a3f1f452c3ce84103d8bb19ee143592 exact readback PASS。
 - 独立Python3.13.5重放：源码SHA2/2与stdout SHA1/1全一致；普通解释器五负例5/5非零，**python -O estop断言被绕过exit0**；ROS2消息误引ROS1 Fuerte文档，TurtleBot4标准相机应OAK-D-Pro，RealSense D435官方$314而非$179。五案例均PLAN_ONLY/NOT_TESTED，不可宣称实体机器人安全认证。
 - 旧F8仅历史交付缺口无正文，不计算同厂旧评分差/复发率；新F8基线73供R18。R09跨厂最多两项方法：S1源码/输出字节级复放与双模式真实安全拒绝，S2官方型号/版本/现价精确核验。早期PENDING行保留为事件，最终DONE为当前状态。
+
+## R09 F9 unique dispatch 2026-10-31 18:25 Asia/Shanghai
+| round | factory | job_id | state | score / five dimensions | same_factory_baseline_round | same_factory_defects_count | resolved_count | recurred_count | same_factory_score_delta | cross_hour_transfer_verdict |
+|---|---|---|---|---|---|---|---|---|---|---|
+| R09 | F9 | 75e17092ec644e6c | **PENDING** | NOT_EVALUABLE | old experiment R09 HISTORICAL_REFERENCE_ONLY, failed/0字; new F9 MISSING_BASELINE | 0 confirmed old content defects; 5 historical evidence gaps | NOT_EVALUABLE | NOT_COMPARABLE | NOT_COMPARABLE | S1/S2 INJECTED; PENDING_TEST |
+- FEEDBACK blob 04c5c4e50e4063353830da8af673b69ae69759b8 readback PASS; complete 3787 chars injected into 3981-char MCP prompt; STATUS/ADAPTATION Git readback PASS. R08 F8 job b76c0601c10f4d60 DONE/73 baseline only for R18; R09 must not compare cross-factory scores causally.
+- R09 only job 75e17092ec644e6c. Retrieve by get_workbuddy_result; no duplicate submission. Final audit only after full MCP report and independent verification.
