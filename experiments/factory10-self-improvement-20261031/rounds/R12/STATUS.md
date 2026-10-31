@@ -13,3 +13,12 @@
 ## 队列风险补充核验
 - 实际再次调用bridge_health/list_workbuddy_jobs/get_workbuddy_result：running=1、queued=3、unresolved_orphan_count=1、possible_remote_overlap=true、max_queue_wait_s=3600；R11 job13434ad175b04267仍被列QUEUED且累计等待约3692秒（已超过公开配置的3600秒），R12 job9d502bcdaf6e40bc QUEUED约130秒。尚不清楚TTL是在队首出队时才检查还是即时淘汰，**不能凭超时直接断言桥接器故障或任务已失败**；但应列为P1调度观测缺口，后轮检查是否SKIPPED_STALE/FAILED或开始执行。
 - 资源雷达T03 job e0f1ba8f049b4f44 正在运行；R11/R12均不重复派单、不取消其他任务、不更改队列或模型。R11报告仍无正文，R12研究质量仍NOT_EVALUABLE。跨厂采用R10 DELAYED_BASELINE。
+
+
+## R12最终回填（后置审计，取代上方PENDING）
+- R12唯一job=9d502bcdaf6e40bc DONE 905s；完整正文MCP 17388字符，WORKBUDDY_REPORT.md commit=4f011748557a242c87094f70d295cb0d09ca9180 / blob=218ae196b108033f37539e92455f02f211d4131a，独立全文回读PASS。
+- ChatGPT在隔离Python 3.13内存中对报告内联MVE1 validate函数新增5种相邻非法输入×normal/-O：10/10错误ACCEPTED，P0安全fail-open；未在生产执行，子进程原始退出码未取得，函数结果可复算。
+- R12正式审计65/100（19/18/11/12/5），R02正式76/100，Δ=-11；同厂3项整改均PARTIAL，resolved=0，recurred=1；FINAL_ACCEPTANCE=FAIL，production_readiness=NOT_READY。
+- 7项高影响官方事实抽核：6 PASS、1关键商用许可NOT_VERIFIABLE；Buddy报告自评0错误不作为独立结论。
+- R11 F1 job=13434ad175b04267最终FAILED 4050s/0字；R12按R10延迟跨厂基线正确，R11质量NOT_EVALUABLE。
+- R13已于本后置审计前派单，job=1192f68c0b0d449a；新增P0未能提前注入，不得伪称已注入。R22 F2复测时必须修复。
