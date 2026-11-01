@@ -17,3 +17,9 @@ T1工件可重放：R19 0/5+R22 OOM，R23 prompt已实际注入，Buddy无报告
 ## V4质量仪表盘（严格Buddy口径）
 fact_check_sample_count=0; material_fact_error_count=NOT_EVALUABLE; fact_gate_verdict=NOT_EVALUABLE; case_status_counts=NOT_EVALUABLE; core_mve_status=NOT_EXECUTED_JOB_FAILED; core_mve_independent_replay=NOT_POSSIBLE_BUDDY; artifact_reproducibility_verdict=NOT_EVALUABLE_BUDDY; red_team_test_count=0 Buddy (16 separate ChatGPT Node tests); red_team_pass_count=0 Buddy; red_team_blocked_count=0; p0_open_count>=2 historical; p1_open_count>=1 historical; p2_open_count=UNKNOWN; claims_overstated_count=NOT_EVALUABLE_BUDDY; production_readiness=NOT_READY。
 opportunities_found=4 independent; officially_verified_count=4; currently_open_count=1 (submission window); eligibility_confirmed_count=0; P0/P1/P2=0/3/1; actionable_count=0 confirmed; registration_attempted=0; registration_completed=0; resource_claimed=0; action_not_executed_count=4。
+
+
+## 独立原型追加核验（不改变Buddy评分）
+- 已完成真正逐字节Git工件验收：全部12+个源码/输入/原始日志/退出码/SHA256文件在R23/artifacts/，GitHub fetch_file回读内容与create原文exact，Git blob SHA与容器本地git hash-object全部一致；R23/INDEPENDENT_MVE.md记录逐文件SHA256与Git blob，独立回读PASS。
+- 16个Node原生单测=2正例+14异常/边界断言，`node --test test.cjs` exit0、TAP16/16；另外12个冻结恶意/错误输入通过`redteam_runner.cjs`分别启动Node子进程，全部exit2且stderr结构化REJECTED、stdout为空，runner exit0；完整原始逐例状态在artifacts/redteam.stdout。独立ChatGPT红队=12/12通过（独立于16单测）；Buddy红队仍0，不能替换。已验证逻辑层=INDEPENDENTLY_VERIFIED_CHATGPT_ISOLATED；浏览器UI NOT_TESTED，真实服务器鉴权、可信hash锚、游戏发布未测试，PRODUCTION_NOT_READY。
+- 不更改正式R23质量评分NOT_EVALUABLE、同厂同比NOT_EVALUABLE、同厂Buddy resolved_count=0。新增工件只证明独立原型，不证明WorkBuddy OOM已恢复。
