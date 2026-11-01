@@ -1,0 +1,6 @@
+# R24 ChatGPT独立隔离图像门禁原型（非Buddy报告）
+- 本地目录/mnt/data/r24_factory4/，打包/mnt/data/R24_F4_independent_prototype.zip，ZIP实际SHA256=1cdd22f56c238e70526a5d48612131c66c4753aca2b647103d4c3fed11ff8af3。
+- Python标准库 r24_gate.py / run_tests.py / fixture.json / asset.png / tests.stdout,stderr,exit / core.stdout,stderr,exit / SHA256SUMS；首版TypeError失败tests.initial.stderr/stdout/exit原样保存。没有联网、AI模型调用、插件安装或生产修改。
+- 冻结有效资产8×6 RGBA PNG 147字节，SHA256=f355cb84ccfddbf9d1cf8412c6a68e3e3cc65c554c1d705757f3d4ee2da54220；manifest固定license=USER_OWNED_DEMO、path=asset.png、publish=false、bbox=[1,1,7,5]；trusted SHA来自独立参数而非攻击者自报manifest。
+- 执行命令：cd /mnt/data/r24_factory4 && python run_tests.py >tests.stdout 2>tests.stderr ; echo $? >tests.exit ; python r24_gate.py fixture.json asset.png >core.stdout 2>core.stderr ; echo $? >core.exit ; sha256sum ... >SHA256SUMS。实际tests.exit=0，core.exit=0；10/10子进程测试符合预期：1合法exit0、9非法exit2、0新增文件副作用；测试拒绝包含缺许可、路径穿越、字符串布尔、越权发布、bbox越界/非法类型、内容+自报hash伪造、alpha全不透明、PNG截断。测试脚本初版TypeError退出1，修正后保留失败原文并通过。
+- 验证等级：ChatGPT隔离**合成图像结构与业务元数据门禁SIMULATED / 本地真实代码EXECUTED**；不代表真实AI图像生成、OCR识字、素材版权法律审查、服务端鉴权或生产可用。没有Git原始源码/日志字节回读，artifact_git_reproducibility=NOT_VERIFIED。Buddy唯一job失败，Buddy MVE=NOT_EXECUTED；两者严格分账。
