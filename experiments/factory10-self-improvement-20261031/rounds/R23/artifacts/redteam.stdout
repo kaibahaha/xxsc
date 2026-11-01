@@ -1,0 +1,13 @@
+{"name":"missing_id","expected_exit":2,"actual_exit":2,"stdout":"","stderr":"REJECTED:invalid id","passed":true}
+{"name":"bad_id_type","expected_exit":2,"actual_exit":2,"stdout":"","stderr":"REJECTED:invalid id","passed":true}
+{"name":"negative_id","expected_exit":2,"actual_exit":2,"stdout":"","stderr":"REJECTED:invalid id","passed":true}
+{"name":"unknown_action","expected_exit":2,"actual_exit":2,"stdout":"","stderr":"REJECTED:invalid type","passed":true}
+{"name":"invalid_direction","expected_exit":2,"actual_exit":2,"stdout":"","stderr":"REJECTED:invalid direction","passed":true}
+{"name":"out_of_bounds","expected_exit":2,"actual_exit":2,"stdout":"","stderr":"REJECTED:out of bounds","passed":true}
+{"name":"harvest_no_ore","expected_exit":2,"actual_exit":2,"stdout":"","stderr":"REJECTED:no ore at location","passed":true}
+{"name":"empty_deposit","expected_exit":2,"actual_exit":2,"stdout":"","stderr":"REJECTED:empty cargo","passed":true}
+{"name":"no_energy","expected_exit":2,"actual_exit":2,"stdout":"","stderr":"REJECTED:out of energy","passed":true}
+{"name":"duplicate_id","expected_exit":2,"actual_exit":2,"stdout":"","stderr":"REJECTED:duplicate event","passed":true}
+{"name":"null_action","expected_exit":2,"actual_exit":2,"stdout":"","stderr":"REJECTED:invalid action","passed":true}
+{"name":"malformed_state","expected_exit":2,"actual_exit":2,"stdout":"","stderr":"REJECTED:invalid state","passed":true}
+REDTEAM_TOTAL=12 PASS=12 FAIL=0
