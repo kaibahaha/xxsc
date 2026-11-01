@@ -1,0 +1,1 @@
+{"actions":[{"id":1,"type":"move","dir":"E"},{"id":2,"type":"move","dir":"S"},{"id":3,"type":"harvest"},{"id":4,"type":"harvest"},{"id":5,"type":"move","dir":"N"},{"id":6,"type":"move","dir":"W"},{"id":7,"type":"deposit"}]}
