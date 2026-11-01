@@ -108,3 +108,10 @@
 |R23-THATGAMEJAM02|F3,F5,F10|https://itch.io/jam/thatgamejam02|2026-11-01|2026-11-01|B conditional/P1|PUBLIC_SUBMISSION_OPEN / USER_ELIGIBILITY_UNKNOWN / ACTION_NOT_EXECUTED|English Windows/Mac build, max5/team, AI asset disclosure, organizer showcase license; age/tax unknown|Best Overall USD3000, other conditional awards; no guaranteed payout|2026-11-08 07:59 UTC|confirm finished game, IP, actual legal eligibility, choose itch OR TapTap, user confirmation before submission|
 |R23-EPIC-MEGAGRANTS|F3,F4,F5|https://www.unrealengine.com/megagrants|2026-11-01|2026-11-01|C/P2|2026_CYCLE_CLOSED / OBSERVE / ACTION_NOT_EXECUTED|UE/UEFN or migration project, next cycle unknown|competitive project grant, amount not guaranteed|2026-09-04 23:59 ET (expired)|watch next official cycle; no submission|
 - Existing F3-UNITY-JAM-2026/F3-GGJ-2027/F3-ITCH-DIST/F3-GODOT and R20-WINTER-VN-JAM-2026 reused, not double-counted. R23 official candidates4, eligibility confirmed0, registrations0, approvals0, claimed0, activated0, used0; high-value screening does not equal resource acquisition. Full legal/IP/fee gaps rounds/R23/OPPORTUNITY_RADAR.md.
+
+
+## R24 F4 final dedup｜2026-11-01
+|ID|factory|official_url|first_seen|last_verified|grade/priority|status|eligibility|reward|deadline|next_action|
+|---|---|---|---|---|---|---|---|---|---|---|
+|R24-COMFYUI-OSS|F4,F3,F5|https://github.com/Comfy-Org/ComfyUI/blob/master/LICENSE|2026-11-01|2026-11-01|B conditional/P2|OFFICIAL_GPL_OSS / NOT_INSTALLED / ACTION_NOT_EXECUTED|GPL-3.0核心软件可商用；分发/衍生与模型权重/插件许可需分开审查|软件源码免费，GPU/权重/插件/API可能付费；不是云算力赠金|ongoing|先做模型权重与商业许可矩阵；不安装、不登录、不发布|
+- R24其他候选YouCam/Canva Premium Apps/Canva Free/Adobe Express Free均复用R14官方URL，不重复计新资源。YouCam中国居民/主体官方规则排除；用户实际资格UNKNOWN。R24资格确认0，registration_attempted0，registration_completed0，resource_claimed0，action_not_executed5；发现≠获得。
