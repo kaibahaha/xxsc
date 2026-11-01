@@ -9,3 +9,20 @@
 - 本轮ChatGPT独立官方机会核查及本地Python标准库RGBA/权利/文本bbox门禁原型另列；它不是Buddy交付。独立原型本地10个测试（1合法+9非法）10/10通过、退出码0，另首版测试TypeError失败原始stderr保留；本地ZIP=/mnt/data/R24_F4_independent_prototype.zip，SHA256=1cdd22f56c238e70526a5d48612131c66c4753aca2b647103d4c3fed11ff8af3。ZIP尚未以原始字节写入Git，不可称Git工件独立回读通过；只读代码逻辑原型不代表AI图像生成或商业安全。
 - FINAL_STATE=JOB_FAILED_OOM / NO_BUDDY_REPORT / RESEARCH_NOT_EVALUABLE / FINAL_ACCEPTANCE_FAIL_DELIVERY / PRODUCTION_NOT_READY。R24结束24轮自然停止新派单；R21缺轮不补派。未改模型/生产/旧实验/其他分支/插件/其他定时任务，未注册/支付/发布/写凭据。
 - 本轮Git各文件的实际commit和blob以逐项Git create_file/fetch_file回执为准，不能把此STATUS中的预期视为其他文件已验证。
+## Git实际写入与独立回读清单（最终补记）
+|file|commit|blob|fetch_file exact|
+|---|---|---|---|
+|FEEDBACK_TO_BUDDY.md|b5761c06aba43af39c3fa52210c04afe27291cb0|9dad09839630015ff15233fc17e1fe8261c99739|PASS|
+|WORKBUDDY_FAILURE_RAW.md|42801146b5051ca5871f26ccdc0bddeff5cc4afe|8783425bc92fcae5a3ee6af721e0fd05d715188a|PASS|
+|CHATGPT_AUDIT.md|1510995442be4f1e50e6f3bb6d0a384d78b2f992|9cc1c19e65458a586966d6db2af1f066472b5457|PASS|
+|ADAPTATION.md|123c0e140f220a25d227a4141b63fdd283b3335c|ee7b9ca6b6e469897590925e69e21c24fc59a2ae|PASS|
+|EXECUTIVE_QUALITY_GATE.md|ae7d04f6bfd7355e99e22c302c5239bf58d2aee4|1cb2cbf193b77d47f631d94d496d4b112d2238f8|PASS|
+|OPPORTUNITY_RADAR.md|e6f50da1e99349c771db41c0ea37801214837439|6bd8c49cdba9be063a6ad7373e9ae335f78f23a9|PASS|
+|ACTION_CHECKLIST.md|c05081b7ba454743bbac29ba0a5b11136b3ab20a|fe6dd520a2af28d644037e6a80580c041e9677ed|PASS|
+|INDEPENDENT_MVE.md|b196593c5dfd580c075ee327a54a7cd58b973733|ddf554c99e431a774b8647a489d0a524f5e92c3b|PASS (说明文档，非原始ZIP)|
+|root/ITERATION_LEDGER.md|3569b680981c07b7817a24cb097f65c93fd7abab|39a643179ebcad8fc3bef6be8cfd4851227f88a0|PASS|
+|root/OPPORTUNITY_LEDGER.md|a9abd9e0c445863a52865bc5f817e21d396a2f7e|c68675dadcf659f1f4f398c3c34216debb1e749f|PASS|
+|root/FINAL_24_ROUND_MATURITY_REPORT.md|152290502a5a2ad6213dede55bed5afc3f365f22|5f36fee94c51763df3e83ca3b3a3aaf25495e670|PASS|
+|root/FINAL_GLOBAL_OPPORTUNITY_SUMMARY.md|c044664d592955a290707b051085d59f82981820|486df3461be59be6b809b563377f7bb96927cee9|PASS|
+- 本STATUS自身初次commit=0ea4a0fab040e80b56ade4878d9cc7b5775d5e09/blob86ad54b67a1dfc8d7f6d406fbc22cfd06eb40ed0，初次写后fetch_file exact PASS；本补记另以update_file回执和最终fetch_file核验。
+- 24轮RRULE COUNT=24；自动化next_run_time=null（peek只读确认），因此按计划自然终止，不禁用其他定时任务、不创建新任务。
