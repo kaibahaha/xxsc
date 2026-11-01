@@ -1,0 +1,11 @@
+# R24 F4 图像视觉｜24轮最后一轮最终状态
+- planned_at=2026-11-01 09:25 Asia/Shanghai；preflight已于计划时刻前完成，实际派单在09:25:06+08:00之后；精确MCP服务端提交秒未提供。
+- unique_key=FACTORY10-SELF-IMPROVEMENT-20261031-R24-F4；job_id=5a7f4c7099cf4dbd；仅真实提交一次。
+- Git pre-submit R24 STATUS/FEEDBACK 均404；最近30个云端job无R24，防重复通过。R23唯一job 2b219729ac404238 FAILED_OOM/0s/232字；R22唯一job 1b6feeaf3f514af1 FAILED_OOM/90s；R21 Git STATUS 404、无可核实派单。最近完成R19用作DELAYED_BASELINE，不能假装R23有研究正文。
+- bridge_health HTTP200 status=ok reachable=true version=3.4-candidate running0 queued0 unresolved_orphans2 possible_remote_overlap=true。注意CodeBuddy daemon OOM未恢复，HTTP正常不代表推理健康。
+- R04 F4 77/100(21/17/15/14/10)；R14 F4 75/100(18/18/16/14/9), Δ−2，事实6抽2错，0/3同厂重点完全解决。R24 Buddy没有正文，五维及R24同比=NOT_EVALUABLE。
+- FEEDBACK_TO_BUDDY.md 3830字符，commit=b5761c06aba43af39c3fa52210c04afe27291cb0，blob=9dad09839630015ff15233fc17e1fe8261c99739，写后Git fetch_file exact PASS；实际MCP prompt3911字符全文注入。
+- 唯一submit job=5a7f4c7099cf4dbd；get_result返回[task failed]远端内存不足、daemon暂停推理，非429/超时/排队；无Buddy正文，不创建WORKBUDDY_REPORT.md，保留原始错误于WORKBUDDY_FAILURE_RAW.md。
+- 本轮ChatGPT独立官方机会核查及本地Python标准库RGBA/权利/文本bbox门禁原型另列；它不是Buddy交付。独立原型本地10个测试（1合法+9非法）10/10通过、退出码0，另首版测试TypeError失败原始stderr保留；本地ZIP=/mnt/data/R24_F4_independent_prototype.zip，SHA256=1cdd22f56c238e70526a5d48612131c66c4753aca2b647103d4c3fed11ff8af3。ZIP尚未以原始字节写入Git，不可称Git工件独立回读通过；只读代码逻辑原型不代表AI图像生成或商业安全。
+- FINAL_STATE=JOB_FAILED_OOM / NO_BUDDY_REPORT / RESEARCH_NOT_EVALUABLE / FINAL_ACCEPTANCE_FAIL_DELIVERY / PRODUCTION_NOT_READY。R24结束24轮自然停止新派单；R21缺轮不补派。未改模型/生产/旧实验/其他分支/插件/其他定时任务，未注册/支付/发布/写凭据。
+- 本轮Git各文件的实际commit和blob以逐项Git create_file/fetch_file回执为准，不能把此STATUS中的预期视为其他文件已验证。
