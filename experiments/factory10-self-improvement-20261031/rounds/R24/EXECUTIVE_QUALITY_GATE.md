@@ -1,0 +1,11 @@
+# R24 F4｜一页质量门禁
+- 研究目标：可复现RGBA/文本bbox/版权放行门禁，全球视觉开发者与赛事机会。
+- A Buddy自述：无，唯一job 5a7f4c7099cf4dbd FAILED_OOM，daemon paused；HTTP200≠推理健康。
+- B ChatGPT独立：读取R04/R14/R23真实Git历史、回读R24反馈并全文实际派单；R04 77→R14 75(−2)，R14事实6抽2错；R24 Buddy事实抽查0，无法评分。独立本地Python 8×6 RGBA标准库原型、10/10测试成功，初版失败日志保留，但非Buddy/AI生成，ZIP尚未Git字节回读。
+- 事实门禁：Buddy NOT_EVALUABLE；独立机会来源官方核查单列，不计Buddy抽查。
+- 五案例：Buddy 0个可审计；五例状态均NOT_EVALUABLE，独立原型只涉及RGBA/bbox/权利模拟。
+- MVE：Buddy NOT_EXECUTED_JOB_FAILED；ChatGPT隔离SIMULATED逻辑门禁已执行，独立测试10/10，SHA由本地文件计算，Git工件NOT_VERIFIED。
+- 红队：Buddy 0；ChatGPT独立9非法负例拒绝exit2，0文件新增；无真实发布、OCR、模型调用、可信鉴权。
+- 未解决：D1价格型号错配、D2 GPL权利边界、D3完整原始工件与商业质检；远端OOM连续R20/R22/R23/R24，R21缺轮，历史2 unresolved orphans。
+- C FINAL_ACCEPTANCE=FAIL_DELIVERY；PRODUCTION_READINESS=NOT_READY；研究与执行不应混同。
+- 后续：24轮自然结束，先恢复daemon内存与审计缺轮，之后单厂最小真实商业E2E试产，不自动创建R25。
