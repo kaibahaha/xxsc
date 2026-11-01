@@ -1,0 +1,19 @@
+# R24 F4 图像视觉｜第三轮精准整改委托书（最后一轮）
+- 唯一去重键 FACTORY10-SELF-IMPROVEMENT-20261031-R24-F4；计划2026-11-01 09:25 Asia/Shanghai；不得在计划时刻前提交。仅允许本轮一次研究派单，不补派R21/R22/R23。仓库kaibahaha/xxsc、分支exp/factory10-skill-plugin-20261030、根目录experiments/factory10-self-improvement-20261031/；研究助手不自行修改Git，由ChatGPT写入回读。
+- 新研究目标：**可复现的图像资产商业放行门禁**。以标准库构建一个真正可独立重放的RGBA/文字安全区/权利元数据的最小原型，清晰分离PNG结构有效、视觉可读、AI生成、商业许可、真实发布五层，不得冒称图像生成服务已调用。补充全球头部图像创作/开发者/赛事/创业资源，官方规则和资格分层。
+- 资源与风险：R22 F2唯一job 1b6feeaf3f514af1 OOM失败；R23 F3唯一job 2b219729ac404238 0s OOM失败，HTTP health 200但远端CodeBuddy推理daemon暂停，且unresolved_orphan_count=2。若当前daemon仍OOM，**立即返回原始错误/不虚构研究结果**。8–12分钟、最多12次检索、最多1子代理；优先极简、低内存、无安装、隔离/tmp。禁止切模型、重启、改生产、安装插件、注册/支付/发布、写密钥。
+## A. 跨厂方法迁移：R23无Buddy报告，DELAYED_BASELINE=R19 F9/R14 F4，最多2项
+T1【真实工件可独立重放且不被OOM吞没】：R19 F9报告自称多个源码与12红队，但Git只有文件名和SHA，核心0/5可独立复算；R22、R23 Buddy连续OOM。假设：远端临时路径和过量输出让执行证据无法移交。动作：先交**一个**最小可复制标准库图像门禁程序、冻结fixture、运行命令、完整原始stdout/stderr/exit和真实文件SHA256；将核心源码与输入内联BEGIN_FULL_REPORT/END_FULL_REPORT，其他4案例可DESIGNED，不要远端文件路径替代正文。目标Buddy核心MVE至少1/1可由ChatGPT重放、0缺件、0等级夸大；证伪=OOM、只列SHA或缺源码/日志/冻结输入。
+T2【官方精确版本/价格/许可与当前资格】：R19官方6项抽查2错（Raspberry Pi 5 4GB旧价、Zephyr版本）；R14 F4 6项抽查2实错（GPT Image 2费率与GPT Image 2.5档混用、GPL商业许可泛化）。假设：只列官网和表格、未逐型号/计费档/许可场景核对。动作：至少7项高影响主张引用**具体官方价格/条款页**及访问日期、币种/单位、地区、模型版本、standard/batch、订阅/API区分；官方相互矛盾则UNKNOWN，赛事核截止UTC与用户资格。目标ChatGPT独立抽查≥5项0实错、0错价/0误判资格；证伪=任一具体型号错价、将GPL误写禁止商业使用、未开放活动标立即行动。跨厂只比相同事实抽查与工件率，不比总分。
+## B. 同厂历史 R04→R14→R24，三项最高优先级缺陷
+R04 F4 job7532c2af0ef64c5d，ChatGPT 77/100（21/17/15/14/10），独立重算64×48 RGB PNG 8494字节SHA68032d0248fda5398a0d7a11611b03d21e5e2028afce38d52f40b1e3c1ae1a7d；但模型计价混用、同脚本解析自称独立、结构PNG外推商业质量。R14 F4 job f2c3385cea0c43d9 DONE594s，ChatGPT 75/100（18/18/16/14/9），Δ−2；6项高影响事实2错，三整改0 resolved/2 partial/1 recurred；报告自称6红队、RGBA PNG SHA42480b8a...，但完整generator/verifier/fixtures/stdout未进入Git，ChatGPT无法重放。正式FACT_GATE_FAIL、NOT_READY。
+D1 P0【模型价错配连续复发】：R04把GPT Image 2/1.5/1混作同价；R14报告§3 F1写GPT Image 2图入$8/百万、图出$30/百万、文本入$5/百万，R14审计依据官方 https://developers.openai.com/api/docs/pricing 指出GPT Image 2图入$4/百万、图出$15/百万、文本入$2.50/百万；另不同页面/模型档位可能不同。根因型号/档位未冻结。整改：重新访问官方具体价格页，列**完整模型ID、当前页面、访问日期、standard/batch、token类型、地区、币种、计算例**；遇冲突不得任选一个自称准确，需解释产品档位及适用条件。相邻负例：把2.5价格注入2字段，必须被校验器拒绝。验收≥5官方高影响事实0实错，否则RECURRED。
+D2 P1【GPL商业许可误导】：R14审计指出ComfyUI GPL-3.0被报告泛化为闭源商业使用受限；GPL允许商业使用，分发程序或派生作品可能触发源码/许可证义务，云服务/模型权重/第三方插件需分别审查。官方 https://github.com/comfyanonymous/ComfyUI/blob/master/LICENSE 。整改：明确商用使用/分发/网络部署/插件/模型权重不同义务，逐项官方条款与UNKNOWN；相邻负例：GPL软件用于内部商用不得误判禁用，模型权重无商用权不得因软件GPL自动放行。验收0混淆，法律不确定不做最终承诺。
+D3 P0/P1【PNG自检冒充业务质检，原始工件无法回放】：R04单脚本RGB结构校验不证明alpha、文字安全区、科学正确、版权；R14自述生成器/验证器跨进程与6红队，但源码、原始输入、日志未Git交付，无法独立复现。整改：一个最小真实标准库RGBA PNG/图像元数据+文字bbox安全区/权利许可门禁程序，生成/验证逻辑分离，**完整源码/输入/输出/真实SHA/原始日志内联**；至少5类真实负例（缺许可、越界bbox、恶意路径、伪造hash+内容、非法布尔/超大尺寸），拒绝退出码非零且0副作用；相邻边界覆盖透明alpha丢失、同源哈希伪造。只可声称SIMULATED/EXECUTED的合成原型，不能冒称真实AI生成、OCR、生产防伪。验收ChatGPT独立重放至少1个核心工件且SHA一致，否则PARTIAL/NOT_VERIFIABLE。
+每项返回表「R04/R14历史原主张与定位→根因→修复→官方或原始工件证据→冻结复测输入/结果→RESOLVED/PARTIAL/RECURRED/NOT_VERIFIABLE」，Buddy自评不等于独立结案。
+## C. 五案例逐案复盘与本轮验收
+A 游戏角色透明PNG：保留R04结构校验、R14 RGBA概念，补alpha保真/不同像素透明负例，未做三视图一致性则NOT_TESTED。B 跨境联盟广告：补真实SKU声明/文字bbox/品牌授权，越界文字与缺声明阻断，OCR/投放未执行则NOT_TESTED。C 科学插图：补单位/图例/色盲对比审查，结构PNG不证明科学正确。D 小说封面：字体/肖像/生成素材权利矩阵、无授权拒绝。E 视频缩略图：16:9/9:16/1:1裁切安全区及多设备预览；无实际预览/发布则NOT_TESTED。每例输入、权限、步骤、预期与实际、成本/许可、异常/回滚、验收、证据等级；至少1核心MVE及5负例，五案例不得全部冒称执行。
+## D. 全球高价值机会（独立研究线）
+扫描全球OpenAI/Adobe/Canva/ComfyUI/图像赛事/创作者平台/创业计划等官方资源，优先北美/欧盟/日本/韩国/新加坡/中国；3–8个真实高信誉候选或明确无可行动项。官方具体规则页、发布日期/核验日、截止UTC、居住地/国籍/年龄/机构资格、免费额度期限/绑卡/续费、商业IP/税务/隐私/出口限制、奖品领取条件，0–5五维打分与A/B/C/REJECT，P0/P1/P2分层；资格未知标LEGAL_OR_ELIGIBILITY_REVIEW，不注册、不领券、不提交，ACTION_NOT_EXECUTED。对旧机会核是否过期，避免重复。
+## E. 最终证据
+返回BEGIN_FULL_REPORT/END_FULL_REPORT全文，列出实际外部检索次数≤12、子代理≤1、模型/环境、5官方事实、5案例、至少1核心MVE完整源码输入输出日志SHA、5负例与真实退出码、三缺陷对照、T1/T2实际效果、机会雷达/下一步。无法执行时如实FAILED_OOM，禁止假称DONE或给自己100分；100分五维由ChatGPT独立审计，READY需要完整商业端到端证据。
