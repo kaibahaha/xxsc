@@ -10,3 +10,8 @@
 **C FINAL_ACCEPTANCE**：FAIL_DELIVERY / RESEARCH_NOT_EVALUABLE / PRODUCTION_NOT_READY。R23正式100分及R03/R13同比NOT_EVALUABLE；Git文本回读不等于生产可用。
 **机会**：Game Off/GDevelop尚未开放提交，thatgamejam #02开放但资格与作品未确认，Epic MegaGrants 2026已截止；无可立即自动提交的合规项目。
 **下轮**：R24 F4先检查推理daemon是否仍OOM，不重复R23；不切模型、不重启生产、不新增定时任务；保持官方事实与完整工件门禁。
+
+
+## 补充：最终独立证据门禁（与Buddy失败隔离）
+- ChatGPT隔离MVE已完成Node单测16/16，另外12个负例由独立CLI子进程全部exit2拒绝，原始stdout/stderr、冻结输入、源码、runner、exit与SHA256已全部Git逐文件回读；本地git hash-object与GitHub blob SHA逐字节相等，证据R23/INDEPENDENT_MVE.md。**这是ChatGPT独立toy逻辑层INDEPENDENTLY_VERIFIED，不是Buddy的五案例/MVE/红队。**
+- R23正式Buddy红队0、事实抽样0、Buddy案例NOT_EVALUABLE、Buddy MVE失败、FINAL_ACCEPTANCE=FAIL_DELIVERY，生产NOT_READY；UI未做浏览器E2E，实际商业游戏尚未完成。
