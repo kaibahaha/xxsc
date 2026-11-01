@@ -15,3 +15,7 @@ T1根因假设=远端临时路径/大输出吞掉原始工件；证伪=核心源
 正式R03 80/100；R13尚无完整独立评分；R23 OOM，resolved_count=0 Buddy，recurred_count=NOT_EVALUABLE，score_delta=NOT_EVALUABLE。独立ChatGPT微游戏原型不能代替Buddy整改。
 ## 上一小时通用改进：计划→实际注入→实际效果→下轮调整
 计划=原始工件可重放+当前官方条款精确核对；实际注入=Git exact回读且MCP prompt包含完整反馈；实际效果=Buddy OOM，NOT_VERIFIED；下轮R24先只读检查daemon实际推理状态/最近失败，禁止重派R23，优先小体量研究和官方机会核验，保留双轨事实/能力证据门禁。独立Node微游戏可作为今后隔离验证材料，UI和商业安全仍需补。
+
+
+## 最终独立MVE观察（不冒充跨厂方法在Buddy生效）
+- R23 Buddy T1/T2效果仍NOT_VERIFIED（OOM）；ChatGPT独立替代验证成功提供完整HTML/Node源码、冻结输入、原始日志、SHA，Git blob与本地字节一致，Node 16/16单测、12/12独立子进程负例通过。只能证明“**本地标准库原型可在Git留全证据**”这条工程可行性，不能证明“给Buddy注入T1后其研究质量改善”。下一轮保留Buddy失败隔离，优先解决远端推理内存状态，再对F4独立收集可重放图像工件；绝不跨厂拿游戏测试当图像能力。
