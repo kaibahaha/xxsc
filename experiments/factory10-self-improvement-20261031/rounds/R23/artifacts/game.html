@@ -1,0 +1,36 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>采矿车：四格微游戏</title><style>body{font:16px system-ui;max-width:700px;margin:25px auto}button{margin:4px;padding:9px}pre{background:#eee;padding:14px}</style><h1>采矿车：四格微游戏</h1><p>移动到矿格 (1,1)，采矿两次，返回基地 (0,0) 卸矿，获得2金胜利。</p><div id="controls"><button data-d="N">北</button><button data-d="S">南</button><button data-d="W">西</button><button data-d="E">东</button><button id="harvest">采矿</button><button id="deposit">卸矿</button><button id="reset">重开</button></div><pre id="view"></pre>
+<script id="game-core">
+(function(root){'use strict';
+const START={x:0,y:0,energy:12,cargo:0,gold:0,ore:2,seen:[],turn:0};
+function initial(){return JSON.parse(JSON.stringify(START));}
+function fail(msg){throw new Error(msg);}
+function step(s,a){
+ if(!s||typeof s!=='object'||!Array.isArray(s.seen))fail('invalid state');
+ if(!a||typeof a!=='object'||Array.isArray(a))fail('invalid action');
+ if(!Number.isSafeInteger(a.id)||a.id<1||a.id>1000000)fail('invalid id');
+ if(s.seen.includes(a.id))fail('duplicate event');
+ if(!['move','harvest','deposit'].includes(a.type))fail('invalid type');
+ if(s.gold>=2)fail('game finished');
+ const n=JSON.parse(JSON.stringify(s));
+ if(a.type==='move'){
+  if(!['N','S','E','W'].includes(a.dir))fail('invalid direction');
+  if(n.energy<=0)fail('out of energy');
+  const delta={N:[0,-1],S:[0,1],E:[1,0],W:[-1,0]}[a.dir];
+  const x=n.x+delta[0],y=n.y+delta[1];
+  if(x<0||x>3||y<0||y>3)fail('out of bounds');
+  n.x=x;n.y=y;n.energy--;
+ }else if(a.type==='harvest'){
+  if(n.x!==1||n.y!==1||n.ore<=0)fail('no ore at location');
+  if(n.energy<=0)fail('out of energy');
+  n.ore--;n.cargo++;n.energy--;
+ }else{
+  if(n.x!==0||n.y!==0)fail('not at base');
+  if(n.cargo<=0)fail('empty cargo');
+  n.gold+=n.cargo;n.cargo=0;
+ }
+ n.turn++;n.seen.push(a.id);return n;
+}
+const api={initial,step};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.GameCore=api;
+})(typeof globalThis!=='undefined'?globalThis:this);
+</script>
+<script>(function(){'use strict';let s=GameCore.initial(),id=0;const view=document.getElementById('view');function render(msg=''){view.textContent=JSON.stringify(s,null,2)+(msg?'\n'+msg:'')+(s.gold>=2?'\n胜利！':'');}function act(a){try{s=GameCore.step(s,{id:++id,...a});render();}catch(e){render('拒绝：'+e.message);}}document.querySelectorAll('[data-d]').forEach(b=>b.addEventListener('click',()=>act({type:'move',dir:b.dataset.d})));document.getElementById('harvest').addEventListener('click',()=>act({type:'harvest'}));document.getElementById('deposit').addEventListener('click',()=>act({type:'deposit'}));document.getElementById('reset').addEventListener('click',()=>{s=GameCore.initial();id=0;render();});render();})();</script></html>
